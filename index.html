@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calhartt</title>
+    <link rel="stylesheet" href="./css/main.scss">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <script type="module" src="./js/main.js" defer></script>
+</head>
+
+<body>
+    <include src="./include/header.html"></include>
+    <div class="visual_main_ex">
+        <div class="visual_main">
+            <div class="visual_main_frame">
+                <ul id="visual_main_ul" class="visual_trans_active">
+                    <li class="visual_main_li"><a href="#!"></a></li>
+                    <li class="visual_main_li"><a href="#!"></a></li>
+                    <li class="visual_main_li"><a href="#!"></a></li>
+                    <li class="visual_main_li"><a href="#!"></a></li>
+                </ul>
+                <div id="visual_prev_btn" class="btn">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div id="visual_next_btn" class="btn">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+        </div><!-- visual_main -->
+        <div id="play_btn" class="play_stop_btn">
+            <i class="fas fa-play"></i>
+        </div>
+        <div id="stop_btn" class="play_stop_btn">
+            <i class="fas fa-stop"></i>
+        </div>
+        <!--         <div class="indicator">
+            <ul>
+                <li class="page_list visual_page_on"><a href="#!">메인01</a></li>
+                <li class="page_list"><a href="#!">메인02</a></li>
+                <li class="page_list"><a href="#!">메인03</a></li>
+                <li class="page_list"><a href="#!">메인04</a></li>
+            </ul>
+        </div> -->
+    </div>
+    <div class="product_container">
+        <section class="best_product product">
+            <div id="prev_btn01" class="btn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div id="next_btn01" class="btn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <h2 class="sub_title">Best Product</h2>
+            <div id="product_frame01" class="product_frame_design">
+                <ul id="product_ul01" class="product_list move_active">
+                </ul>
+            </div>
+        </section><!-- best_product -->
+        <section class="new_product product">
+            <div id="prev_btn02" class="btn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div id="next_btn02" class="btn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <h2 class="sub_title">New Product</h2>
+            <div id="product_frame02" class="product_frame_design move_active">
+                <ul id="product_ul02" class="product_list move_active">
+                </ul>
+            </div>
+        </section><!-- new_product -->
+    </div><!-- product_container -->
+    <div class="main_issue_contents">
+        <section class="look_book">
+            <h2 class="sub_title">LOOK BOOK - S/S 2023</h2>
+            <div class="look_book_thumnail">
+                <div id="look_book_thm_area_01" class="big_look_book look_book_show_tab">
+                    <img src="" alt="look_book_thumnail00">
+                </div><!-- big_look_book -->
+                <div class="video_n_look_book">
+                    <div class="video_film">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/_EQlEfE1ahU"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div><!-- video_film -->
+                    <div id="look_book_thm_area_02" class="small_look_book_area">
+                        <div class="small_look_book01 look_book_show_tab">
+                            <img src="" alt="look_book_thumnail01">
+                        </div>
+                        <div class="small_look_book02 look_book_show_tab">
+                            <img src="" alt="look_book_thumnail02">
+                        </div>
+                    </div><!-- small_look_book -->
+                </div><!-- video_n_look_book -->
+            </div><!-- look_book_thumnail -->
+            <div class="look_book_view look_book_view01 block_on">
+                <div class="hover_img hover_img01">
+                </div>
+                <div class="text_box tb_01">
+
+                </div>
+                <div class="hover_img hover_img02">
+                </div>
+                <div class="text_box tb_02">
+
+                </div>
+                <img src="./dist/images/look_book_0.jpg" alt="look_book_view_00">
+            </div><!-- look_book_bottom -->
+            <div class="look_book_view look_book_view02">
+                <div class="hover_img hover_img01"></div>
+                <div class="hover_img hover_img02"></div>
+                <div class="hover_img hover_img03"></div>
+                <div class="text_box tb_03">
+
+                </div>
+                <div class="text_box tb_04">
+
+                </div>
+                <div class="text_box tb_05">
+
+                </div>
+                <img src="./dist/images/look_book_1.jpg" alt="look_book_view_01">
+            </div><!-- look_book_bottom -->
+            <div class="look_book_view look_book_view03">
+                <div class="hover_img hover_img01"></div>
+                <div class="hover_img hover_img02"></div>
+                <div class="hover_img hover_img03"></div>
+                <div class="hover_img hover_img04"></div>
+                <div class="text_box tb_06">
+
+                </div>
+                <div class="text_box tb_07">
+
+                </div>
+                <div class="text_box tb_08">
+
+                </div>
+                <div class="text_box tb_09">
+
+                </div>
+                <img src="./dist/images/look_book_2.jpg" alt="look_book_view_02">
+            </div><!-- look_book_bottom -->
+        </section><!-- look_book -->
+        <section class="mds_pick">
+            <h2 class="sub_title">MD'S PICK</h2>
+            <ul>
+                <li class="md_list acodian_on">
+                    <a href="#!">
+                        <img src="./dist/images/mds_01.jpg" alt="mds_01">
+                    </a>
+                    <div class="product_info">
+                    </div>
+                </li>
+                <li class="md_list">
+                    <a href="#!">
+                        <img src="./dist/images/mds_02.jpg" alt="mds_02">
+                    </a>
+                    <div class="product_info">
+                    </div>
+                </li>
+                <li class="md_list">
+                    <a href="#!">
+                        <img src="./dist/images/mds_03.jpg" alt="mds_03">
+                    </a>
+                    <div class="product_info">
+                    </div>
+                </li>
+                <li class="md_list">
+                    <a href="#!">
+                        <img src="./dist/images/mds_04.jpg" alt="mds_04">
+                    </a>
+                    <div class="product_info">
+                    </div>
+                </li>
+            </ul>
+        </section><!-- mds_pick -->
+    </div><!-- main_issue_contents -->
+    <section class="insta">
+        <h2 class="sub_title">INSTAGRAM</h2>
+        <div class="insta_frame">
+            <ul class="insta_move_ul01">
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+            </ul>
+            <ul class="insta_move_ul02">
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+                <li><a href="#!"></a></li>
+            </ul>
+        </div>
+    </section><!-- insta -->
+    <section class="site_info">
+        <ul class="info_list">
+            <li><a href="#!">칼하트윕에 대하여</a></li>
+            <li><a href="#!">칼하트윕 라디오</a></li>
+            <li><a href="#!">기업의 사회적 책임</a></li>
+            <li><a href="#!">채용 안내</a></li>
+            <li><a href="#!">일반 적합 인증</a></li>
+        </ul><!-- site_map -->
+    </section>
+    <include src="./include/footer.html"></include>
+</body>
+
+</html>
