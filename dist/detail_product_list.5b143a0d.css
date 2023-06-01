@@ -447,9 +447,11 @@ input {
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list li {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list li .review_ment {
+  width: 70%;
   margin-left: 15px;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list li .right_info {
@@ -457,6 +459,14 @@ input {
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list li .right_info span {
   margin-right: 50px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_list .not_ment {
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+  font-size: 30px;
+  background-color: #fff;
+  height: 200px;
+  line-height: 200px;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .create_btn {
   margin-left: auto;
@@ -467,13 +477,13 @@ input {
   display: none;
   margin-top: 20px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create .str_length {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area {
+  display: flex;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area .str_length {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.4rem;
   margin-bottom: 15px;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create input {
-  display: block;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_create #review_text_box {
   width: 100%;
@@ -481,6 +491,41 @@ input {
   background-color: #fff;
   outline: none;
   border: 1px solid #bbbbbb;
+  resize: none;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create #create_complete {
+  display: block;
+  text-align: center;
+  width: 195px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 20px;
+  margin-left: auto;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .pagenation {
+  margin: 15px 0;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list {
+  display: flex;
+  justify-content: center;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list li {
+  color: white;
+  margin-right: 10px;
+  font-size: 1.6rem;
+  background-color: gray;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list li:last-child {
+  margin-right: 0;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list li.page_on {
+  background-color: black;
 }
 .info_container #qna_section .qna_notice {
   margin-bottom: 10px;

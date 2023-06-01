@@ -499,8 +499,10 @@ input {
                     margin: 20px 0;
                     li {
                         display: flex;
+                        align-items: center;
                         justify-content: space-between;
                         .review_ment {
+                            width: 70%;
                             margin-left: 15px;
                         }
                         .right_info {
@@ -510,6 +512,14 @@ input {
                             }
                         }
                     }
+                    .not_ment {
+                        font-family: $font_noto_sans;
+                        text-align: center;
+                        font-size: 30px;
+                        background-color: #fff;
+                        height: 200px;
+                        line-height: 200px;
+                    }
                 }
                 .create_btn {
                     margin-left: auto;
@@ -518,13 +528,13 @@ input {
                 .review_create {
                     display: none;
                     margin-top: 20px;
-                    .str_length {
-                        font-family: $font_noto_sans;
-                        font-size: $small_up_font_size;
-                        margin-bottom: 15px;
-                    }
-                    input {
-                        display: block;
+                    .text_top_area {
+                        display: flex;
+                        .str_length {
+                            font-family: $font_noto_sans;
+                            font-size: $small_up_font_size;
+                            margin-bottom: 15px;
+                        }
                     }
                     #review_text_box {
                         width: 100%;
@@ -532,6 +542,39 @@ input {
                         background-color: #fff;
                         outline: none;
                         border: 1px solid #bbbbbb;
+                        resize: none;
+                    }
+                    #create_complete {
+                        display: block;
+                        text-align: center;
+                        @include item_size(195px, 40px);
+                        line-height: 40px;
+                        margin-top: 20px;
+                        margin-left: auto;
+                    }
+                }
+                .pagenation {
+                    margin: 15px 0;
+                    .page_list {
+                        display: flex;
+                        justify-content: center;
+                        li {
+                            color: white;
+                            margin-right: 10px;
+                            font-size: $defalut_font_size;
+                            background-color: gray;
+                            @include item_size(30px, 30px);
+                            line-height: 30px;
+                            cursor: pointer;
+                            user-select: none;
+                            text-align: center;
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                            &.page_on {
+                                background-color: black;
+                            }
+                        }
                     }
                 }
             }

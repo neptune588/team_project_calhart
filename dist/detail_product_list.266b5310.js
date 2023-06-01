@@ -867,11 +867,22 @@ viewContainer.addEventListener('mouseout', function () {
   viewZoomBox[1].style.backgroundPositionY = "0";
 });
 
-/*************** color_box선택시 바뀌는 글자 목록 ******************/
+/*************** review 관련  ******************/
 var reviewCreateBtn = document.querySelector('.create_btn');
+var reviewCreateComBtn = document.getElementById('create_complete');
 var reviewCreateArea = document.querySelector('.review_create');
 var reviewBox = document.getElementById('review_text_box');
 var reviewLengthBox = document.querySelector('.now_length');
+var reviewCounting = document.querySelector('.review_couting');
+var reviewList = document.querySelector('.review_list');
+
+//한 페이지에 몇개 보여줄것인지
+var pageViewLength = 6;
+var pageSection = document.querySelector('.pagenation');
+var pageUl = document.querySelector('.page_list');
+
+//list 들어갈 배열 
+var reviewContents = [];
 var rvCrteBtnState = false;
 reviewCreateBtn.addEventListener('click', function () {
   if (!rvCrteBtnState) {
@@ -880,46 +891,99 @@ reviewCreateBtn.addEventListener('click', function () {
     rvCrteBtnState = true;
   } else {
     removeClass(reviewCreateArea, "block_on");
-    reviewBox.value = "";
+    valueReset();
     rvCrteBtnState = false;
   }
 });
-reviewBox.addEventListener('keyup', function (event) {
+reviewBox.addEventListener('input', function () {
   var reviewLengthReturn = reviewBox.value.length;
   reviewLengthBox.textContent = "".concat(reviewLengthReturn, " \uC790");
-  if (event.key === 'Enter') {
-    event.preventDefault();
-    console.log('엔터 누르셨습니다.');
-  }
-
-  /*     if(reviewLengthReturn > 100) {
-        } */
 });
+reviewCreateComBtn.addEventListener('click', function () {
+  if (reviewBox.value !== null && reviewBox.value !== '' && reviewBox.value !== undefined) {
+    //배열 push
+    reviewContents.push(reviewBox.value);
 
-/*************** info_tab_list ******************/
-/* const infoTab = document.querySelectorAll('.info_tab_list > li > a');
+    //문자열 알림 리셋
+    valueReset();
+    reviewBox.focus();
 
-infoTab.forEach((value) => {
-    value.addEventListener('click', (event) => {
-        event.preventDefault();
-        let btnOffset = value.getAttribute('href');
-        let move = document.querySelector(btnOffset);
+    //리스트 생성
+    createList(reviewContents);
+    pageCreate(reviewContents);
 
-        window.scrollTo({
-            top: move.offsetTop,
-            behavior: 'smooth',
-        });
+    //리뷰 몇개인지 알려줌.
+    reviewCounting.textContent = reviewContents.length;
+    console.log(reviewContents);
+  } else {
+    console.log('불가!');
+  }
+});
+function createList(array) {
+  var newDate = new Date();
+  var nowYear = newDate.getFullYear();
+  var nowMonth = newDate.getMonth() + 1;
+  var nowDay = newDate.getDate();
+  if (nowDay < 10) {
+    nowDay = "0".concat(nowDay);
+  }
+  if (nowMonth < 10) {
+    nowMonth = "0".concat(nowMonth);
+  }
+  var receive = "";
+  for (var _i3 = 0; _i3 < array.length; _i3++) {
+    if (_i3 === pageViewLength) {
+      break;
+    }
+    var list = "\n            <li>\n                <p class=\"review_ment\">\n                    ".concat(array[_i3], "\n                </p>\n                <div class=\"right_info\">\n                <span class=\"rating_star\"></span>\n                <span class=\"review_date date\">").concat(nowYear, "-").concat(nowMonth, "-").concat(nowDay, "</span>\n                <span class=\"review_id\">ju****</span>\n            </div>\n            </li>\n        ");
+    receive += list;
+  }
+  reviewList.innerHTML = receive;
+}
+function pageCreate(array) {
+  if (array.length === 0) {
+    addClass(pageSection, "none_on");
+  } else {
+    removeClass(pageSection, "none_on");
+  }
+  var receive = "";
+  pageUl.innerHTML = "";
+  for (var _i4 = 1; _i4 <= calc(array); _i4++) {
+    var pageList = "\n            <li>\n                ".concat(_i4, "\n            </li>    \n        ");
+    receive += pageList;
+  }
+  pageUl.innerHTML = receive;
+  pageControl(array);
+}
+function pageControl(array) {
+  var pageNumber = document.querySelectorAll('.page_list > li');
+  var _loop3 = function _loop3(_i5) {
+    pageNumber[_i5].addEventListener('click', function () {
+      for (var j = 0; j < pageNumber.length; j++) {
+        removeClass(pageNumber[j], "page_on");
+      }
+      addClass(pageNumber[_i5], "page_on");
+      var returnSlice = arraySlice(_i5, pageViewLength, array);
+      createList(returnSlice);
     });
-}); */
-
-/* scrollSearch();
-function scrollSearch() {
-    window.addEventListener('scroll', () => {
-        console.log(window.scrollY);
-        console.log(infoTab[0].offsetTop);
-    });
-} */
-
+  };
+  for (var _i5 = 0; _i5 < pageNumber.length; _i5++) {
+    _loop3(_i5);
+  }
+}
+function arraySlice(index01, index02, array) {
+  var firstIndex = (index01 + 1) * index02 - index02;
+  var lastIndex = firstIndex + index02;
+  var returnArray = array.slice(firstIndex, lastIndex);
+  return returnArray;
+}
+function calc(array) {
+  return Math.ceil(array.length / pageViewLength);
+}
+function valueReset() {
+  reviewBox.value = "";
+  reviewLengthBox.textContent = "".concat(0, " \uC790");
+}
 //클래스 추가
 function addClass(Element, ClassName) {
   Element.classList.add(ClassName);
@@ -953,7 +1017,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53385" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61383" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
