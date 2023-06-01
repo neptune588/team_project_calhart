@@ -172,7 +172,7 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"./..\\dist\\images\\main_logo.png":[["main_logo.d1e513cb.png","dist/images/main_logo.png"],"dist/images/main_logo.png"],"./..\\dist\\images\\search_icon.png":[["search_icon.3fcf6a71.png","dist/images/search_icon.png"],"dist/images/search_icon.png"],"./..\\dist\\images\\cart_icon.png":[["cart_icon.6fde9c2f.png","dist/images/cart_icon.png"],"dist/images/cart_icon.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./..\\dist\\images\\detail_page_img\\CA23SSJAJL00358002_thumnail\\CA23SSJAJL00358002-01.jpg":[["CA23SSJAJL00358002-01.e9e2807f.jpg","dist/images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg"],"dist/images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg"],"./..\\dist\\images\\detail_page_img\\CA23SSJAJL00358002_thumnail\\CA23SSJAJL00358002-01_hover.jpg":[["CA23SSJAJL00358002-01_hover.148bafa4.jpg","dist/images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg"],"dist/images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -197,7 +197,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61137" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54344" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

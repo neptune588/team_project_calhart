@@ -6,10 +6,10 @@
   },
   "name": "team_project",
   "version": "1.0.0",
-  "main": "index.html",
+  "main": "detail_product_buy.html",
   "scripts": {
-    "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "dev": "parcel detail_product_buy.html",
+    "build": "parcel build detail_product_buy.html"
   },
   "keywords": [],
   "author": "",

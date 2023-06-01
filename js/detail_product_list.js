@@ -1,106 +1,115 @@
-import {detail_page_produdct_list} from './data.js'
+import {
+    detail_page_produdct_list
+} from './data.js'
 
-/*************** header ******************/
-//nav
-const navEx = document.getElementById('lnb_ex');
-//full_down_menu
-const fullDownMenu = document.getElementById('full_down_menu_ex');
-//sub_menu_ul
-const liInnerUl = document.querySelectorAll('.li_inner_ul');
-//main_menu_li
-const mainMenuLi = document.querySelectorAll('.main_menu_list > .menu_list');
-//full_down_img box
-const fullDonwInnerImg = document.querySelectorAll('.menu_img');
+/*************** view_thumnail ******************/
+const viewContainer = document.querySelector('.view_thumnail');
+const viewZoomBox = document.querySelectorAll('.view_thumnail > div');
+const viewSmallThumnail = document.querySelectorAll('.img_box > img');
+const viewSmallThumnailHover = document.querySelectorAll('.src_img > img');
+const colorSelectBox = document.querySelectorAll('.color_select_box > a');
+const sizeSelectBox = document.querySelectorAll('.size_list> li');
 
-//풀다운 토글
-navEx.addEventListener('mouseover', () => {
-    addClass(fullDownMenu, 'full_down_on');
-    for (let i = 0; i < liInnerUl.length; i++) {
-        addClass(liInnerUl[i], 'block_on');
-    }
-})
-navEx.addEventListener('mouseout', () => {
-    removeClass(fullDownMenu, 'full_down_on');
-    for (let i = 0; i < liInnerUl.length; i++) {
-        removeClass(liInnerUl[i], 'block_on');
+/*************** color_box선택시 바뀌는 글자 목록 ******************/
+const changeCodeNum = document.querySelector('.code_number');
+const changeProductName = document.querySelector('.product_name');
+const changeProductMoney = document.querySelector('.product_money');
+const changeProductPoint = document.querySelector('.product_point');
+
+
+for (let i = 0; i < viewSmallThumnail.length; i++) {
+    //초기설정
+    thumnailChange(viewSmallThumnail, 0, i, detail_page_produdct_list, `imgSrc01`);
+    thumnailChange(viewSmallThumnailHover, 0, i, detail_page_produdct_list, `imgSrc02`);
+
+    viewSmallThumnail[i].addEventListener('click', function () {
+        viewZoomBox[0].style.backgroundImage = `url(${viewSmallThumnail[i].src})`;
+        viewZoomBox[1].style.backgroundImage = `url(${viewSmallThumnailHover[i].src})`;
+    });
+}
+
+//color 선택 박스 클릭시
+for (let i = 0; i < colorSelectBox.length; i++) {
+    colorSelectBox[i].addEventListener('click', function () {
+        //클릭한 컬러박스의 인덱스 번호에 맞게 첫 hover이미지변경
+        viewZoomBox[0].style.backgroundImage = `url(${detail_page_produdct_list[i].imgSrc01[0]})`;
+        viewZoomBox[1].style.backgroundImage = `url(${detail_page_produdct_list[i].imgSrc02[0]})`;
+
+        //컬러 박스를 클릭했을시 작은 썸네일 변경
+        for (let j = 0; j < detail_page_produdct_list[i].imgSrc01.length; j++) {
+            thumnailChange(viewSmallThumnail, i, j, detail_page_produdct_list, `imgSrc01`);
+            thumnailChange(viewSmallThumnailHover, i, j, detail_page_produdct_list, `imgSrc02`);
+        }
+
+        changeCodeNum.textContent = detail_page_produdct_list[i].productCode;
+        changeProductName.textContent = detail_page_produdct_list[i].productNameKor;
+        changeProductMoney.textContent = detail_page_produdct_list[i].price.toLocaleString();
+        changeProductPoint.textContent = detail_page_produdct_list[i].price * 0.005;
+    });
+}
+
+for (let i = 0; i < sizeSelectBox.length; i++) {
+    sizeSelectBox[i].addEventListener('click', function () {
+        for (let j = 0; j < sizeSelectBox.length; j++) {
+            removeClass(sizeSelectBox[j], `bgc_amber`);
+        }
+        addClass(this, `bgc_amber`);
+    })
+}
+//배열에서 src시 가져옴.
+function thumnailChange(srcChangeArray, num01, num02, array, imgProperty) {
+    srcChangeArray[num02].setAttribute('src', `${array[num01][imgProperty][num02]}`);
+    srcChangeArray[num02].setAttribute('alt', `${array[num01][imgProperty][num02]}`);
+}
+
+viewContainer.addEventListener('mousemove', (event) => {
+    let moveLocateX = event.offsetX;
+    let moveLocateY = event.offsetY;
+
+    viewZoomBox[1].style.backgroundPositionX = `${moveLocateX * -2}px`;
+    viewZoomBox[1].style.backgroundPositionY = `${moveLocateY * -2}px`;
+});
+
+viewContainer.addEventListener('mouseout', () => {
+    viewZoomBox[1].style.backgroundPositionX = `0`;
+    viewZoomBox[1].style.backgroundPositionY = `0`;
+});
+
+
+/*************** color_box선택시 바뀌는 글자 목록 ******************/
+const reviewCreateBtn = document.querySelector('.create_btn');
+const reviewCreateArea = document.querySelector('.review_create');
+const reviewBox = document.getElementById('review_text_box');
+const reviewLengthBox = document.querySelector('.now_length');
+
+let rvCrteBtnState = false;
+reviewCreateBtn.addEventListener('click', () => {
+    if (!rvCrteBtnState) {
+        addClass(reviewCreateArea, `block_on`);
+        reviewBox.focus();
+        rvCrteBtnState = true;
+    } else {
+        removeClass(reviewCreateArea, `block_on`);
+        reviewBox.value = ``;
+        rvCrteBtnState = false;
     }
 });
 
-//메인 메뉴 호버에 따라 img박스 속성 변경 
-for (let i = 0; i < mainMenuLi.length; i++) {
-    mainMenuLi[i].addEventListener('mouseover', () => {
-        for (let j = 0; j < fullDonwInnerImg.length; j += fullDonwInnerImg.length) {
-            fullDonwInnerImg[j].children[0].setAttribute('src', `./images/menu_img_${i + i}.jpg`);
-            fullDonwInnerImg[j + 1].children[0].setAttribute('src', `./images/menu_img_${i + i + 1}.jpg`);
-        }
-    });
-}
+reviewBox.addEventListener('keyup', (event) => {
 
-//keword_auto_move
-const keyWordMoveUl = document.querySelector('.keyward_list');
-const keyWordLiHeight = keyWordMoveUl.children[0].offsetHeight + 5;
+    let reviewLengthReturn = reviewBox.value.length;
+    reviewLengthBox.textContent = `${reviewLengthReturn} 자`;
 
-//style.top 초기화를 위함 + 현재 위치 탐색 카운트
-let keyWordMoveCount = 0;
-let topZeroCount = 0;
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        console.log('엔터 누르셨습니다.');
+    }
 
-let kewordClone = keyWordMoveUl.children[0].cloneNode(true);
-keyWordMoveUl.appendChild(kewordClone);
-//keyword autoplay 
-keyWordMove();
+    /*     if(reviewLengthReturn > 100) {
 
-function keyWordMove() {
-    let clearCount = 0;
-    topZeroCount++;
-    //sliderMove(topMoving, keyWordMoveCount, topMoved, keyWordLiHeight ,keyWordMoveUl, clearCount);
-    addClass(keyWordMoveUl, 'keyward_list_active');
-    let topMoving = setInterval(() => {
-        keyWordMoveCount--;
+        } */
+});
 
-        let topMoved = move(keyWordLiHeight, keyWordMoveCount);
-        keyWordMoveUl.style.top = topMoved;
-
-        //동작이 실행 된 후 클리어 카운터 1증가.
-        clearCount++;
-
-        //console.log(keyWordMoveCount);
-        //console.log(zeroCount);
-        if (clearCount === 1) {
-            clearInterval(topMoving);
-        }
-        //5번 움직였을시 movecount 초기화.
-        if (keyWordMoveCount === -5) {
-            keyWordMoveCount = 0;
-        }
-    });
-    setTimeout(() => {
-        if (topZeroCount === 5) {
-            removeClass(keyWordMoveUl, 'keyward_list_active');
-            keyWordMoveUl.style.top = 0;
-            topZeroCount = 0;
-        }
-    }, 1050);
-    setTimeout(() => {
-        keyWordMove();
-    }, 1150);
-}
-
-
-/*************** view_thumnail ******************/
-const viewBigThumnail = document.querySelectorAll('.view_thumnail > div > img');
-const viewSmallThumnail = document.querySelectorAll('.view_small_thumnail > .img_box > img');
-//viewBigThumnail[0].setAttribute('src', detail_page_produdct_list[1].imgSrc01[0]);
-viewBigThumnail[0].src =  detail_page_produdct_list[0].imgSrc01[0];
-viewBigThumnail[1].src =  detail_page_produdct_list[0].imgSrc01[1];
-
-for(let i = 0; i<viewSmallThumnail.length; i++) {
-    viewSmallThumnail[i].src = detail_page_produdct_list[0].imgSrc02[i];
-}
-for(let i = 0; i<viewSmallThumnail.length; i++) {
-    viewSmallThumnail[i].addEventListener('click', () => {
-        viewBigThumnail[0].src = viewSmallThumnail[i].src;
-    });
-}
 /*************** info_tab_list ******************/
 /* const infoTab = document.querySelectorAll('.info_tab_list > li > a');
 
@@ -125,11 +134,6 @@ function scrollSearch() {
         console.log(infoTab[0].offsetTop);
     });
 } */
-
-//position값 계산
-function move(LiWidth, count) {
-    return (LiWidth * count) + `px`;
-}
 
 //클래스 추가
 function addClass(Element, ClassName) {

@@ -706,40 +706,50 @@ const sub_page_product_list = [
 ]
 
 const detail_page_produdct_list = [
-/* 	{
-		propertyNumber: 1,
-		productNameKor: `알링턴 베스트 에일 헤비 스톤 워시`,
-		productModelName: `ALE HEAVY STONE WASH`,
-		price: 283000,
-	}, */
 	{
-		propertyNumber: 2,
+		propertyNumber: 1,
 		productNameKor: `코스탈 자켓 블랙/화이트`,
 		productModelName: `COASTAL JACKET BLACK`,
+		productCode: `CA23SSJAJL00358002`,
 		price: 248000,
-		imgSrc01: [`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg`, `./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02.jpg`],
-		imgSrc02: 
-		[	`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03.jpg`,
+		imgSrc01:[
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg`, 
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03.jpg`,
 			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04.jpg`, 
 			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05.jpg`, 
-			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-06.jpg`,
-			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-07.jpg`,
+		],
+		imgSrc02: 
+		[	
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg`, 
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02_hover.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03_hover.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04_hover.jpg`, 
+			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05_hover.jpg`, 
 		],
 	},
-/* 	{
-		propertyNumber: 3,
+	{
+		propertyNumber: 2,
 		productNameKor: `코스탈 자켓 화이트/블랙`,
 		productModelName: `COASTAL JACKET WHITE`,
+		productCode: `CA23SSJAJL00266002`,
 		price: 248000,
-		imgSrc01: [`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01.jpg`, `./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02.jpg`],
-		imgSrc02: 
-		[	`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03.jpg`,
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04.jpg`, 
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05.jpg`, 
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-06.jpg`,
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-07.jpg`,
+		imgSrc01:[
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01.jpg`, 
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05.jpg`,
 		],
-	}, */
+		imgSrc02: 
+		[	
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01_hover.jpg`, 
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02_hover.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03_hover.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04_hover.jpg`,
+			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05_hover.jpg`,
+		],
+	},
 
 ]
 

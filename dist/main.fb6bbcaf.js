@@ -774,35 +774,23 @@ var sub_page_product_list = [
   isGender: "male"
 }];
 exports.sub_page_product_list = sub_page_product_list;
-var detail_page_produdct_list = [
-/* 	{
-		propertyNumber: 1,
-		productNameKor: `알링턴 베스트 에일 헤비 스톤 워시`,
-		productModelName: `ALE HEAVY STONE WASH`,
-		price: 283000,
-	}, */
-{
-  propertyNumber: 2,
+var detail_page_produdct_list = [{
+  propertyNumber: 1,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uBE14\uB799/\uD654\uC774\uD2B8",
   productModelName: "COASTAL JACKET BLACK",
+  productCode: "CA23SSJAJL00358002",
   price: 248000,
-  imgSrc01: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02.jpg"],
-  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-06.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-07.jpg"]
-}
-/* 	{
-		propertyNumber: 3,
-		productNameKor: `코스탈 자켓 화이트/블랙`,
-		productModelName: `COASTAL JACKET WHITE`,
-		price: 248000,
-		imgSrc01: [`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01.jpg`, `./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02.jpg`],
-		imgSrc02: 
-		[	`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03.jpg`,
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04.jpg`, 
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05.jpg`, 
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-06.jpg`,
-			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-07.jpg`,
-		],
-	}, */];
+  imgSrc01: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05.jpg"],
+  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05_hover.jpg"]
+}, {
+  propertyNumber: 2,
+  productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
+  productModelName: "COASTAL JACKET WHITE",
+  productCode: "CA23SSJAJL00266002",
+  price: 248000,
+  imgSrc01: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05.jpg"],
+  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05_hover.jpg"]
+}];
 exports.detail_page_produdct_list = detail_page_produdct_list;
 },{}],"js/main.js":[function(require,module,exports) {
 "use strict";
@@ -829,91 +817,6 @@ var count = {
 var arrow = {
   autoPlayArrow: 'left'
 };
-
-/*************** header ******************/
-//nav
-var navEx = document.getElementById('lnb_ex');
-//full_down_menu
-var fullDownMenu = document.getElementById('full_down_menu_ex');
-//sub_menu_ul
-var liInnerUl = document.querySelectorAll('.li_inner_ul');
-//main_menu_li
-var mainMenuLi = document.querySelectorAll('.main_menu_list > .menu_list');
-//full_down_img box
-var fullDonwInnerImg = document.querySelectorAll('.menu_img');
-
-//풀다운 토글
-navEx.addEventListener('mouseover', function () {
-  addClass(fullDownMenu, 'full_down_on');
-  for (var i = 0; i < liInnerUl.length; i++) {
-    addClass(liInnerUl[i], 'block_on');
-  }
-});
-navEx.addEventListener('mouseout', function () {
-  removeClass(fullDownMenu, 'full_down_on');
-  for (var i = 0; i < liInnerUl.length; i++) {
-    removeClass(liInnerUl[i], 'block_on');
-  }
-});
-
-//메인 메뉴 호버에 따라 img박스 속성 변경 
-var _loop = function _loop(i) {
-  mainMenuLi[i].addEventListener('mouseover', function () {
-    for (var j = 0; j < fullDonwInnerImg.length; j += fullDonwInnerImg.length) {
-      fullDonwInnerImg[j].children[0].setAttribute('src', "./images/menu_img_".concat(i + i, ".jpg"));
-      fullDonwInnerImg[j + 1].children[0].setAttribute('src', "./images/menu_img_".concat(i + i + 1, ".jpg"));
-    }
-  });
-};
-for (var i = 0; i < mainMenuLi.length; i++) {
-  _loop(i);
-}
-
-//keword_auto_move
-var keyWordMoveUl = document.querySelector('.keyward_list');
-var keyWordLiHeight = keyWordMoveUl.children[0].offsetHeight + 5;
-
-//style.top 초기화를 위함 + 현재 위치 탐색 카운트
-var keyWordMoveCount = 0;
-var topZeroCount = 0;
-var kewordClone = keyWordMoveUl.children[0].cloneNode(true);
-keyWordMoveUl.appendChild(kewordClone);
-//keyword autoplay 
-keyWordMove();
-function keyWordMove() {
-  var clearCount = 0;
-  topZeroCount++;
-  //sliderMove(topMoving, keyWordMoveCount, topMoved, keyWordLiHeight ,keyWordMoveUl, clearCount);
-  addClass(keyWordMoveUl, 'keyward_list_active');
-  var topMoving = setInterval(function () {
-    keyWordMoveCount--;
-    var topMoved = move(keyWordLiHeight, keyWordMoveCount);
-    keyWordMoveUl.style.top = topMoved;
-
-    //동작이 실행 된 후 클리어 카운터 1증가.
-    clearCount++;
-
-    //console.log(keyWordMoveCount);
-    //console.log(zeroCount);
-    if (clearCount === 1) {
-      clearInterval(topMoving);
-    }
-    //5번 움직였을시 movecount 초기화.
-    if (keyWordMoveCount === -5) {
-      keyWordMoveCount = 0;
-    }
-  });
-  setTimeout(function () {
-    if (topZeroCount === 5) {
-      removeClass(keyWordMoveUl, 'keyward_list_active');
-      keyWordMoveUl.style.top = 0;
-      topZeroCount = 0;
-    }
-  }, 1050);
-  setTimeout(function () {
-    keyWordMove();
-  }, 1150);
-}
 
 /*************** visual_main ******************/
 //visual_main_ul
@@ -984,7 +887,7 @@ var bestProductUl = document.getElementById('product_ul01');
 var newProductUl = document.getElementById('product_ul02');
 
 //best_product_li_make
-for (var _i = 0; _i < _data.bestProductList.length; _i++) {
+for (var i = 0; i < _data.bestProductList.length; i++) {
   //요소 추가
   var addBestLi = document.createElement('li');
   var bestLiInA = document.createElement('a');
@@ -993,11 +896,11 @@ for (var _i = 0; _i < _data.bestProductList.length; _i++) {
   var bestLiTextName = document.createElement('span');
 
   //span에 들어가는 text
-  var bestLiTextModelText = document.createTextNode(_data.bestProductList[_i].modelName);
-  var bestLiTextNameText = document.createTextNode(_data.bestProductList[_i].name);
+  var bestLiTextModelText = document.createTextNode(_data.bestProductList[i].modelName);
+  var bestLiTextNameText = document.createTextNode(_data.bestProductList[i].name);
 
   //이미지 속성 변경
-  bestLiInImg.setAttribute('src', _data.bestProductList[_i].src);
+  bestLiInImg.setAttribute('src', _data.bestProductList[i].src);
 
   //삽입 명령어
   bestLiTextModel.appendChild(bestLiTextModelText);
@@ -1015,7 +918,7 @@ for (var _i = 0; _i < _data.bestProductList.length; _i++) {
   //addBestLi.setAttribute('id', "i" + i);
 }
 //new_product_li_make
-for (var _i2 = 0; _i2 < _data.newProductList.length; _i2++) {
+for (var _i = 0; _i < _data.newProductList.length; _i++) {
   //요소 추가
   var addNewLi = document.createElement('li');
   var newLiInA = document.createElement('a');
@@ -1024,11 +927,11 @@ for (var _i2 = 0; _i2 < _data.newProductList.length; _i2++) {
   var newLiTextName = document.createElement('span');
 
   //span에 들어가는 text
-  var newLiTextModelText = document.createTextNode(_data.newProductList[_i2].modelName);
-  var newLiTextNameText = document.createTextNode(_data.newProductList[_i2].name);
+  var newLiTextModelText = document.createTextNode(_data.newProductList[_i].modelName);
+  var newLiTextNameText = document.createTextNode(_data.newProductList[_i].name);
 
   //이미지 속성 변경
-  newLiInImg.setAttribute('src', _data.newProductList[_i2].src);
+  newLiInImg.setAttribute('src', _data.newProductList[_i].src);
 
   //삽입 명령어
   newLiTextModel.appendChild(newLiTextModelText);
@@ -1197,20 +1100,20 @@ lookBookInnerTextBox.forEach(function (value, index) {
   value.appendChild(newP03);
 });
 //img hover시 text 등장
-var _loop2 = function _loop2(_i3) {
-  hoverImg[_i3].addEventListener('mouseover', function () {
+var _loop = function _loop(_i2) {
+  hoverImg[_i2].addEventListener('mouseover', function () {
     for (var j = 0; j < lookBookInnerTextBox.length; j++) {
       removeClass(lookBookInnerTextBox[j], 'hover_on');
     }
-    addClass(lookBookInnerTextBox[_i3], 'hover_on');
+    addClass(lookBookInnerTextBox[_i2], 'hover_on');
   });
 };
-for (var _i3 = 0; _i3 < hoverImg.length; _i3++) {
-  _loop2(_i3);
+for (var _i2 = 0; _i2 < hoverImg.length; _i2++) {
+  _loop(_i2);
 }
 //img out시 text 제거
-for (var _i4 = 0; _i4 < hoverImg.length; _i4++) {
-  hoverImg[_i4].addEventListener('mouseout', function () {
+for (var _i3 = 0; _i3 < hoverImg.length; _i3++) {
+  hoverImg[_i3].addEventListener('mouseout', function () {
     for (var j = 0; j < lookBookInnerTextBox.length; j++) {
       removeClass(lookBookInnerTextBox[j], 'hover_on');
     }
@@ -1218,21 +1121,21 @@ for (var _i4 = 0; _i4 < hoverImg.length; _i4++) {
 }
 
 //img등록
-for (var _i5 = 0; _i5 < lookBookTap.length; _i5++) {
-  lookBookTap[_i5].lastElementChild.setAttribute('src', "./images/look_book_thumnail".concat(_i5, ".jpg"));
+for (var _i4 = 0; _i4 < lookBookTap.length; _i4++) {
+  lookBookTap[_i4].lastElementChild.setAttribute('src', "./images/look_book_thumnail".concat(_i4, ".jpg"));
 }
 //탭 순회하면서 클릭이벤트 등록, 클릭했을시 클래스 전부 제거 후 
 //i값에 해당하는 섹션 block_on
-var _loop3 = function _loop3(_i6) {
-  lookBookTap[_i6].addEventListener('click', function () {
+var _loop2 = function _loop2(_i5) {
+  lookBookTap[_i5].addEventListener('click', function () {
     for (var j = 0; j < lookBookViewZone.length; j++) {
       removeClass(lookBookViewZone[j], 'block_on');
     }
-    addClass(lookBookViewZone[_i6], 'block_on');
+    addClass(lookBookViewZone[_i5], 'block_on');
   });
 };
-for (var _i6 = 0; _i6 < lookBookTap.length; _i6++) {
-  _loop3(_i6);
+for (var _i5 = 0; _i5 < lookBookTap.length; _i5++) {
+  _loop2(_i5);
 }
 
 /*************** mds_pick_section ******************/
@@ -1275,20 +1178,20 @@ mdProductInfo.forEach(function (value, index) {
 mdAcodianOn.forEach(function (value, index) {
   value.children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(index + 1, ".jpg"));
 });
-var _loop4 = function _loop4(_i7) {
-  mdsList[_i7].addEventListener('click', function () {
+var _loop3 = function _loop3(_i6) {
+  mdsList[_i6].addEventListener('click', function () {
     for (var j = 0; j < mdsList.length; j++) {
       removeClass(mdsList[j], 'acodian_on');
       removeClass(mdProductInfo[j], 'hover_on');
       mdsList[j].children[0].children[0].setAttribute('src', "./images/mds_0".concat(j + 1, ".jpg"));
     }
-    addClass(mdsList[_i7], 'acodian_on');
-    addClass(mdProductInfo[_i7], 'hover_on');
-    mdsList[_i7].children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(_i7 + 1, ".jpg"));
+    addClass(mdsList[_i6], 'acodian_on');
+    addClass(mdProductInfo[_i6], 'hover_on');
+    mdsList[_i6].children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(_i6 + 1, ".jpg"));
   });
 };
-for (var _i7 = 0; _i7 < mdsList.length; _i7++) {
-  _loop4(_i7);
+for (var _i6 = 0; _i6 < mdsList.length; _i6++) {
+  _loop3(_i6);
 }
 
 //1. 아코디언 상태일때만 mds_acodian이 된다. 그 말인 즉슨 그 클래스가 제거가 되면 이미지는 mds_0 시리즈로 되어야한다.
@@ -1324,6 +1227,7 @@ instaFrame.addEventListener('mouseout', function () {
     })
 })
  */
+
 /*************** common ******************/
 //position값 계산
 function move(LiWidth, count) {
@@ -1341,15 +1245,15 @@ function removeClass(Element, ClassName) {
 
 //클론 만들기 함수01
 function cloneCreate01(elements, parentEle) {
-  for (var _i8 = 0; _i8 < elements.length / 2; _i8++) {
-    var cloneElement = elements[_i8].cloneNode(true);
+  for (var _i7 = 0; _i7 < elements.length / 2; _i7++) {
+    var cloneElement = elements[_i7].cloneNode(true);
     parentEle.appendChild(cloneElement);
   }
 }
 //클론 만들기 함수02
 function cloneCreate02(elements, parentEle) {
-  for (var _i9 = 0; _i9 < elements.length; _i9++) {
-    var cloneElement = elements[_i9].cloneNode(true);
+  for (var _i8 = 0; _i8 < elements.length; _i8++) {
+    var cloneElement = elements[_i8].cloneNode(true);
     parentEle.insertBefore(cloneElement, elements[0]);
   }
 }
@@ -1378,7 +1282,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64523" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55533" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
