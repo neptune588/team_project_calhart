@@ -867,7 +867,7 @@ viewContainer.addEventListener('mouseout', function () {
   viewZoomBox[1].style.backgroundPositionY = "0";
 });
 
-/*************** color_box선택시 바뀌는 글자 목록 ******************/
+/*************** color_box선택시 바뀌는 글git mergetool자 목록 ******************/
 var reviewCreateBtn = document.querySelector('.create_btn');
 var reviewCreateArea = document.querySelector('.review_create');
 var reviewBox = document.getElementById('review_text_box');

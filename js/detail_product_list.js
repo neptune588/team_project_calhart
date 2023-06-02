@@ -76,7 +76,7 @@ viewContainer.addEventListener('mouseout', () => {
 });
 
 
-/*************** color_box선택시 바뀌는 글자 목록 ******************/
+/*************** color_box선택시 바뀌는 글git mergetool자 목록 ******************/
 const reviewCreateBtn = document.querySelector('.create_btn');
 const reviewCreateArea = document.querySelector('.review_create');
 const reviewBox = document.getElementById('review_text_box');
