@@ -121,6 +121,7 @@ reviewCreateComBtn.addEventListener('click', () => {
 
         //문자열 알림 리셋
         valueReset();
+        //focus
         reviewBox.focus();
 
         //리스트 생성
@@ -178,7 +179,6 @@ function pageCreate(array) {
     } else {
         removeClass(pageSection, `none_on`);
     }
-    
     let receive = ``;
     pageUl.innerHTML = ``;
     for (let i = 1; i <= calc(array); i++) {
@@ -191,7 +191,6 @@ function pageCreate(array) {
         receive += pageList;
     }
     pageUl.innerHTML = receive;
-
     pageControl(array);
 }
 
@@ -206,6 +205,8 @@ function pageControl(array) {
             let returnSlice = arraySlice(i, pageViewLength, array);
             createList(returnSlice);
         });
+        let returnSlice = arraySlice(i, pageViewLength, array);
+        createList(returnSlice);
     }
 }
 

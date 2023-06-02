@@ -906,6 +906,7 @@ reviewCreateComBtn.addEventListener('click', function () {
 
     //문자열 알림 리셋
     valueReset();
+    //focus
     reviewBox.focus();
 
     //리스트 생성
@@ -966,6 +967,8 @@ function pageControl(array) {
       var returnSlice = arraySlice(_i5, pageViewLength, array);
       createList(returnSlice);
     });
+    var returnSlice = arraySlice(_i5, pageViewLength, array);
+    createList(returnSlice);
   };
   for (var _i5 = 0; _i5 < pageNumber.length; _i5++) {
     _loop3(_i5);
@@ -1017,7 +1020,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61383" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50373" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
