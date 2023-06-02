@@ -194,14 +194,17 @@
             </ul><!-- info_tab_list -->
             <div class="product_reviews_area">
                 <div class="top">
-                    <p class="total_info">전체 (총 3건)</p>
+                    <p class="total_info">전체 (총 <span class="review_couting">0</span>건)</p>
                     <div class="best_review_btn blue_btn">
                         BEST 후기 게시판
                     </div><!-- best_review_btn -->
                 </div>
                 <form action="" id="review_form">
                     <ul class="review_list list_area">
-                        <li>
+                        <div class="not_ment">
+                            현재 작성된 후기가 없습니다.
+                        </div>
+<!--                         <li>
                             <p class="review_ment">
                                 봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요
                             </p>
@@ -230,20 +233,34 @@
                                 <span class="review_date date">2023-01-01</span>
                                 <span class="review_id">dy****</span>
                             </div>
-                        </li>
+                        </li> -->
                     </ul><!-- review_list -->
+                    <div class="pagenation">
+                        <ul class="page_list">
+
+                        </ul>
+                    </div>
                     <div class="create_btn blue_btn">
                         글쓰기
                     </div>
                     <div class="review_create">
-                        <div class="str_length">
-                            현재
-                            <span class="now_length"></span>
-                            <span class="notice"></span>
-                            /최대 100자
+                        <div class="text_top_area">
+                            <div class="str_length">
+                                현재
+                                <span class="now_length">0 자</span>
+                                <span class="notice"></span>
+                                /최대 100자
+                            </div>
+                            <ul class="review_rating_star">
+                                <li><i class="far fa-star"></i></li>
+                                <li><i class="far fa-star"></i></li>
+                                <li><i class="far fa-star"></i></li>
+                                <li><i class="far fa-star"></i></li>
+                                <li><i class="far fa-star"></i></li>
+                            </ul>  
                         </div>
-                        <input id="review_text_box" type="text" maxlength="100">
-                        <button type="submit"></button>
+                        <textarea id="review_text_box" cols="10" rows="4" maxlength="100"></textarea>
+                        <button id="create_complete"  class="blue_btn" type="button">작성완료</button>
                     </div>
                 </form>
             </div>

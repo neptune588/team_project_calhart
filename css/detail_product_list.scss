@@ -499,9 +499,15 @@ input {
                     margin: 20px 0;
                     li {
                         display: flex;
+                        align-items: center;
                         justify-content: space-between;
                         .review_ment {
+                            width: 70%;
                             margin-left: 15px;
+                            .delete {
+                                margin-left: 15px;
+                                cursor: pointer;
+                            }
                         }
                         .right_info {
                             display: flex;
@@ -509,6 +515,14 @@ input {
                                 margin-right: 50px;
                             }
                         }
+                    }
+                    .not_ment {
+                        font-family: $font_noto_sans;
+                        text-align: center;
+                        font-size: 30px;
+                        background-color: #fff;
+                        height: 200px;
+                        line-height: 200px;
                     }
                 }
                 .create_btn {
@@ -518,13 +532,31 @@ input {
                 .review_create {
                     display: none;
                     margin-top: 20px;
-                    .str_length {
-                        font-family: $font_noto_sans;
-                        font-size: $small_up_font_size;
+                    .text_top_area {
+                        display: flex;
+                        align-items: center;
                         margin-bottom: 15px;
-                    }
-                    input {
-                        display: block;
+                        .str_length {
+                            font-family: $font_noto_sans;
+                            font-size: $small_up_font_size;
+                        }
+                        .review_rating_star {
+                            display: flex;
+                            margin-left: 15px;
+                            align-items: center;
+                            background-color: #fff;
+                            border: 2px solid black;
+                            padding: 5px 10px;
+                            font-size: 20px;
+                            color: $sub_color_free_speach_blue;
+                            li {
+                                margin-right: 5px;
+                                cursor: pointer;
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
                     }
                     #review_text_box {
                         width: 100%;
@@ -532,6 +564,39 @@ input {
                         background-color: #fff;
                         outline: none;
                         border: 1px solid #bbbbbb;
+                        resize: none;
+                    }
+                    #create_complete {
+                        display: block;
+                        text-align: center;
+                        @include item_size(195px, 40px);
+                        line-height: 40px;
+                        margin-top: 20px;
+                        margin-left: auto;
+                    }
+                }
+                .pagenation {
+                    margin: 15px 0;
+                    .page_list {
+                        display: flex;
+                        justify-content: center;
+                        li {
+                            color: white;
+                            margin-right: 10px;
+                            font-size: $defalut_font_size;
+                            background-color: gray;
+                            @include item_size(30px, 30px);
+                            line-height: 30px;
+                            cursor: pointer;
+                            user-select: none;
+                            text-align: center;
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                            &.page_on {
+                                background-color: black;
+                            }
+                        }
                     }
                 }
             }

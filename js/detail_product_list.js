@@ -76,65 +76,298 @@ viewContainer.addEventListener('mouseout', () => {
 });
 
 
-/*************** color_box선택시 바뀌는 글git mergetool자 목록 ******************/
+/*************** review 관련  ******************/
 const reviewCreateBtn = document.querySelector('.create_btn');
+const reviewCreateComBtn = document.getElementById('create_complete');
 const reviewCreateArea = document.querySelector('.review_create');
 const reviewBox = document.getElementById('review_text_box');
 const reviewLengthBox = document.querySelector('.now_length');
+const reviewCounting = document.querySelector('.review_couting');
+const reviewList = document.querySelector('.review_list');
+//별점
+const reviewRating = document.querySelector('.review_rating_star');
+const reviewStar = document.querySelectorAll('.review_rating_star > li');
+
+//한 페이지에 몇개 보여줄것인지
+const pageViewLength = 6;
+const pageSection = document.querySelector('.pagenation');
+const pageUl = document.querySelector('.page_list');
+
+//list 들어갈 배열 
+const reviewContents = [];
+//page count 받아오기
+const countingObject = {
+    pageCount: 0,
+}
+const ratingObject = {
+    ratingCount : 0,
+}
+
+let starMaxLength = 5;
+let starCreate = false;
 
 let rvCrteBtnState = false;
 reviewCreateBtn.addEventListener('click', () => {
     if (!rvCrteBtnState) {
         addClass(reviewCreateArea, `block_on`);
+
         reviewBox.focus();
         rvCrteBtnState = true;
     } else {
         removeClass(reviewCreateArea, `block_on`);
-        reviewBox.value = ``;
+
+        valueReset();
+
         rvCrteBtnState = false;
     }
 });
 
-reviewBox.addEventListener('keyup', (event) => {
-
+reviewBox.addEventListener('input', () => {
     let reviewLengthReturn = reviewBox.value.length;
     reviewLengthBox.textContent = `${reviewLengthReturn} 자`;
-
-    if (event.key === 'Enter') {
-        event.preventDefault();
-        console.log('엔터 누르셨습니다.');
-    }
-
-    /*     if(reviewLengthReturn > 100) {
-
-        } */
 });
 
-/*************** info_tab_list ******************/
-/* const infoTab = document.querySelectorAll('.info_tab_list > li > a');
+reviewCreateComBtn.addEventListener('click', () => {
+    if (reviewBox.value !== null && reviewBox.value !== '' && reviewBox.value !== undefined) {
+        //배열 push
+        reviewContents.push(reviewBox.value);
 
-infoTab.forEach((value) => {
-    value.addEventListener('click', (event) => {
-        event.preventDefault();
-        let btnOffset = value.getAttribute('href');
-        let move = document.querySelector(btnOffset);
+        //문자열 알림 리셋
+        valueReset();
+        reviewBox.focus();
 
-        window.scrollTo({
-            top: move.offsetTop,
-            behavior: 'smooth',
+        //리스트 생성
+        pageCreate(reviewContents);
+        starCreate = false;
+
+
+    } else {
+        console.log('불가!');
+    }
+});
+
+for(let i = 0; i < reviewStar.length; i++) {
+    reviewStar[i].addEventListener('click', () => {
+        //i값 받아와서 내가 클릭한 i만큼 별 채워지게 하기
+        ratingObject.ratingCount = i + 1;
+        
+        console.log(reviewStar.length);
+        console.log(ratingObject.ratingCount);
+        
+        reviewRating.innerHTML = ``;
+        let receive = ``;   
+
+        //채워지는 별은 i값 받아온만큼 즉, 2번쨰 클릭하면
+        for(let j = 0; j < ratingObject.ratingCount; j++) {
+            let list01 = 
+            `
+                <li><i class="fas fa-star"></i></li>
+            `
+            receive += list01;
+        }
+        for (let j = 0; j < starMaxLength - ratingObject.ratingCount; j++) {
+            let list02 = 
+            `
+                <li><i class="far fa-star"></i></li>
+            `
+            receive += list02;
+        }
+        reviewRating.innerHTML = receive;
+        starCreate = true;
+    });
+}
+
+function createList(array) {
+    let newDate = new Date();
+    let nowYear = newDate.getFullYear();
+    let nowMonth = newDate.getMonth() + 1;
+    let nowDay = newDate.getDate();
+
+    if (nowDay < 10) {
+        nowDay = `0${nowDay}`;
+    }
+    if (nowMonth < 10) {
+        nowMonth = `0${nowMonth}`;
+    }
+
+    reviewList.innerHTML = ``;
+    let receive = ``;
+    for (let i = 0; i < array.length; i++) {
+        //6개 까지만 보여주게
+        if (i === pageViewLength) {
+            break;
+        }
+        let list = `
+            <li>
+                <p class="review_ment">
+                    ${array[i]}
+                    <span id = "${indexCalc(i)}" class = "delete">
+                        <i class="fas fa-window-close"></i>
+                    </span>
+                </p>
+                <div class="right_info">
+                <span class="rating_star"></span>
+                <span class="review_date date">${nowYear}-${nowMonth}-${nowDay}</span>
+                <span class="review_id">ju****</span>
+            </div>
+            </li>
+        `
+        receive += list;
+/* 
+        for(let j = 0; j < ratingObject.ratingCount; j++) {
+
+        } */
+    }
+    reviewList.innerHTML = receive;
+
+    const deleteBtn = document.querySelectorAll('.delete');
+    deleteBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            listDelete(btn, reviewContents);
         });
-    });
-}); */
+    })
 
+    //순서
+    //1) id 원본 리스트배열에서 몇번째인지 알아야하는데 slice로 페이지에 맞게 배열을 잘라오기 떄문에 쉽지 않음. 
+    //2) ex: 페이지수가 1이면 0,6 페이지가 2면 6,12만 잘라온 배열로 리스트생성하기 때문에 그냥 i로하면 id값이 0~6고정됨
+    //3) 따라서 pageCount라는 변수를 만들어서 페이지수의 인덱스값을 받아온다.  
+    //4) ex: mate.ceil(배열안의 length/6) 이기 때문에 무조건 최솟값은 1, 6개를 넘어가면 1씩 증가
+    //5) 다만 인덱스값은 0 / 1/ 2 즉 표기는 +1을통해 1로해주고, 공식구할때는 인덱스 값으로 
+    //6) 생성된 페이지의 인덱스 값과 한화면에 보이는 length 즉 6을 곱해주고 현재 인덱스를 더해주면 
+    //7) 원본 배열에서 몇번째 인덱스인지 알수있게된다. 그리고 그 값을 리스트생성할떄 delete버튼에 id값으로 추가해주면 끝.
 
-/* scrollSearch();
-function scrollSearch() {
-    window.addEventListener('scroll', () => {
-        console.log(window.scrollY);
-        console.log(infoTab[0].offsetTop);
-    });
-} */
+    //console.log(deleteBtn);
+    //console.log(reviewContents);
+}
 
+function indexCalc(i) {
+    return pageViewLength * countingObject.pageCount + i;
+    // 1페이지
+    // countingObject.pageCount = 0
+    // pageViewLength = 6
+    // i = 0
+    // 6 * 0 + 0 -> 0번째 
+    // 6 * 0 + 1 -> 1번째 
+    // 6 * 0 + 2 -> 2번째 
+    // 6 * 0 + 3 -> 3번째 
+    // 6 * 0 + 4 -> 4번째 
+    // 6 * 0 + 5 -> 5번째 
+
+    // 2페이지
+    // countingObject.pageCount = 1
+    // pageViewLength = 6
+    // i = 0
+    // 6 * 1 + 0 -> 6번째 
+    // 6 * 1 + 1 -> 7번째 
+    // 6 * 1 + 2 -> 8번째 
+    // 6 * 1 + 3 -> 9번째 
+    // 6 * 1 + 4 -> 10번째 
+    // 6 * 1 + 5 -> 11번째 
+
+    // 3페이지
+    // countingObject.pageCount = 2
+    // pageViewLength = 6
+    // i = 0
+    // 6 * 2 + 0 -> 12번째 
+    // 6 * 2 + 1 -> 13번째 
+    // 6 * 2 + 2 -> 14번째 
+    // 6 * 2 + 3 -> 15번째 
+    // 6 * 2 + 4 -> 16번째 
+    // 6 * 2 + 5 -> 17번째 
+}
+
+function listDelete(btn, array) {
+    let idValue = btn.getAttribute(`id`);
+
+    //리스트 배열에서 해당 id숫자를 가진 인덱스 삭제
+    array.splice(idValue, 1);
+
+    //그리고 다시 리스트생성 및 페이지 생성
+    pageCreate(reviewContents);
+}
+
+function pageCreate(array) {
+    // console.log('x눌렀음');
+    if (array.length === 0) {
+        addClass(pageSection, `none_on`);
+    } else {
+        removeClass(pageSection, `none_on`);
+    }
+
+    let receive = ``;
+    pageUl.innerHTML = ``;
+
+    for (let i = 1; i <= calc(array); i++) {
+        let pageList =
+            `
+            <li>
+                ${i}
+            </li>    
+        `
+        receive += pageList;
+        countingObject.pageCount = i - 1; //인덱스 계산위해 
+    }
+    pageUl.innerHTML = receive;
+    //console.log(countingObject.pageCount);
+
+    pageControl(array);
+    //리뷰 몇개인지 알려줌.
+    reviewCounting.textContent = array.length;
+}
+
+function pageControl(array) {
+    // console.log('x눌렀음');
+    const pageNumber = document.querySelectorAll('.page_list > li');
+    //인덱스가 0만 남았을떄 밑의 반복문이 아예 무효가 됨
+    //따라서 수동으로 비워주기
+    if (pageNumber.length === 0) {
+        reviewList.innerHTML = `
+        <div class="not_ment">
+            현재 작성된 후기가 없습니다.
+        </div>
+        `;
+    }
+
+    for (let i = 0; i < pageNumber.length; i++) {
+        pageNumber[i].addEventListener('click', function () {
+            for (let j = 0; j < pageNumber.length; j++) {
+                removeClass(pageNumber[j], `page_on`);
+            }
+            addClass(pageNumber[i], `page_on`);
+            //이거는 클릭했을때 인덱스 번호 재계산 
+            countingObject.pageCount = i;
+            let returnSlice = arraySlice(i, pageViewLength, array);
+            createList(returnSlice);
+        });
+        //그냥 리스트 생성
+        let returnSlice = arraySlice(i, pageViewLength, array);
+        createList(returnSlice);
+    }
+    //i값 받아와서 활성화된 페이지 표시
+    // i = 1이면 1에 페이지온 클래스
+    // i = 2이면 2에 페이지온 클래스
+    if(pageNumber.length !== 0) {
+        addClass(pageNumber[countingObject.pageCount], `page_on`);
+    }
+}
+
+function arraySlice(index01, index02, array) {
+    let returnArray;
+    let firstIndex = (index01 + 1) * index02 - index02;
+    let lastIndex = firstIndex + index02;
+
+    returnArray = array.slice(firstIndex, lastIndex);
+
+    return returnArray;
+}
+
+function calc(array) {
+    return Math.ceil(array.length / pageViewLength);
+}
+function valueReset() {
+    reviewBox.value = ``;
+    reviewLengthBox.textContent = `${0} 자`;
+}
 //클래스 추가
 function addClass(Element, ClassName) {
     Element.classList.add(ClassName);

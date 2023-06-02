@@ -1279,14 +1279,6 @@ function stateObjectReset(object) {
   }
 }
 
-/* for(let key in topMenuStateObject) {
-    console.log(topMenuStateObject[key]);
-} */
-
-function move(LiWidth, count) {
-  return LiWidth * count + "px";
-}
-
 //클래스 추가
 function addClass(Element, ClassName) {
   Element.classList.add(ClassName);
@@ -1335,7 +1327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55533" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50250" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

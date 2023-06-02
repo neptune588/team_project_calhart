@@ -575,16 +575,6 @@ function stateObjectReset(object) {
     }
 }
 
-/* for(let key in topMenuStateObject) {
-    console.log(topMenuStateObject[key]);
-} */
-
-
-
-function move(LiWidth, count) {
-    return (LiWidth * count) + `px`;
-}
-
 //클래스 추가
 function addClass(Element, ClassName) {
     Element.classList.add(ClassName);
