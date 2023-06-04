@@ -298,7 +298,6 @@ img {
 }
 .main_issue_contents .look_book .look_book_thumnail .video_n_look_book .video_film {
   height: 300px;
-  background-color: blue;
   margin-bottom: 15px;
 }
 .main_issue_contents .look_book .look_book_thumnail .video_n_look_book .video_film iframe {
@@ -484,6 +483,13 @@ img {
   position: relative;
   width: 615px;
   height: 400px;
+}
+.main_issue_contents .mds_pick ul li.acodian_on .img_link {
+  height: 100%;
+}
+.main_issue_contents .mds_pick ul li.acodian_on .img_link img {
+  width: 100%;
+  height: 100%;
 }
 .main_issue_contents .mds_pick ul li.acodian_on .product_info {
   position: absolute;

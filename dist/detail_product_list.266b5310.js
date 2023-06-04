@@ -875,6 +875,8 @@ var reviewBox = document.getElementById('review_text_box');
 var reviewLengthBox = document.querySelector('.now_length');
 var reviewCounting = document.querySelector('.review_couting');
 var reviewList = document.querySelector('.review_list');
+//별점
+var reviewRating = document.querySelector('.review_rating_star');
 
 //한 페이지에 몇개 보여줄것인지
 var pageViewLength = 6;
@@ -883,15 +885,28 @@ var pageUl = document.querySelector('.page_list');
 
 //list 들어갈 배열 
 var reviewContents = [];
+
+//page count 받아오기
+var countingObject = {
+  pageCount: 0
+};
+var ratingObject = {
+  ratingCount: 0
+};
+var starMaxLength = 5;
+var starCreate = false;
 var rvCrteBtnState = false;
 reviewCreateBtn.addEventListener('click', function () {
   if (!rvCrteBtnState) {
     addClass(reviewCreateArea, "block_on");
     reviewBox.focus();
+    //별점클릭 함수
+    starClick();
     rvCrteBtnState = true;
   } else {
     removeClass(reviewCreateArea, "block_on");
     valueReset();
+    starReset();
     rvCrteBtnState = false;
   }
 });
@@ -900,48 +915,209 @@ reviewBox.addEventListener('input', function () {
   reviewLengthBox.textContent = "".concat(reviewLengthReturn, " \uC790");
 });
 reviewCreateComBtn.addEventListener('click', function () {
-  if (reviewBox.value !== null && reviewBox.value !== '' && reviewBox.value !== undefined) {
+  if (reviewBox.value !== null && reviewBox.value !== '' && reviewBox.value !== undefined && starCreate) {
+    //클릭함수가 실행되었을때 들어가는 기능
+    //1. 리스트 text
+    //2. 리스트 별점
+    //3. 리스트 생성날짜
+    //4. 배열 길이에 따른 페이지 네이션 생성
+    //5. 유효하게 생성되었다면 value reset 및 focus
+
+    //리스트 생성에 필요한 정보를 넣기 위해 
+    //클릭할때마다 새로운 객체 생성
+    var listObject = {};
+
+    //시간 계산
+    var nowTime = calcDate();
+
+    //만약 함수 밖에서 객체 선언을 해버리면, 
+    //밑의 명령어로 인해 각 객체의 속성을 실시간으로 바꿔버리기 때문에
+    //함수 스코프 내부에서 선언을 해준다.
+    //데이터가 다 기입, 입력된상태에서 클릭이벤트가 일어나는것이기 때문에
+    //클릭함수에서는 속성값만 기입해주면 되는것  
+    listObject.text = reviewBox.value;
+    listObject.ratingStar = ratingObject.ratingCount;
+    listObject.date = nowTime;
+
     //배열 push
-    reviewContents.push(reviewBox.value);
+    reviewContents.push(listObject);
 
     //문자열 알림 리셋
     valueReset();
-    //focus
     reviewBox.focus();
 
-    //리스트 생성
-    createList(reviewContents);
+    //데이터를 기반으로 페이지와 리스트 생성
+    //리스트는 페이지 number를 기반으로 생성되기 때문에 
+    //page함수부터 선언 
     pageCreate(reviewContents);
-
-    //리뷰 몇개인지 알려줌.
-    reviewCounting.textContent = reviewContents.length;
-    console.log(reviewContents);
+    var returnSlice = arraySlice(countingObject.pageCount, pageViewLength, reviewContents);
+    createList(returnSlice);
+    starReset();
+    starCreate = false;
+  } else if (!starCreate) {
+    console.log('리뷰 별점을 남겨주세요!');
   } else {
-    console.log('불가!');
+    console.log('공백은 안됩니다.');
   }
 });
-function createList(array) {
+
+//별점 클릭했을때 
+function starClick() {
+  var reviewStar = document.querySelectorAll('.review_rating_star > li');
+  var _loop3 = function _loop3(_i3) {
+    reviewStar[_i3].addEventListener('click', function () {
+      //i값 받아와서 내가 클릭한 i만큼 별 채워지게 하기
+      ratingObject.ratingCount = _i3 + 1;
+      reviewRating.innerHTML = "";
+      var receive = "";
+
+      //채워지는 별은 i값 받아온만큼 즉, 2번쨰(인덱스 1) 클릭하면
+      //2까지 별이 채워지고, 그 나머지 부분은 배경없는 별(5 - 2)
+      for (var j = 0; j < ratingObject.ratingCount; j++) {
+        var list01 = "\n                        <li><i class=\"fas fa-star\"></i></li>\n                    ";
+        receive += list01;
+      }
+      for (var _j = 0; _j < starMaxLength - ratingObject.ratingCount; _j++) {
+        var list02 = "\n                        <li><i class=\"far fa-star\"></i></li>\n                    ";
+        receive += list02;
+      }
+      reviewRating.innerHTML = receive;
+      starCreate = true;
+      starClick();
+    });
+  };
+  for (var _i3 = 0; _i3 < reviewStar.length; _i3++) {
+    _loop3(_i3);
+  }
+}
+function starReset() {
+  reviewRating.innerHTML = "";
+  var receive = "";
+  for (var _i4 = 0; _i4 < starMaxLength; _i4++) {
+    var list = "\n                <li><i class=\"far fa-star\"></i></li>\n            ";
+    receive += list;
+  }
+  reviewRating.innerHTML = receive;
+  starClick();
+}
+
+//별점등록 함수
+function starWrite(arrayInnerObject, property) {
+  var recieve = "";
+  for (var _i5 = 0; _i5 < arrayInnerObject[property]; _i5++) {
+    var list01 = "\n                <i class=\"fas fa-star\"></i>\n            ";
+    recieve += list01;
+  }
+  for (var _i6 = 0; _i6 < starMaxLength - arrayInnerObject[property]; _i6++) {
+    var list02 = "\n                <i class=\"far fa-star\"></i>\n            ";
+    recieve += list02;
+  }
+  return recieve;
+}
+function calcDate() {
   var newDate = new Date();
   var nowYear = newDate.getFullYear();
   var nowMonth = newDate.getMonth() + 1;
   var nowDay = newDate.getDate();
+  var nowHours = newDate.getHours();
+  var nowMinutes = newDate.getMinutes();
+  var nowSeconds = newDate.getSeconds();
   if (nowDay < 10) {
     nowDay = "0".concat(nowDay);
   }
   if (nowMonth < 10) {
     nowMonth = "0".concat(nowMonth);
   }
+  if (nowHours < 10) {
+    nowHours = "0".concat(nowHours);
+  }
+  var time = "".concat(nowYear, "-").concat(nowMonth, "-").concat(nowDay, "/").concat(nowHours, ":").concat(nowMinutes, ":").concat(nowSeconds);
+  return time;
+}
+function createList(array) {
+  reviewList.innerHTML = "";
   var receive = "";
-  for (var _i3 = 0; _i3 < array.length; _i3++) {
-    if (_i3 === pageViewLength) {
+  for (var _i7 = 0; _i7 < array.length; _i7++) {
+    //6개 까지만 보여주게
+    if (_i7 === pageViewLength) {
       break;
     }
-    var list = "\n            <li>\n                <p class=\"review_ment\">\n                    ".concat(array[_i3], "\n                </p>\n                <div class=\"right_info\">\n                <span class=\"rating_star\"></span>\n                <span class=\"review_date date\">").concat(nowYear, "-").concat(nowMonth, "-").concat(nowDay, "</span>\n                <span class=\"review_id\">ju****</span>\n            </div>\n            </li>\n        ");
+    var list = "\n            <li class=\"review\">\n                <p class=\"review_ment\">\n                    ".concat(array[_i7].text, "\n                    <span id = \"").concat(indexCalc(_i7), "\" class = \"delete\">\n                        <i class=\"fas fa-window-close\"></i>\n                    </span>\n                </p>\n                <div class=\"right_info\">\n                    <span class=\"rating_star\">").concat(starWrite(array[_i7], "ratingStar"), "</span>\n                    <span class=\"review_date date\">").concat(array[_i7].date, "</span>\n                    <span class=\"review_id\">ju****</span>\n                </div>\n            </li>\n        ");
     receive += list;
   }
   reviewList.innerHTML = receive;
+  if (reviewContents.length === 0) {
+    reviewList.innerHTML = "\n        <div class=\"not_ment\">\n            \uD604\uC7AC \uC791\uC131\uB41C \uD6C4\uAE30\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.\n        </div>\n        ";
+  }
+  var deleteBtn = document.querySelectorAll('.delete');
+  deleteBtn.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      listDelete(btn, reviewContents);
+    });
+  });
+
+  //순서
+  //1) id 원본 리스트배열에서 몇번째인지 알아야하는데 slice로 페이지에 맞게 배열을 잘라오기 떄문에 쉽지 않음. 
+  //2) ex: 페이지수가 1이면 0,6 페이지가 2면 6,12만 잘라온 배열로 리스트생성하기 때문에 그냥 i로하면 id값이 0~6고정됨
+  //3) 따라서 pageCount라는 변수를 만들어서 페이지수의 인덱스값을 받아온다.  
+  //4) ex: mate.ceil(배열안의 length/6) 이기 때문에 무조건 최솟값은 1, 6개를 넘어가면 1씩 증가
+  //5) 다만 인덱스값은 0 / 1/ 2 즉 표기는 +1을통해 1로해주고, 공식구할때는 인덱스 값으로 
+  //6) 생성된 페이지의 인덱스 값과 한화면에 보이는 length 즉 6을 곱해주고 현재 인덱스를 더해주면 
+  //7) 원본 배열에서 몇번째 인덱스인지 알수있게된다. 그리고 그 값을 리스트생성할떄 delete버튼에 id값으로 추가해주면 끝.
+
+  //console.log(deleteBtn);
+  //console.log(reviewContents);
+}
+
+function indexCalc(i) {
+  return pageViewLength * countingObject.pageCount + i;
+  // 1페이지
+  // countingObject.pageCount = 0
+  // pageViewLength = 6
+  // i = 0
+  // 6 * 0 + 0 -> 0번째 
+  // 6 * 0 + 1 -> 1번째 
+  // 6 * 0 + 2 -> 2번째 
+  // 6 * 0 + 3 -> 3번째 
+  // 6 * 0 + 4 -> 4번째 
+  // 6 * 0 + 5 -> 5번째 
+
+  // 2페이지
+  // countingObject.pageCount = 1
+  // pageViewLength = 6
+  // i = 0
+  // 6 * 1 + 0 -> 6번째 
+  // 6 * 1 + 1 -> 7번째 
+  // 6 * 1 + 2 -> 8번째 
+  // 6 * 1 + 3 -> 9번째 
+  // 6 * 1 + 4 -> 10번째 
+  // 6 * 1 + 5 -> 11번째 
+
+  // 3페이지
+  // countingObject.pageCount = 2
+  // pageViewLength = 6
+  // i = 0
+  // 6 * 2 + 0 -> 12번째 
+  // 6 * 2 + 1 -> 13번째 
+  // 6 * 2 + 2 -> 14번째 
+  // 6 * 2 + 3 -> 15번째 
+  // 6 * 2 + 4 -> 16번째 
+  // 6 * 2 + 5 -> 17번째 
+}
+
+function listDelete(btn, array) {
+  var idValue = btn.getAttribute("id");
+
+  //리스트 배열에서 해당 id숫자를 가진 인덱스 객체 삭제
+  array.splice(idValue, 1);
+
+  //그리고 다시 리스트생성 및 페이지 생성
+  pageCreate(reviewContents);
+  var returnSlice = arraySlice(countingObject.pageCount, pageViewLength, reviewContents);
+  createList(returnSlice);
 }
 function pageCreate(array) {
+  // console.log('x눌렀음');
   if (array.length === 0) {
     addClass(pageSection, "none_on");
   } else {
@@ -949,35 +1125,49 @@ function pageCreate(array) {
   }
   var receive = "";
   pageUl.innerHTML = "";
-  for (var _i4 = 1; _i4 <= calc(array); _i4++) {
-    var pageList = "\n            <li>\n                ".concat(_i4, "\n            </li>    \n        ");
+  for (var _i8 = 1; _i8 <= calc(array); _i8++) {
+    var pageList = "\n            <li>\n                ".concat(_i8, "\n            </li>    \n        ");
     receive += pageList;
+    countingObject.pageCount = _i8 - 1; //인덱스 계산위해 
   }
+
   pageUl.innerHTML = receive;
+  //console.log(countingObject.pageCount);
+
   pageControl(array);
+  //리뷰 몇개인지 알려줌.
+  reviewCounting.textContent = array.length;
 }
 function pageControl(array) {
+  // console.log('x눌렀음');
   var pageNumber = document.querySelectorAll('.page_list > li');
-  var _loop3 = function _loop3(_i5) {
-    pageNumber[_i5].addEventListener('click', function () {
+  var _loop4 = function _loop4(_i9) {
+    pageNumber[_i9].addEventListener('click', function () {
       for (var j = 0; j < pageNumber.length; j++) {
         removeClass(pageNumber[j], "page_on");
       }
-      addClass(pageNumber[_i5], "page_on");
-      var returnSlice = arraySlice(_i5, pageViewLength, array);
+      addClass(pageNumber[_i9], "page_on");
+      //이거는 클릭했을때 인덱스 번호 재계산 
+      countingObject.pageCount = _i9;
+      var returnSlice = arraySlice(_i9, pageViewLength, array);
       createList(returnSlice);
     });
-    var returnSlice = arraySlice(_i5, pageViewLength, array);
-    createList(returnSlice);
   };
-  for (var _i5 = 0; _i5 < pageNumber.length; _i5++) {
-    _loop3(_i5);
+  for (var _i9 = 0; _i9 < pageNumber.length; _i9++) {
+    _loop4(_i9);
+  }
+  //i값 받아와서 활성화된 페이지 표시
+  // i = 1이면 1에 페이지온 클래스
+  // i = 2이면 2에 페이지온 클래스
+  if (pageNumber.length !== 0) {
+    addClass(pageNumber[countingObject.pageCount], "page_on");
   }
 }
 function arraySlice(index01, index02, array) {
+  var returnArray;
   var firstIndex = (index01 + 1) * index02 - index02;
   var lastIndex = firstIndex + index02;
-  var returnArray = array.slice(firstIndex, lastIndex);
+  returnArray = array.slice(firstIndex, lastIndex);
   return returnArray;
 }
 function calc(array) {
@@ -1020,7 +1210,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50373" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50346" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

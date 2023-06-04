@@ -502,13 +502,21 @@ input {
                         align-items: center;
                         justify-content: space-between;
                         .review_ment {
-                            width: 70%;
+                            width: 65%;
                             margin-left: 15px;
+                            .delete {
+                                margin-left: 15px;
+                                cursor: pointer;
+                            }
                         }
                         .right_info {
                             display: flex;
                             span {
                                 margin-right: 50px;
+                            }
+                            .rating_star {
+                                color: $point_color_amber;
+                                letter-spacing: -0.8px;
                             }
                         }
                     }
@@ -530,10 +538,28 @@ input {
                     margin-top: 20px;
                     .text_top_area {
                         display: flex;
+                        align-items: center;
+                        margin-bottom: 15px;
                         .str_length {
                             font-family: $font_noto_sans;
                             font-size: $small_up_font_size;
-                            margin-bottom: 15px;
+                        }
+                        .review_rating_star {
+                            display: flex;
+                            margin-left: 15px;
+                            align-items: center;
+                            background-color: #fff;
+                            border: 2px solid black;
+                            padding: 5px 10px;
+                            font-size: 20px;
+                            color: $sub_color_free_speach_blue;
+                            li {
+                                margin-right: 5px;
+                                cursor: pointer;
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
                         }
                     }
                     #review_text_box {
