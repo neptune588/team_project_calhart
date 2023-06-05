@@ -271,11 +271,23 @@ input {
             margin-bottom: 5px;
         }
         .small_product_img {
-            background-color: gray;
             margin-right: 15px;
-            @include item_size(195px, 195px);
             &:last-child {
                 margin-right: 0;
+            }
+            .re_img_box {
+                @include item_size(195px, 195px);
+                overflow: hidden;
+                img {
+                    width: 100%; height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .re_txt {
+                width: 195px;
+                font-size: $small_up_font_size;
+                font-family: $font_noto_sans;
+                margin-bottom: 2px;
             }
         }
     }
@@ -440,11 +452,19 @@ input {
             border: 2px solid #bbbbbb;
             background-color: #fff;
             margin-bottom: 15px;
+            transition: all 0.3s;
             cursor: pointer;
+            &:hover{
+                border: 2px solid black;
+            }
             .size_btn_ment {
                 font-family: $font_noto_sans;
                 font-size: $defalut_font_size;
                 font-weight: 700;
+                i {
+                    font-size: 20px;
+                    margin-right: 15px;
+                }
             }
         }
         .buy_n_keep {
@@ -477,6 +497,150 @@ input {
         .notice {
             font-size: $small_font_size;
             letter-spacing: -0.8px;
+        }
+        .size_chk_modal_ex {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            @include item_size(100%, 100%);
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            .size_chk_modal {
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%);
+                @include item_size(645px, 700px);
+                background-color: rgb(131, 131, 131);
+                .sub_title {
+                    margin: 30px 0;
+                }
+                .size_chk_modal_inner {
+                    margin: 0 auto;
+                    @include item_size(465px, 550px);
+                    background-color: white;
+                    .check_title {
+                        font-size: $defalut_font_size;
+                        font-family: $font_perment_marker;
+                        font-weight: 700;
+                        text-align: center;
+                        padding: 10px 0;
+                    }
+                    .size_chk_box_area {
+                        .input_area {
+                            .input_in_top {
+                                display: flex;
+                                justify-content: center;
+                                > div {
+                                    margin-right: 15px;
+                                    
+                                    &:last-child {
+                                        margin-right: 0;
+                                    }
+                                    label {
+                                        font-size: $small_up_font_size;
+                                        font-family: $font_noto_sans;
+                                        span {
+                                            color: gray;
+                                            font-weight: 700;
+                                            margin-left: 2px;
+                                        }
+                                    }
+                                    input {
+                                        display: block !important;
+                                        outline: none;
+                                        @include item_size(175px, 30px);
+                                        border: 1px solid black;
+                                        margin-top: 5px;
+                                        padding: 0 5px;
+                                    }
+                                }   
+                            }
+                            .input_in_bottom {
+                                .siez_search_btn {
+                                    display: block;
+                                    @include item_size(365px, 40px);
+                                    margin: 15px auto 0;
+                                    background-color: rgb(51, 51, 51);
+                                    color: white;
+                                    font-family: $font_noto_sans;
+                                    font-size: $small_up_font_size;
+                                    transition: all 0.2s;
+                                    &:hover{
+                                        background-color: rgb(134, 134, 134);
+                                    }
+                                }
+                            }
+                            .notice_ment {
+                                display: none;
+                                margin-top: 15px;
+                                font-size: $small_font_size;
+                                text-align: center;
+                                color: red;
+                            }
+                        }
+                        .size_show_area {
+                            margin-top: 20px;
+                            text-align: center;
+                            .your_size {
+                                font-size: $defalut_font_size;
+                                font-family: $font_noto_sans;
+                            }
+                            .show_box {
+                                background-color: rgb(197, 197, 197);
+                                border-radius: 25px;
+                                height: 40px;
+                                @include item_size(110px, 40px);
+                                margin: 15px auto 20px;
+                                .show_txt {
+                                    line-height: 40px;
+                                    font-size: 20px;
+                                    font-weight: 700;
+                                    font-family: $font_perment_marker;
+                                }
+                            }
+                            .color_gray {
+                                font-size: $small_font_size;
+                            }
+                            .size_list_chart {
+                                width: 405px;
+                                margin: 20px auto 0;
+                                ul {
+                                    display: flex;
+                                    border: 1px solid gray;
+                                    border-bottom: none;
+                                    li {
+                                        width: 20%;
+                                        font-family: $font_noto_sans;
+                                        font-size: $defalut_font_size;
+                                        border-right: 1px solid gray;
+                                        &:last-child {
+                                            border-right: none;
+                                        }
+                                    }
+                                    &.size_list_category {
+                                        background-color: rgb(179, 179, 179);
+                                    }
+                                    &:last-child {
+                                        border-bottom: 1px solid gray;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }  
+            .close_btn {
+                position: absolute;
+                top: 8%; right: 32%;
+                i {
+                    display: inline-block;
+                    font-size: 40px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    padding: 0 6px;
+                    cursor: pointer;
+                }
+            }
         }
     }
 }
@@ -579,30 +743,6 @@ input {
                         margin-left: auto;
                     }
                 }
-                .pagenation {
-                    margin: 15px 0;
-                    .page_list {
-                        display: flex;
-                        justify-content: center;
-                        li {
-                            color: white;
-                            margin-right: 10px;
-                            font-size: $defalut_font_size;
-                            background-color: gray;
-                            @include item_size(30px, 30px);
-                            line-height: 30px;
-                            cursor: pointer;
-                            user-select: none;
-                            text-align: center;
-                            &:last-child {
-                                margin-right: 0;
-                            }
-                            &.page_on {
-                                background-color: black;
-                            }
-                        }
-                    }
-                }
             }
 
 
@@ -641,6 +781,42 @@ input {
             }
         }
         #qna_form {
+            .create_question {
+                display: none;
+                margin-bottom: 30px;
+                .create_question_top {
+                    display: flex;
+                    align-items: center;
+                    label {
+                        font-size: $defalut_font_size;
+                        font-family: $font_noto_sans;
+                        margin-right: 10px;
+                    }
+                    #qna_user_id{
+                        padding: 5px 10px;
+                    }
+                }
+                .str_length {
+                    margin: 15px 0;
+                    font-family: $font_noto_sans;
+                    font-size: $small_up_font_size;
+                }
+                #create_question_ment {
+                    width: 100%;
+                    padding: 20px;
+                    resize: none;
+                    outline: none;
+                    border: 1px solid #bbbbbb;
+                }
+                #qna_create {
+                    margin-top: 15px;
+                }
+                input {
+                    display: block;
+                    outline: none;
+                    border: 1px solid #bbbbbb;
+                }
+            }
             .qna {
                 .question_list {
                     .question_box {
@@ -658,7 +834,20 @@ input {
                                 margin-right: 50px;
                             }
                         }
+                        .delete {
+                            margin-left: 15px;
+                            cursor: pointer;
+                        }
                     }
+                }
+                
+                .not_ment {
+                    font-family: $font_noto_sans;
+                    text-align: center;
+                    font-size: 30px;
+                    background-color: #fff;
+                    height: 200px;
+                    line-height: 200px;
                 }
             }
         }
@@ -705,6 +894,30 @@ input {
             .date {
                 font-size: $small_font_size;
                 color: rgb(54, 54, 54);
+            }
+        }
+    }
+    .pagenation {
+        margin: 15px 0;
+        .page_list {
+            display: flex;
+            justify-content: center;
+            li {
+                color: white;
+                margin-right: 10px;
+                font-size: $defalut_font_size;
+                background-color: gray;
+                @include item_size(30px, 30px);
+                line-height: 30px;
+                cursor: pointer;
+                user-select: none;
+                text-align: center;
+                &:last-child {
+                    margin-right: 0;
+                }
+                &.page_on {
+                    background-color: black;
+                }
             }
         }
     }

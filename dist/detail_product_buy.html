@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,6 +12,7 @@
     <script src="/header.4485232e.js" defer=""></script>
     <script type="module" src="/detail_product_list.266b5310.js" defer=""></script>
 <script src="/detail_product_list.5b143a0d.js"></script><script src="/header_n_footer.a5ed2760.js"></script></head>
+
 <body>
     <div class="header_ex">
     <header class="header">
@@ -176,15 +178,43 @@
             <section class="product_related_area">
                 <h3 class="title_text">함께 착용한 상품</h3>
                 <ul class="related_list">
-                    <li class="small_product_img"></li>
-                    <li class="small_product_img"></li>
+                    <li class="small_product_img">
+                        <a class="re_img_box" href="#!">
+                            <img src="/related_produnct_01.2529978a.jpg" alt="related_img01">
+                        </a>
+                        <a class="re_txt" href="#!">콜 카고 팬츠 모라가 블랙 가먼트 다이드</a>
+                        <a class="re_txt" href="#!">BLACK</a>
+                        <a class="re_txt" href="#!">₩ 183,000</a>
+                    </li>
+                    <li class="small_product_img">
+                        <a class="re_img_box" href="#!">
+                            <img src="/related_produnct_02.84619a62.jpg" alt="related_img02">
+                        </a>
+                        <a class="re_txt" href="#!">더블 니 팬츠 페어필드 블루 스톤 워시드</a>
+                        <a class="re_txt" href="#!">BLUE</a>
+                        <a class="re_txt" href="#!">₩ 158,000</a>
+                    </li>
                 </ul>
             </section><!-- product_related_area -->
             <section class="recently_viewed_product_area">
                 <h3 class="title_text">최근 본 상품</h3>
                 <ul class="recently_list">
-                    <li class="small_product_img"></li>
-                    <li class="small_product_img"></li>
+                    <li class="small_product_img">
+                        <a class="re_img_box" href="#!">
+                            <img src="/CA22FWJAJH10144002-1.bdae596a.jpg" alt="recently_img01">
+                        </a>
+                        <a class="re_txt" href="#!">알링턴 베스트 에일 헤비 스톤 워시</a>
+                        <a class="re_txt" href="#!">BROWN</a>
+                        <a class="re_txt" href="#!">₩ 283,000</a>
+                    </li>
+                    <li class="small_product_img">
+                        <a class="re_img_box" href="#!">
+                            <img src="/CA22FWJAJL00026001-1.6b2dc15f.JPG" alt="recently_img01">
+                        </a>
+                        <a class="re_txt" href="#!">리그 자켓 블루</a>
+                        <a class="re_txt" href="#!">BLUE</a>
+                        <a class="re_txt" href="#!">₩ 263,000</a>
+                    </li>
                 </ul>
             </section><!-- recently_viewed_product_area -->
         </div><!-- product_view_area -->
@@ -269,16 +299,106 @@
             <div class="size_n_buy">
                 <div class="size_chk_btn">
                     <span class="size_icon"></span>
-                    <span class="size_btn_ment">고객님 사이즈를 체크해 보세요!</span>
+                    <span class="size_btn_ment"><i class="fas fa-tshirt"></i>고객님 사이즈를 체크해 보세요!</span>
                 </div><!-- size_chk_btn -->
                 <div class="buy_n_keep">
                     <div class="keep_btn">장바구니</div>
                     <div class="buy_btn">구매하기</div>
                 </div><!-- buy_n_keep -->
                 <p class="color_gray notice">* 주문/배송/반품 등 일반 문의는 1:1문의를 이용해 주시기 바랍니다.</p>
+                <div class="size_chk_modal_ex">
+                    <div class="size_chk_modal">
+                        <h2 class="sub_title">FIT SIZE CHECK</h2>
+                        <div class="size_chk_modal_inner">
+                            <p class="check_title">MY SIZE CHECK</p>
+                            <div class="size_chk_box_area">
+                                <div class="input_area">
+                                    <div class="input_in_top">
+                                        <div class="left">
+                                            <label for="height_input">키<span>cm</span></label>
+                                            <input id="height_input" class="only_number" type="number" min="0" max="220" step="5" placeholder="키" required="" autofocus="">
+                                        </div>
+                                        <div class="right">
+                                            <label for="weight_input">몸무게<span>kg</span></label>
+                                            <input id="weight_input" class="only_number" type="number" min="0" max="220" step="5" placeholder="몸무게" required="" autofocus="">
+                                        </div>
+                                    </div>
+                                    <div class="notice_ment">
+                                        <p></p>
+                                    </div>
+                                    <div class="input_in_bottom">
+                                        <button class="siez_search_btn">사이즈 찾기</button>
+                                    </div>
+                                </div>
+                                <div class="size_show_area">
+                                    <p class="your_size">당신의 사이즈는</p>
+                                    <div class="show_box">
+                                        <p class="show_txt"></p>
+                                    </div>
+                                    <p class="color_gray">비슷한 체형을 가진 사람들이 구매한 사이즈와</p>
+                                    <p class="color_gray">사이즈 피드백 데이터를 분석한 결과입니다.</p>
+                                    <div class="size_list_chart">
+                                        <ul class="size_list_category">
+                                            <li>사이즈</li>
+                                            <li>어깨</li>
+                                            <li>가슴</li>
+                                            <li>밑단</li>
+                                            <li>소매길이</li>
+                                            <li>총길이</li>
+                                        </ul>
+                                        <ul class="size_XS">
+                                            <li>XS</li>
+                                            <li>50</li>
+                                            <li>60</li>
+                                            <li>48</li>
+                                            <li>66</li>
+                                            <li>70</li>
+                                        </ul>
+                                        <ul class="size_S">
+                                            <li>S</li>
+                                            <li>52</li>
+                                            <li>62</li>
+                                            <li>50</li>
+                                            <li>66.5</li>
+                                            <li>72</li>
+                                        </ul>
+                                        <ul class="size_M">
+                                            <li>M</li>
+                                            <li>54</li>
+                                            <li>64</li>
+                                            <li>52</li>
+                                            <li>67</li>
+                                            <li>74</li>
+                                        </ul>
+                                        <ul class="size_L">
+                                            <li>L</li>
+                                            <li>56</li>
+                                            <li>66</li>
+                                            <li>54</li>
+                                            <li>67.5</li>
+                                            <li>76</li>
+                                        </ul>
+                                        <ul class="size_XL">
+                                            <li>XL</li>
+                                            <li>58</li>
+                                            <li>68</li>
+                                            <li>56</li>
+                                            <li>68</li>
+                                            <li>78</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div><!-- size_chk_box_area -->
+                        </div>
+                    </div><!-- size_chk_modal -->
+                    <div class="close_btn">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div><!-- size_chk_modal_ex -->
             </div><!-- size_n_buy -->
-        </div><!-- product_info_n_buy_btn_area -->
-    </div><!-- contents_product_buy -->
+        </div><!-- size_n_buy -->
+    </div><!-- product_info_n_buy_btn_area -->
+    <!-- contents_product_buy -->
     <div class="info_container">
         <section id="product_details_section">
             <ul class="info_tab_list">
@@ -318,7 +438,7 @@
                         <div class="not_ment">
                             현재 작성된 후기가 없습니다.
                         </div>
-<!--                         <li>
+                        <!--                         <li>
                             <p class="review_ment">
                                 봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요
                             </p>
@@ -349,8 +469,8 @@
                             </div>
                         </li> -->
                     </ul><!-- review_list -->
-                    <div class="pagenation">
-                        <ul class="page_list">
+                    <div class="review_pagenation pagenation">
+                        <ul class="review_page_list page_list">
 
                         </ul>
                     </div>
@@ -361,7 +481,7 @@
                         <div class="text_top_area">
                             <div class="str_length">
                                 현재
-                                <span class="now_length">0 자</span>
+                                <span class="review_now_length">0 자</span>
                                 <span class="notice"></span>
                                 /최대 100자
                             </div>
@@ -371,7 +491,7 @@
                                 <li><i class="far fa-star"></i></li>
                                 <li><i class="far fa-star"></i></li>
                                 <li><i class="far fa-star"></i></li>
-                            </ul>  
+                            </ul>
                         </div>
                         <textarea id="review_text_box" cols="10" rows="4" maxlength="100"></textarea>
                         <button id="create_complete" class="blue_btn" type="button">작성완료</button>
@@ -394,34 +514,27 @@
                     <a href="#!">문의하기</a>
                 </div>
             </div>
-            <p class="total_info">전체 (총 4건)</p>
             <form action="" id="qna_form">
+                <div class="create_question">
+                    <div class="create_question_top">
+                        <label for="qna_user_id">ID</label>
+                        <input id="qna_user_id" type="text" maxlength="12" placeholder="최대 12자">
+                    </div><!-- create_question_top -->
+                    <div class="str_length">
+                        현재
+                        <span class="qna_now_length">0 자</span>
+                        <span class="notice"></span>
+                        /최대 100자
+                    </div><!-- str_length -->
+                    <textarea id="create_question_ment" cols="10" rows="4" maxlength="150"></textarea>
+                    <div id="qna_create" class="blue_btn">문의 작성완료</div>
+                </div><!-- create_question -->
+                <p class="total_info">전체 (총 <span class="qna_couting">0</span>건)</p>
                 <ul class="qna list_area">
-                    <li class="question_list">
-                        <div class="question_box">
-                            <div class="left_box">
-                                <span class="state_unprocessed">미처리</span>
-                                <p class="qna_ment">제품에 문제가 있어서 교환하고 싶은데<span></span></p>
-                            </div>
-                            <div class="right_box">
-                                <span class="qna_date date">2022-10-21</span>
-                                <span class="qna_id list_view_id">ha****</span>
-                            </div>
-                        </div><!-- question_area -->
-                    </li><!-- question_list -->
-                    <li class="question_list">
-                        <div class="question_box">
-                            <div class="left_box">
-                                <span class="state_unprocessed">미처리</span>
-                                <p class="qna_ment">다른 색깔은 없나요.<span></span></p>
-                            </div>
-                            <div class="right_box">
-                                <span class="qna_date date">2022-11-11</span>
-                                <span class="qna_id list_view_id">kd****</span>
-                            </div>
-                        </div><!-- question_area -->
-                    </li><!-- question_list -->
-                    <li class="question_list">
+                    <div class="not_ment">
+                        현재 작성된 문의가 없습니다.
+                    </div>
+<!--                     <li class="question_list">
                         <div class="question_box">
                             <div class="left_box">
                                 <span class="state_answer_complete">답변완료</span>
@@ -431,20 +544,26 @@
                                 <span class="qna_date date">2022-11-11</span>
                                 <span class="qna_id list_view_id">je*****</span>
                             </div>
-                        </div><!-- question_area -->
-                        </li><li class="answer_box">
-                            <span class="answer">답변</span>
-                            <div class="ment_area">
-                                <p class="spot"><span></span>[CARHARTT] 관리자</p>
-                                <p class="qna_guide_ment">
-                                    평일 오후 2시 이전 결제 완료 된 주문건은 당일 출고되며 배송은 1~3일 정도 소요됩니다.  물류량이 많을 시 배송이 지연되는 점 양해 부탁드립니다.상품준비 도중 시스템 오류나 제품상 문제로 상품의 발송이 늦어지거나 품절이 될 수 있습니다. 휴일(주말/공휴일 포함) 주문건은 다음 영업일에 상품준비 후 발송됩니다.
-                                    자세한 문의는 고객센터에 문의해 주시면 친절하게 상담해드리겠습니다.
-                                    오늘도 칼하트를 이용해 주셔서 감사하며 즐거운 쇼핑되세요!
-                                </p><!-- qna_guide_ment -->
-                            </div><!-- ment_area -->
-                        </li><!-- answer_area -->
-                    <!-- question_list -->
+                        </div>
+                    <li class="answer_box">
+                        <span class="answer">답변</span>
+                        <div class="ment_area">
+                            <p class="spot"><span></span>[CARHARTT] 관리자</p>
+                            <p class="qna_guide_ment">
+                                평일 오후 2시 이전 결제 완료 된 주문건은 당일 출고되며 배송은 1~3일 정도 소요됩니다. 물류량이 많을 시 배송이 지연되는 점 양해 부탁드립니다.상품준비
+                                도중 시스템 오류나 제품상 문제로 상품의 발송이 늦어지거나 품절이 될 수 있습니다. 휴일(주말/공휴일 포함) 주문건은 다음 영업일에 상품준비 후 발송됩니다.
+                                자세한 문의는 고객센터에 문의해 주시면 친절하게 상담해드리겠습니다.
+                                오늘도 칼하트를 이용해 주셔서 감사하며 즐거운 쇼핑되세요!
+                            </p>
+                        </div>
+                    </li>
+                    </li> -->
                 </ul><!-- qna -->
+                <div class="qna_pagenation pagenation">
+                    <ul class="qna_page_list page_list">
+
+                    </ul>
+                </div>
             </form><!-- qna_form -->
         </section><!-- product_qna -->
         <section id="product_shipping_notice_section">
@@ -550,4 +669,5 @@
     </footer><!-- footer -->
 </div><!-- footer_ex -->
 </body>
+
 </html>

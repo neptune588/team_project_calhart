@@ -313,7 +313,7 @@ var sub_page_product_list = [
   propertyNumber: 1,
   productNameKor: "\uC54C\uB9C1\uD134 \uBCA0\uC2A4\uD2B8 \uC5D0\uC77C \uD5E4\uBE44 \uC2A4\uD1A4 \uC6CC\uC2DC",
   productModelName: "ALE HEAVY STONE WASH",
-  productColor: "purple",
+  productColor: "brown",
   productStyle: "jaket",
   price: 283000,
   imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
@@ -359,7 +359,7 @@ var sub_page_product_list = [
   propertyNumber: 4,
   productNameKor: "\uB9AC\uADF8 \uC790\uCF13 \uBE14\uB8E8",
   productModelName: "LEAGUE JACKET",
-  productColor: "white",
+  productColor: "blue",
   productStyle: "jaket",
   price: 263000,
   imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
@@ -851,11 +851,6 @@ for (var _i2 = 0; _i2 < sizeSelectBox.length; _i2++) {
     addClass(this, "bgc_amber");
   });
 }
-//배열에서 src시 가져옴.
-function thumnailChange(srcChangeArray, num01, num02, array, imgProperty) {
-  srcChangeArray[num02].setAttribute('src', "".concat(array[num01][imgProperty][num02]));
-  srcChangeArray[num02].setAttribute('alt', "".concat(array[num01][imgProperty][num02]));
-}
 viewContainer.addEventListener('mousemove', function (event) {
   var moveLocateX = event.offsetX;
   var moveLocateY = event.offsetY;
@@ -867,14 +862,20 @@ viewContainer.addEventListener('mouseout', function () {
   viewZoomBox[1].style.backgroundPositionY = "0";
 });
 
+//배열에서 src시 가져옴.
+function thumnailChange(srcChangeArray, num01, num02, array, imgProperty) {
+  srcChangeArray[num02].setAttribute('src', "".concat(array[num01][imgProperty][num02]));
+  srcChangeArray[num02].setAttribute('alt', "".concat(array[num01][imgProperty][num02]));
+}
+
 /*************** review 관련  ******************/
 var reviewCreateBtn = document.querySelector('.create_btn');
-var reviewCreateComBtn = document.getElementById('create_complete');
 var reviewCreateArea = document.querySelector('.review_create');
+var reviewCreateComBtn = document.getElementById('create_complete');
 var reviewBox = document.getElementById('review_text_box');
-var reviewLengthBox = document.querySelector('.now_length');
-var reviewCounting = document.querySelector('.review_couting');
+var reviewLengthBox = document.querySelector('.review_now_length');
 var reviewList = document.querySelector('.review_list');
+var reviewCounting = document.querySelector('.review_couting');
 //별점
 var reviewRating = document.querySelector('.review_rating_star');
 
@@ -1014,6 +1015,73 @@ function starWrite(arrayInnerObject, property) {
   }
   return recieve;
 }
+
+/*************** qna 관련  ******************/
+var qusetionCreateStartBtn = document.querySelector('.question_btn');
+var questionCreateArea = document.querySelector('.create_question');
+var questionBox = document.getElementById('create_question_ment');
+var questionLengthBox = document.querySelector('.qna_now_length');
+var questionCreateComBtn = document.getElementById('qna_create');
+var qnaUserID = document.getElementById('qna_user_id');
+var qnaList = document.querySelector('.qna');
+var qnaCounting = document.querySelector('.qna_couting');
+var qnaContents = [];
+
+//한 페이지에 몇개 보여줄것인지
+var qnapageViewLength = 6;
+var qnapageSection = document.querySelector('.qna_pagenation');
+var qnapageUl = document.querySelector('.qna_page_list');
+
+//page count 받아오기
+var qnaCountingObject = {
+  qnaPageCount: 0
+};
+questionCreateComBtn.addEventListener('click', function () {
+  var IDvalue = qnaUserID.value;
+  var questionvalue = questionBox.value;
+  if ((IDvalue && questionvalue) !== null && (IDvalue && questionvalue) !== '' && (IDvalue && questionvalue) !== undefined) {
+    var qnalistObject = {};
+
+    //시간 계산
+    var nowTime = calcDate();
+    qnalistObject.id = qnaUserID.value;
+    qnalistObject.text = questionBox.value;
+    qnalistObject.date = nowTime;
+
+    //배열 push
+    qnaContents.push(qnalistObject);
+
+    //문자열 알림 리셋
+    valueReset();
+    qnaContents.focus();
+    pageCreate(qnalistObject);
+    var returnSlice = arraySlice(countingObject.pageCount, qnapageViewLength, qnalistObject);
+    createList(returnSlice);
+    starReset();
+    starCreate = false;
+  } else if (!IDvalue) {
+    console.log('아이디를 작성 해주세요.');
+  } else {
+    console.log('공백은 안됩니다.');
+  }
+});
+questionBox.addEventListener('input', function () {
+  var questionLengthReturn = questionBox.value.length;
+  questionLengthBox.textContent = "".concat(questionLengthReturn, " \uC790");
+});
+var questionState = false;
+qusetionCreateStartBtn.addEventListener('click', function () {
+  if (!questionState) {
+    addClass(questionCreateArea, 'block_on');
+    questionState = true;
+  } else {
+    removeClass(questionCreateArea, 'block_on');
+    questionState = false;
+  }
+});
+function qnaCreate() {}
+
+/*********************************** qna & review common  ********************************/
 function calcDate() {
   var newDate = new Date();
   var nowYear = newDate.getFullYear();
@@ -1030,6 +1098,12 @@ function calcDate() {
   }
   if (nowHours < 10) {
     nowHours = "0".concat(nowHours);
+  }
+  if (nowMinutes < 10) {
+    nowMinutes = "0".concat(nowMinutes);
+  }
+  if (nowSeconds < 10) {
+    nowSeconds = "0".concat(nowSeconds);
   }
   var time = "".concat(nowYear, "-").concat(nowMonth, "-").concat(nowDay, "/").concat(nowHours, ":").concat(nowMinutes, ":").concat(nowSeconds);
   return time;
@@ -1177,6 +1251,78 @@ function valueReset() {
   reviewBox.value = "";
   reviewLengthBox.textContent = "".concat(0, " \uC790");
 }
+
+/*************** modal 관련  ******************/
+var heightInput = document.getElementById('height_input');
+var weightInput = document.getElementById('weight_input');
+var numberInput = document.querySelectorAll('.only_number');
+var sizeCalcBtn = document.querySelector('.siez_search_btn');
+var noticeMent = document.querySelector('.notice_ment');
+var showSize = document.querySelector('.show_box');
+var modalOpenBtn = document.querySelector('.size_chk_btn');
+var modalCloseBtn = document.querySelector('.close_btn');
+var modalEx = document.querySelector('.size_chk_modal_ex');
+var inputMaxLength = 3;
+numberInput.forEach(function (inputBar) {
+  inputBar.addEventListener('input', function () {
+    var numberReg = /^\d+$/;
+
+    //.length는 숫자에는 안먹힘 문자열에만 적용 
+    //따라서 메서드써서 문자열로 변경해주거나, 템플릿스트링 표기법으로
+    //console.log(`${inputBar.value.length}`, inputMaxLength);
+    if (!numberReg.test("".concat(inputBar.value))) {
+      inputBar.value = "";
+      addClass(noticeMent, "block_on");
+      noticeMent.children[0].textContent = "\uC22B\uC790\uB9CC \uC785\uB825 \uAC00\uB2A5\uD569\uB2C8\uB2E4.";
+    } else {
+      removeClass(noticeMent, "block_on");
+    }
+    if ("".concat(inputBar.value.length) > inputMaxLength) {
+      //문자열의 0번째자리부터 3자리만 표기되게
+      //console.log(`${inputBar.value}`.substring(0, inputMaxLength));
+
+      //value안에 잘린값 대입해줘야함.
+      inputBar.value = "".concat(inputBar.value).substring(0, inputMaxLength);
+    }
+  });
+});
+sizeCalcBtn.addEventListener('click', function () {
+  var valueCheck01 = heightInput.value;
+  var valueCheck02 = weightInput.value;
+  if ((valueCheck01 && valueCheck02) !== null && (valueCheck01 && valueCheck02) !== undefined && (valueCheck01 && valueCheck02) !== "") {
+    removeClass(noticeMent, "block_on");
+    sizeCalc(valueCheck01, valueCheck02);
+  } else {
+    addClass(noticeMent, "block_on");
+    noticeMent.children[0].textContent = "\uC720\uD6A8\uD55C \uC785\uB825\uAC12\uC774 \uC544\uB2D9\uB2C8\uB2E4.";
+  }
+});
+modalOpenBtn.addEventListener('click', function () {
+  addClass(modalEx, "block_on");
+});
+modalCloseBtn.addEventListener('click', function () {
+  removeClass(modalEx, "block_on");
+});
+function sizeCalc(value01, value02) {
+  var valueCalc01 = value02 / (value01 * 0.01 * 2);
+  //소숫점 2자리까지 표기를 위해
+  var valueCalc02 = Math.floor(valueCalc01 * 100) / 100;
+  //console.log(valueCalc02);
+
+  if (valueCalc02 < 17.5) {
+    showSize.children[0].textContent = "XS";
+  } else if (valueCalc02 > 17.5 && valueCalc02 < 18.5) {
+    showSize.children[0].textContent = "S";
+  } else if (valueCalc02 > 18.5 && valueCalc02 < 23) {
+    showSize.children[0].textContent = "M";
+  } else if (valueCalc02 > 23 && valueCalc02 < 25) {
+    showSize.children[0].textContent = "L";
+  } else if (valueCalc02 > 25 && valueCalc02 < 50) {
+    showSize.children[0].textContent = "XL";
+  } else {
+    showSize.children[0].textContent = "\uC5C6\uC74C";
+  }
+}
 //클래스 추가
 function addClass(Element, ClassName) {
   Element.classList.add(ClassName);
@@ -1210,7 +1356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50346" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49944" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

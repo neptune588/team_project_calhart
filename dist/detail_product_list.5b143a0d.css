@@ -218,13 +218,26 @@ input {
   margin-bottom: 5px;
 }
 .contents_product_buy .product_view_area .small_product_img {
-  background-color: gray;
   margin-right: 15px;
-  width: 195px;
-  height: 195px;
 }
 .contents_product_buy .product_view_area .small_product_img:last-child {
   margin-right: 0;
+}
+.contents_product_buy .product_view_area .small_product_img .re_img_box {
+  width: 195px;
+  height: 195px;
+  overflow: hidden;
+}
+.contents_product_buy .product_view_area .small_product_img .re_img_box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.contents_product_buy .product_view_area .small_product_img .re_txt {
+  width: 195px;
+  font-size: 1.4rem;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-bottom: 2px;
 }
 .contents_product_buy .product_info_n_buy_btn_area {
   width: 405px;
@@ -387,12 +400,20 @@ input {
   border: 2px solid #bbbbbb;
   background-color: #fff;
   margin-bottom: 15px;
+  transition: all 0.3s;
   cursor: pointer;
+}
+.contents_product_buy .size_n_buy .size_chk_btn:hover {
+  border: 2px solid black;
 }
 .contents_product_buy .size_n_buy .size_chk_btn .size_btn_ment {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
+}
+.contents_product_buy .size_n_buy .size_chk_btn .size_btn_ment i {
+  font-size: 20px;
+  margin-right: 15px;
 }
 .contents_product_buy .size_n_buy .buy_n_keep {
   display: flex;
@@ -426,6 +447,152 @@ input {
 .contents_product_buy .size_n_buy .notice {
   font-size: 1.2rem;
   letter-spacing: -0.8px;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 645px;
+  height: 700px;
+  background-color: rgb(131, 131, 131);
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .sub_title {
+  margin: 30px 0;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner {
+  margin: 0 auto;
+  width: 465px;
+  height: 550px;
+  background-color: white;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .check_title {
+  font-size: 1.6rem;
+  font-family: "Permanent Marker";
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 0;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_top {
+  display: flex;
+  justify-content: center;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_top > div {
+  margin-right: 15px;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_top > div:last-child {
+  margin-right: 0;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_top > div label {
+  font-size: 1.4rem;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_top > div label span {
+  color: gray;
+  font-weight: 700;
+  margin-left: 2px;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_top > div input {
+  display: block !important;
+  outline: none;
+  width: 175px;
+  height: 30px;
+  border: 1px solid black;
+  margin-top: 5px;
+  padding: 0 5px;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_bottom .siez_search_btn {
+  display: block;
+  width: 365px;
+  height: 40px;
+  margin: 15px auto 0;
+  background-color: rgb(51, 51, 51);
+  color: white;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.4rem;
+  transition: all 0.2s;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_bottom .siez_search_btn:hover {
+  background-color: rgb(134, 134, 134);
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .notice_ment {
+  display: none;
+  margin-top: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: red;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area {
+  margin-top: 20px;
+  text-align: center;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .your_size {
+  font-size: 1.6rem;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .show_box {
+  background-color: rgb(197, 197, 197);
+  border-radius: 25px;
+  height: 40px;
+  width: 110px;
+  height: 40px;
+  margin: 15px auto 20px;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .show_box .show_txt {
+  line-height: 40px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "Permanent Marker";
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .color_gray {
+  font-size: 1.2rem;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart {
+  width: 405px;
+  margin: 20px auto 0;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul {
+  display: flex;
+  border: 1px solid gray;
+  border-bottom: none;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul li {
+  width: 20%;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.6rem;
+  border-right: 1px solid gray;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul li:last-child {
+  border-right: none;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul.size_list_category {
+  background-color: rgb(179, 179, 179);
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul:last-child {
+  border-bottom: 1px solid gray;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .close_btn {
+  position: absolute;
+  top: 8%;
+  right: 32%;
+}
+.contents_product_buy .size_n_buy .size_chk_modal_ex .close_btn i {
+  display: inline-block;
+  font-size: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 0 6px;
+  cursor: pointer;
 }
 
 /************************* info_container ***************************/
@@ -528,31 +695,6 @@ input {
   margin-top: 20px;
   margin-left: auto;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .pagenation {
-  margin: 15px 0;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list {
-  display: flex;
-  justify-content: center;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list li {
-  color: white;
-  margin-right: 10px;
-  font-size: 1.6rem;
-  background-color: gray;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  cursor: pointer;
-  user-select: none;
-  text-align: center;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list li:last-child {
-  margin-right: 0;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .pagenation .page_list li.page_on {
-  background-color: black;
-}
 .info_container #qna_section .qna_notice {
   margin-bottom: 10px;
 }
@@ -586,6 +728,42 @@ input {
   color: #4136BF;
   line-height: 60px;
 }
+.info_container #qna_section #qna_form .create_question {
+  display: none;
+  margin-bottom: 30px;
+}
+.info_container #qna_section #qna_form .create_question .create_question_top {
+  display: flex;
+  align-items: center;
+}
+.info_container #qna_section #qna_form .create_question .create_question_top label {
+  font-size: 1.6rem;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-right: 10px;
+}
+.info_container #qna_section #qna_form .create_question .create_question_top #qna_user_id {
+  padding: 5px 10px;
+}
+.info_container #qna_section #qna_form .create_question .str_length {
+  margin: 15px 0;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.4rem;
+}
+.info_container #qna_section #qna_form .create_question #create_question_ment {
+  width: 100%;
+  padding: 20px;
+  resize: none;
+  outline: none;
+  border: 1px solid #bbbbbb;
+}
+.info_container #qna_section #qna_form .create_question #qna_create {
+  margin-top: 15px;
+}
+.info_container #qna_section #qna_form .create_question input {
+  display: block;
+  outline: none;
+  border: 1px solid #bbbbbb;
+}
 .info_container #qna_section #qna_form .qna .question_list .question_box {
   overflow: hidden;
 }
@@ -601,6 +779,18 @@ input {
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box .right_box span {
   margin-right: 50px;
+}
+.info_container #qna_section #qna_form .qna .question_list .question_box .delete {
+  margin-left: 15px;
+  cursor: pointer;
+}
+.info_container #qna_section #qna_form .qna .not_ment {
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: center;
+  font-size: 30px;
+  background-color: #fff;
+  height: 200px;
+  line-height: 200px;
 }
 .info_container #qna_section .total_info {
   margin-bottom: 30px;
@@ -647,6 +837,31 @@ input {
 .info_container .list_area li .date {
   font-size: 1.2rem;
   color: rgb(54, 54, 54);
+}
+.info_container .pagenation {
+  margin: 15px 0;
+}
+.info_container .pagenation .page_list {
+  display: flex;
+  justify-content: center;
+}
+.info_container .pagenation .page_list li {
+  color: white;
+  margin-right: 10px;
+  font-size: 1.6rem;
+  background-color: gray;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+}
+.info_container .pagenation .page_list li:last-child {
+  margin-right: 0;
+}
+.info_container .pagenation .page_list li.page_on {
+  background-color: black;
 }
 .info_container .ment_box {
   margin-bottom: 20px;

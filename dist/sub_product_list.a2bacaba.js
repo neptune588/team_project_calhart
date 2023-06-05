@@ -313,7 +313,7 @@ var sub_page_product_list = [
   propertyNumber: 1,
   productNameKor: "\uC54C\uB9C1\uD134 \uBCA0\uC2A4\uD2B8 \uC5D0\uC77C \uD5E4\uBE44 \uC2A4\uD1A4 \uC6CC\uC2DC",
   productModelName: "ALE HEAVY STONE WASH",
-  productColor: "purple",
+  productColor: "brown",
   productStyle: "jaket",
   price: 283000,
   imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
@@ -359,7 +359,7 @@ var sub_page_product_list = [
   propertyNumber: 4,
   productNameKor: "\uB9AC\uADF8 \uC790\uCF13 \uBE14\uB8E8",
   productModelName: "LEAGUE JACKET",
-  productColor: "white",
+  productColor: "blue",
   productStyle: "jaket",
   price: 263000,
   imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
@@ -1327,7 +1327,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49944" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

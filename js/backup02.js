@@ -94,9 +94,8 @@ const reviewRating = document.querySelector('.review_rating_star');
 
 //한 페이지에 몇개 보여줄것인지
 const pageViewLength = 6;
-const pageSection = document.querySelector('.pagenation');
-const pageUl = document.querySelector('.page_list');
-
+const pageSection = document.querySelector('.review_pagenation');
+const pageUl = document.querySelector('.review_page_list');
 
 //list 들어갈 배열 
 const reviewContents = [];
@@ -125,7 +124,7 @@ reviewCreateBtn.addEventListener('click', () => {
     } else {
         removeClass(reviewCreateArea, `block_on`);
 
-        valueReset();
+        valueReset(reviewBox, reviewLengthBox);
         starReset();
         rvCrteBtnState = false;
     }
@@ -162,21 +161,20 @@ reviewCreateComBtn.addEventListener('click', () => {
         listObject.ratingStar = ratingObject.ratingCount;
         listObject.date = nowTime;
 
-
         //배열 push
         reviewContents.push(listObject);
 
         //문자열 알림 리셋
-        valueReset();
+        valueReset(reviewBox, reviewLengthBox);
         reviewBox.focus();
 
         //데이터를 기반으로 페이지와 리스트 생성
         //리스트는 페이지 number를 기반으로 생성되기 때문에 
         //page함수부터 선언 
-        pageCreate(reviewContents);
+        pageCreate(reviewContents, pageSection, pageUl, countingObject, `pageCount`, reviewCounting, '.review_page_list > li');
 
         let returnSlice = arraySlice(countingObject.pageCount, pageViewLength, reviewContents);
-        createList(returnSlice);
+        createList(reviewList, `후기` , returnSlice, `review`, `review_ment`);
 
         starReset();
         starCreate = false;
@@ -287,6 +285,8 @@ const qnaCountingObject = {
     qnaPageCount: 0,
 }
 
+let reviewCreated = false;
+
 questionCreateComBtn.addEventListener('click', () => {
     let IDvalue = qnaUserID.value; 
     let questionvalue = questionBox.value;
@@ -304,18 +304,18 @@ questionCreateComBtn.addEventListener('click', () => {
         qnaContents.push(qnalistObject);
 
         //문자열 알림 리셋
-        valueReset();
-        qnaContents.focus();
+        valueReset(questionBox, questionLengthBox);
+        questionBox.focus();
 
-        pageCreate(qnalistObject);
-        let returnSlice = arraySlice(countingObject.pageCount, qnapageViewLength, qnalistObject);
-        createList(returnSlice);
+        pageCreate(qnaContents, qnapageSection, qnapageUl, qnaCountingObject, `qnaPageCount`, qnaCounting, '.qna_page_list > li');
+        let returnSlice = arraySlice(qnaCountingObject.qnaPageCount, qnapageViewLength, qnaContents);
+        createList(qnaList, `문의` , returnSlice);
 
-        starReset();
-        starCreate = false;
+        reviewCreated = true;
 
-    } else if (!IDvalue) {
+    } else if (IDvalue === null || IDvalue === `` || IDvalue === undefined) {
         console.log('아이디를 작성 해주세요.');
+        console.log(IDvalue);
     } else {
         console.log('공백은 안됩니다.');
     }
@@ -339,9 +339,7 @@ qusetionCreateStartBtn.addEventListener('click', () => {
 
 
 
-function qnaCreate() {
-    
-}
+
 
 /*********************************** qna & review common  ********************************/
 function calcDate() {
@@ -374,19 +372,20 @@ function calcDate() {
     return time;
 }
 
-function createList(array) {
-    reviewList.innerHTML = ``;
+function createList(innerParent, mentType, array, className01, className02) {
+    innerParent.innerHTML = ``;
     let receive = ``;
     for (let i = 0; i < array.length; i++) {
         //6개 까지만 보여주게
         if (i === pageViewLength) {
             break;
         }
+
         let list = `
-            <li class="review">
-                <p class="review_ment">
+            <li class="${className01}">
+                <p class="${className02}">
                     ${array[i].text}
-                    <span id = "${indexCalc(i)}" class = "delete">
+                    <span id = "review_${indexCalc(i)}" class = "delete">
                         <i class="fas fa-window-close"></i>
                     </span>
                 </p>
@@ -397,17 +396,18 @@ function createList(array) {
                 </div>
             </li>
         `
+
         receive += list;
 
     }
 
-    reviewList.innerHTML = receive;
+    innerParent.innerHTML = receive;
 
 
-    if (reviewContents.length === 0) {
-        reviewList.innerHTML = `
+    if (array.length === 0) {
+        innerParent.innerHTML = `
         <div class="not_ment">
-            현재 작성된 후기가 없습니다.
+            현재 작성된 ${mentType}가 없습니다.
         </div>
         `;
     }
@@ -471,17 +471,18 @@ function indexCalc(i) {
 
 function listDelete(btn, array) {
     let idValue = btn.getAttribute(`id`);
+    let idValueExNumber = parseInt(idValue);
 
     //리스트 배열에서 해당 id숫자를 가진 인덱스 객체 삭제
-    array.splice(idValue, 1);
+    array.splice(idValueExNumber, 1);
 
     //그리고 다시 리스트생성 및 페이지 생성
-    pageCreate(reviewContents);
+    pageCreate(reviewContents, pageSection, pageUl, countingObject, `pageCount`, reviewCounting, '.review_page_list > li');
     let returnSlice = arraySlice(countingObject.pageCount, pageViewLength, reviewContents);
-    createList(returnSlice);
+    createList(reviewList, `후기` , returnSlice, `review`, `review_ment`);
 }
 
-function pageCreate(array) {
+function pageCreate(array, pageSection, pageUl, objectPageCounting, objectProperty, lengthBox, pageList) {
     // console.log('x눌렀음');
     if (array.length === 0) {
         addClass(pageSection, `none_on`);
@@ -500,19 +501,19 @@ function pageCreate(array) {
             </li>    
         `
         receive += pageList;
-        countingObject.pageCount = i - 1; //인덱스 계산위해 
+        objectPageCounting[objectProperty] = i - 1; //인덱스 계산위해 
     }
     pageUl.innerHTML = receive;
     //console.log(countingObject.pageCount);
 
-    pageControl(array);
+    pageControl(array, pageList, objectPageCounting, objectProperty);
     //리뷰 몇개인지 알려줌.
-    reviewCounting.textContent = array.length;
+    lengthBox.textContent = array.length;
 }
 
-function pageControl(array) {
+function pageControl(array, selector, object, objectProperty) {
     // console.log('x눌렀음');
-    const pageNumber = document.querySelectorAll('.page_list > li');
+    const pageNumber = document.querySelectorAll(selector);
 
     for (let i = 0; i < pageNumber.length; i++) {
         pageNumber[i].addEventListener('click', function () {
@@ -521,9 +522,9 @@ function pageControl(array) {
             }
             addClass(pageNumber[i], `page_on`);
             //이거는 클릭했을때 인덱스 번호 재계산 
-            countingObject.pageCount = i;
+            object[objectProperty] = i;
             let returnSlice = arraySlice(i, pageViewLength, array);
-            createList(returnSlice);
+            createList(reviewList, `후기` , returnSlice, `review`, `review_ment`);
         });
     }
     //i값 받아와서 활성화된 페이지 표시
@@ -548,9 +549,9 @@ function calc(array) {
     return Math.ceil(array.length / pageViewLength);
 }
 
-function valueReset() {
-    reviewBox.value = ``;
-    reviewLengthBox.textContent = `${0} 자`;
+function valueReset(Node, textLengthBox) {
+    Node.value = ``;
+    textLengthBox.textContent = `${0} 자`;
 }
 
 
@@ -648,3 +649,93 @@ function addClass(Element, ClassName) {
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);
 }
+
+
+
+
+
+
+
+
+
+
+/*************** qna 관련  ******************/
+const qusetionCreateStartBtn = document.querySelector('.question_btn');
+
+const questionCreateArea = document.querySelector('.create_question');
+
+const questionBox = document.getElementById('create_question_ment');
+const questionLengthBox = document.querySelector('.qna_now_length');
+
+const questionCreateComBtn = document.getElementById('qna_create');
+
+const qnaUserID = document.getElementById('qna_user_id');
+
+const qnaList = document.querySelector('.qna');
+
+const qnaCounting = document.querySelector('.qna_couting');
+
+const qnaContents = [];
+
+//한 페이지에 몇개 보여줄것인지
+const qnapageViewLength = 6;
+const qnapageSection = document.querySelector('.qna_pagenation');
+const qnapageUl = document.querySelector('.qna_page_list');
+
+//page count 받아오기
+const qnaCountingObject = {
+    qnaPageCount: 0,
+}
+
+let reviewCreated = false;
+
+questionCreateComBtn.addEventListener('click', () => {
+    let IDvalue = qnaUserID.value;
+    let questionvalue = questionBox.value;
+    if ((IDvalue && questionvalue) !== null && (IDvalue && questionvalue) !== '' && (IDvalue && questionvalue) !== undefined) {
+        const qnalistObject = {};
+
+        //시간 계산
+        let nowTime = calcDate();
+
+        qnalistObject.id = qnaUserID.value;
+        qnalistObject.text = questionBox.value;
+        qnalistObject.date = nowTime;
+
+        //배열 push
+        qnaContents.push(qnalistObject);
+
+        //문자열 알림 리셋
+        valueReset(questionBox, questionLengthBox);
+        questionBox.focus();
+
+        pageCreate(qnaContents, qnapageSection, qnapageUl, qnaCountingObject, `qnaPageCount`, qnaCounting, '.qna_page_list > li');
+        let returnSlice = arraySlice(qnaCountingObject.qnaPageCount, qnapageViewLength, qnaContents);
+        createList(qnaList, `문의`, returnSlice);
+
+        reviewCreated = true;
+
+    } else if (IDvalue === null || IDvalue === `` || IDvalue === undefined) {
+        console.log('아이디를 작성 해주세요.');
+        console.log(IDvalue);
+    } else {
+        console.log('공백은 안됩니다.');
+    }
+});
+
+questionBox.addEventListener('input', () => {
+    let questionLengthReturn = questionBox.value.length;
+    questionLengthBox.textContent = `${questionLengthReturn} 자`;
+});
+
+let questionState = false;
+qusetionCreateStartBtn.addEventListener('click', () => {
+    if (!questionState) {
+        addClass(questionCreateArea, 'block_on');
+        questionState = true;
+    } else {
+        removeClass(questionCreateArea, 'block_on');
+        questionState = false;
+    }
+});
+
