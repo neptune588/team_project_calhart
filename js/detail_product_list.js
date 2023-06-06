@@ -125,7 +125,7 @@ reviewCreateBtn.addEventListener('click', () => {
     } else {
         removeClass(reviewCreateArea, `block_on`);
 
-        valueReset();
+        valueReset(reviewBox, reviewLengthBox);
         starReset();
         rvCrteBtnState = false;
     }
@@ -167,7 +167,7 @@ reviewCreateComBtn.addEventListener('click', () => {
         reviewContents.push(listObject);
 
         //문자열 알림 리셋
-        valueReset();
+        valueReset(reviewBox, reviewLengthBox);
         reviewBox.focus();
 
         //데이터를 기반으로 페이지와 리스트 생성
@@ -259,121 +259,6 @@ function starWrite(arrayInnerObject, property) {
     return recieve;
 }
 
-/*************** qna 관련  ******************/
-const qusetionCreateStartBtn = document.querySelector('.question_btn');
-
-const questionCreateArea = document.querySelector('.create_question');
-
-const questionBox = document.getElementById('create_question_ment');
-const questionLengthBox = document.querySelector('.qna_now_length');
-
-const questionCreateComBtn = document.getElementById('qna_create');
-
-const qnaUserID = document.getElementById('qna_user_id');
-
-const qnaList = document.querySelector('.qna');
-
-const qnaCounting = document.querySelector('.qna_couting');
-
-const qnaContents = [];
-
-//한 페이지에 몇개 보여줄것인지
-const qnapageViewLength = 6;
-const qnapageSection = document.querySelector('.qna_pagenation');
-const qnapageUl = document.querySelector('.qna_page_list');
-
-//page count 받아오기
-const qnaCountingObject = {
-    qnaPageCount: 0,
-}
-
-questionCreateComBtn.addEventListener('click', () => {
-    let IDvalue = qnaUserID.value; 
-    let questionvalue = questionBox.value;
-    if ((IDvalue && questionvalue) !== null && (IDvalue && questionvalue) !== '' && (IDvalue && questionvalue) !== undefined) {
-        const qnalistObject = {};
-
-        //시간 계산
-        let nowTime = calcDate();
-
-        qnalistObject.id = qnaUserID.value;
-        qnalistObject.text = questionBox.value;
-        qnalistObject.date = nowTime;
-
-        //배열 push
-        qnaContents.push(qnalistObject);
-
-        //문자열 알림 리셋
-        valueReset();
-        qnaContents.focus();
-
-        pageCreate(qnalistObject);
-        let returnSlice = arraySlice(countingObject.pageCount, qnapageViewLength, qnalistObject);
-        createList(returnSlice);
-
-        starReset();
-        starCreate = false;
-
-    } else if (!IDvalue) {
-        console.log('아이디를 작성 해주세요.');
-    } else {
-        console.log('공백은 안됩니다.');
-    }
-});
-
-questionBox.addEventListener('input', () => {
-    let questionLengthReturn = questionBox.value.length;
-    questionLengthBox.textContent = `${questionLengthReturn} 자`;
-});
-
-let questionState = false;
-qusetionCreateStartBtn.addEventListener('click', () => {
-    if (!questionState) {
-        addClass(questionCreateArea, 'block_on');
-        questionState = true;
-    } else {
-        removeClass(questionCreateArea, 'block_on');
-        questionState = false;
-    }
-});
-
-
-
-function qnaCreate() {
-    
-}
-
-/*********************************** qna & review common  ********************************/
-function calcDate() {
-    let newDate = new Date();
-    let nowYear = newDate.getFullYear();
-    let nowMonth = newDate.getMonth() + 1;
-    let nowDay = newDate.getDate();
-    let nowHours = newDate.getHours();
-    let nowMinutes = newDate.getMinutes();
-    let nowSeconds = newDate.getSeconds();
-
-    if (nowDay < 10) {
-        nowDay = `0${nowDay}`;
-    }
-    if (nowMonth < 10) {
-        nowMonth = `0${nowMonth}`;
-    }
-    if (nowHours < 10) {
-        nowHours = `0${nowHours}`;
-    }
-    if (nowMinutes < 10) {
-        nowMinutes = `0${nowMinutes}`;
-    }
-    if (nowSeconds < 10) {
-        nowSeconds = `0${nowSeconds}`;
-    }
-
-    let time = `${nowYear}-${nowMonth}-${nowDay}/${nowHours}:${nowMinutes}:${nowSeconds}`;
-
-    return time;
-}
-
 function createList(array) {
     reviewList.innerHTML = ``;
     let receive = ``;
@@ -403,11 +288,10 @@ function createList(array) {
 
     reviewList.innerHTML = receive;
 
-
-    if (reviewContents.length === 0) {
+    if (array.length === 0) {
         reviewList.innerHTML = `
         <div class="not_ment">
-            현재 작성된 후기가 없습니다.
+            현재 작성된 리뷰가 없습니다.
         </div>
         `;
     }
@@ -431,6 +315,9 @@ function createList(array) {
 
     //console.log(deleteBtn);
     //console.log(reviewContents);
+
+    //리뷰 몇개인지 알려줌.
+    reviewCounting.textContent = array.length;
 }
 
 function indexCalc(i) {
@@ -469,18 +356,6 @@ function indexCalc(i) {
     // 6 * 2 + 5 -> 17번째 
 }
 
-function listDelete(btn, array) {
-    let idValue = btn.getAttribute(`id`);
-
-    //리스트 배열에서 해당 id숫자를 가진 인덱스 객체 삭제
-    array.splice(idValue, 1);
-
-    //그리고 다시 리스트생성 및 페이지 생성
-    pageCreate(reviewContents);
-    let returnSlice = arraySlice(countingObject.pageCount, pageViewLength, reviewContents);
-    createList(returnSlice);
-}
-
 function pageCreate(array) {
     // console.log('x눌렀음');
     if (array.length === 0) {
@@ -492,7 +367,7 @@ function pageCreate(array) {
     let receive = ``;
     pageUl.innerHTML = ``;
 
-    for (let i = 1; i <= calc(array); i++) {
+    for (let i = 1; i <= calc(array, pageViewLength); i++) {
         let pageList =
             `
             <li>
@@ -506,8 +381,6 @@ function pageCreate(array) {
     //console.log(countingObject.pageCount);
 
     pageControl(array);
-    //리뷰 몇개인지 알려줌.
-    reviewCounting.textContent = array.length;
 }
 
 function pageControl(array) {
@@ -544,13 +417,226 @@ function arraySlice(index01, index02, array) {
     return returnArray;
 }
 
-function calc(array) {
-    return Math.ceil(array.length / pageViewLength);
+function calc(array, viewLength) {
+    return Math.ceil(array.length / viewLength);
 }
 
-function valueReset() {
-    reviewBox.value = ``;
-    reviewLengthBox.textContent = `${0} 자`;
+
+/*************** qna 관련  ******************/
+const qusetionCreateStartBtn = document.querySelector('.question_btn');
+
+const questionCreateArea = document.querySelector('.create_question');
+
+const questionBox = document.getElementById('create_question_ment');
+const questionLengthBox = document.querySelector('.qna_now_length');
+
+const questionCreateComBtn = document.getElementById('qna_create');
+
+const qnaUserID = document.getElementById('qna_user_id');
+
+const qnaList = document.querySelector('.qna');
+const qnaNotMentBox = document.querySelector('.qna_not_ment');
+
+const qnaCounting = document.querySelector('.qna_couting');
+
+const qnaContents = [];
+
+//한 페이지에 몇개 보여줄것인지
+const qnapageViewLength = 6;
+const qnapageSection = document.querySelector('.qna_pagenation');
+const qnapageUl = document.querySelector('.qna_page_list');
+
+//page count 받아오기
+const qnaCountingObject = {
+    qnaPageCount: 0,
+}
+
+let indexReceive = 0;
+
+questionCreateComBtn.addEventListener('click', () => {
+    let IDvalue = qnaUserID.value;
+    let questionvalue = questionBox.value;
+
+    if ((IDvalue && questionvalue) !== null && (IDvalue && questionvalue) !== '' && (IDvalue && questionvalue) !== undefined && IDvalue.length > 2) {
+        const qnalistObject = {};
+
+        //시간 계산
+        let nowTime = calcDate();
+
+        qnalistObject.userId = qnaUserID.value;
+        qnalistObject.answerState = false;
+        qnalistObject.answer = answerStateReturn(qnalistObject.answerState);
+        qnalistObject.text = questionBox.value;
+        qnalistObject.date = nowTime;
+
+        //배열 push
+        qnaContents.push(qnalistObject);
+
+        qnaCreate(qnalistObject, qnaContents);
+
+        //문자열 알림 리셋
+        valueReset(questionBox, questionLengthBox);
+        qnaUserID.value = ``;
+        questionBox.focus();
+
+    } else if (IDvalue === undefined || IDvalue === null || IDvalue === ``) {
+        console.log('아이디를 작성 해주세요.');
+    } else if (IDvalue.length < 3) {
+        console.log('아이디는 2자를 초과해야 합니다.');
+    } else {
+        console.log('공백은 안됩니다.');
+    }
+});
+
+questionBox.addEventListener('input', () => {
+    let questionLengthReturn = questionBox.value.length;
+    questionLengthBox.textContent = `${questionLengthReturn} 자`;
+});
+
+let questionState = false;
+qusetionCreateStartBtn.addEventListener('click', () => {
+    if (!questionState) {
+        addClass(questionCreateArea, 'block_on');
+        questionState = true;
+    } else {
+        removeClass(questionCreateArea, 'block_on');
+        questionState = false;
+
+        valueReset(questionBox, questionLengthBox);
+        qnaUserID.value = ``;
+    }
+});
+
+
+function qnaCreate(object, array) {
+    const fragment = document.createDocumentFragment();
+
+    const newLiQnAlist = document.createElement('li');
+
+    const newDivQbox = document.createElement('div');
+
+    const newDivLeftBox = document.createElement('div');
+    const newSpanQState = document.createElement('span');
+    const newPQuMent = document.createElement('p');
+
+    const newDivRightBox = document.createElement('div');
+    const newSpanQdate = document.createElement('span');
+    const newSpanUserID = document.createElement('span');
+
+    /*         const newDivAnswerBox = document.createElement('div');
+            const newDivMentInputArea = document.createElement('div');
+            const newH2 = document.createElement('h2');
+            const newTextAreaAnswerComment = document.createElement('textarea');
+            const newButtonAnswerCreate = document.createElement('button');
+
+            const newSpanAnswerState = document.createElement('span');
+            const newDivMentArea = document.createElement('div');
+            const newPSpot = document.createElement('p');
+            const newPQnaGuideMent = document.createElement('p'); */
+
+    addClass(newSpanQState, 'state_answer_complete');
+    addClass(newPQuMent, 'qna_ment');
+    addClass(newDivLeftBox, 'left_box');
+    newSpanQState.textContent = object.answer;
+    newPQuMent.textContent = object.text;
+    newDivLeftBox.appendChild(newSpanQState);
+    newDivLeftBox.appendChild(newPQuMent);
+
+    addClassMulti(newSpanQdate, ['qna_date', 'date']);
+    addClassMulti(newSpanUserID, ['qna_id', 'list_view_id']);
+    addClass(newDivRightBox, 'right_box');
+    newSpanQdate.textContent = object.date;
+    newSpanUserID.textContent = IDViewLengthCut(object.userId);
+
+    newDivRightBox.appendChild(newSpanQdate);
+    newDivRightBox.appendChild(newSpanUserID);
+    addClass(newDivQbox, 'question_box');
+    newDivQbox.appendChild(newDivLeftBox);
+    newDivQbox.appendChild(newDivRightBox);
+
+    addClass(newLiQnAlist, 'question_list');
+    newLiQnAlist.appendChild(newDivQbox);
+    fragment.appendChild(newLiQnAlist);
+
+    //리뷰 몇개인지 알려줌.
+    qnaCounting.textContent = array.length;
+    qnaList.appendChild(fragment);
+
+    if (array.length > 0) {
+        addClass(qnaNotMentBox, 'none_on');
+    } else {
+        removeClass(qnaNotMentBox, 'none_on')
+    }
+}
+    
+function IDViewLengthCut(ID) {
+    let userIDBefore = ID.substring(0, 2);
+    let userIDafter = '*'.repeat(ID.length - userIDBefore.length);
+
+    let userID = userIDBefore + userIDafter;
+
+    //console.log(ID.length, userIDBefore, userIDafter);
+    return userID;
+}
+
+function answerStateReturn(objectProperty) {
+    let result = ``;
+    if (!objectProperty) {
+        result = `미처리`
+    } else {
+        result = `답변완료`
+    }
+
+    return result;
+}
+
+
+/*********************************** qna & review common  ********************************/
+function calcDate() {
+    let newDate = new Date();
+    let nowYear = newDate.getFullYear();
+    let nowMonth = newDate.getMonth() + 1;
+    let nowDay = newDate.getDate();
+    let nowHours = newDate.getHours();
+    let nowMinutes = newDate.getMinutes();
+    let nowSeconds = newDate.getSeconds();
+
+    if (nowDay < 10) {
+        nowDay = `0${nowDay}`;
+    }
+    if (nowMonth < 10) {
+        nowMonth = `0${nowMonth}`;
+    }
+    if (nowHours < 10) {
+        nowHours = `0${nowHours}`;
+    }
+    if (nowMinutes < 10) {
+        nowMinutes = `0${nowMinutes}`;
+    }
+    if (nowSeconds < 10) {
+        nowSeconds = `0${nowSeconds}`;
+    }
+
+    let time = `${nowYear}-${nowMonth}-${nowDay}/${nowHours}:${nowMinutes}:${nowSeconds}`;
+
+    return time;
+}
+
+function listDelete(btn, array) {
+    let idValue = btn.getAttribute(`id`);
+
+    //리스트 배열에서 해당 id숫자를 가진 인덱스 객체 삭제
+    array.splice(idValue, 1);
+
+    //그리고 다시 리스트생성 및 페이지 생성
+    pageCreate(reviewContents);
+    let returnSlice = arraySlice(countingObject.pageCount, pageViewLength, reviewContents);
+    createList(returnSlice);
+}
+
+function valueReset(textBox01, textBox02) {
+    textBox01.value = ``;
+    textBox02.textContent = `${0} 자`;
 }
 
 
@@ -644,6 +730,13 @@ function sizeCalc(value01, value02) {
 function addClass(Element, ClassName) {
     Element.classList.add(ClassName);
 }
+
+function addClassMulti(Element, ClassArray) {
+    ClassArray.forEach((ClassName) => {
+        Element.classList.add(ClassName);
+    });
+}
+
 //클래스 제거
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);

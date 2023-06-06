@@ -819,18 +819,29 @@ input {
             }
             .qna {
                 .question_list {
+                    padding: 0;
                     .question_box {
                         overflow: hidden;
+                        cursor: pointer;
+                        padding: 30px 0;
+                        user-select: none;
                         .left_box {
                             display: flex;
+                            width: 75%;
                             float: left;
+                            span {
+                                margin-left: 15px;
+                            }
                             p {
+                                margin-left: 40px;
                                 text-align: center;
                             }
                         }
                         .right_box {
+                            width: 25%;
                             float: right;
                             span {
+                                width: 50%;
                                 margin-right: 50px;
                             }
                         }
@@ -839,9 +850,31 @@ input {
                             cursor: pointer;
                         }
                     }
+                    .answer_box {
+                        .ment_input {
+                            >h2 {
+                                font-size: $defalut_font_size;
+                                font-family: $font_noto_sans;
+                                margin: 10px 0;
+                            }
+                            #answer_text_box {
+                                width: 100%;
+                                padding: 10px;
+                                resize: none;
+                                outline: none;
+                                border: 1px solid #bbbbbb;
+                            }
+                            .answer_create {
+                                display: block;
+                                @include item_size(210px, 40px);
+                                margin: 15px 0 20px;
+                                margin-left: auto;
+                            }
+                        }
+                    }
                 }
                 
-                .not_ment {
+                .qna_not_ment {
                     font-family: $font_noto_sans;
                     text-align: center;
                     font-size: 30px;
