@@ -309,18 +309,22 @@ input {
   border-top: 1px solid #bbbbbb;
   border-bottom: 1px solid #bbbbbb;
 }
-.contents_product_buy .shipping_n_installment .shipping_info, .contents_product_buy .shipping_n_installment .installment_info {
+.contents_product_buy .shipping_n_installment .shipping_info,
+.contents_product_buy .shipping_n_installment .installment_info {
   overflow: hidden;
 }
-.contents_product_buy .shipping_n_installment .shipping_info li, .contents_product_buy .shipping_n_installment .installment_info li {
+.contents_product_buy .shipping_n_installment .shipping_info li,
+.contents_product_buy .shipping_n_installment .installment_info li {
   font-size: 1.4rem;
   letter-spacing: -0.5px;
   margin-bottom: 5px;
 }
-.contents_product_buy .shipping_n_installment .shipping_info .list_left, .contents_product_buy .shipping_n_installment .installment_info .list_left {
+.contents_product_buy .shipping_n_installment .shipping_info .list_left,
+.contents_product_buy .shipping_n_installment .installment_info .list_left {
   float: left;
 }
-.contents_product_buy .shipping_n_installment .shipping_info .list_right, .contents_product_buy .shipping_n_installment .installment_info .list_right {
+.contents_product_buy .shipping_n_installment .shipping_info .list_right,
+.contents_product_buy .shipping_n_installment .installment_info .list_right {
   float: right;
 }
 .contents_product_buy .shipping_n_installment .shipping_info p {
@@ -769,13 +773,12 @@ input {
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box {
   overflow: hidden;
-  cursor: pointer;
   padding: 30px 0;
   user-select: none;
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box .left_box {
   display: flex;
-  width: 75%;
+  width: 70%;
   float: left;
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box .left_box span {
@@ -786,23 +789,33 @@ input {
   text-align: center;
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box .right_box {
-  width: 25%;
+  width: 30%;
   float: right;
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box .right_box span {
-  width: 50%;
+  width: 33.3333%;
   margin-right: 50px;
+}
+.info_container #qna_section #qna_form .qna .question_list .question_box .right_box span.comment_click_on {
+  margin-right: 0;
+}
+.info_container #qna_section #qna_form .qna .question_list .question_box .right_box i {
+  font-size: 20px;
+  cursor: pointer;
 }
 .info_container #qna_section #qna_form .qna .question_list .question_box .delete {
   margin-left: 15px;
   cursor: pointer;
+}
+.info_container #qna_section #qna_form .qna .question_list .answer_box {
+  display: none;
 }
 .info_container #qna_section #qna_form .qna .question_list .answer_box .ment_input > h2 {
   font-size: 1.6rem;
   font-family: "Noto Sans KR", sans-serif;
   margin: 10px 0;
 }
-.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_input #answer_text_box {
+.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_input .answer_text_box {
   width: 100%;
   padding: 10px;
   resize: none;
@@ -815,6 +828,26 @@ input {
   height: 40px;
   margin: 15px 0 20px;
   margin-left: auto;
+}
+.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_area {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  font-size: 1.6rem;
+  border-top: 1px solid #bbbbbb;
+}
+.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_area .answer {
+  margin-left: 15px;
+  font-size: 1.4rem;
+}
+.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_area .qna_guide_ment {
+  width: 90%;
+  margin-left: 50px;
+  font-size: 1.4rem;
+}
+.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_area .qna_guide_ment .spot {
+  font-size: 1.6rem;
+  font-family: "Noto Sans KR", sans-serif;
 }
 .info_container #qna_section #qna_form .qna .qna_not_ment {
   font-family: "Noto Sans KR", sans-serif;

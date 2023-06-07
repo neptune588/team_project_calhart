@@ -796,6 +796,13 @@ exports.detail_page_produdct_list = detail_page_produdct_list;
 "use strict";
 
 var _data = require("./data.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 /*************** view_thumnail ******************/
 var viewContainer = document.querySelector('.view_thumnail');
 var viewZoomBox = document.querySelectorAll('.view_thumnail > div');
@@ -1214,6 +1221,8 @@ qusetionCreateStartBtn.addEventListener('click', function () {
 });
 function qnaCreate(object, array) {
   var fragment = document.createDocumentFragment();
+
+  /* question */
   var newLiQnAlist = document.createElement('li');
   var newDivQbox = document.createElement('div');
   var newDivLeftBox = document.createElement('div');
@@ -1222,17 +1231,8 @@ function qnaCreate(object, array) {
   var newDivRightBox = document.createElement('div');
   var newSpanQdate = document.createElement('span');
   var newSpanUserID = document.createElement('span');
-
-  /*         const newDivAnswerBox = document.createElement('div');
-          const newDivMentInputArea = document.createElement('div');
-          const newH2 = document.createElement('h2');
-          const newTextAreaAnswerComment = document.createElement('textarea');
-          const newButtonAnswerCreate = document.createElement('button');
-            const newSpanAnswerState = document.createElement('span');
-          const newDivMentArea = document.createElement('div');
-          const newPSpot = document.createElement('p');
-          const newPQnaGuideMent = document.createElement('p'); */
-
+  var newComIcon = document.createElement('i');
+  var newSpanManageComment = document.createElement('span');
   addClass(newSpanQState, 'state_answer_complete');
   addClass(newPQuMent, 'qna_ment');
   addClass(newDivLeftBox, 'left_box');
@@ -1242,16 +1242,38 @@ function qnaCreate(object, array) {
   newDivLeftBox.appendChild(newPQuMent);
   addClassMulti(newSpanQdate, ['qna_date', 'date']);
   addClassMulti(newSpanUserID, ['qna_id', 'list_view_id']);
+  addClassMulti(newComIcon, ['fas', 'fa-user-tag']);
+  addClass(newSpanManageComment, 'comment_click_on');
   addClass(newDivRightBox, 'right_box');
   newSpanQdate.textContent = object.date;
   newSpanUserID.textContent = IDViewLengthCut(object.userId);
+  newSpanManageComment.appendChild(newComIcon);
   newDivRightBox.appendChild(newSpanQdate);
   newDivRightBox.appendChild(newSpanUserID);
+  newDivRightBox.appendChild(newSpanManageComment);
   addClass(newDivQbox, 'question_box');
   newDivQbox.appendChild(newDivLeftBox);
   newDivQbox.appendChild(newDivRightBox);
+
+  /* answer */
+  var newDivAnswerBox = document.createElement('div');
+  var newDivMentInputArea = document.createElement('div');
+  var newH2 = document.createElement('h2');
+  var newTextAreaAnswerComment = document.createElement('textarea');
+  var newButtonAnswerCreate = document.createElement('button');
+  newH2.textContent = '[CARHARTT] 관리자';
+  newButtonAnswerCreate.textContent = '답변하기';
+  addClass(newDivMentInputArea, 'ment_input');
+  addClassMulti(newButtonAnswerCreate, ['answer_create', 'blue_btn']);
+  addClass(newDivAnswerBox, 'answer_box');
+  setAttributeMulti(newTextAreaAnswerComment, [['class', 'answer_text_box'], ['cols', '10'], ['rows', '4'], ['maxlength', '200']]);
+  newDivMentInputArea.appendChild(newH2);
+  newDivMentInputArea.appendChild(newTextAreaAnswerComment);
+  newDivMentInputArea.appendChild(newButtonAnswerCreate);
+  newDivAnswerBox.appendChild(newDivMentInputArea);
   addClass(newLiQnAlist, 'question_list');
   newLiQnAlist.appendChild(newDivQbox);
+  newLiQnAlist.appendChild(newDivAnswerBox);
   fragment.appendChild(newLiQnAlist);
 
   //리뷰 몇개인지 알려줌.
@@ -1262,6 +1284,13 @@ function qnaCreate(object, array) {
   } else {
     removeClass(qnaNotMentBox, 'none_on');
   }
+  newSpanManageComment.addEventListener('click', function () {
+    if (!object.answerState) {
+      var argueArray = [newLiQnAlist, newDivAnswerBox, newTextAreaAnswerComment, object.answerState, newSpanQState, newButtonAnswerCreate];
+      addClass(newDivAnswerBox, 'block_on');
+      answerClick(argueArray);
+    }
+  });
 }
 function IDViewLengthCut(ID) {
   var userIDBefore = ID.substring(0, 2);
@@ -1280,7 +1309,94 @@ function answerStateReturn(objectProperty) {
   }
   return result;
 }
-
+function setAttributeMulti(Element, arrays) {
+  //구조 분해 할당을 이용한 setattriubute 반복문
+  //구조 분해 할당 예시
+  //const array = [10, 20, 30];
+  //const [a, b ,c] = array;
+  //과정설명
+  //const [a, b ,c] => array[10, 20, 30];
+  //const a = array[0]
+  //const b = array[1]
+  //const c = array[2]
+  //변수 갯수와 배열안의 요소 갯수가 일치하지 않으면, 예를들어
+  //const [a,b,c] array[10, 20]
+  //c는 undefined가 뜬다.
+  //따라서 기본값을 주면 저런 상황을 미연에 방지 가능
+  //const array = [10,20];
+  //const [a = 1, b = 2, c = 3] = array
+  //const a = 10, b = 20, c = 3
+  //const array = [10,20,30];
+  //const [a, '', c] = array;
+  //const a = 10 c = 30;
+  //이렇게 건너띌수도 있음.
+  //값 바꿔치기를 할때도 배열 구조분해를 이용하면 간단하게 된다.
+  //let a = 5; let b = 6 이라고 가정하고, b와 a를 바꾸려면 원래는 새로운 변수를 하나 만들어서
+  //해당 값들중 하나를 저장해두어야 했지만
+  //배열 구조분해할당을 이용하면 그럴필요도 없어진다.
+  //let a = 5; 
+  //let b = 10;
+  //const [a, b] = [b, a] a에 b값 대입되고 b에 a값이 대입됨.
+  var _iterator = _createForOfIteratorHelper(arrays),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2),
+        _step$value$ = _step$value[0],
+        indexFirst = _step$value$ === void 0 ? '' : _step$value$,
+        _step$value$2 = _step$value[1],
+        indexLast = _step$value$2 === void 0 ? '' : _step$value$2;
+      Element.setAttribute(indexFirst, indexLast);
+      //따라서 해당 과정은 이런형식으로 진행된다.
+      //array[0] -> ['id', 'answer_text_box'] 
+      //const [indexFirst, indexLast] = ['id', 'answer_text_box']
+      //indexFirst에 id 대입됨.
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+}
+function answerClick(array) {
+  var _array = _slicedToArray(array, 6),
+    _array$ = _array[0],
+    nowLi = _array$ === void 0 ? '' : _array$,
+    _array$2 = _array[1],
+    nowAnBox = _array$2 === void 0 ? '' : _array$2,
+    _array$3 = _array[2],
+    nowTextBox = _array$3 === void 0 ? '' : _array$3,
+    _array$4 = _array[3],
+    nowAnState = _array$4 === void 0 ? '' : _array$4,
+    _array$5 = _array[4],
+    nowQState = _array$5 === void 0 ? '' : _array$5,
+    _array$6 = _array[5],
+    nowBtn = _array$6 === void 0 ? '' : _array$6;
+  nowBtn.addEventListener('click', function () {
+    if (nowTextBox.value !== null && nowTextBox.value !== undefined && nowTextBox.value !== '') {
+      var newDivMentArea = document.createElement('div');
+      var newSpanAnswer = document.createElement('span');
+      var newDivQnAGuideMent = document.createElement('div');
+      var newPSpot = document.createElement('p');
+      var newPMent = document.createElement('p');
+      addClass(newSpanAnswer, 'answer');
+      addClass(newPSpot, 'spot');
+      addClass(newDivQnAGuideMent, 'qna_guide_ment');
+      addClass(newDivMentArea, 'ment_area');
+      newSpanAnswer.textContent = '답변';
+      newPSpot.textContent = '↘[CARHARTT] 관리자';
+      newPMent.textContent = nowTextBox.value;
+      newDivQnAGuideMent.appendChild(newPSpot);
+      newDivQnAGuideMent.appendChild(newPMent);
+      newDivMentArea.appendChild(newSpanAnswer);
+      newDivMentArea.appendChild(newDivQnAGuideMent);
+      nowAnBox.appendChild(newDivMentArea);
+      nowLi.appendChild(nowAnBox);
+      removeClass(nowAnBox, 'block_on');
+      addClass(newPMent, 'block_on');
+    }
+  });
+}
 /*********************************** qna & review common  ********************************/
 function calcDate() {
   var newDate = new Date();
@@ -1290,6 +1406,9 @@ function calcDate() {
   var nowHours = newDate.getHours();
   var nowMinutes = newDate.getMinutes();
   var nowSeconds = newDate.getSeconds();
+
+  //const DateArray = [nowDay, nowMonth, nowHours, nowMinutes, nowSeconds]
+
   if (nowDay < 10) {
     nowDay = "0".concat(nowDay);
   }
@@ -1434,7 +1553,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53237" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59840" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

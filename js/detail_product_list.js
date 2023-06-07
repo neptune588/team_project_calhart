@@ -511,6 +511,7 @@ qusetionCreateStartBtn.addEventListener('click', () => {
 function qnaCreate(object, array) {
     const fragment = document.createDocumentFragment();
 
+    /* question */
     const newLiQnAlist = document.createElement('li');
 
     const newDivQbox = document.createElement('div');
@@ -522,40 +523,65 @@ function qnaCreate(object, array) {
     const newDivRightBox = document.createElement('div');
     const newSpanQdate = document.createElement('span');
     const newSpanUserID = document.createElement('span');
-
-    /*         const newDivAnswerBox = document.createElement('div');
-            const newDivMentInputArea = document.createElement('div');
-            const newH2 = document.createElement('h2');
-            const newTextAreaAnswerComment = document.createElement('textarea');
-            const newButtonAnswerCreate = document.createElement('button');
-
-            const newSpanAnswerState = document.createElement('span');
-            const newDivMentArea = document.createElement('div');
-            const newPSpot = document.createElement('p');
-            const newPQnaGuideMent = document.createElement('p'); */
+    const newComIcon = document.createElement('i');
+    const newSpanManageComment = document.createElement('span');
 
     addClass(newSpanQState, 'state_answer_complete');
     addClass(newPQuMent, 'qna_ment');
     addClass(newDivLeftBox, 'left_box');
+
     newSpanQState.textContent = object.answer;
     newPQuMent.textContent = object.text;
+
     newDivLeftBox.appendChild(newSpanQState);
     newDivLeftBox.appendChild(newPQuMent);
 
     addClassMulti(newSpanQdate, ['qna_date', 'date']);
     addClassMulti(newSpanUserID, ['qna_id', 'list_view_id']);
+    addClassMulti(newComIcon, ['fas', 'fa-user-tag']);
+    addClass(newSpanManageComment, 'comment_click_on');
     addClass(newDivRightBox, 'right_box');
     newSpanQdate.textContent = object.date;
     newSpanUserID.textContent = IDViewLengthCut(object.userId);
 
+    newSpanManageComment.appendChild(newComIcon);
     newDivRightBox.appendChild(newSpanQdate);
     newDivRightBox.appendChild(newSpanUserID);
+    newDivRightBox.appendChild(newSpanManageComment);
+
     addClass(newDivQbox, 'question_box');
+
     newDivQbox.appendChild(newDivLeftBox);
     newDivQbox.appendChild(newDivRightBox);
 
+
+    /* answer */
+    const newDivAnswerBox = document.createElement('div');
+    const newDivMentInputArea = document.createElement('div');
+    const newH2 = document.createElement('h2');
+    const newTextAreaAnswerComment = document.createElement('textarea');
+    const newButtonAnswerCreate = document.createElement('button');
+
+    newH2.textContent = '[CARHARTT] 관리자';
+    newButtonAnswerCreate.textContent = '답변하기';
+    addClass(newDivMentInputArea, 'ment_input');
+    addClassMulti(newButtonAnswerCreate, ['answer_create', 'blue_btn']);
+    addClass(newDivAnswerBox, 'answer_box');
+
+    setAttributeMulti(newTextAreaAnswerComment, [
+        ['class', 'answer_text_box'],
+        ['cols', '10'],
+        ['rows', '4'],
+        ['maxlength', '200']
+    ]);
+    newDivMentInputArea.appendChild(newH2);
+    newDivMentInputArea.appendChild(newTextAreaAnswerComment);
+    newDivMentInputArea.appendChild(newButtonAnswerCreate);
+    newDivAnswerBox.appendChild(newDivMentInputArea);
+
     addClass(newLiQnAlist, 'question_list');
     newLiQnAlist.appendChild(newDivQbox);
+    newLiQnAlist.appendChild(newDivAnswerBox);
     fragment.appendChild(newLiQnAlist);
 
     //리뷰 몇개인지 알려줌.
@@ -567,8 +593,18 @@ function qnaCreate(object, array) {
     } else {
         removeClass(qnaNotMentBox, 'none_on')
     }
+
+    newSpanManageComment.addEventListener('click', () => {
+        if(!object.answerState) {
+            const argueArray = [newLiQnAlist, newDivAnswerBox, newTextAreaAnswerComment, object.answerState, newSpanQState, newButtonAnswerCreate];
+            addClass(newDivAnswerBox, 'block_on');
+            answerClick(argueArray);
+        }
+    });
+
+
 }
-    
+
 function IDViewLengthCut(ID) {
     let userIDBefore = ID.substring(0, 2);
     let userIDafter = '*'.repeat(ID.length - userIDBefore.length);
@@ -590,7 +626,81 @@ function answerStateReturn(objectProperty) {
     return result;
 }
 
+function setAttributeMulti(Element, arrays) {
+    //구조 분해 할당을 이용한 setattriubute 반복문
+    //구조 분해 할당 예시
 
+    //const array = [10, 20, 30];
+    //const [a, b ,c] = array;
+
+    //과정설명
+    //const [a, b ,c] => array[10, 20, 30];
+    //const a = array[0]
+    //const b = array[1]
+    //const c = array[2]
+
+    //변수 갯수와 배열안의 요소 갯수가 일치하지 않으면, 예를들어
+    //const [a,b,c] array[10, 20]
+    //c는 undefined가 뜬다.
+    //따라서 기본값을 주면 저런 상황을 미연에 방지 가능
+
+    //const array = [10,20];
+    //const [a = 1, b = 2, c = 3] = array
+    //const a = 10, b = 20, c = 3
+
+    //const array = [10,20,30];
+    //const [a, '', c] = array;
+    //const a = 10 c = 30;
+    //이렇게 건너띌수도 있음.
+
+    //값 바꿔치기를 할때도 배열 구조분해를 이용하면 간단하게 된다.
+    //let a = 5; let b = 6 이라고 가정하고, b와 a를 바꾸려면 원래는 새로운 변수를 하나 만들어서
+    //해당 값들중 하나를 저장해두어야 했지만
+    //배열 구조분해할당을 이용하면 그럴필요도 없어진다.
+    //let a = 5; 
+    //let b = 10;
+    //const [a, b] = [b, a] a에 b값 대입되고 b에 a값이 대입됨.
+    for (const [indexFirst = '', indexLast = ''] of arrays) {
+        Element.setAttribute(indexFirst, indexLast);
+        //따라서 해당 과정은 이런형식으로 진행된다.
+        //array[0] -> ['id', 'answer_text_box'] 
+        //const [indexFirst, indexLast] = ['id', 'answer_text_box']
+        //indexFirst에 id 대입됨.
+    }
+}
+
+function answerClick(array) {
+    const [nowLi = '', nowAnBox = '', nowTextBox = '', nowAnState = '', nowQState = '', nowBtn = ''] = array;
+    nowBtn.addEventListener('click', () => {
+        if(nowTextBox.value !== null && nowTextBox.value !== undefined && nowTextBox.value !== '') {
+            const newDivMentArea = document.createElement('div');
+            const newSpanAnswer = document.createElement('span');
+            const newDivQnAGuideMent = document.createElement('div');
+            const newPSpot = document.createElement('p');
+            const newPMent = document.createElement('p');
+
+            addClass(newSpanAnswer, 'answer');
+            addClass(newPSpot, 'spot');
+            addClass(newDivQnAGuideMent, 'qna_guide_ment');
+            addClass(newDivMentArea, 'ment_area');
+            
+            newSpanAnswer.textContent = '답변';
+            newPSpot.textContent = '↘[CARHARTT] 관리자';
+            newPMent.textContent = nowTextBox.value;
+
+            newDivQnAGuideMent.appendChild(newPSpot);
+            newDivQnAGuideMent.appendChild(newPMent);
+            newDivMentArea.appendChild(newSpanAnswer);
+            newDivMentArea.appendChild(newDivQnAGuideMent);
+
+            nowAnBox.appendChild(newDivMentArea);
+
+            nowLi.appendChild(nowAnBox);
+            removeClass(nowAnBox, 'block_on');
+            addClass(newPMent, 'block_on');
+        }
+    });
+}
 /*********************************** qna & review common  ********************************/
 function calcDate() {
     let newDate = new Date();
@@ -600,6 +710,8 @@ function calcDate() {
     let nowHours = newDate.getHours();
     let nowMinutes = newDate.getMinutes();
     let nowSeconds = newDate.getSeconds();
+
+    //const DateArray = [nowDay, nowMonth, nowHours, nowMinutes, nowSeconds]
 
     if (nowDay < 10) {
         nowDay = `0${nowDay}`;
