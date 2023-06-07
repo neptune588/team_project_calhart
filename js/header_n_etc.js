@@ -83,6 +83,24 @@ function keyWordMove() {
     }, 1150);
 }
 
+/*************** top_btn ******************/
+const topBtn = document.getElementById('top_btn_check');
+const siteInfoSection = document.querySelector('.site_info');
+const footerEx = document.querySelector('.footer_ex');
+
+let siteInfoHeight = siteInfoSection.offsetHeight;
+let footerExHeight = footerEx.offsetHeight;
+let totalHeight = siteInfoHeight + footerExHeight;
+
+window.addEventListener('scroll', function() {
+    if(window.scrollY >= totalHeight ) {
+        topBtn.style.display = 'none';
+    } else {
+        topBtn.style.display = 'block';
+    }
+});
+
+
 /*************** common ******************/
 //position값 계산
 function move(LiWidth, count) {

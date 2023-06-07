@@ -962,7 +962,9 @@ input {
             .qna {
                 .question_list {
                     padding: 0;
-
+                    &.answer_complete {
+                        cursor: pointer;
+                    }
                     .question_box {
                         overflow: hidden;
                         padding: 30px 0;
@@ -974,12 +976,25 @@ input {
                             float: left;
 
                             span {
+                                display: inline-block;
                                 margin-left: 15px;
                             }
 
                             p {
                                 margin-left: 40px;
                                 text-align: center;
+                            }
+                            .qna_ment {
+                                display: flex;
+                                .qna_list_delete {
+                                    cursor: pointer;
+                                }
+    
+                                .manager_ment_on {
+                                    display: none;
+                                    margin-left: 25px;
+                                    cursor: pointer;
+                                }
                             }
                         }
 
@@ -988,9 +1003,15 @@ input {
                             float: right;
 
                             span {
-                                width: 33.3333%;
+                                width: 100px;
+                                display: inline-block;
                                 margin-right: 50px;
+                                text-align: center;
+                                &.date {
+                                    width: 120px;
+                                }
                                 &.comment_click_on {
+                                    width: 50px;
                                     margin-right: 0;
                                 }
                             }
@@ -1033,24 +1054,24 @@ input {
                                 margin-left: auto;
                             }
                         }
-                        .ment_area {
-                            display: flex;
-                            align-items: center;
-                            padding: 20px 0;
-                            font-size: $defalut_font_size;
-                            border-top: 1px solid #bbbbbb;
-                            .answer {
-                                margin-left: 15px;
-                                font-size: $small_up_font_size;
-                            }
-                            .qna_guide_ment {
-                                width: 90%;
-                                margin-left: 50px;
-                                font-size: $small_up_font_size;
-                                .spot {
-                                    font-size: 1.6rem;
-                                    font-family: "Noto Sans KR", sans-serif;
-                                }
+                    }
+                    .ment_area {
+                        display: flex;
+                        align-items: center;
+                        padding: 20px 0;
+                        font-size: $defalut_font_size;
+                        border-top: 1px solid #bbbbbb;
+                        .answer {
+                            margin-left: 15px;
+                            font-size: $small_up_font_size;
+                        }
+                        .qna_guide_ment {
+                            width: 90%;
+                            margin-left: 50px;
+                            font-size: $small_up_font_size;
+                            .spot {
+                                font-size: 1.6rem;
+                                font-family: "Noto Sans KR", sans-serif;
                             }
                         }
                     }
