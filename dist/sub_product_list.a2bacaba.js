@@ -316,13 +316,14 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "jaket",
   price: 283000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
   isNew: true,
   isBest: true,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -332,6 +333,7 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "jaket",
   price: 248000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-1.jpg", "./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-0.jpg"],
   isNew: true,
   isBest: true,
@@ -347,6 +349,7 @@ var sub_page_product_list = [
   productColor: "white",
   productStyle: "jaket",
   price: 248000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-1.jpg", "./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-0.jpg"],
   isNew: true,
   isBest: true,
@@ -362,13 +365,14 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "jaket",
   price: 263000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -378,13 +382,14 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "jaket",
   price: 258000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-1.jpg", "./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -394,13 +399,14 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "jaket",
   price: 343000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-1.jpg", "./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, /***************** shirt ******************/
@@ -411,13 +417,14 @@ var sub_page_product_list = [
   productColor: "pink",
   productStyle: "shirt",
   price: 113000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-1.jpg", "./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -427,13 +434,14 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "shirt",
   price: 278000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-1.jpg", "./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -443,6 +451,7 @@ var sub_page_product_list = [
   productColor: "green",
   productStyle: "shirt",
   price: 218000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-1.jpg", "./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -458,6 +467,7 @@ var sub_page_product_list = [
   productColor: "greenDown",
   productStyle: "shirt",
   price: 123000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-1.jpg", "./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -473,6 +483,7 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "shirt",
   price: 118000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-1.jpg", "./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -488,6 +499,7 @@ var sub_page_product_list = [
   productColor: "orange",
   productStyle: "shirt",
   price: 118000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-1.jpg", "./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -504,6 +516,7 @@ var sub_page_product_list = [
   productColor: "gray",
   productStyle: "sweater",
   price: 138000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-1.jpg", "./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -519,6 +532,7 @@ var sub_page_product_list = [
   productColor: "greenDown",
   productStyle: "sweater",
   price: 138000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-1.jpg", "./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -534,6 +548,7 @@ var sub_page_product_list = [
   productColor: "purple",
   productStyle: "sweater",
   price: 138000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-1.jpg", "./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -549,6 +564,7 @@ var sub_page_product_list = [
   productColor: "green",
   productStyle: "sweater",
   price: 148000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-1.jpg", "./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -564,6 +580,7 @@ var sub_page_product_list = [
   productColor: "orange",
   productStyle: "sweater",
   price: 153000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-1.jpg", "./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -579,6 +596,7 @@ var sub_page_product_list = [
   productColor: "skyBlue",
   productStyle: "sweater",
   price: 163000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-1.jpg", "./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -595,13 +613,14 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "neat",
   price: 218000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-1.jpg", "./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-0.jpg"],
   isNew: false,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -611,6 +630,7 @@ var sub_page_product_list = [
   productColor: "gray",
   productStyle: "neat",
   price: 185000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-1.jpg", "./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -626,13 +646,14 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "neat",
   price: 95000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-1.jpg", "./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-0.jpg"],
   isNew: false,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -642,13 +663,14 @@ var sub_page_product_list = [
   productColor: "white",
   productStyle: "neat",
   price: 98000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-1.jpg", "./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-0.jpg"],
   isNew: false,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -658,6 +680,7 @@ var sub_page_product_list = [
   productColor: "skyBlue",
   productStyle: "neat",
   price: 113000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-1.jpg", "./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -673,6 +696,7 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "neat",
   price: 148000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-1.jpg", "./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-0.jpg"],
   isNew: false,
   isBest: false,
@@ -689,6 +713,7 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "TShirt",
   price: 85000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-1.jpg", "./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -704,6 +729,7 @@ var sub_page_product_list = [
   productColor: "white",
   productStyle: "TShirt",
   price: 98000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-1.jpg", "./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-0.jpg"],
   isNew: false,
   isBest: false,
@@ -719,6 +745,7 @@ var sub_page_product_list = [
   productColor: "purple",
   productStyle: "TShirt",
   price: 75000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-1.jpg", "./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-0.jpg"],
   isNew: false,
   isBest: false,
@@ -734,6 +761,7 @@ var sub_page_product_list = [
   productColor: "pink",
   productStyle: "TShirt",
   price: 93000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-1.jpg", "./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-0.jpg"],
   isNew: false,
   isBest: false,
@@ -749,6 +777,7 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "TShirt",
   price: 78000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-1.jpg", "./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -764,6 +793,7 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "TShirt",
   price: 75000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-1.jpg", "./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-0.jpg"],
   isNew: false,
   isBest: false,
@@ -804,6 +834,7 @@ var pageSection = document.querySelector('.pagenation');
 var pageNumber = document.querySelector('.page_number');
 //변수 선언 해놓고 반복문돌려서 li생성되면 queryselectorall로 받기
 var pageItemView = 12;
+var topMenuClickState = false;
 var topMenuStateObject = {
   allstate: false,
   jaketState: false,
@@ -819,11 +850,13 @@ var priceStateObject = {
   costRange250000500000: false,
   costRange500000: false
 };
+var fillterArray = [];
+var arrayList = [];
 
 //전체페이지 기준으로, 1페이지 작성
 //페이지 카운터 생성 함수 호출
 listnPageCreate(_data.sub_page_product_list);
-topMenuStateObject.allstate = true;
+/* topMenuStateObject.allstate = true; */
 //console.log(topMenuStateObject.allstate);
 
 //페이지 카운터 생성 함수, 필터의 조건을 누를떄마다 실행하게 계획, 무조건 인덱스0 즉 숫자1에는 불이 들어와야하니까
@@ -849,321 +882,61 @@ filterBox.addEventListener('click', function () {
     filterState = false;
   }
 });
-var topMenuList = document.querySelectorAll('.product_menu_list > li');
+
+//top메뉴 클릭효과
+var topMenuList = document.querySelectorAll('.product_menu_list > input');
+var topMenuListStyle = document.querySelectorAll('.product_menu_list > .chk_box');
 var _loop = function _loop(i) {
   topMenuList[i].addEventListener('click', function () {
-    for (var j = 0; j < topMenuList.length; j++) {
-      removeClass(topMenuList[j], 'clicked');
+    if (topMenuList[i].checked) {
+      addClass(topMenuListStyle[i], 'clicked');
+    } else {
+      removeClass(topMenuListStyle[i], 'clicked');
     }
-    addClass(topMenuList[i], 'clicked');
-    menuchecks01(i);
   });
 };
 for (var i = 0; i < topMenuList.length; i++) {
   _loop(i);
 }
-function menuchecks01(i) {
-  switch (i) {
-    case 0:
-      {
-        //버튼 상태변수 전부 초기화
-        stateObjectReset(topMenuStateObject);
-        //내가 클릭한것만 상태 true
-        topMenuStateObject.allstate = true;
 
-        //금액 chkbox가 체크되었을경우에만 조건을 걸어주면 된다. 체크가 해제되엇을경우는 밑에서 명령어 처리를 해놓았기 때문에 
-        //chkbox가 선택되어있으면서 all탭이 선택됐을때 
-
-        if (priceStateObject.costRange050000 && topMenuStateObject.allstate) {
-          var returnArray = pricechkRetrunArray(_data.sub_page_product_list, "price", 0, 50000);
-          listnPageCreate(returnArray);
-        } else if (priceStateObject.costRange50000150000 && topMenuStateObject.allstate) {
-          var _returnArray = pricechkRetrunArray(_data.sub_page_product_list, "price", 50000, 150000);
-          listnPageCreate(_returnArray);
-        } else if (priceStateObject.costRange150000250000 && topMenuStateObject.allstate) {
-          var _returnArray2 = pricechkRetrunArray(_data.sub_page_product_list, "price", 150000, 250000);
-          listnPageCreate(_returnArray2);
-        } else if (priceStateObject.costRange250000500000 && topMenuStateObject.allstate) {
-          var _returnArray3 = pricechkRetrunArray(_data.sub_page_product_list, "price", 250000, 500000);
-          listnPageCreate(_returnArray3);
-        } else if (priceStateObject.costRange500000 && topMenuStateObject.allstate) {
-          var _returnArray4 = pricechkRetrunArray(_data.sub_page_product_list, "price", 500000);
-          listnPageCreate(_returnArray4);
-        } else if (topMenuStateObject.allstate) {
-          listnPageCreate(_data.sub_page_product_list);
-        }
-        break;
-      }
-    case 1:
-      {
-        stateObjectReset(topMenuStateObject);
-        topMenuStateObject.jaketState = true;
-
-        //한번 더 걸러서 jakect인것에서 필터링해서 뽑아내야하기 때문에 
-        if (priceStateObject.costRange050000 && topMenuStateObject.jaketState) {
-          priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange050000, "price", "jaket", 0, 50000);
-        } else if (priceStateObject.costRange50000150000 && topMenuStateObject.jaketState) {
-          priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange50000150000, "price", "jaket", 50000, 150000);
-        } else if (priceStateObject.costRange150000250000 && topMenuStateObject.jaketState) {
-          priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange150000250000, "price", "jaket", 150000, 250000);
-        } else if (priceStateObject.costRange250000500000 && topMenuStateObject.jaketState) {
-          priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange250000500000, "price", "jaket", 250000, 500000);
-        } else if (priceStateObject.costRange500000 && topMenuStateObject.jaketState) {
-          priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange500000, "price", "jaket", 500000);
-        } else if (topMenuStateObject.jaketState) {
-          var _returnArray5 = checkArray(_data.sub_page_product_list, "productStyle", "jaket");
-          listnPageCreate(_returnArray5);
-        }
-        break;
-      }
-    case 2:
-      {
-        stateObjectReset(topMenuStateObject);
-        topMenuStateObject.sweaterState = true;
-        if (priceStateObject.costRange050000 && topMenuStateObject.sweaterState) {
-          priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange050000, "price", "sweater", 0, 50000);
-        } else if (priceStateObject.costRange50000150000 && topMenuStateObject.sweaterState) {
-          priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange50000150000, "price", "sweater", 50000, 150000);
-        } else if (priceStateObject.costRange150000250000 && topMenuStateObject.sweaterState) {
-          priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange150000250000, "price", "sweater", 150000, 250000);
-        } else if (priceStateObject.costRange250000500000 && topMenuStateObject.sweaterState) {
-          priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange250000500000, "price", "sweater", 250000, 500000);
-        } else if (priceStateObject.costRange500000 && topMenuStateObject.sweaterState) {
-          priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange500000, "price", "sweater", 500000);
-        } else if (topMenuStateObject.sweaterState) {
-          var _returnArray6 = checkArray(_data.sub_page_product_list, "productStyle", "sweater");
-          listnPageCreate(_returnArray6);
-        }
-        break;
-      }
-    case 3:
-      {
-        stateObjectReset(topMenuStateObject);
-        topMenuStateObject.neatState = true;
-        if (priceStateObject.costRange050000 && topMenuStateObject.neatState) {
-          priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange050000, "price", "neat", 0, 50000);
-        } else if (priceStateObject.costRange50000150000 && topMenuStateObject.neatState) {
-          priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange50000150000, "price", "neat", 50000, 150000);
-        } else if (priceStateObject.costRange150000250000 && topMenuStateObject.neatState) {
-          priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange150000250000, "price", "neat", 150000, 250000);
-        } else if (priceStateObject.costRange250000500000 && topMenuStateObject.neatState) {
-          priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange250000500000, "price", "neat", 250000, 500000);
-        } else if (priceStateObject.costRange500000 && topMenuStateObject.neatState) {
-          priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange500000, "price", "neat", 500000);
-        } else if (topMenuStateObject.neatState) {
-          var _returnArray7 = checkArray(_data.sub_page_product_list, "productStyle", "neat");
-          listnPageCreate(_returnArray7);
-        }
-        break;
-      }
-    case 4:
-      {
-        stateObjectReset(topMenuStateObject);
-        topMenuStateObject.shirtState = true;
-        if (priceStateObject.costRange050000 && topMenuStateObject.shirtState) {
-          priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange050000, "price", "shirt", 0, 50000);
-        } else if (priceStateObject.costRange50000150000 && topMenuStateObject.shirtState) {
-          priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange50000150000, "price", "shirt", 50000, 150000);
-        } else if (priceStateObject.costRange150000250000 && topMenuStateObject.shirtState) {
-          priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange150000250000, "price", "shirt", 150000, 250000);
-        } else if (priceStateObject.costRange250000500000 && topMenuStateObject.shirtState) {
-          priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange250000500000, "price", "shirt", 250000, 500000);
-        } else if (priceStateObject.costRange500000 && topMenuStateObject.shirtState) {
-          priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange500000, "price", "shirt", 500000);
-        } else if (topMenuStateObject.shirtState) {
-          var _returnArray8 = checkArray(_data.sub_page_product_list, "productStyle", "shirt");
-          listnPageCreate(_returnArray8);
-        }
-        break;
-      }
-    case 5:
-      {
-        stateObjectReset(topMenuStateObject);
-        topMenuStateObject.TShirtState = true;
-        if (priceStateObject.costRange050000 && topMenuStateObject.TShirtState) {
-          priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange050000, "price", "TShirt", 0, 50000);
-        } else if (priceStateObject.costRange50000150000 && topMenuStateObject.TShirtState) {
-          priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange50000150000, "price", "TShirt", 50000, 150000);
-        } else if (priceStateObject.costRange150000250000 && topMenuStateObject.TShirtState) {
-          priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange150000250000, "price", "TShirt", 150000, 250000);
-        } else if (priceStateObject.costRange250000500000 && topMenuStateObject.TShirtState) {
-          priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange250000500000, "price", "TShirt", 250000, 500000);
-        } else if (priceStateObject.costRange500000 && topMenuStateObject.TShirtState) {
-          priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange500000, "price", "TShirt", 500000);
-        } else if (topMenuStateObject.TShirtState) {
-          var _returnArray9 = checkArray(_data.sub_page_product_list, "productStyle", "TShirt");
-          listnPageCreate(_returnArray9);
-        }
-        break;
-      }
-  }
-}
-
-/*************** filter_chkbox ******************/
-var ChkBox = document.querySelectorAll('input');
+//컬러메뉴 클릭효과
+var colorSelector = document.querySelectorAll('.color_select input');
+var colorSelectorStyle = document.querySelectorAll('.color_select .chk_box');
 var _loop2 = function _loop2(_i) {
-  ChkBox[_i].addEventListener('click', function () {
-    if (!ChkBox[_i].checked) {
-      ChkBox[_i].checked = false;
+  colorSelector[_i].addEventListener('click', function () {
+    if (colorSelector[_i].checked) {
+      addClass(colorSelectorStyle[_i], 'clicked_border');
     } else {
-      for (var j = 0; j < ChkBox.length; j++) {
-        ChkBox[j].checked = false;
-      }
-      ChkBox[_i].checked = true;
+      removeClass(colorSelectorStyle[_i], 'clicked_border');
     }
-    menucheck02(_i);
-
-    //ChkBox[i].checked = true;, 클릭한 부분을 무조건 true로 바꾸고, 나머진 다 해제
-    //하지만 위의 명령어 때문에 체크된 박스를 한번더 클릭했을때 해제가 안됨
-    //따라서 클릭한 체크부분을 한번 더 클릭했을대 체크를 해제해주는 기능 필요
-    //클릭되어잇는 체크박스를 한번더 클릭했다 == cheked가 false라는뜻과 같다.
-    //왜냐면 체크박스에 클릭이벤트를걸면 상태가 변화가 된 이후에 실행이 되기 떄문에
-    //따라서 if문과 else로 명령어를 처리해주어야 한다.
-    //클릭했을때 클릭되어있는 놈이 상태가 false라면, 즉 클릭되어있는놈을 한번 더 클릭했다면 
-    //상태를 false로 만들어라, (반복문으로 내가 클릭한놈을 true로 만드는 명령어를 써놨기 때문에 위와 같이 강제로 false로 만들어줘야한다.)
-    //그리고 else, 즉 박스가 체크가 안되어있다면 내가 클릭한 놈만 true로 해라 
-    //이런식으로 명령어를 구성하면 된다.
-
-    //console.log(ChkBox[i].checked);
   });
 };
-for (var _i = 0; _i < ChkBox.length; _i++) {
+for (var _i = 0; _i < colorSelector.length; _i++) {
   _loop2(_i);
 }
-function menucheck02(i) {
-  switch (i) {
-    case 0:
-      {
-        if (ChkBox[i].checked) {
-          //top밑의 옷 스타일 메뉴들은 false가되는경우가 없기 때문에 따로 조건문을 짜지 않아도 됐지만, 얘내들은 input이라 false가되는경우도 있기 때문에 그거에 맞게 조건문을 짜준다.
-
-          //내가 클릭한것만 true가 되게
-          //상태를 기반으로 조건을 체크하기 떄문에, 내가 클릭했을때 즉 체크드가 트루일때는 객체상태를 전부 false돌려주고, 내가 클릭한 상태 속성만 true
-          stateObjectReset(priceStateObject);
-          priceStateObject.costRange050000 = true;
-        } else {
-          //그게 아닐 경우는 false가 됐다는말이기때문에 객체 속성을 전부 false로 돌려준다.
-          stateObjectReset(priceStateObject);
-        }
-
-        //all활성화에 0~50000을눌렀을경우
-        if (topMenuStateObject.allstate && priceStateObject.costRange050000) {
-          var returnArray01 = pricechkRetrunArray(_data.sub_page_product_list, "price", 0, 50000);
-          listnPageCreate(returnArray01);
-        } else if (topMenuStateObject.allstate && !priceStateObject.costRange050000) {
-          listnPageCreate(_data.sub_page_product_list);
-        }
-
-        //각 탭이 활성화가 되어있으면서 (선택되어있으면서) 0~50000박스가 클릭됐을때
-        priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange050000, "price", "jaket", 0, 50000);
-        priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange050000, "price", "sweater", 0, 50000);
-        priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange050000, "price", "neat", 0, 50000);
-        priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange050000, "price", "shirt", 0, 50000);
-        priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange050000, "price", "TShirt", 0, 50000);
-        break;
+var chkList = document.querySelectorAll(".side_filter input");
+chkList.forEach(function (input) {
+  input.addEventListener('click', function () {
+    if (input.checked) {
+      fillterArray.push(input.value);
+    } else {
+      var valueIndex = fillterArray.indexOf(input.value);
+      fillterArray.splice(valueIndex, 1);
+    }
+    arrayReturn(_data.sub_page_product_list, fillterArray);
+  });
+});
+function arrayReturn() {
+  var array01 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var array02 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var returnArray01;
+  returnArray01 = array01.filter(function (object) {
+    for (var value in object) {
+      if (array02.includes(object[value])) {
+        return true;
       }
-    case 1:
-      {
-        if (ChkBox[i].checked) {
-          stateObjectReset(priceStateObject);
-          priceStateObject.costRange50000150000 = true;
-        } else {
-          stateObjectReset(priceStateObject);
-        }
-
-        //all활성화에 50000~150000을눌렀을경우
-        if (topMenuStateObject.allstate && priceStateObject.costRange50000150000) {
-          var _returnArray10 = pricechkRetrunArray(_data.sub_page_product_list, "price", 50000, 150000);
-          listnPageCreate(_returnArray10);
-        } else if (topMenuStateObject.allstate && !priceStateObject.costRange50000150000) {
-          listnPageCreate(_data.sub_page_product_list);
-        }
-        priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange50000150000, "price", "jaket", 50000, 150000);
-        priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange50000150000, "price", "sweater", 50000, 150000);
-        priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange50000150000, "price", "neat", 50000, 150000);
-        priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange50000150000, "price", "shirt", 50000, 150000);
-        priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange50000150000, "price", "TShirt", 50000, 150000);
-        break;
-      }
-    case 2:
-      {
-        if (ChkBox[i].checked) {
-          stateObjectReset(priceStateObject);
-          priceStateObject.costRange150000250000 = true;
-        } else {
-          stateObjectReset(priceStateObject);
-        }
-        if (topMenuStateObject.allstate && priceStateObject.costRange150000250000) {
-          var _returnArray11 = pricechkRetrunArray(_data.sub_page_product_list, "price", 150000, 250000);
-          listnPageCreate(_returnArray11);
-        } else if (topMenuStateObject.allstate && !priceStateObject.costRange150000250000) {
-          listnPageCreate(_data.sub_page_product_list);
-        }
-        priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange150000250000, "price", "jaket", 150000, 250000);
-        priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange150000250000, "price", "sweater", 150000, 250000);
-        priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange150000250000, "price", "neat", 150000, 250000);
-        priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange150000250000, "price", "shirt", 150000, 250000);
-        priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange150000250000, "price", "TShirt", 150000, 250000);
-        break;
-      }
-    case 3:
-      {
-        if (ChkBox[i].checked) {
-          stateObjectReset(priceStateObject);
-          priceStateObject.costRange250000500000 = true;
-        } else {
-          stateObjectReset(priceStateObject);
-        }
-        if (topMenuStateObject.allstate && priceStateObject.costRange250000500000) {
-          var _returnArray12 = pricechkRetrunArray(_data.sub_page_product_list, "price", 250000, 500000);
-          listnPageCreate(_returnArray12);
-        } else if (topMenuStateObject.allstate && !priceStateObject.costRange250000500000) {
-          listnPageCreate(_data.sub_page_product_list);
-        }
-        priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange250000500000, "price", "jaket", 250000, 500000);
-        priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange250000500000, "price", "sweater", 250000, 500000);
-        priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange250000500000, "price", "neat", 250000, 500000);
-        priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange250000500000, "price", "shirt", 250000, 500000);
-        priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange250000500000, "price", "TShirt", 250000, 500000);
-        break;
-      }
-    case 4:
-      {
-        if (ChkBox[i].checked) {
-          stateObjectReset(priceStateObject);
-          priceStateObject.costRange500000 = true;
-        } else {
-          stateObjectReset(priceStateObject);
-        }
-
-        //all활성화에 500000~을눌렀을경우
-        if (topMenuStateObject.allstate && priceStateObject.costRange500000) {
-          var _returnArray13 = pricechkRetrunArray(_data.sub_page_product_list, "price", 500000);
-          listnPageCreate(_returnArray13);
-        } else if (topMenuStateObject.allstate && !priceStateObject.costRange500000) {
-          listnPageCreate(_data.sub_page_product_list);
-        }
-        priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange500000, "price", "jaket", 500000);
-        priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange500000, "price", "sweater", 500000);
-        priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange500000, "price", "neat", 500000);
-        priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange500000, "price", "shirt", 500000);
-        priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange500000, "price", "TShirt", 500000);
-        break;
-      }
-  }
-}
-function priceSaleCheck01(state01, state02) {
-  var property = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var style = arguments.length > 3 ? arguments[3] : undefined;
-  var price01 = arguments.length > 4 ? arguments[4] : undefined;
-  var price02 = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 99999999;
-  var returnArray01 = checkArray(_data.sub_page_product_list, "productStyle", style);
-  if (state01 && state02) {
-    var returnArray02 = pricechkRetrunArray(returnArray01, property, price01, price02);
-    listnPageCreate(returnArray02);
-  } else if (state01 && !state02) {
-    listnPageCreate(returnArray01);
-  }
+    }
+  });
 }
 
 /*************** common function ******************/
@@ -1224,7 +997,7 @@ function listCreate(array) {
     }
     receive += list;
   }
-  productListWrapper.innerHTML = receive;
+  productListWrapper.innerHTML += receive;
 }
 //배열 받아서 페이지 계산
 function calc(array) {
@@ -1259,20 +1032,6 @@ function arraySliceCreate(firstValue, lastValue, array) {
   //console.log(lastIndex);
 }
 
-function checkArray(array, property, value) {
-  var filterArray = array.filter(function (object) {
-    return object[property] === value;
-  });
-  return filterArray;
-}
-function pricechkRetrunArray(array, property, price01) {
-  var price02 = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 99999999;
-  var filterArray = array.filter(function (object) {
-    return object[property] >= price01 && object[property] <= price02;
-  });
-  //console.log(filterArray);
-  return filterArray;
-}
 function stateObjectReset(object) {
   for (var key in object) {
     object[key] = false;
@@ -1327,7 +1086,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50729" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58192" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

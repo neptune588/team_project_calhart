@@ -113,6 +113,10 @@ input {
   color: black !important;
 }
 
+.clicked_border {
+  border: 2px solid #ffbf00 !important;
+}
+
 /************************* visual_sub ***************************/
 .visual_sub {
   position: relative;
@@ -197,58 +201,60 @@ input {
   font-weight: 700;
   padding: 20px 0;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list li {
+.wrapper .side_filter .menu_list_section .product_menu_list label {
+  display: block;
   user-select: none;
   margin-bottom: 10px;
   cursor: pointer;
   color: gray;
   transition: all 0.1s;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list li:last-child {
+.wrapper .side_filter .menu_list_section .product_menu_list label:last-child {
   margin-bottom: 0;
 }
-.wrapper .side_filter .color_select ul {
+.wrapper .side_filter .color_select div {
   display: flex;
 }
-.wrapper .side_filter .color_select ul li {
+.wrapper .side_filter .color_select div label {
+  display: block;
   width: 20px;
   height: 20px;
   cursor: pointer;
   margin-right: 15px;
   margin-bottom: 15px;
 }
-.wrapper .side_filter .color_select ul li.black_box {
+.wrapper .side_filter .color_select div label.black_box {
   background-color: black;
 }
-.wrapper .side_filter .color_select ul li.white_box {
+.wrapper .side_filter .color_select div label.white_box {
   background-color: white;
   border: 1px solid #bbbbbb;
 }
-.wrapper .side_filter .color_select ul li.gray_box {
+.wrapper .side_filter .color_select div label.gray_box {
   background-color: gray;
 }
-.wrapper .side_filter .color_select ul li.brown_box {
+.wrapper .side_filter .color_select div label.brown_box {
   background-color: burlywood;
 }
-.wrapper .side_filter .color_select ul li.blue_box {
+.wrapper .side_filter .color_select div label.blue_box {
   background-color: rgb(0, 81, 255);
 }
-.wrapper .side_filter .color_select ul li.sky_blue_box {
+.wrapper .side_filter .color_select div label.sky_blue_box {
   background-color: skyblue;
 }
-.wrapper .side_filter .color_select ul li.green_box {
+.wrapper .side_filter .color_select div label.green_box {
   background-color: rgb(9, 163, 9);
 }
-.wrapper .side_filter .color_select ul li.green_down_box {
+.wrapper .side_filter .color_select div label.green_down_box {
   background-color: rgb(16, 90, 16);
 }
-.wrapper .side_filter .color_select ul li.orange_box {
+.wrapper .side_filter .color_select div label.orange_box {
   background-color: orange;
 }
-.wrapper .side_filter .color_select ul li.pink_box {
+.wrapper .side_filter .color_select div label.pink_box {
   background-color: pink;
 }
-.wrapper .side_filter .color_select ul li.purple_box {
+.wrapper .side_filter .color_select div label.purple_box {
   background-color: rgb(155, 13, 155);
 }
 .wrapper .side_filter .price_select label {
@@ -269,7 +275,7 @@ input {
   border: 1px solid gray;
   transition: all 0.2s;
 }
-.wrapper .side_filter input:checked ~ .chk_box {
+.wrapper .side_filter .check_design input:checked ~ .chk_box {
   background-image: url(/check_icon.0ebbb713.png);
   background-size: contain;
   background-repeat: no-repeat;
