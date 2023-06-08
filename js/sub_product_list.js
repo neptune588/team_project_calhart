@@ -12,26 +12,22 @@ const pageNumber = document.querySelector('.page_number');
 //변수 선언 해놓고 반복문돌려서 li생성되면 queryselectorall로 받기
 let pageItemView = 12;
 
-const topMenuStateObject = {
-    allstate: false,
-    jaketState: false,
-    sweaterState: false,
-    neatState: false,
-    shirtState: false,
-    TShirtState: false,
-}
-const priceStateObject = {
-    costRange050000: false,
-    costRange50000150000: false,
-    costRange150000250000: false,
-    costRange250000500000: false,
-    costRange500000: false,
+const fillterArrayTopMenu = [];
+const fillterArrayPrice = [];
+const fillterArrayColor = [];
+const fillterArraySale = [];
+
+const stateObject = {
+    topArray : [],
+    colorArray : [],
+    priceArray : [],
+    saleArrray : [],
 }
 
 //전체페이지 기준으로, 1페이지 작성
 //페이지 카운터 생성 함수 호출
 listnPageCreate(sub_page_product_list);
-topMenuStateObject.allstate = true;
+/* topMenuStateObject.allstate = true; */
 //console.log(topMenuStateObject.allstate);
 
 //페이지 카운터 생성 함수, 필터의 조건을 누를떄마다 실행하게 계획, 무조건 인덱스0 즉 숫자1에는 불이 들어와야하니까
@@ -59,380 +55,103 @@ filterBox.addEventListener('click', () => {
     }
 });
 
-const topMenuList = document.querySelectorAll('.product_menu_list > li');
-for (let i = 0; i < topMenuList.length; i++) {
-    topMenuList[i].addEventListener('click', () => {
-        for (let j = 0; j < topMenuList.length; j++) {
-            removeClass(topMenuList[j], 'clicked');
-        }
-        addClass(topMenuList[i], 'clicked');
-        menuchecks01(i);
-    })
+
+function clickEvent(...a) {
+    const objectArray = [];
+    objectArray.push(a);
+    return objectArray;
 }
 
-function menuchecks01(i) {
-    switch (i) {
-        case 0: {
-            //버튼 상태변수 전부 초기화
-            stateObjectReset(topMenuStateObject);
-            //내가 클릭한것만 상태 true
-            topMenuStateObject.allstate = true;
-
-            //금액 chkbox가 체크되었을경우에만 조건을 걸어주면 된다. 체크가 해제되엇을경우는 밑에서 명령어 처리를 해놓았기 때문에 
-            //chkbox가 선택되어있으면서 all탭이 선택됐을때 
-
-            if (priceStateObject.costRange050000 && topMenuStateObject.allstate) {
-                let returnArray = pricechkRetrunArray(sub_page_product_list, `price`, 0, 50000);
-                listnPageCreate(returnArray);
-
-            } else if (priceStateObject.costRange50000150000 && topMenuStateObject.allstate) {
-                let returnArray = pricechkRetrunArray(sub_page_product_list, `price`, 50000, 150000);
-                listnPageCreate(returnArray);
-
-            } else if (priceStateObject.costRange150000250000 && topMenuStateObject.allstate) {
-                let returnArray = pricechkRetrunArray(sub_page_product_list, `price`, 150000, 250000);
-                listnPageCreate(returnArray);
-
-            } else if (priceStateObject.costRange250000500000 && topMenuStateObject.allstate) {
-                let returnArray = pricechkRetrunArray(sub_page_product_list, `price`, 250000, 500000);
-                listnPageCreate(returnArray);
-
-            } else if (priceStateObject.costRange500000 && topMenuStateObject.allstate) {
-                let returnArray = pricechkRetrunArray(sub_page_product_list, `price`, 500000);
-                listnPageCreate(returnArray);
-
-            } else if (topMenuStateObject.allstate) {
-                listnPageCreate(sub_page_product_list);
-            }
-
-            break;
-        }
-        case 1: {
-            stateObjectReset(topMenuStateObject);
-            topMenuStateObject.jaketState = true;
-
-            //한번 더 걸러서 jakect인것에서 필터링해서 뽑아내야하기 때문에 
-            if (priceStateObject.costRange050000 && topMenuStateObject.jaketState) {
-                priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange050000, `price`, `jaket`, 0, 50000);
-
-            } else if (priceStateObject.costRange50000150000 && topMenuStateObject.jaketState) {
-                priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange50000150000, `price`, `jaket`, 50000, 150000);
-
-            } else if (priceStateObject.costRange150000250000 && topMenuStateObject.jaketState) {
-                priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange150000250000, `price`, `jaket`, 150000, 250000);
-
-            } else if (priceStateObject.costRange250000500000 && topMenuStateObject.jaketState) {
-                priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange250000500000, `price`, `jaket`, 250000, 500000);
-
-            } else if (priceStateObject.costRange500000 && topMenuStateObject.jaketState) {
-                priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange500000, `price`, `jaket`, 500000);
-
-            } else if (topMenuStateObject.jaketState) {
-                let returnArray = checkArray(sub_page_product_list, `productStyle`, `jaket`);
-                listnPageCreate(returnArray)
-            }
-
-            break;
-        }
-        case 2: {
-            stateObjectReset(topMenuStateObject);
-            topMenuStateObject.sweaterState = true;
-
-            if (priceStateObject.costRange050000 && topMenuStateObject.sweaterState) {
-                priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange050000, `price`, `sweater`, 0, 50000);
-
-            } else if (priceStateObject.costRange50000150000 && topMenuStateObject.sweaterState) {
-                priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange50000150000, `price`, `sweater`, 50000, 150000);
-
-            } else if (priceStateObject.costRange150000250000 && topMenuStateObject.sweaterState) {
-                priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange150000250000, `price`, `sweater`, 150000, 250000);
-
-            } else if (priceStateObject.costRange250000500000 && topMenuStateObject.sweaterState) {
-                priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange250000500000, `price`, `sweater`, 250000, 500000);
-
-            } else if (priceStateObject.costRange500000 && topMenuStateObject.sweaterState) {
-                priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange500000, `price`, `sweater`, 500000);
-
-            } else if (topMenuStateObject.sweaterState) {
-                let returnArray = checkArray(sub_page_product_list, `productStyle`, `sweater`);
-                listnPageCreate(returnArray);
-            }
-
-            break;
-        }
-        case 3: {
-            stateObjectReset(topMenuStateObject);
-            topMenuStateObject.neatState = true;
-
-            if (priceStateObject.costRange050000 && topMenuStateObject.neatState) {
-                priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange050000, `price`, `neat`, 0, 50000);
-
-            } else if (priceStateObject.costRange50000150000 && topMenuStateObject.neatState) {
-                priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange50000150000, `price`, `neat`, 50000, 150000);
-
-            } else if (priceStateObject.costRange150000250000 && topMenuStateObject.neatState) {
-                priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange150000250000, `price`, `neat`, 150000, 250000);
-
-            } else if (priceStateObject.costRange250000500000 && topMenuStateObject.neatState) {
-                priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange250000500000, `price`, `neat`, 250000, 500000);
-
-            } else if (priceStateObject.costRange500000 && topMenuStateObject.neatState) {
-                priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange500000, `price`, `neat`, 500000);
-            } else if (topMenuStateObject.neatState) {
-                let returnArray = checkArray(sub_page_product_list, `productStyle`, `neat`);
-                listnPageCreate(returnArray);
-            }
-
-            break;
-        }
-        case 4: {
-            stateObjectReset(topMenuStateObject);
-            topMenuStateObject.shirtState = true;
-
-            if (priceStateObject.costRange050000 && topMenuStateObject.shirtState) {
-                priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange050000, `price`, `shirt`, 0, 50000);
-
-            } else if (priceStateObject.costRange50000150000 && topMenuStateObject.shirtState) {
-                priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange50000150000, `price`, `shirt`, 50000, 150000);
-
-            } else if (priceStateObject.costRange150000250000 && topMenuStateObject.shirtState) {
-                priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange150000250000, `price`, `shirt`, 150000, 250000);
-
-            } else if (priceStateObject.costRange250000500000 && topMenuStateObject.shirtState) {
-                priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange250000500000, `price`, `shirt`, 250000, 500000);
-
-            } else if (priceStateObject.costRange500000 && topMenuStateObject.shirtState) {
-                priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange500000, `price`, `shirt`, 500000);
-
-            } else if (topMenuStateObject.shirtState) {
-                let returnArray = checkArray(sub_page_product_list, `productStyle`, `shirt`);
-                listnPageCreate(returnArray);
-            }
-
-            break;
-        }
-        case 5: {
-            stateObjectReset(topMenuStateObject);
-            topMenuStateObject.TShirtState = true;
-
-            if (priceStateObject.costRange050000 && topMenuStateObject.TShirtState) {
-                priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange050000, `price`, `TShirt`, 0, 50000);
-
-            } else if (priceStateObject.costRange50000150000 && topMenuStateObject.TShirtState) {
-                priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange50000150000, `price`, `TShirt`, 50000, 150000);
-
-            } else if (priceStateObject.costRange150000250000 && topMenuStateObject.TShirtState) {
-                priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange150000250000, `price`, `TShirt`, 150000, 250000);
-
-            } else if (priceStateObject.costRange250000500000 && topMenuStateObject.TShirtState) {
-                priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange250000500000, `price`, `TShirt`, 250000, 500000);
-
-            } else if (priceStateObject.costRange500000 && topMenuStateObject.TShirtState) {
-                priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange500000, `price`, `TShirt`, 500000);
-
-            } else if (topMenuStateObject.TShirtState) {
-                let returnArray = checkArray(sub_page_product_list, `productStyle`, `TShirt`);
-                listnPageCreate(returnArray);
-            }
-
-            break;
-        }
-    }
-}
-
-
-/*************** filter_chkbox ******************/
-const ChkBox = document.querySelectorAll('input');
-
-for (let i = 0; i < ChkBox.length; i++) {
-    ChkBox[i].addEventListener('click', () => {
-        if (!ChkBox[i].checked) {
-            ChkBox[i].checked = false;
+//top메뉴 클릭효과
+const topMenuList = document.querySelectorAll('.product_menu_list input');
+const topMenuListStyle = document.querySelectorAll('.product_menu_list .chk_box');
+topMenuList.forEach((input, i) => {
+    input.addEventListener('click', function() {
+        if(input.checked) {
+            fillterArrayTopMenu.push(input.value);
+            addClass(topMenuListStyle[i], 'clicked');
         } else {
-            for (let j = 0; j < ChkBox.length; j++) {
-                ChkBox[j].checked = false;
-            }
-            ChkBox[i].checked = true;
+            let valueIndex = fillterArrayTopMenu.indexOf(input.value);
+            fillterArrayTopMenu.splice(valueIndex, 1);
+            removeClass(topMenuListStyle[i], 'clicked');
         }
-        menucheck02(i);
-
-        //ChkBox[i].checked = true;, 클릭한 부분을 무조건 true로 바꾸고, 나머진 다 해제
-        //하지만 위의 명령어 때문에 체크된 박스를 한번더 클릭했을때 해제가 안됨
-        //따라서 클릭한 체크부분을 한번 더 클릭했을대 체크를 해제해주는 기능 필요
-        //클릭되어잇는 체크박스를 한번더 클릭했다 == cheked가 false라는뜻과 같다.
-        //왜냐면 체크박스에 클릭이벤트를걸면 상태가 변화가 된 이후에 실행이 되기 떄문에
-        //따라서 if문과 else로 명령어를 처리해주어야 한다.
-        //클릭했을때 클릭되어있는 놈이 상태가 false라면, 즉 클릭되어있는놈을 한번 더 클릭했다면 
-        //상태를 false로 만들어라, (반복문으로 내가 클릭한놈을 true로 만드는 명령어를 써놨기 때문에 위와 같이 강제로 false로 만들어줘야한다.)
-        //그리고 else, 즉 박스가 체크가 안되어있다면 내가 클릭한 놈만 true로 해라 
-        //이런식으로 명령어를 구성하면 된다.
-
-        //console.log(ChkBox[i].checked);
+        let array = arrayReturn(sub_page_product_list, fillterArrayTopMenu);
+        stateObject.topArray = clickEvent(array);
+        totalcheck(stateObject);
     });
+});
+
+//컬러메뉴 클릭효과
+const colorSelector = document.querySelectorAll('.color_select input');
+const colorSelectorStyle = document.querySelectorAll('.color_select .chk_box');
+colorSelector.forEach((input, i) => {
+    input.addEventListener('click', function() {
+        if(input.checked) {
+            fillterArrayColor.push(input.value);
+            addClass(colorSelectorStyle[i], 'clicked_border');
+        } else {
+            let valueIndex = fillterArrayColor.indexOf(input.value);
+            fillterArrayColor.splice(valueIndex, 1);
+            removeClass(colorSelectorStyle[i], 'clicked_border');
+        }
+        let array = arrayReturn(sub_page_product_list, fillterArrayColor);
+        stateObject.colorArray = clickEvent(array);
+        totalcheck(stateObject);
+    })
+})
+
+//가격메뉴 클릭효과
+const priceSelector = document.querySelectorAll(`.price_select input`);
+priceSelector.forEach((input) => {
+    input.addEventListener('click', () => {
+        if (input.checked) {
+            fillterArrayPrice.push(input.value);
+        } else {
+            let valueIndex = fillterArrayPrice.indexOf(input.value);
+            fillterArrayPrice.splice(valueIndex, 1);
+        }
+        let array = arrayReturn(sub_page_product_list, fillterArrayPrice);
+        stateObject.priceArray = clickEvent(array);
+        totalcheck(stateObject);
+    });
+});
+
+//세일메뉴 클릭효과
+const saleSelector = document.querySelectorAll(`.sale_select input`);
+saleSelector.forEach((input) => {
+    input.addEventListener('click', () => {
+        if (input.checked) {
+            fillterArraySale.push(input.value);
+        } else {
+            let valueIndex = fillterArraySale.indexOf(input.value);
+            fillterArraySale.splice(valueIndex, 1);
+        }
+        let array = arrayReturn(sub_page_product_list, fillterArraySale);
+        stateObject.saleArrray = clickEvent(array);
+        totalcheck(stateObject);
+    });
+});
+
+
+function arrayReturn(array01 = '', array02 = '') {
+    let returnArray;
+    returnArray = array01.filter((object) => {
+        for (let value in object) {
+            if (array02.includes(object[value])) {
+                return true;
+            }
+        }
+    })
+    return returnArray;
 }
 
-function menucheck02(i) {
-    switch (i) {
-        case 0: {
-            if (ChkBox[i].checked) {
-                //top밑의 옷 스타일 메뉴들은 false가되는경우가 없기 때문에 따로 조건문을 짜지 않아도 됐지만, 얘내들은 input이라 false가되는경우도 있기 때문에 그거에 맞게 조건문을 짜준다.
+function totalcheck(object) {
+    console.log(object[0]);
 
-                //내가 클릭한것만 true가 되게
-                //상태를 기반으로 조건을 체크하기 떄문에, 내가 클릭했을때 즉 체크드가 트루일때는 객체상태를 전부 false돌려주고, 내가 클릭한 상태 속성만 true
-                stateObjectReset(priceStateObject);
-                priceStateObject.costRange050000 = true;
-            } else {
-                //그게 아닐 경우는 false가 됐다는말이기때문에 객체 속성을 전부 false로 돌려준다.
-                stateObjectReset(priceStateObject);
-            }
-
-            //all활성화에 0~50000을눌렀을경우
-            if (topMenuStateObject.allstate && priceStateObject.costRange050000) {
-                let returnArray01 = pricechkRetrunArray(sub_page_product_list, `price`, 0, 50000);
-                listnPageCreate(returnArray01);
-            } else if (topMenuStateObject.allstate && !priceStateObject.costRange050000) {
-                listnPageCreate(sub_page_product_list);
-            }
-
-            //각 탭이 활성화가 되어있으면서 (선택되어있으면서) 0~50000박스가 클릭됐을때
-            priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange050000, `price`, `jaket`, 0, 50000);
-
-            priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange050000, `price`, `sweater`, 0, 50000);
-
-            priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange050000, `price`, `neat`, 0, 50000);
-
-            priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange050000, `price`, `shirt`, 0, 50000);
-
-            priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange050000, `price`, `TShirt`, 0, 50000);
-
-            break;
-        }
-
-        case 1: {
-            if (ChkBox[i].checked) {
-                stateObjectReset(priceStateObject);
-                priceStateObject.costRange50000150000 = true;
-            } else {
-                stateObjectReset(priceStateObject);
-            }
-
-            //all활성화에 50000~150000을눌렀을경우
-            if (topMenuStateObject.allstate && priceStateObject.costRange50000150000) {
-                let returnArray01 = pricechkRetrunArray(sub_page_product_list, `price`, 50000, 150000);
-                listnPageCreate(returnArray01);
-            } else if (topMenuStateObject.allstate && !priceStateObject.costRange50000150000) {
-                listnPageCreate(sub_page_product_list);
-            }
-
-            priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange50000150000, `price`, `jaket`, 50000, 150000);
-
-            priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange50000150000, `price`, `sweater`, 50000, 150000);
-
-            priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange50000150000, `price`, `neat`, 50000, 150000);
-
-            priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange50000150000, `price`, `shirt`, 50000, 150000);
-
-            priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange50000150000, `price`, `TShirt`, 50000, 150000);
-
-            break;
-        }
-
-        case 2: {
-            if (ChkBox[i].checked) {
-                stateObjectReset(priceStateObject);
-                priceStateObject.costRange150000250000 = true;
-            } else {
-                stateObjectReset(priceStateObject);
-            }
-
-            if (topMenuStateObject.allstate && priceStateObject.costRange150000250000) {
-                let returnArray01 = pricechkRetrunArray(sub_page_product_list, `price`, 150000, 250000);
-                listnPageCreate(returnArray01);
-            } else if (topMenuStateObject.allstate && !priceStateObject.costRange150000250000) {
-                listnPageCreate(sub_page_product_list);
-            }
-
-            priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange150000250000, `price`, `jaket`, 150000, 250000);
-
-            priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange150000250000, `price`, `sweater`, 150000, 250000);
-
-            priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange150000250000, `price`, `neat`, 150000, 250000);
-
-            priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange150000250000, `price`, `shirt`, 150000, 250000);
-
-            priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange150000250000, `price`, `TShirt`, 150000, 250000);
-
-            break;
-        }
-
-        case 3: {
-            if (ChkBox[i].checked) {
-                stateObjectReset(priceStateObject);
-                priceStateObject.costRange250000500000 = true;
-            } else {
-                stateObjectReset(priceStateObject);
-            }
-
-            if (topMenuStateObject.allstate && priceStateObject.costRange250000500000) {
-                let returnArray01 = pricechkRetrunArray(sub_page_product_list, `price`, 250000, 500000);
-                listnPageCreate(returnArray01);
-            } else if (topMenuStateObject.allstate && !priceStateObject.costRange250000500000) {
-                listnPageCreate(sub_page_product_list);
-            }
-
-            priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange250000500000, `price`, `jaket`, 250000, 500000);
-
-            priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange250000500000, `price`, `sweater`, 250000, 500000);
-
-            priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange250000500000, `price`, `neat`, 250000, 500000);
-
-            priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange250000500000, `price`, `shirt`, 250000, 500000);
-
-            priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange250000500000, `price`, `TShirt`, 250000, 500000);
-
-            break;
-        }
-
-        case 4: {
-            if (ChkBox[i].checked) {
-                stateObjectReset(priceStateObject);
-                priceStateObject.costRange500000 = true;
-            } else {
-                stateObjectReset(priceStateObject);
-            }
-
-            //all활성화에 500000~을눌렀을경우
-            if (topMenuStateObject.allstate && priceStateObject.costRange500000) {
-                let returnArray01 = pricechkRetrunArray(sub_page_product_list, `price`, 500000);
-                listnPageCreate(returnArray01);
-            } else if (topMenuStateObject.allstate && !priceStateObject.costRange500000) {
-                listnPageCreate(sub_page_product_list);
-            }
-
-            priceSaleCheck01(topMenuStateObject.jaketState, priceStateObject.costRange500000, `price`, `jaket`, 500000);
-
-            priceSaleCheck01(topMenuStateObject.sweaterState, priceStateObject.costRange500000, `price`, `sweater`, 500000);
-
-            priceSaleCheck01(topMenuStateObject.neatState, priceStateObject.costRange500000, `price`, `neat`, 500000);
-
-            priceSaleCheck01(topMenuStateObject.shirtState, priceStateObject.costRange500000, `price`, `shirt`, 500000);
-
-            priceSaleCheck01(topMenuStateObject.TShirtState, priceStateObject.costRange500000, `price`, `TShirt`, 500000);
-
-            break;
-
-        }
-    }
-}
-
-function priceSaleCheck01(state01, state02, property = 0, style, price01, price02 = 99999999) {
-    let returnArray01 = checkArray(sub_page_product_list, `productStyle`, style);
-    if (state01 && state02) {
-        let returnArray02 = pricechkRetrunArray(returnArray01, property, price01, price02);
-        listnPageCreate(returnArray02);
-    } else if (state01 && !state02) {
-        listnPageCreate(returnArray01);
-    }
+    /* 1. object 안의 어레이 추출
+    2. 클릭했을떄 상태의 배열 가져와서 한 배열에 전부 합산
+    3. arrayreturn함수로 밸류담고잇는 클릭했을때 배열 과 합산 배열 비교
+    4. arrayreturn 함수로 비교해보면 될듯, 주가 되는 배열은 결국 다른게 클릭됐을때의 배열 */
 }
 
 
@@ -517,7 +236,7 @@ function listCreate(array) {
 
         receive += list;
     }
-    productListWrapper.innerHTML = receive;
+    productListWrapper.innerHTML += receive;
 }
 //배열 받아서 페이지 계산
 function calc(array) {
@@ -552,21 +271,6 @@ function arraySliceCreate(firstValue, lastValue, array) {
     //console.log(returnArray);
     //console.log(startIndex);
     //console.log(lastIndex);
-}
-
-function checkArray(array, property, value) {
-    let filterArray = array.filter((object) => {
-        return object[property] === value;
-    })
-    return filterArray;
-}
-
-function pricechkRetrunArray(array, property, price01, price02 = 99999999) {
-    let filterArray = array.filter((object) => {
-        return object[property] >= price01 && object[property] <= price02;
-    })
-    //console.log(filterArray);
-    return filterArray;
 }
 
 function stateObjectReset(object) {

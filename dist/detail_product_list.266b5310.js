@@ -316,13 +316,14 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "jaket",
   price: 283000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
   isNew: true,
   isBest: true,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -332,6 +333,7 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "jaket",
   price: 248000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-1.jpg", "./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-0.jpg"],
   isNew: true,
   isBest: true,
@@ -347,6 +349,7 @@ var sub_page_product_list = [
   productColor: "white",
   productStyle: "jaket",
   price: 248000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-1.jpg", "./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-0.jpg"],
   isNew: true,
   isBest: true,
@@ -362,13 +365,14 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "jaket",
   price: 263000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -378,13 +382,14 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "jaket",
   price: 258000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-1.jpg", "./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -394,13 +399,14 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "jaket",
   price: 343000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-1.jpg", "./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, /***************** shirt ******************/
@@ -411,13 +417,14 @@ var sub_page_product_list = [
   productColor: "pink",
   productStyle: "shirt",
   price: 113000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-1.jpg", "./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -427,13 +434,14 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "shirt",
   price: 278000,
+  priceRate: "250000~500000",
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-1.jpg", "./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-0.jpg"],
   isNew: true,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -443,6 +451,7 @@ var sub_page_product_list = [
   productColor: "green",
   productStyle: "shirt",
   price: 218000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-1.jpg", "./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -458,6 +467,7 @@ var sub_page_product_list = [
   productColor: "greenDown",
   productStyle: "shirt",
   price: 123000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-1.jpg", "./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -473,6 +483,7 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "shirt",
   price: 118000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-1.jpg", "./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -488,6 +499,7 @@ var sub_page_product_list = [
   productColor: "orange",
   productStyle: "shirt",
   price: 118000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-1.jpg", "./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-0.jpg"],
   isNew: true,
   isBest: false,
@@ -504,6 +516,7 @@ var sub_page_product_list = [
   productColor: "gray",
   productStyle: "sweater",
   price: 138000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-1.jpg", "./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -519,6 +532,7 @@ var sub_page_product_list = [
   productColor: "greenDown",
   productStyle: "sweater",
   price: 138000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-1.jpg", "./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -534,6 +548,7 @@ var sub_page_product_list = [
   productColor: "purple",
   productStyle: "sweater",
   price: 138000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-1.jpg", "./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -549,6 +564,7 @@ var sub_page_product_list = [
   productColor: "green",
   productStyle: "sweater",
   price: 148000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-1.jpg", "./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -564,6 +580,7 @@ var sub_page_product_list = [
   productColor: "orange",
   productStyle: "sweater",
   price: 153000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-1.jpg", "./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -579,6 +596,7 @@ var sub_page_product_list = [
   productColor: "skyBlue",
   productStyle: "sweater",
   price: 163000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-1.jpg", "./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -595,13 +613,14 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "neat",
   price: 218000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-1.jpg", "./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-0.jpg"],
   isNew: false,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -611,6 +630,7 @@ var sub_page_product_list = [
   productColor: "gray",
   productStyle: "neat",
   price: 185000,
+  priceRate: "150000~250000",
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-1.jpg", "./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -626,13 +646,14 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "neat",
   price: 95000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-1.jpg", "./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-0.jpg"],
   isNew: false,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -642,13 +663,14 @@ var sub_page_product_list = [
   productColor: "white",
   productStyle: "neat",
   price: 98000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-1.jpg", "./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-0.jpg"],
   isNew: false,
   isBest: false,
   isSales: true,
   isSalesRate: 40 / 100,
   // 곱하기 해주기
-  isSalesRateValue: "40",
+  isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
 }, {
@@ -658,6 +680,7 @@ var sub_page_product_list = [
   productColor: "skyBlue",
   productStyle: "neat",
   price: 113000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-1.jpg", "./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -673,6 +696,7 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "neat",
   price: 148000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-1.jpg", "./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-0.jpg"],
   isNew: false,
   isBest: false,
@@ -689,6 +713,7 @@ var sub_page_product_list = [
   productColor: "blue",
   productStyle: "TShirt",
   price: 85000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-1.jpg", "./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -704,6 +729,7 @@ var sub_page_product_list = [
   productColor: "white",
   productStyle: "TShirt",
   price: 98000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-1.jpg", "./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-0.jpg"],
   isNew: false,
   isBest: false,
@@ -719,6 +745,7 @@ var sub_page_product_list = [
   productColor: "purple",
   productStyle: "TShirt",
   price: 75000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-1.jpg", "./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-0.jpg"],
   isNew: false,
   isBest: false,
@@ -734,6 +761,7 @@ var sub_page_product_list = [
   productColor: "pink",
   productStyle: "TShirt",
   price: 93000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-1.jpg", "./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-0.jpg"],
   isNew: false,
   isBest: false,
@@ -749,6 +777,7 @@ var sub_page_product_list = [
   productColor: "brown",
   productStyle: "TShirt",
   price: 78000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-1.jpg", "./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-0.jpg"],
   isNew: false,
   isBest: false,
@@ -764,6 +793,7 @@ var sub_page_product_list = [
   productColor: "black",
   productStyle: "TShirt",
   price: 75000,
+  priceRate: "50000~150000",
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-1.jpg", "./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-0.jpg"],
   isNew: false,
   isBest: false,
@@ -1609,7 +1639,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65479" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50931" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

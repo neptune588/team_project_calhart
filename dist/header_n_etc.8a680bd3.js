@@ -204,19 +204,12 @@ function keyWordMove() {
 }
 
 /*************** top_btn ******************/
-var topBtn = document.getElementById('top_btn_check');
+var topBtn = document.querySelector('.top_btn');
 var siteInfoSection = document.querySelector('.site_info');
 var footerEx = document.querySelector('.footer_ex');
 var siteInfoHeight = siteInfoSection.offsetHeight;
 var footerExHeight = footerEx.offsetHeight;
 var totalHeight = siteInfoHeight + footerExHeight;
-window.addEventListener('scroll', function () {
-  if (window.scrollY >= totalHeight) {
-    topBtn.style.display = 'none';
-  } else {
-    topBtn.style.display = 'block';
-  }
-});
 
 /*************** common ******************/
 //position값 계산
@@ -272,7 +265,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65479" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50931" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -163,9 +163,11 @@ input {
     font-size: $small_up_font_size;
 }
 .clicked {
-    color: black !important;
+    color: black !important; 
 }
-
+.clicked_border {
+    border: 2px solid $point_color_amber !important;
+}
 
 /************************* visual_sub ***************************/
 .visual_sub {
@@ -250,8 +252,8 @@ input {
                 font-family: $font_noto_sans;
                 font-weight: 700;
                 padding: 20px 0;
-
-                li {
+                label {
+                    display: block;
                     user-select: none;
                     margin-bottom: 10px;
                     cursor: pointer;
@@ -260,16 +262,16 @@ input {
                     &:last-child {
                         margin-bottom: 0;
                     }
-
                 }
             }
         }
 
         .color_select {
-            ul {
+            div {
                 display: flex;
 
-                li {
+                label {
+                    display: block;
                     @include item_size(20px, 20px);
                     cursor: pointer;
                     margin-right: 15px;
@@ -337,11 +339,13 @@ input {
                 transition: all 0.2s;
             }
         }
-        input {
-            &:checked {
-                ~ .chk_box {
-                    background-image: url(../dist/images/check_icon.png);
-                    @include background_contain;
+        .check_design {
+            input {
+                &:checked {
+                    ~ .chk_box {
+                        background-image: url(../dist/images/check_icon.png);
+                        @include background_contain;
+                    }
                 }
             }
         }

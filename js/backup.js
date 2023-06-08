@@ -1379,3 +1379,98 @@ function listCreate(array) {
     }
     productListWrapper.appendChild(fragment);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//top메뉴 클릭효과
+const topMenuList = document.querySelectorAll('.product_menu_list input');
+const topMenuListStyle = document.querySelectorAll('.product_menu_list .chk_box');
+topMenuList.forEach((input, i) => {
+    input.addEventListener('click', function() {
+        if(input.checked) {
+            fillterArrayTopMenu.push(input.value);
+            addClass(topMenuListStyle[i], 'clicked');
+        } else {
+            let valueIndex = fillterArrayTopMenu.indexOf(input.value);
+            fillterArrayTopMenu.splice(valueIndex, 1);
+            removeClass(topMenuListStyle[i], 'clicked');
+        }
+        arrayReturn(sub_page_product_list, fillterArrayTopMenu);
+    });
+});
+
+//컬러메뉴 클릭효과
+const colorSelector = document.querySelectorAll('.color_select input');
+const colorSelectorStyle = document.querySelectorAll('.color_select .chk_box');
+colorSelector.forEach((input, i) => {
+    input.addEventListener('click', function() {
+        if(input.checked) {
+            fillterArrayColor.push(input.value);
+            addClass(colorSelectorStyle[i], 'clicked_border');
+        } else {
+            let valueIndex = fillterArrayColor.indexOf(input.value);
+            fillterArrayColor.splice(valueIndex, 1);
+            removeClass(colorSelectorStyle[i], 'clicked_border');
+        }
+        arrayReturn(sub_page_product_list, fillterArrayColor);
+    })
+})
+
+//가격메뉴 클릭효과
+const priceSelector = document.querySelectorAll(`.price_select input`);
+priceSelector.forEach((input) => {
+    input.addEventListener('click', () => {
+        if (input.checked) {
+            fillterArrayPrice.push(input.value);
+        } else {
+            let valueIndex = fillterArrayPrice.indexOf(input.value);
+            fillterArrayPrice.splice(valueIndex, 1);
+        }
+        arrayReturn(sub_page_product_list, fillterArrayPrice);
+    });
+});
+
+//세일메뉴 클릭효과
+const saleSelector = document.querySelectorAll(`.sale_select input`);
+saleSelector.forEach((input) => {
+    input.addEventListener('click', () => {
+        if (input.checked) {
+            fillterArraySale.push(input.value);
+        } else {
+            let valueIndex = fillterArraySale.indexOf(input.value);
+            fillterArraySale.splice(valueIndex, 1);
+        }
+        arrayReturn(sub_page_product_list, fillterArraySale);
+    });
+});
+
+
+function arrayReturn(array01 = '', array02 = '') {
+    let returnArray;
+    returnArray = array01.filter((object) => {
+        for (let value in object) {
+            if (array02.includes(object[value])) {
+                return true;
+            }
+        }
+    })
+    arrayUpdate(returnArray);
+}

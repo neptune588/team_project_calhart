@@ -84,7 +84,7 @@ function keyWordMove() {
 }
 
 /*************** top_btn ******************/
-const topBtn = document.getElementById('top_btn_check');
+const topBtn = document.querySelector('.top_btn');
 const siteInfoSection = document.querySelector('.site_info');
 const footerEx = document.querySelector('.footer_ex');
 
@@ -92,13 +92,7 @@ let siteInfoHeight = siteInfoSection.offsetHeight;
 let footerExHeight = footerEx.offsetHeight;
 let totalHeight = siteInfoHeight + footerExHeight;
 
-window.addEventListener('scroll', function() {
-    if(window.scrollY >= totalHeight ) {
-        topBtn.style.display = 'none';
-    } else {
-        topBtn.style.display = 'block';
-    }
-});
+
 
 
 /*************** common ******************/
