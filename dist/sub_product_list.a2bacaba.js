@@ -834,16 +834,6 @@ var pageSection = document.querySelector('.pagenation');
 var pageNumber = document.querySelector('.page_number');
 //변수 선언 해놓고 반복문돌려서 li생성되면 queryselectorall로 받기
 var pageItemView = 12;
-var fillterArrayTopMenu = [];
-var fillterArrayPrice = [];
-var fillterArrayColor = [];
-var fillterArraySale = [];
-var stateObject = {
-  topArray: [],
-  colorArray: [],
-  priceArray: [],
-  saleArrray: []
-};
 
 //전체페이지 기준으로, 1페이지 작성
 //페이지 카운터 생성 함수 호출
@@ -856,6 +846,7 @@ listnPageCreate(_data.sub_page_product_list);
 //필터의 조건들을 누를 시 매 빈 배열에 조건에 맞게 값을 가져올것이기 떄문에, 계산식도 함수로 지정하여 매개변수 이용
 //calc(내가만든배열); 하면 계산식이 나오게 된다. 아이템갯수에 따라
 
+/*************** filter_view_control ******************/
 var filterBox = document.querySelector('.filter_btn');
 var filterSection = document.querySelectorAll('.filter_section');
 var filterState = false;
@@ -874,6 +865,22 @@ filterBox.addEventListener('click', function () {
     filterState = false;
   }
 });
+
+/*************** filter_check ******************/
+
+var fillterArrayTopMenu = [];
+var fillterArrayPrice = [];
+var fillterArrayColor = [];
+var fillterArraySale = [];
+var fillterArray = [fillterArrayTopMenu, fillterArrayPrice, fillterArrayColor, fillterArraySale];
+/* const stateObject = {
+    topArray : [],
+    colorArray : [],
+    priceArray : [],
+    saleArrray : [],
+}
+ */
+
 function clickEvent() {
   var objectArray = [];
   for (var _len = arguments.length, a = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -882,6 +889,7 @@ function clickEvent() {
   objectArray.push(a);
   return objectArray;
 }
+var filterSectionList = document.querySelectorAll('.check_detect');
 
 //top메뉴 클릭효과
 var topMenuList = document.querySelectorAll('.product_menu_list input');
@@ -889,16 +897,10 @@ var topMenuListStyle = document.querySelectorAll('.product_menu_list .chk_box');
 topMenuList.forEach(function (input, i) {
   input.addEventListener('click', function () {
     if (input.checked) {
-      fillterArrayTopMenu.push(input.value);
       addClass(topMenuListStyle[i], 'clicked');
     } else {
-      var valueIndex = fillterArrayTopMenu.indexOf(input.value);
-      fillterArrayTopMenu.splice(valueIndex, 1);
       removeClass(topMenuListStyle[i], 'clicked');
     }
-    var array = arrayReturn(_data.sub_page_product_list, fillterArrayTopMenu);
-    stateObject.topArray = clickEvent(array);
-    totalcheck(stateObject);
   });
 });
 
@@ -908,48 +910,22 @@ var colorSelectorStyle = document.querySelectorAll('.color_select .chk_box');
 colorSelector.forEach(function (input, i) {
   input.addEventListener('click', function () {
     if (input.checked) {
-      fillterArrayColor.push(input.value);
       addClass(colorSelectorStyle[i], 'clicked_border');
     } else {
-      var valueIndex = fillterArrayColor.indexOf(input.value);
-      fillterArrayColor.splice(valueIndex, 1);
       removeClass(colorSelectorStyle[i], 'clicked_border');
     }
-    var array = arrayReturn(_data.sub_page_product_list, fillterArrayColor);
-    stateObject.colorArray = clickEvent(array);
-    totalcheck(stateObject);
   });
 });
-
-//가격메뉴 클릭효과
-var priceSelector = document.querySelectorAll(".price_select input");
-priceSelector.forEach(function (input) {
+var chkList = document.querySelectorAll(".side_filter input");
+chkList.forEach(function (input) {
   input.addEventListener('click', function () {
     if (input.checked) {
-      fillterArrayPrice.push(input.value);
+      fillterArray.push(input.value);
     } else {
-      var valueIndex = fillterArrayPrice.indexOf(input.value);
-      fillterArrayPrice.splice(valueIndex, 1);
+      var valueIndex = fillterArray.indexOf(input.value);
+      fillterArray.splice(valueIndex, 1);
     }
-    var array = arrayReturn(_data.sub_page_product_list, fillterArrayPrice);
-    stateObject.priceArray = clickEvent(array);
-    totalcheck(stateObject);
-  });
-});
-
-//세일메뉴 클릭효과
-var saleSelector = document.querySelectorAll(".sale_select input");
-saleSelector.forEach(function (input) {
-  input.addEventListener('click', function () {
-    if (input.checked) {
-      fillterArraySale.push(input.value);
-    } else {
-      var valueIndex = fillterArraySale.indexOf(input.value);
-      fillterArraySale.splice(valueIndex, 1);
-    }
-    var array = arrayReturn(_data.sub_page_product_list, fillterArraySale);
-    stateObject.saleArrray = clickEvent(array);
-    totalcheck(stateObject);
+    console.log(arrayReturn(_data.sub_page_product_list, fillterArray));
   });
 });
 function arrayReturn() {
@@ -966,7 +942,7 @@ function arrayReturn() {
   return returnArray;
 }
 function totalcheck(object) {
-  console.log(object[0]);
+  console.log(object, fillterTotal);
 
   /* 1. object 안의 어레이 추출
   2. 클릭했을떄 상태의 배열 가져와서 한 배열에 전부 합산
@@ -1121,7 +1097,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52601" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
