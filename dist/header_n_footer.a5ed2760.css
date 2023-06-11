@@ -318,15 +318,15 @@ input {
   height: 60px;
   background-color: #4136BF;
   transition: all 0.2s;
-}
-.top_btn:hover {
-  background-color: #ffbf00;
-}
-.top_btn a {
   color: white;
   font-size: 1.6rem;
   text-align: center;
   line-height: 60px;
+  z-index: 9999;
+  cursor: pointer;
+}
+.top_btn:hover {
+  background-color: #ffbf00;
 }
 
 /************************* site_info ***************************/

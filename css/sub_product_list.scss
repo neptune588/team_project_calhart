@@ -241,10 +241,29 @@ input {
         }
 
         .menu_list_section {
-            .menu_title {
-                font-size: 2.4rem;
+            .side_top {
+                display: flex;
                 padding: 15px 0;
                 border-bottom: 4px solid black;
+                .menu_title {
+                    font-size: 2.4rem;
+                }
+                .reset {
+                    i {
+                        margin-right: 5px;
+                    }
+                    margin-top: 30px;
+                    user-select: none;
+                    cursor: pointer;
+                    font-family: $font_noto_sans;
+                    font-size: $small_up_font_size;
+                    margin-left: 85px;
+                    transition: all 0.2s;
+                    color: $sub_color_free_speach_blue;
+                    &:hover {
+                        color: $point_color_amber;
+                    }
+                }
             }
 
             .product_menu_list {
@@ -252,63 +271,80 @@ input {
                 font-family: $font_noto_sans;
                 font-weight: 700;
                 padding: 20px 0;
-                label {
-                    display: block;
-                    user-select: none;
+                li {
                     margin-bottom: 10px;
-                    cursor: pointer;
-                    color: gray;
-                    transition: all 0.1s;
+                    user-select: none;
                     &:last-child {
                         margin-bottom: 0;
                     }
+                    input {
+                        &:checked ~ label {
+                            color: black;
+                        }
+                    }
+                    label {
+                        cursor: pointer;
+                        display: block;
+                        color: gray;
+                        transition: all 0.1s;
+                    }
                 }
+                
             }
         }
 
         .color_select {
-            div {
+            ul {
                 display: flex;
-
-                label {
-                    display: block;
-                    @include item_size(20px, 20px);
-                    cursor: pointer;
-                    margin-right: 15px;
-                    margin-bottom: 15px;
-                    &.black_box {
-                        background-color: black;
+                li {
+                    input {
+                        &:checked ~ label {
+                            border: 4px solid black;
+                        }
+                        &:checked ~ .black_box {
+                            border: 4px solid $point_color_amber;
+                        }
                     }
-                    &.white_box {
-                        background-color: white;
-                        border: 1px solid #bbbbbb;
-                    }
-                    &.gray_box {
-                        background-color: gray;
-                    }
-                    &.brown_box {
-                        background-color: burlywood;
-                    }
-                    &.blue_box {
-                        background-color: rgb(0, 81, 255);
-                    }
-                    &.sky_blue_box {
-                        background-color: skyblue;
-                    }
-                    &.green_box {
-                        background-color: rgb(9, 163, 9);
-                    }
-                    &.green_down_box {
-                        background-color: rgb(16, 90, 16);
-                    }
-                    &.orange_box {
-                        background-color: orange;
-                    }
-                    &.pink_box {
-                        background-color: pink;
-                    }
-                    &.purple_box {
-                        background-color: rgb(155, 13, 155);
+                    label {
+                        display: block;
+                        @include item_size(20px, 20px);
+                        cursor: pointer;
+                        margin-right: 15px;
+                        margin-bottom: 15px;
+                        &.black_box {
+                            background-color: black;
+                        }
+                        &.white_box {
+                            background-color: white;
+                            border: 1px solid #bbbbbb;
+                        }
+                        &.gray_box {
+                            background-color: gray;
+                        }
+                        &.brown_box {
+                            background-color: burlywood;
+                        }
+                        &.blue_box {
+                            background-color: rgb(0, 81, 255);
+                        }
+                        &.sky_blue_box {
+                            background-color: skyblue;
+                        }
+                        &.green_box {
+                            background-color: rgb(9, 163, 9);
+                        }
+                        &.green_down_box {
+                            background-color: rgb(16, 90, 16);
+                        }
+                        &.orange_box {
+                            background-color: orange;
+                        }
+                        &.pink_box {
+                            background-color: pink;
+                        }
+                        &.purple_box {
+                            background-color: rgb(155, 13, 155);
+                        }
                     }
                 }
             }
@@ -451,6 +487,13 @@ input {
         }
         .product_list_wrapper {
             overflow: hidden;
+            .lengthNotice {
+                text-align: center;
+                margin-top: 30px;
+                font-size: 20px;
+                padding: 200px 0;
+                background-color: white;
+            }
             li {
                 position: relative;
                 float: left;

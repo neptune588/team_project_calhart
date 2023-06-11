@@ -982,5 +982,12 @@ input {
 .info_container .blue_btn:hover {
   background-color: #ffbf00;
 }
+.info_container .nt_ment {
+  margin: 15px 0;
+  text-align: center;
+  color: red;
+  font-size: 1.4rem;
+  font-family: "Noto Sans KR", sans-serif;
+}
 
 /*# sourceMappingURL=/detail_product_list.5b143a0d.css.map */

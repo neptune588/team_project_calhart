@@ -92,6 +92,9 @@ const reviewCounting = document.querySelector('.review_couting');
 //별점
 const reviewRating = document.querySelector('.review_rating_star');
 
+
+const reviewNoticeMent = document.querySelector('.review_notice_ment');
+
 //한 페이지에 몇개 보여줄것인지
 const pageViewLength = 6;
 const pageSection = document.querySelector('.pagenation');
@@ -123,6 +126,7 @@ reviewCreateBtn.addEventListener('click', () => {
 
         rvCrteBtnState = true;
     } else {
+        reviewNoticeMent.textContent = '';
         removeClass(reviewCreateArea, `block_on`);
 
         valueReset(reviewBox, reviewLengthBox);
@@ -144,7 +148,7 @@ reviewCreateComBtn.addEventListener('click', () => {
         //3. 리스트 생성날짜
         //4. 배열 길이에 따른 페이지 네이션 생성
         //5. 유효하게 생성되었다면 value reset 및 focus
-
+        reviewNoticeMent.textContent = '';
 
         //리스트 생성에 필요한 정보를 넣기 위해 
         //클릭할때마다 새로운 객체 생성
@@ -182,9 +186,9 @@ reviewCreateComBtn.addEventListener('click', () => {
         starCreate = false;
 
     } else if (!starCreate) {
-        console.log('리뷰 별점을 남겨주세요!');
+        reviewNoticeMent.textContent = '리뷰 별점을 남겨주세요!'
     } else {
-        console.log('공백은 안됩니다.');
+        reviewNoticeMent.textContent = '공백은 안됩니다!'
     }
 });
 
@@ -439,6 +443,8 @@ const qnaNotMentBox = document.querySelector('.qna_not_ment');
 
 const qnaCounting = document.querySelector('.qna_couting');
 
+const qnaNoticeMent = document.querySelector('.qna_notice_ment');
+
 const qnaContents = [];
 
 questionCreateComBtn.addEventListener('click', () => {
@@ -446,6 +452,9 @@ questionCreateComBtn.addEventListener('click', () => {
     let questionvalue = questionBox.value;
 
     if ((IDvalue && questionvalue) !== null && (IDvalue && questionvalue) !== '' && (IDvalue && questionvalue) !== undefined && IDvalue.length > 2) {
+
+        qnaNoticeMent.textContent = '';
+
         const qnalistObject = {};
 
         //시간 계산
@@ -469,11 +478,11 @@ questionCreateComBtn.addEventListener('click', () => {
         questionBox.focus();
 
     } else if (IDvalue === undefined || IDvalue === null || IDvalue === ``) {
-        console.log('아이디를 작성 해주세요.');
+        qnaNoticeMent.textContent = '아이디를 입력 해주세요.';
     } else if (IDvalue.length < 3) {
-        console.log('아이디는 2자를 초과해야 합니다.');
+        qnaNoticeMent.textContent = '아이디를 2자를 넘어야 합니다.';
     } else {
-        console.log('공백은 안됩니다.');
+        qnaNoticeMent.textContent = '내용을 입력 해주세요!';
     }
 });
 
@@ -488,6 +497,7 @@ qusetionCreateStartBtn.addEventListener('click', () => {
         addClass(questionCreateArea, 'block_on');
         questionState = true;
     } else {
+        qnaNoticeMent.textContent = '';
         removeClass(questionCreateArea, 'block_on');
         questionState = false;
 
@@ -828,7 +838,7 @@ const modalEx = document.querySelector('.size_chk_modal_ex');
 const inputMaxLength = 3;
 
 numberInput.forEach((inputBar) => {
-    inputBar.addEventListener('input', () => {
+    inputBar.addEventListener('keyup', () => {
 
         let numberReg = /^\d+$/;
 
@@ -890,7 +900,7 @@ function sizeCalc(value01, value02) {
         showSize.children[0].textContent = `M`;
     } else if (valueCalc02 > 23 && valueCalc02 < 25) {
         showSize.children[0].textContent = `L`;
-    } else if (valueCalc02 > 25 && valueCalc02 < 50) {
+    } else if (valueCalc02 > 25 && valueCalc02 < 40) {
         showSize.children[0].textContent = `XL`;
     } else {
         showSize.children[0].textContent = `없음`;

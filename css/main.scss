@@ -287,7 +287,7 @@ img {
                             left: 0;
                             @include item_size(300px, 300px);
                             opacity: 0;
-                            transition: all 0.3s;
+                            transition: all 0.2s;
                         }
 
                         &:hover {
@@ -296,12 +296,13 @@ img {
                             }
 
                             &::after {
-                                opacity: 10;
-                                background-color: rgba(0, 0, 0, 0.2);
+                                opacity: 1;
+                                background-color: rgba(0, 0, 0, 0.5 );
                             }
                         }
 
                         img {
+                            object-fit: cover;
                             @include item_size(100%, 100%);
                         }
 
@@ -421,7 +422,25 @@ img {
             margin-bottom: 15px;
             display: none;
             user-select: none;
-
+            .v_icon {
+                position: absolute;
+                cursor: pointer;
+                background-color: white;
+                border-radius: 50%;
+                color: black;
+                transform: rotate(268deg);
+                @include item_size(20px, 20px);
+                text-align: center;
+                line-height: 20px;
+                padding-top: 2px;
+                transition: all 0.2s;
+                &:hover {
+                    color: $sub_color_free_speach_blue;
+                }
+                i {
+                    font-size: $small_font_size;
+                }
+            }
             .hover_img {
                 cursor: pointer;
                 position: absolute;
@@ -500,6 +519,17 @@ img {
         }
 
         .look_book_view01 {
+            
+            >.view_icon01 {
+                top: 155px;
+                left: 634px;
+            }
+
+            >.view_icon02 {
+                top: 333px;
+                left: 682px;
+            }
+
             >.hover_img01 {
                 top: 74px;
                 left: 553px;
@@ -517,6 +547,21 @@ img {
         }
 
         .look_book_view02 {
+            >.view_icon01 {
+                top: 146px;
+                left: 647px;
+            }
+
+            >.view_icon02 {
+                top: 309px;
+                left: 642px;
+            }
+
+            >.view_icon03 {
+                top: 32px;
+                left: 620px;
+            }
+
             .hover_img01 {
                 top: 31px;
                 left: 607px;
@@ -541,6 +586,27 @@ img {
         }
 
         .look_book_view03 {
+            >.view_icon01 {
+                top: 19px;
+                left: 616px;
+            }
+
+            >.view_icon02 {
+                top: 146px;
+                left: 612px;
+            }
+
+            >.view_icon03 {
+                top: 304px;
+                left: 629px;
+            }
+
+            >.view_icon04 {
+                top: 204px;
+                left: 561px;
+            }
+
+
             .hover_img01 {
                 top: 14px;
                 left: 598px;

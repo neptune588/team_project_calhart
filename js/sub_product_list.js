@@ -2,10 +2,16 @@ import {
     sub_page_product_list
 } from './data.js'
 
-console.log("subpage loaded");
-
 
 /*************** product_list ******************/
+
+const sortState = {
+    defaultState: false,
+    priceState: false,
+    latestState: false,
+    bestState: false,
+}
+
 const productListWrapper = document.querySelector('.product_list_wrapper');
 const pageSection = document.querySelector('.pagenation');
 const pageNumber = document.querySelector('.page_number');
@@ -14,7 +20,7 @@ let pageItemView = 12;
 
 //전체페이지 기준으로, 1페이지 작성
 //페이지 카운터 생성 함수 호출
-listnPageCreate(sub_page_product_list);
+arraySort(sub_page_product_list);
 /* topMenuStateObject.allstate = true; */
 //console.log(topMenuStateObject.allstate);
 
@@ -48,92 +54,207 @@ filterBox.addEventListener('click', () => {
 
 /*************** filter_check ******************/
 
+//사이드필터 인풋
+const chkList = document.querySelectorAll(`.side_filter input`);
+//필터 카테고리
+const allFillterSection = document.querySelectorAll('.check_detect');
+//필터 카테고리 배열화
+const filtterSectionArr = Array.from(allFillterSection);
+
+//top_menu 조건배열
 const fillterArrayTopMenu = [];
+//price 조건배열
 const fillterArrayPrice = [];
+//color 조건배열
 const fillterArrayColor = [];
+//sale 조건배열
 const fillterArraySale = [];
 
-const fillterArray = [fillterArrayTopMenu,fillterArrayPrice,fillterArrayColor,fillterArraySale];
-/* const stateObject = {
-    topArray : [],
-    colorArray : [],
-    priceArray : [],
-    saleArrray : [],
-}
- */
+//통합 배열(반복문 돌리기 위해 2중배열)
+const fillterCompareArray = [fillterArrayTopMenu, fillterArrayPrice, fillterArrayColor, fillterArraySale];
 
-function clickEvent(...a) {
-    const objectArray = [];
-    objectArray.push(a);
-    return objectArray;
+//각 카테고리 섹션들 index 순서에 맞게 inputdata에 번호지정
+for (let i = 0; i < chkList.length; i++) {
+    let currentSection = chkList[i].closest('.check_detect');
+    let currnetSectionIndex = filtterSectionArr.indexOf(currentSection);
+    chkList[i].dataset.myFillterIndex = currnetSectionIndex;
 }
 
-const filterSectionList = document.querySelectorAll('.check_detect');
+//전체 input 순회하며 클릭한 input밸류 받아오기, 빼기 
+for (let i = 0; i < chkList.length; i++) {
+    chkList[i].addEventListener('click', function () {
+        let currentInputDataIndex = this.dataset.myFillterIndex;
 
-
-//top메뉴 클릭효과
-const topMenuList = document.querySelectorAll('.product_menu_list input');
-const topMenuListStyle = document.querySelectorAll('.product_menu_list .chk_box');
-topMenuList.forEach((input, i) => {
-    input.addEventListener('click', function() {
-        if(input.checked) {
-            addClass(topMenuListStyle[i], 'clicked');
+        if (this.checked) {
+            fillterCompareArray[currentInputDataIndex].push(this.value);
+            //indexCompare(prevChkBoxChecked, input);
         } else {
-            removeClass(topMenuListStyle[i], 'clicked');
+            let valueIndex = fillterCompareArray[currentInputDataIndex].indexOf(this.value);
+            fillterCompareArray[currentInputDataIndex].splice(valueIndex, 1);
         }
+
+        //color section의 인덱스번호가 2라고치면, 그 안에든 input의 데이터번호도 2
+        //조건배열을 담아둔 fillterCompareArray안에 각 인덱스에 맞게 배열을 배치했으니
+
+        //fillterCompareArray[colorinput의 데이터셋] 을 해주면 해당 조건배열에 value값 업데이트 !!
+
+        arrayReturn(sub_page_product_list, fillterCompareArray);
     });
-});
+}
 
+function arrayReturn(array01, array02) {
+    //외부에서 값받아주기 위해 변수 선언;
+    let resultArray01;
 
-//컬러메뉴 클릭효과
-const colorSelector = document.querySelectorAll('.color_select input');
-const colorSelectorStyle = document.querySelectorAll('.color_select .chk_box');
-colorSelector.forEach((input, i) => {
-    input.addEventListener('click', function() {
-        if(input.checked) {
-            addClass(colorSelectorStyle[i], 'clicked_border');
-        } else {
-            removeClass(colorSelectorStyle[i], 'clicked_border');
+    //array01에는 처음에는 외부모듈의 배열이 
+    //그 이후부터는 외부모듈에서 조건에 맞게 걸러진 배열이 대입되게 했다.
+    //만약 일치하는게 없거나 length가 0이되면 false를 반환하여
+    //빈 배열이 array01에 할당되기때문에 조건이 없는 즉 length 0부분은 걸러줘야 한다.
+    //array02[i].length === 0 즉 value가 없으면 건너뛰게 설계(continue)
+
+    for (let i = 0; i < array02.length; i++) {
+        if (array02[i].length === 0) {
+            continue;
         }
-    })
-})
 
-const chkList = document.querySelectorAll(`.side_filter input`);
-chkList.forEach((input) => {
-    input.addEventListener('click', () => {
-        if(input.checked) {
-            fillterArray.push(input.value);
-        } else {
-            let valueIndex = fillterArray.indexOf(input.value);
-            fillterArray.splice(valueIndex, 1);
-        }
-        console.log(arrayReturn(sub_page_product_list, fillterArray));
-    });
-});
+        //object.keys는 객체의 key를 순환하는 역할을 하는 메서드이다.
+        //object.values는 호환성이 안좋아서 key로 ㄱㄱ하자 
+        //괄호안에 순회할 객체를넣어뒀다.
+        //또한 some메서드를 활용해 객체의 key값과 조건 배열 arra02[i]이 일치하는지
+        //검사하기 위해 또 한번 some을 써주었다. 
+        //object 1개에있는 값중 일치하는값이 나오면 true반환 안나오면 false반환
 
-function arrayReturn(array01 = '', array02 = '') {
-    let returnArray;
-    returnArray = array01.filter((object) => {
-        for (let value in object) {
-            if (array02.includes(object[value])) {
-                return true;
+        resultArray01 = array01.filter((object) => {
+            return Object.keys(object).some((key) => {
+                return array02[i].some((arrayValue) => {
+                    //console.log(object[key], arrayValue);
+                    return object[key] === arrayValue;
+                });
+            });
+        });
+
+        //처음에는 외부모듈 기준 이후에는 그것을 바탕으로 걸러진배열 1, 1을 바탕으로 2 -> 2를 바탕으로 3 ...
+
+        //이런식으로 중첩조건체크가 되는것
+
+        array01 = resultArray01;
+    }
+
+    //걸러진 배열을 바탕으로 정렬 
+    arraySort(resultArray01);
+}
+
+function stateObjectReset(object) {
+    for (let key in object) {
+        object[key] = false;
+    }
+}
+
+function arraySort(array = []) {
+    //정렬(sort) 셀렉터
+    const sortFillter = document.getElementById('sort_chk');
+    //정렬된 배열 변수 선언
+    let sortArr;
+
+    //기본 list생성
+    listnPageCreate(array);
+
+    //해당 객체 상태변수가 켜졌다는말은 change가 되어있다는말.
+    if (sortState.defaultState) {
+        sortArr = array.slice().sort((a, b) => {
+            return a.propertyNumber - b.propertyNumber;
+        });
+
+        listnPageCreate(sortArr);
+
+    } else if (sortState.priceState) {
+        sortArr = array.slice().sort((a, b) => {
+            if (a.price < b.price) {
+                return -1;
+            } else if (a.price === b.price) {
+                return 0;
             }
+        });
+
+        listnPageCreate(sortArr);
+
+    }
+
+
+    sortFillter.addEventListener("change", (event) => {
+        let currentTarget = event.target.value
+
+        //기본 눌렀을시
+        if (currentTarget === 'defalut') {
+            //정렬 된 결과를 선택했을때에도 적용하기 위해
+            stateObjectReset(sortState);
+            sortState.defaultState = true;
+
+            sortArr = array.slice().sort((a, b) => {
+                return a.propertyNumber - b.propertyNumber;
+            });
+        
+        //가격 순 으로
+        } else if (currentTarget === 'price') {
+            stateObjectReset(sortState);
+            sortState.priceState = true;
+
+            sortArr = array.slice().sort((a, b) => {
+                if (a.price < b.price) {
+                    return -1;
+                } else if (a.price === b.price) {
+                    return 0;
+                }
+            });
+
+        //최근 순으로 
+        } else if (currentTarget === 'latest') {
+            stateObjectReset(sortState);
+            sortState.latestState = true;
+
+            sortArr = array.slice().sort((a, b) => {
+                if (a.propertyNumber < b.propertyNumber) {
+                    return -1;
+                } else if (a.propertyNumber > b.propertyNumber) {
+                    return 1;
+                }
+            });
         }
-    })
-    return returnArray;
+
+        //정렬된 결과 가지고 리스트 생산
+        listnPageCreate(sortArr);
+    });
 }
 
-function totalcheck(object) {
-    console.log(object, fillterTotal);
+//리셋하기
+const resetBtn = document.querySelector('.reset');
+resetBtn.addEventListener('click', () => {
+    //밸류 defalut로
+    document.getElementById('sort_chk').value = 'defalut';
+    //상태변수도 그에맞게
+    stateObjectReset(sortState);
+    sortState.defaultState = true;
+    
+    //위의 변수 적용된 이후 리스트 뽑기
+    arraySort(sub_page_product_list);
 
-    /* 1. object 안의 어레이 추출
-    2. 클릭했을떄 상태의 배열 가져와서 한 배열에 전부 합산
-    3. arrayreturn함수로 밸류담고잇는 클릭했을때 배열 과 합산 배열 비교
-    4. arrayreturn 함수로 비교해보면 될듯, 주가 되는 배열은 결국 다른게 클릭됐을때의 배열 */
+    chkList.forEach((input) => {
+        //input reset
+        input.checked = false;
+
+        //조건 array reset
+        fillterCompareArray.forEach((array) => {
+            array.splice(0, array.length);
+        })
+    });
+});
+
+
+function listnPageCreate(array) {
+    listCreate(array);
+    pageCreate(array);
 }
 
-
-/*************** common function ******************/
 function pageCreate(array) {
     if (array.length === 0) {
         addClass(pageSection, `none_on`);
@@ -181,6 +302,14 @@ function listCreate(array) {
     productListWrapper.innerHTML = ``;
     let receive = ``;
 
+    if (array.length === 0) {
+        productListWrapper.innerHTML = `
+            <p class="lengthNotice">
+                <i class="far fa-times-circle"></i>
+                해당하는 상품이 존재하지 않습니다!
+            </p>
+        `;
+    }
     for (let i = 0; i < array.length; i++) {
         if (i === pageItemView) {
             break;
@@ -234,10 +363,6 @@ function calc(array) {
 
 }
 
-function listnPageCreate(array) {
-    listCreate(array);
-    pageCreate(array);
-}
 //배열 계산 후 복제
 function arraySliceCreate(firstValue, lastValue, array) {
     let startIndex = (firstValue + 1) * lastValue - lastValue; //sub_page_product_list기준 0, 1, 2
@@ -251,12 +376,6 @@ function arraySliceCreate(firstValue, lastValue, array) {
     //console.log(lastIndex);
 }
 
-function stateObjectReset(object) {
-    for (let key in object) {
-        object[key] = false;
-    }
-}
-
 //클래스 추가
 function addClass(Element, ClassName) {
     Element.classList.add(ClassName);
@@ -264,19 +383,4 @@ function addClass(Element, ClassName) {
 //클래스 제거
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);
-}
-
-//클론 만들기 함수01
-function cloneCreate01(elements, parentEle) {
-    for (let i = 0; i < elements.length / 2; i++) {
-        let cloneElement = elements[i].cloneNode(true);
-        parentEle.appendChild(cloneElement);
-    }
-}
-//클론 만들기 함수02
-function cloneCreate02(elements, parentEle) {
-    for (let i = 0; i < elements.length; i++) {
-        let cloneElement = elements[i].cloneNode(true);
-        parentEle.insertBefore(cloneElement, elements[0]);
-    }
 }

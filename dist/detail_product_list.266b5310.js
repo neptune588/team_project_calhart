@@ -915,6 +915,7 @@ var reviewList = document.querySelector('.review_list');
 var reviewCounting = document.querySelector('.review_couting');
 //별점
 var reviewRating = document.querySelector('.review_rating_star');
+var reviewNoticeMent = document.querySelector('.review_notice_ment');
 
 //한 페이지에 몇개 보여줄것인지
 var pageViewLength = 6;
@@ -942,6 +943,7 @@ reviewCreateBtn.addEventListener('click', function () {
     starClick();
     rvCrteBtnState = true;
   } else {
+    reviewNoticeMent.textContent = '';
     removeClass(reviewCreateArea, "block_on");
     valueReset(reviewBox, reviewLengthBox);
     starReset();
@@ -960,6 +962,7 @@ reviewCreateComBtn.addEventListener('click', function () {
     //3. 리스트 생성날짜
     //4. 배열 길이에 따른 페이지 네이션 생성
     //5. 유효하게 생성되었다면 value reset 및 focus
+    reviewNoticeMent.textContent = '';
 
     //리스트 생성에 필요한 정보를 넣기 위해 
     //클릭할때마다 새로운 객체 생성
@@ -993,9 +996,9 @@ reviewCreateComBtn.addEventListener('click', function () {
     starReset();
     starCreate = false;
   } else if (!starCreate) {
-    console.log('리뷰 별점을 남겨주세요!');
+    reviewNoticeMent.textContent = '리뷰 별점을 남겨주세요!';
   } else {
-    console.log('공백은 안됩니다.');
+    reviewNoticeMent.textContent = '공백은 안됩니다!';
   }
 });
 
@@ -1191,11 +1194,13 @@ var qnaUserID = document.getElementById('qna_user_id');
 var qnaList = document.querySelector('.qna');
 var qnaNotMentBox = document.querySelector('.qna_not_ment');
 var qnaCounting = document.querySelector('.qna_couting');
+var qnaNoticeMent = document.querySelector('.qna_notice_ment');
 var qnaContents = [];
 questionCreateComBtn.addEventListener('click', function () {
   var IDvalue = qnaUserID.value;
   var questionvalue = questionBox.value;
   if ((IDvalue && questionvalue) !== null && (IDvalue && questionvalue) !== '' && (IDvalue && questionvalue) !== undefined && IDvalue.length > 2) {
+    qnaNoticeMent.textContent = '';
     var qnalistObject = {};
 
     //시간 계산
@@ -1216,11 +1221,11 @@ questionCreateComBtn.addEventListener('click', function () {
     qnaUserID.value = "";
     questionBox.focus();
   } else if (IDvalue === undefined || IDvalue === null || IDvalue === "") {
-    console.log('아이디를 작성 해주세요.');
+    qnaNoticeMent.textContent = '아이디를 입력 해주세요.';
   } else if (IDvalue.length < 3) {
-    console.log('아이디는 2자를 초과해야 합니다.');
+    qnaNoticeMent.textContent = '아이디를 2자를 넘어야 합니다.';
   } else {
-    console.log('공백은 안됩니다.');
+    qnaNoticeMent.textContent = '내용을 입력 해주세요!';
   }
 });
 questionBox.addEventListener('input', function () {
@@ -1233,6 +1238,7 @@ qusetionCreateStartBtn.addEventListener('click', function () {
     addClass(questionCreateArea, 'block_on');
     questionState = true;
   } else {
+    qnaNoticeMent.textContent = '';
     removeClass(questionCreateArea, 'block_on');
     questionState = false;
     valueReset(questionBox, questionLengthBox);
@@ -1541,7 +1547,7 @@ var modalCloseBtn = document.querySelector('.close_btn');
 var modalEx = document.querySelector('.size_chk_modal_ex');
 var inputMaxLength = 3;
 numberInput.forEach(function (inputBar) {
-  inputBar.addEventListener('input', function () {
+  inputBar.addEventListener('keyup', function () {
     var numberReg = /^\d+$/;
 
     //.length는 숫자에는 안먹힘 문자열에만 적용 
@@ -1594,7 +1600,7 @@ function sizeCalc(value01, value02) {
     showSize.children[0].textContent = "M";
   } else if (valueCalc02 > 23 && valueCalc02 < 25) {
     showSize.children[0].textContent = "L";
-  } else if (valueCalc02 > 25 && valueCalc02 < 50) {
+  } else if (valueCalc02 > 25 && valueCalc02 < 40) {
     showSize.children[0].textContent = "XL";
   } else {
     showSize.children[0].textContent = "\uC5C6\uC74C";
@@ -1639,7 +1645,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52601" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51000" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

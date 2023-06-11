@@ -851,7 +851,6 @@ input {
                             }
                         }
                     }
-
                     #review_text_box {
                         width: 100%;
                         padding: 20px;
@@ -1210,5 +1209,13 @@ input {
         &:hover {
             background-color: $point_color_amber;
         }
+    }
+
+    .nt_ment {
+        margin: 15px 0;
+        text-align: center;
+        color: red;
+        font-size: $small_up_font_size;
+        font-family: $font_noto_sans;
     }
 }

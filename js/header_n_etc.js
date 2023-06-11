@@ -92,7 +92,12 @@ let siteInfoHeight = siteInfoSection.offsetHeight;
 let footerExHeight = footerEx.offsetHeight;
 let totalHeight = siteInfoHeight + footerExHeight;
 
-
+topBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    })
+})
 
 
 /*************** common ******************/

@@ -390,14 +390,14 @@ input {
     @include item_size(60px, 60px);
     background-color: $sub_color_free_speach_blue;
     transition: all 0.2s;
+    color: white;
+    font-size: $defalut_font_size;
+    text-align: center;
+    line-height: 60px;
+    z-index: 9999;
+    cursor: pointer;
     &:hover {
         background-color: $point_color_amber;
-    }
-    a { 
-        color: white;
-        font-size: $defalut_font_size;
-        text-align: center;
-        line-height: 60px;
     }
 }
 

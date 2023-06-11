@@ -25,32 +25,39 @@
   <div class="wrapper">
     <aside class="side_filter">
       <div class="menu_list_section">
-        <h2 class="menu_title">TOP</h2>
-        <div class="product_menu_list check_detect check_detect">
-          <label for="all_cloth" class="chk_box">전체</label>
-          <input type="checkbox" id="all_cloth" value="all">
-
-          <label for="jacket_cloth" class="chk_box">자켓</label>
-          <input type="checkbox" id="jacket_cloth" value = "jaket">
-
-          <label for="sweater_cloth" class="chk_box">스웨터</label>
-          <input type="checkbox" id="sweater_cloth" value = "sweater">
-
-          <label for="neat_cloth" class="chk_box">니트</label>
-          <input type="checkbox" id="neat_cloth" value = "neat">
-
-          <label for="shirt_cloth" class="chk_box">셔츠</label>
-          <input type="checkbox" id="shirt_cloth" value = "shirt">
-
-          <label for="T_shirt_cloth" class="chk_box">티셔츠</label>
-          <input type="checkbox" id="T_shirt_cloth" value = "TShirt">
+        <div class="side_top">
+          <h2 class="menu_title">TOP</h2>
+          <div class="reset"><i class="fas fa-sync"></i>리셋하기</div>
+          
+        </div>
+        <ul class="product_menu_list check_detect check_detect">
+          <li>
+            <input type="checkbox" id="jacket_cloth" value = "jaket">
+            <label for="jacket_cloth" class="chk_box">자켓</label>
+          </li>
+          <li>
+            <input type="checkbox" id="sweater_cloth" value = "sweater">
+            <label for="sweater_cloth" class="chk_box">스웨터</label>
+          </li>
+          <li>
+            <input type="checkbox" id="neat_cloth" value = "neat">
+            <label for="neat_cloth" class="chk_box">니트</label>
+          </li>
+          <li>
+            <input type="checkbox" id="shirt_cloth" value = "shirt">
+            <label for="shirt_cloth" class="chk_box">셔츠</label>
+          </li>
+          <li>
+            <input type="checkbox" id="T_shirt_cloth" value = "TShirt">
+            <label for="T_shirt_cloth" class="chk_box">티셔츠</label>
+          </li>
 <!--           <li id="all" class="chk_box">전체</li>
           <li id="jacket" class="chk_box">자켓</li>
           <li id="sweater" class="chk_box">스웨터</li>
           <li id="neat" class="chk_box">니트</li>
           <li id="shirt" class="chk_box">셔츠</li>
           <li id="T_shirt" class="chk_box">티셔츠</li> -->
-      </div><!-- product_menu_list -->
+        </ul><!-- product_menu_list -->
       </div><!-- menu_list_section -->
       <div class="price_select filter_section check_design check_detect">
         <h2 class="info_title">가격</h2>
@@ -82,42 +89,56 @@
       </div><!-- price_select_section -->
       <div class="color_select filter_section check_detect">
         <h2 class="info_title">색상</h2>
-        <div class="color_list_01">
-          <label for="color_black" class="black_box chk_box"></label>
-          <input type="checkbox" id="color_black" value="black">
-
-          <label for="color_white" class="white_box chk_box"></label>
-          <input type="checkbox" id="color_white" value="white">
-
-          <label for="color_gray" class="gray_box chk_box"></label>
-          <input type="checkbox" id="color_gray" value="gray">
-
-          <label for="color_brown" class="brown_box chk_box"></label>
-          <input type="checkbox" id="color_brown" value="brown">
-        </div>
-        <div class="color_list_02">
-          <label for="color_blue" class="blue_box chk_box"></label>
-          <input type="checkbox" id="color_blue" value="blue">
-
-          <label for="color_sky_blue" class="sky_blue_box chk_box"></label>
-          <input type="checkbox" id="color_sky_blue" value="skyBlue">
-
-          <label for="color_green" class="green_box chk_box"></label>
-          <input type="checkbox" id="color_green" value="green">
-
-          <label for="color_green_down" class="green_down_box chk_box"></label>
-          <input type="checkbox" id="color_green_down" value="greenDown">
-        </div>
-        <div class="color_list_03">
-          <label for="color_orange" class="orange_box chk_box"></label>
-          <input type="checkbox" id="color_orange" value="orange">
-
-          <label for="color_pink" class="pink_box chk_box"></label>
-          <input type="checkbox" id="color_pink" value="pink">
-
-          <label for="color_purple" class="purple_box chk_box"></label>
-          <input type="checkbox" id="color_purple" value="purple">
-        </div>
+        <ul class="color_list_01">
+          <li>
+            <input type="checkbox" id="color_black" value="black">
+            <label for="color_black" class="black_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_white" value="white">
+            <label for="color_white" class="white_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_gray" value="gray">
+            <label for="color_gray" class="gray_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_brown" value="brown">
+            <label for="color_brown" class="brown_box chk_box"></label>
+          </li>
+        </ul>
+        <ul class="color_list_02">
+          <li>
+            <input type="checkbox" id="color_blue" value="blue">
+            <label for="color_blue" class="blue_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_sky_blue" value="skyBlue">
+            <label for="color_sky_blue" class="sky_blue_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_green" value="green">
+            <label for="color_green" class="green_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_green_down" value="greenDown">
+            <label for="color_green_down" class="green_down_box chk_box"></label>
+          </li>
+        </ul>
+        <ul class="color_list_03">
+          <li>
+            <input type="checkbox" id="color_orange" value="orange">
+            <label for="color_orange" class="orange_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_pink" value="pink">
+            <label for="color_pink" class="pink_box chk_box"></label>
+          </li>
+          <li>
+            <input type="checkbox" id="color_purple" value="purple">
+            <label for="color_purple" class="purple_box chk_box"></label>
+          </li>
+        </ul>
       </div><!-- color_select_filter_section -->
       <div class="sale_select filter_section check_design check_detect">
         <h2 class="info_title">할인율</h2>
@@ -155,8 +176,9 @@
             품절상품 제외
             <input type="checkbox" id="sold_out_chk">
           </label>
-          <select class="sort_style" name="" id="sort">
-            <option value="">기본</option>
+          <select class="sort_style" name="" id="sort_chk">
+            <option value="defalut">기본</option>
+            <option value="price">가격순</option>
             <option value="latest">신상품순</option>
             <option value="best_selling">인기순</option>
           </select>
