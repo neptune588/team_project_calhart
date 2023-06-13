@@ -733,21 +733,22 @@ input {
                         }
                     }
                 }
-            }
 
-            .close_btn {
-                position: absolute;
-                top: 8%;
-                right: 32%;
-
-                i {
-                    display: inline-block;
-                    font-size: 40px;
-                    background-color: #fff;
-                    border-radius: 50%;
-                    padding: 0 6px;
-                    cursor: pointer;
+                .modal_close_btn {
+                    position: absolute;
+                    top: -50px;
+                    right: -10px;
+    
+                    i {
+                        display: inline-block;
+                        font-size: 40px;
+                        background-color: #fff;
+                        border-radius: 50%;
+                        padding: 0 6px;
+                        cursor: pointer;
+                    }
                 }
+    
             }
         }
     }

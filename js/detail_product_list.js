@@ -831,7 +831,7 @@ const noticeMent = document.querySelector('.notice_ment');
 const showSize = document.querySelector('.show_box');
 
 const modalOpenBtn = document.querySelector('.size_chk_btn');
-const modalCloseBtn = document.querySelector('.close_btn');
+const modalCloseBtn = document.querySelector('.size_chk_modal_ex .modal_close_btn');
 
 const modalEx = document.querySelector('.size_chk_modal_ex');
 

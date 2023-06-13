@@ -585,12 +585,12 @@ input {
 .contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul:last-child {
   border-bottom: 1px solid gray;
 }
-.contents_product_buy .size_n_buy .size_chk_modal_ex .close_btn {
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .modal_close_btn {
   position: absolute;
-  top: 8%;
-  right: 32%;
+  top: -50px;
+  right: -10px;
 }
-.contents_product_buy .size_n_buy .size_chk_modal_ex .close_btn i {
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .modal_close_btn i {
   display: inline-block;
   font-size: 40px;
   background-color: #fff;

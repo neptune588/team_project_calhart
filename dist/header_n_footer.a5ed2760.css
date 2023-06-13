@@ -70,6 +70,10 @@ label {
   user-select: none;
 }
 
+html, body {
+  scroll-behavior: smooth;
+}
+
 /********************** control_class ************************/
 .none_on {
   display: none !important;
@@ -111,6 +115,14 @@ input {
 
 .clicked {
   color: black !important;
+}
+
+.search_on {
+  height: 415px !important;
+}
+
+.search_close_on {
+  top: 415px !important;
 }
 
 /************************* header_ex ***************************/
@@ -173,6 +185,140 @@ input {
   display: block;
   font-size: 1.2rem;
   font-family: "Noto Sans KR", sans-serif;
+}
+.header_ex .search_ex {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.header_ex .search_ex .search {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: white;
+  box-shadow: 1px 1px 11px 0px black;
+  transition: all 0.2s;
+}
+.header_ex .search_ex .search .search_tab {
+  position: relative;
+  width: 800px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.header_ex .search_ex .search .search_tab .search_icon {
+  position: absolute;
+  top: 30px;
+  left: -40px;
+}
+.header_ex .search_ex .search .search_tab .search_icon i {
+  font-size: 20px;
+  color: black;
+  user-select: none;
+}
+.header_ex .search_ex .search .search_tab input {
+  width: 100%;
+  display: block;
+  color: black;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  padding: 15px 10px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 1.4rem;
+}
+.header_ex .search_ex .search .search_tab input::-webkit-search-decoration, .header_ex .search_ex .search .search_tab input::-webkit-search-cancel-button, .header_ex .search_ex .search .search_tab input::-webkit-search-results-button, .header_ex .search_ex .search .search_tab input::-webkit-search-results-decoration {
+  display: none;
+}
+.header_ex .search_ex .search .search_tab .search_delete {
+  display: none;
+  position: absolute;
+  display: inline-block;
+  top: 30px;
+  right: 20px;
+  cursor: pointer;
+}
+.header_ex .search_ex .search .search_tab .search_delete i {
+  font-size: 24px;
+  color: black;
+}
+.header_ex .search_ex .search .search_contents {
+  display: flex;
+  width: 800px;
+  margin: 0 auto;
+}
+.header_ex .search_ex .search .search_contents > div {
+  width: 50%;
+}
+.header_ex .search_ex .search .search_contents > div .notice {
+  font-size: 16px;
+  color: #2e2e2e;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.header_ex .search_ex .search .search_contents .left_latset_box {
+  margin-top: 50px;
+}
+.header_ex .search_ex .search .search_contents .right_hot_keyward_box {
+  text-align: right;
+  padding-right: 50px;
+  margin-top: 20px;
+}
+.header_ex .search_ex .search .search_contents .right_hot_keyward_box .notice {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+.header_ex .search_ex .search .search_contents .right_hot_keyward_box ul li {
+  font-size: 1.4rem;
+  color: black;
+}
+.header_ex .search_ex .search .bottom_img_box {
+  display: flex;
+  width: 800px;
+  margin: 35px auto 0;
+  justify-content: center;
+}
+.header_ex .search_ex .search .bottom_img_box > div {
+  width: 300px;
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-right: 15px;
+}
+.header_ex .search_ex .search .bottom_img_box .bottom_img01 {
+  background-image: url(/menu_img_1.5aa23dc1.jpg);
+}
+.header_ex .search_ex .search .bottom_img_box .bottom_img02 {
+  margin-right: 0;
+  background-image: url(/menu_img_2.0e523a48.jpg);
+}
+.header_ex .search_ex .close_btn {
+  position: absolute;
+  width: 180px;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 20px 0;
+  text-align: center;
+  cursor: pointer;
+  background-color: #4136BF;
+  font-size: 1.6rem;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 2px 3px 5px 0px black;
+  transition: all 0.2s;
+}
+.header_ex .search_ex .close_btn i {
+  font-size: 20px;
+}
+.header_ex .search_ex .close_btn:hover {
+  background-color: #ffbf00;
 }
 
 /************************* lnb_ex ***************************/

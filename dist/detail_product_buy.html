@@ -19,8 +19,8 @@
         <div class="logo"><a href="/index.html"></a></div><!-- logo -->
         <nav class="gnb">
             <ul class="gnb_list">
-                <li class="sign_in"><a href="#!">로그인</a></li>
-                <li class="sign_up"><a href="#!">회원가입</a></li>
+                <li class="sign_in"><a href="/login.html">로그인</a></li>
+                <li class="sign_up"><a href="/sign_up.html">회원가입</a></li>
                 <li class="order"><a href="#!">주문조회</a></li>
                 <li class="icon"><a href="#!"></a></li>
                 <li class="cart"><a href="#!"></a></li>
@@ -35,6 +35,40 @@
             <li class="counsel_btn"><a href="#!"></a></li>
         </ul>
     </div> -->
+
+    <div class="search_ex">
+        <div class="search">
+            <div class="search_tab">
+                <div class="search_icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                검색 <input type="search" id="product_search" placeholder="검색어를 입력하세요. (최대 50자)" maxlength="50">
+                <div class="search_delete"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="search_contents">
+                <div class="left_latset_box">
+                    <p class="notice">최근 검색어가 없습니다.</p>
+                </div>
+                <div class="right_hot_keyward_box">
+                    <p class="notice">인기 검색어</p>
+                    <ul>
+                        <li><a href="#!">티셔츠</a></li>
+                        <li><a href="#!">맨투맨</a></li>
+                        <li><a href="#!">셔츠</a></li>
+                        <li><a href="#!">청바지</a></li>
+                        <li><a href="#!">언더웨어</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_img_box">
+                <div class="bottom_img01"></div>
+                <div class="bottom_img02"></div>
+            </div>
+        </div>
+        <div class="close_btn">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
 </div><!-- header_ex -->
 <div id="lnb_ex" class="lnb_ex_design">
     <nav class="lnb">
@@ -390,10 +424,10 @@
                                 </div>
                             </div><!-- size_chk_box_area -->
                         </div>
+                        <div class="modal_close_btn">
+                            <i class="fas fa-times"></i>
+                        </div>
                     </div><!-- size_chk_modal -->
-                    <div class="close_btn">
-                        <i class="fas fa-times"></i>
-                    </div>
                 </div><!-- size_chk_modal_ex -->
             </div><!-- size_n_buy -->
         </div><!-- size_n_buy -->

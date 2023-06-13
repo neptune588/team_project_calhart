@@ -203,6 +203,43 @@ function keyWordMove() {
   }, 1150);
 }
 
+/*************** search ******************/
+var body = document.querySelector('body');
+var searchOnBtn = document.querySelector('.gnb_list > .icon');
+var searchCloseBtn = document.querySelector('.search_ex .close_btn');
+var searchEx = document.querySelector('.search_ex');
+var searchBar = document.querySelector('.search');
+var searchTab = document.getElementById('product_search');
+var searchDelete = document.querySelector('.search_delete');
+var serachTabState = false;
+
+//search_on
+searchOnBtn.addEventListener('click', function () {
+  if (!serachTabState) {
+    body.style.overflow = 'hidden';
+    addClass(searchEx, 'block_on');
+    setTimeout(function () {
+      searchTab.focus();
+      addClass(searchBar, 'search_on');
+      addClass(searchCloseBtn, 'search_close_on');
+    }, 50);
+    serachTabState = true;
+  }
+});
+
+//search_off
+searchCloseBtn.addEventListener('click', function () {
+  body.style.overflow = 'visible';
+  serachTabState = false;
+  removeClass(searchEx, 'block_on');
+  removeClass(searchBar, 'search_on');
+  removeClass(searchCloseBtn, 'search_close_on');
+});
+searchDelete.addEventListener('click', function () {
+  searchTab.focus();
+  searchTab.value = '';
+});
+
 /*************** top_btn ******************/
 var topBtn = document.querySelector('.top_btn');
 var siteInfoSection = document.querySelector('.site_info');
@@ -212,8 +249,7 @@ var footerExHeight = footerEx.offsetHeight;
 var totalHeight = siteInfoHeight + footerExHeight;
 topBtn.addEventListener('click', function () {
   window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+    top: 0
   });
 });
 
@@ -271,7 +307,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51000" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50824" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

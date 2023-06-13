@@ -1543,7 +1543,7 @@ var sizeCalcBtn = document.querySelector('.siez_search_btn');
 var noticeMent = document.querySelector('.notice_ment');
 var showSize = document.querySelector('.show_box');
 var modalOpenBtn = document.querySelector('.size_chk_btn');
-var modalCloseBtn = document.querySelector('.close_btn');
+var modalCloseBtn = document.querySelector('.size_chk_modal_ex .modal_close_btn');
 var modalEx = document.querySelector('.size_chk_modal_ex');
 var inputMaxLength = 3;
 numberInput.forEach(function (inputBar) {
@@ -1645,7 +1645,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51000" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65019" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

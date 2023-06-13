@@ -1,61 +1,168 @@
 <!DOCTYPE html>
-<html lang="kor">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calhartt｜Sign_up</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
-    <link rel="stylesheet" href="/sign_up.abf37296.css">
-    <script src="/sign_up.bf16d51b.js" defer=""></script>
-<script src="/sign_up.abf37296.js"></script></head>
+    <link rel="stylesheet" href="/sign_up.b86a4dbb.css">
+    <link rel="stylesheet" href="/header_n_footer.a5ed2760.css">
+    <script src="/header_n_etc.8a680bd3.js" defer=""></script>
+    <script type="module" src="/sign_up.84ca8444.js" defer=""></script>
+<script src="/sign_up.b86a4dbb.js"></script></head>
 
 <body>
     <div class="header_ex">
-        <header class="header">
-            <div class="logo"><a href="#!"></a></div><!-- logo -->
-            <nab class="gnb">
-                <ul class="gnb_list">
-                    <li class="sign_in"><a href="#!">로그인</a></li>
-                    <li class="sign_up"><a href="#!">회원가입</a></li>
-                    <li class="order"><a href="#!">주문조회</a></li>
-                    <li class="icon"><a href="#!"></a></li>
-                    <li class="cart"><a href="#!"></a></li>
-                </ul><!-- gnb_list -->
-            </nab><!-- gnb -->
-        </header><!-- header -->
-        <!--         <div class="quick_menu">
-            <ul>
-                <li class="recently_product"><a href="#!"></a></li>
-                <li class="recently_product"><a href="#!"></a></li>
-                <li class="top_btn"><a href="#!">TOP</a></li>
-                <li class="counsel_btn"><a href="#!"></a></li>
-            </ul>
-        </div> -->
-    </div><!-- header_ex -->
-    <div class="lnb_ex">
-        <nav class="lnb">
-            <ul class="main_menu_list">
-                <li><a href="#!">NEW</a></li>
-                <li><a href="#!">TOP</a></li>
-                <li><a href="#!">BOTTOM</a></li>
-                <li><a href="#!">ACC</a></li>
-                <li><a href="#!">PROMOTION</a></li>
-                <li><a href="#!">SALE</a></li>
-                <li><a href="#!">BRAND</a></li>
-            </ul><!-- main_menu_list -->
-            <div class="real_time_keyward_frame">
-                <ul class="keyward_list">
-                    <li><a href="#!">티셔츠</a></li>
-                    <li><a href="#!">맨투맨</a></li>
-                    <li><a href="#!">셔츠</a></li>
-                    <li><a href="#!">청바지</a></li>
+    <header class="header">
+        <div class="logo"><a href="/index.html"></a></div><!-- logo -->
+        <nav class="gnb">
+            <ul class="gnb_list">
+                <li class="sign_in"><a href="/login.html">로그인</a></li>
+                <li class="sign_up"><a href="/sign_up.html">회원가입</a></li>
+                <li class="order"><a href="#!">주문조회</a></li>
+                <li class="icon"><a href="#!"></a></li>
+                <li class="cart"><a href="#!"></a></li>
+            </ul><!-- gnb_list -->
+        </nav><!-- gnb -->
+    </header><!-- header -->
+    <!--         <div class="quick_menu">
+        <ul>
+            <li class="recently_product"><a href="#!"></a></li>
+            <li class="recently_product"><a href="#!"></a></li>
+            <li class="top_btn"><a href="#!">TOP</a></li>
+            <li class="counsel_btn"><a href="#!"></a></li>
+        </ul>
+    </div> -->
+
+    <div class="search_ex">
+        <div class="search">
+            <div class="search_tab">
+                <div class="search_icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                검색 <input type="search" id="product_search" placeholder="검색어를 입력하세요. (최대 50자)" maxlength="50">
+                <div class="search_delete"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="search_contents">
+                <div class="left_latset_box">
+                    <p class="notice">최근 검색어가 없습니다.</p>
+                </div>
+                <div class="right_hot_keyward_box">
+                    <p class="notice">인기 검색어</p>
+                    <ul>
+                        <li><a href="#!">티셔츠</a></li>
+                        <li><a href="#!">맨투맨</a></li>
+                        <li><a href="#!">셔츠</a></li>
+                        <li><a href="#!">청바지</a></li>
+                        <li><a href="#!">언더웨어</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bottom_img_box">
+                <div class="bottom_img01"></div>
+                <div class="bottom_img02"></div>
+            </div>
+        </div>
+        <div class="close_btn">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+</div><!-- header_ex -->
+<div id="lnb_ex" class="lnb_ex_design">
+    <nav class="lnb">
+        <ul class="main_menu_list">
+            <li class="new_list">
+                <a href="#!">NEW</a>
+            </li>
+            <li class="menu_list">
+                <a href="/sub_product_list.html">TOP</a>
+                <ul class="li_inner_ul">
+                    <li><a href="/sub_product_list.html">자킷</a></li>
+                    <li><a href="/sub_product_list.html">스웨터</a></li>
+                    <li><a href="/sub_product_list.html">니트</a></li>
+                    <li><a href="/sub_product_list.html">셔츠</a></li>
+                    <li><a href="/sub_product_list.html">티셔츠</a></li>
+                </ul>
+            </li>
+            <li class="menu_list">
+                <a href="#!">BOTTOM</a>
+                <ul class="li_inner_ul">
+                    <li><a href="#!">바지</a></li>
+                    <li><a href="#!">반바지</a></li>
+                    <li><a href="#!">스커트</a></li>
+                </ul>
+            </li>
+            <li class="menu_list">
+                <a href="#!">ACC</a>
+                <ul class="li_inner_ul">
+                    <li><a href="#!">모자</a></li>
+                    <li><a href="#!">가방</a></li>
+                    <li><a href="#!">악세사리</a></li>
+                    <li><a href="#!">가젯</a></li>
+                    <li><a href="#!">신발</a></li>
                     <li><a href="#!">언더웨어</a></li>
-                </ul><!-- keyward_list -->
-            </div><!-- real_time_keyward_frame -->
-        </nav><!-- lnb -->
-    </div><!-- lnb_ex -->
+                </ul>
+            </li>
+            <li class="menu_list">
+                <a href="#!">PROMO</a>
+                <ul class="li_inner_ul">
+                    <li><a href="#!">콜라보레이션</a></li>
+                    <li><a href="#!">특집</a></li>
+                </ul>
+            </li>
+            <li class="menu_list">
+                <a href="#!">SALE</a>
+                <ul class="li_inner_ul">
+                    <li><a href="#!">세일</a></li>
+                </ul>
+            </li>
+            <li class="menu_list">
+                <a href="#!">BRAND</a>
+                <ul class="li_inner_ul">
+                    <li><a href="#!">브랜드스토리</a></li>
+                    <li><a href="#!">Look Book</a></li>
+                    <li><a href="#!">매장</a></li>
+                </ul>
+            </li>
+        </ul><!-- main_menu_list -->
+        <div class="real_time_keyward_frame">
+            <ul class="keyward_list">
+                <li>
+                    <span>1</span>
+                    <a href="#!">티셔츠</a>
+                </li>
+                <li>
+                    <span>2</span>
+                    <a href="#!">맨투맨</a>
+                </li>
+                <li>
+                    <span>3</span>
+                    <a href="#!">셔츠</a>
+                </li>
+                <li>
+                    <span>4</span>
+                    <a href="#!">청바지</a>
+                </li>
+                <li>
+                    <span>5</span>
+                    <a href="#!">언더웨어</a>
+                </li>
+            </ul><!-- keyward_list -->
+        </div><!-- real_time_keyward_frame -->
+        <div id="full_down_menu_ex" class="full_down_menu_ex_design">
+            <div class="full_down_menu">
+                <div class="menu_img">
+                    <img src="/menu_img_0.fef5d7dc.jpg" alt="menu_img00">
+                </div>
+                <div class="menu_img">
+                    <img src="/menu_img_1.5aa23dc1.jpg" alt="menu_img01">
+                </div>
+            </div>
+        </div><!-- full_down_menu_ex -->
+    </nav><!-- lnb -->
+</div>
     <section class="step">
         <h2 class="sub_title">SIGN UP</h2>
         <ul class="step_list">
@@ -628,11 +735,14 @@
         <p id="caution">약관 동의를 진행 해주세요!</p>
     </div>
     <div class="privacy_input page">
-        <h2>회원정보 입력</h2>
+        <div class="privacy_input_page_title">
+            <h2>회원정보 입력</h2>
+            <p><span>*</span> 이 들어간 항목은 필수 입력 항목란입니다.</p>
+        </div>
         <div class="caution_pop_up_ex" id="caution_pop_up_btn">
             <p class="caution_pop_up">
                 <span class="close_btn">X</span>
-                필수 입력 항목란에 값을 기입해주세요!
+                필수 입력 항목란에 유효한 값을 기입 해주세요!
             </p>
         </div>
         <form action="" id="privacy_input_area">
@@ -640,7 +750,8 @@
                 <li class="input_name">
                     <label for="user_name">이름</label>
                     <span class="important">*</span>
-                    <input type="text" id="user_name" class="medium_bar necessary_text" maxlength="12">
+                    <input type="text" id="user_name" class="medium_bar necessary_text" maxlength="8">
+                    <div class="guide_message"></div>
                 </li><!-- input_name -->
                 <li class="select_gender">
                     <label for="user_gender">성별선택</label>
@@ -650,51 +761,56 @@
                         <option value="male">남자</option>
                         <option value="female">여자</option>
                     </select>
+                    <div class="guide_message"></div>
                 </li><!-- select_gender -->
                 <li class="birth_data">
                     <label for="birth_year">생년월일</label>
                     <span class="important">*</span>
-                    <input type="text" class="small_bar" id="birth_year necessary_text" maxlength="4" placeholder="년도(4자)">
+                    <input type="text" class="small_bar necessary_text" id="birth_year" maxlength="4" placeholder="년도(4자)">
                     <select name="" class="small_bar necessary_text" id="birth_month">
                         <option value="">월</option>
-                        <option value="month01">1</option>
-                        <option value="month02">2</option>
-                        <option value="month03">3</option>
-                        <option value="month04">4</option>
-                        <option value="month05">5</option>
-                        <option value="month06">6</option>
-                        <option value="month07">7</option>
-                        <option value="month08">8</option>
-                        <option value="month09">9</option>
+                        <option value="month01">01</option>
+                        <option value="month02">02</option>
+                        <option value="month03">03</option>
+                        <option value="month04">04</option>
+                        <option value="month05">05</option>
+                        <option value="month06">06</option>
+                        <option value="month07">07</option>
+                        <option value="month08">08</option>
+                        <option value="month09">09</option>
                         <option value="month10">10</option>
                         <option value="month11">11</option>
                         <option value="month12">12</option>
                     </select>
                     <input type="text" class="small_bar necessary_text" maxlength="2">
+                    <div class="guide_message"></div>
                 </li><!-- birth_data -->
                 <li class="input_id">
                     <label for="user_id">아이디</label>
                     <span class="important">*</span>
-                    <input type="text" class="medium_bar necessary_text" id="user_id">
+                    <input type="text" class="medium_bar necessary_text" id="user_id" maxlength="15">
                     <button type="button" id="user_id_chk">중복확인</button>
+                    <div class="guide_message"></div>
                 </li><!-- input_id -->
                 <li class="input_pw">
                     <label for="user_pw">비밀번호</label>
                     <span class="important">*</span>
-                    <input type="text" class="medium_bar necessary_text" id="user_pw">
-                    <span class="pw_view"></span>
+                    <input type="password" class="medium_bar necessary_text" id="user_pw" maxlength="15">
+                    <span class="pw_off" id="pw_view_btn"></span>
+                    <div class="guide_message"></div>
                 </li><!-- input_pw -->
                 <li class="input_pw_chk">
                     <label for="user_pw_chk">비밀번호 확인</label>
                     <span class="important">*</span>
-                    <input type="text" class="medium_bar necessary_text" id="user_pw_chk">
+                    <input type="password" class="medium_bar necessary_text" id="user_pw_chk">
+                    <div class="guide_message"></div>
                 </li><!-- input_pw_chk -->
                 <li class="input_email">
                     <label for="user_email_first">이메일</label>
-                    <span class="important">*</span> 
-                    <input type="text" class="small_bar necessary_text" id="user_email_first"> 
+                    <span class="important">*</span>
+                    <input type="text" class="small_bar necessary_text" id="user_email_first" maxlength="12">
                     <span class="email_connecter">@</span>
-                    <input type="text" class="small_bar necessary_text" id="user_email_last">
+                    <input type="text" class="small_bar necessary_text" id="user_email_last" maxlength="14">
                     <select name="" id="user_email_last_select">
                         <option value="">직접입력</option>
                         <option value="naver">naver.com</option>
@@ -702,33 +818,106 @@
                         <option value="google">google.com</option>
                         <option value="nate">nate.com</option>
                     </select>
-                    <span class="">비밀번호를 찾는 용도로 사용되는 이메일입니다.</span>
-                    <div class="email_caution_box">
+                    <div class="guide_message">
                     </div>
                 </li><!-- input_email -->
-                <li class="input_email_chk">
+                <!--                 <li class="input_email_chk">
                     <label for="user_email_chk">이메일 인증번호 입력</label>
                     <input type="text" class="small_bar necessary_text" id="user_email_chk">
                     <button type="button">인증번호 받기</button>
-                </li>
+                    <span class="count"></span>
+                    <p class="email_confirm_text"></p>
+                    
+                </li> -->
             </ul>
-            <ul class="etc_area">
+            <!--             <ul class="etc_area">
                 <li class="input_recommender">
                     <label for="">추천인 입력</label>
                     <input type="text" id="recommender" class="small_bar">
+                    <div class="guide_message"></div>
                 </li>
-            </ul>
+            </ul> -->
         </form>
     </div>
     <div class="confirm page">
-        <p>
+        <div class="confirm_img">
+            <img src="/sigh_up_img.af6253ff.jpg" alt="">
+        </div>
+        <div class="confirm_ment_area">
+            <div class="carhart_logo"><img src="/main_logo_black.9bfc13a2.png" alt="logo_img_black"></div>
+            <div class="confirm_ment">
+                <div id="id_n_title_ment">
 
-        </p>
+                    <h2 id="title_ment">님 가입을 축하드립니다!</h2>
+                </div>
+                <p>
+                    1994년 Edwin Faeh가 설립한 Carhartt Work In Progress (칼하트 WIP)는 미국의 오리지널 워크웨어 브랜드 Carhartt를 기반으로 하고 있으며
+                    설립 이후 매 시즌 Carhartt WIP 컬렉션을 선보이고 있습니다. 기반이 튼튼한 아메리칸 스타일의 의류와 Carhartt가 꾸준히 포용해왔던 서브컬처를 결합함으로써
+                    칼하트WIP는 기존의 클래식함을 유지함과 동시에 그들만의 새로움을 컬렉션을 통해 보여주고 있습니다.
+                </p>
+            </div>
+            <a href="/login.html" class="login_page_in_btn_design" id="login_page_in_btn">로그인 페이지로</a>
+        </div>
     </div>
     <div class="prev_next">
         <button id="prev_btn">Prev
-            </button><button id="next_btn">Next
+        </button><button id="next_btn">Next
     </button></div>
+    <div class="top_btn">
+    TOP
+</div>
+<section class="site_info">
+    <ul class="info_list">
+        <li><a href="#!">칼하트윕에 대하여</a></li>
+        <li><a href="#!">칼하트윕 라디오</a></li>
+        <li><a href="#!">기업의 사회적 책임</a></li>
+        <li><a href="#!">채용 안내</a></li>
+        <li><a href="#!">일반 적합 인증</a></li>
+    </ul><!-- site_map -->
+</section>
+<div class="footer_ex">
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="footer_left">
+                <ul class="guide_list">
+                    <li><a href="#!">고객지원</a></li>
+                    <li><a href="#!">비즈니스 문의</a></li>
+                    <li><a href="#!">배송안내</a></li>
+                    <li><a href="#!">나의계정</a></li>
+                    <li><a href="#!">자주하는 질문</a></li>
+                </ul><!-- guide_list -->
+                <ul class="business_info_list">
+                    <li>주식회사 웍스아웃</li>
+                    <li>사업자 등록번호 : 106-86-85373</li>
+                    <li>주소 : 서울시 마포구 월드컵북로23길 24</li>
+                    <li>통신판매업 신고 : 2014-서울마포-0219</li>
+                    <li>호스팅 사업자 : 아마존 웹 서비스</li>
+                </ul> <!-- business_info_list -->
+            </div><!-- footer_left -->
+            <div class="footer_right">
+                <ul class="sns_list">
+                    <li><a href="#!"><i class="fab fa-instagram"></i></a></li><!-- insta_icon -->
+                    <li><a href="#!"><i class="fab fa-facebook-square"></i></a></li><!-- facebook_icon -->
+                    <li><a href="#!"><i class="fab fa-youtube"></i></a></li><!-- youtube_icon -->
+                    <li><a href="#!"><i class="fab fa-pinterest"></i></a></li><!-- pinterest_icon -->
+                    <li><a href="#!"><i class="fab fa-soundcloud"></i></a></li><!-- sound_cloud_icon -->
+                </ul><!-- sns_list -->
+                <ul class="contact_info_list">
+                    <li><a href="#!"><span>대표전화</span><span>02-541-0854</span></a></li>
+                    <li><a href="#!"><span>운영시간</span><span>10:00~17:00</span></a></li>
+                    <li><a href="#!"><span>휴무일</span><span>(토,일,공휴일)</span></a></li>
+                    <li><a href="#!"><span>이메일</span><span>customer@carhartt-wip.co.kr</span></a></li>
+                </ul><!-- contact_info_list -->
+            </div><!-- footer_right -->
+        </div><!-- footer_top -->
+        <ul class="notice">
+            <li><a href="#!">© 칼하트윕 코리아 2023</a></li>
+            <li><a href="#!">이용약관</a></li>
+            <li><a href="#!">개인정보 취급방침</a></li>
+            <li><a href="#!">구매안전(에스크로) 서비스 가입사실 확인</a></li>
+        </ul><!-- notice -->
+    </footer><!-- footer -->
+</div><!-- footer_ex -->
 </body>
 
 </html>

@@ -83,6 +83,60 @@ function keyWordMove() {
     }, 1150);
 }
 
+
+/*************** search ******************/
+const body = document.querySelector('body');
+
+const searchOnBtn = document.querySelector('.gnb_list > .icon');
+const searchCloseBtn = document.querySelector('.search_ex .close_btn');
+
+const searchEx = document.querySelector('.search_ex');
+const searchBar = document.querySelector('.search');
+
+const searchTab = document.getElementById('product_search');
+const searchDelete = document.querySelector('.search_delete');
+
+
+let serachTabState = false;
+
+//search_on
+searchOnBtn.addEventListener('click', function () {
+    
+    if (!serachTabState) {
+        
+        body.style.overflow = 'hidden';
+        
+        addClass(searchEx, 'block_on');
+        
+        setTimeout(() => {
+            searchTab.focus();
+            addClass(searchBar, 'search_on');
+            addClass(searchCloseBtn, 'search_close_on');
+        }, 50)
+
+        serachTabState = true;
+    }
+});
+
+//search_off
+searchCloseBtn.addEventListener('click', () => {
+    body.style.overflow = 'visible';
+
+    serachTabState = false;
+
+    removeClass(searchEx, 'block_on');
+
+    removeClass(searchBar, 'search_on');
+    removeClass(searchCloseBtn, 'search_close_on');
+
+});
+
+searchDelete.addEventListener('click', () => {
+    searchTab.focus();
+    searchTab.value = '';
+});
+
+
 /*************** top_btn ******************/
 const topBtn = document.querySelector('.top_btn');
 const siteInfoSection = document.querySelector('.site_info');
@@ -95,7 +149,6 @@ let totalHeight = siteInfoHeight + footerExHeight;
 topBtn.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth',
     })
 })
 

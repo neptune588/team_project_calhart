@@ -160,7 +160,7 @@ function arraySort(array = []) {
     listnPageCreate(array);
 
     //해당 객체 상태변수가 켜졌다는말은 change가 되어있다는말.
-    if (sortState.defaultState) {
+    if (sortState.defaultState || sortState.latestState) {
         sortArr = array.slice().sort((a, b) => {
             return a.propertyNumber - b.propertyNumber;
         });

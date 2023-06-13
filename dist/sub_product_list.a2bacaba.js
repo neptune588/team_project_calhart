@@ -979,7 +979,7 @@ function arraySort() {
   listnPageCreate(array);
 
   //해당 객체 상태변수가 켜졌다는말은 change가 되어있다는말.
-  if (sortState.defaultState) {
+  if (sortState.defaultState || sortState.latestState) {
     sortArr = array.slice().sort(function (a, b) {
       return a.propertyNumber - b.propertyNumber;
     });
@@ -1185,7 +1185,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51000" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50824" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

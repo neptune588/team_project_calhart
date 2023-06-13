@@ -110,147 +110,17 @@ img {
     display: block;
 }
 
-/************************* header_ex ***************************/
-.header_ex {
-    color: $color_white;
-    background-color: $point_color_black;
-
-    .header {
-        position: relative;
-        @include box_array;
-
-        .logo {
-            padding: 10px 0;
-
-            a {
-                display: block;
-                @include item_size(175px, 50px);
-                margin: 0 auto;
-                background-image: url(../dist/images/main_logo.png);
-                @include background_contain;
-            }
-
-        }
-
-        .gnb {
-            position: absolute;
-            padding: 10px 0;
-            top: 10px;
-            right: 0;
-
-            .gnb_list {
-                overflow: hidden;
-
-                li {
-                    float: left;
-                    margin-right: 15px;
-
-                    &.icon {
-                        margin-left: 10px;
-
-                        a {
-                            width: 20px;
-                            height: 20px;
-                            background-image: url(../dist/images/search_icon.png);
-                            @include background_cover;
-                        }
-                    }
-
-                    &.cart {
-                        a {
-                            width: 30px;
-                            height: 30px;
-                            background-image: url(../dist/images/cart_icon.png);
-                            @include background_cover;
-                            transform: translateY(-5px);
-                        }
-                    }
-
-                    &:last-child {
-                        margin-right: 0;
-                    }
-
-                    a {
-                        display: block;
-                        font-size: $small_font_size;
-                        font-family: $font_noto_sans;
-                    }
-                }
-            }
-        }
-    }
-}
-
-/************************* lnb_ex ***************************/
-.lnb_ex {
-    background-color: $point_color_black;
-
-    .lnb {
-        display: flex;
-        @include box_array;
-        height: 50px;
-        justify-content: space-between;
-        align-items: center;
-
-        .main_menu_list {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            li {
-                margin-right: 50px;
-
-                a {
-                    display: block;
-                    @include main_title;
-                    letter-spacing: -0.8px;
-                    color: $color_white;
-                }
-            }
-        }
-
-        .real_time_keyward_frame {
-            @include item_size(120px, 20px);
-
-            .keyward_list {
-                overflow: hidden;
-                height: 20px;
-
-                li {
-                    position: relative;
-                    margin-left: 20px;
-                    @include item_size(100px, 20px);
-                    background-color: #fff;
-
-                    a {
-                        display: block;
-                        padding-left: 10px;
-                        line-height: 20px;
-                        font-size: $small_up_font_size;
-                        font-family: $font_noto_sans;
-                    }
-
-                    &:nth-child(1)::after {
-                        content: "1";
-                        position: absolute;
-                        width: 20px;
-                        height: 20px;
-                        top: 0;
-                        left: -20px;
-                        font-size: $small_font_size;
-                        color: $color_white;
-                        background-color: $sub_color_free_speach_blue;
-                        @include text_array(20px);
-                    }
-                }
-            }
-        }
-    }
-}
-
 /************************* step ***************************/
+/************************* agree_terms_contents page ***************************/
+/************************* privacy_input page ***************************/
+/* .privacy_input>form li .false_on:focus {
+    border: 1px solid rgb(199, 4, 4);
+} */
+/************************* confirm page ***************************/
+/************************* prev_next ***************************/
 .step {
-    @include box_array;
+    width: 1245px;
+    margin: 0 auto;
 
     >.sub_title {
         font-size: 40px;
@@ -265,7 +135,7 @@ img {
         .step_on {
             background-color: #4136BF;
             color: white;
-            border-radius: 50%
+            border-radius: 50%;
         }
 
         .text_step_on {
@@ -273,7 +143,8 @@ img {
         }
 
         li {
-            @include item_size(80px, 80px);
+            width: 80px;
+            height: 80px;
             background-color: #E4E4E4;
             border-radius: 50%;
             margin-right: 120px;
@@ -284,34 +155,28 @@ img {
 
             .circle {
                 font-size: 24px;
-                @include text_array(80px);
+                text-align: center;
+                line-height: 80px;
                 text-align: center;
             }
 
             .text {
                 margin-top: 20px;
-                font-family: $font_noto_sans;
-                font-size: $defalut_font_size;
+                font-family: "Noto Sans KR", sans-serif;
+                font-size: 1.6rem;
                 text-align: center;
             }
         }
     }
 }
 
-/************************* agree_terms_contents page ***************************/
 .agree_terms_contents {
-
-
     >h2 {
         padding-bottom: 10px;
         border-bottom: 2px solid black;
     }
 
     >form {
-        .all_terms_list {}
-
-        .terms_first {}
-
         .terms_two {
             .terms_box {
                 height: 100px;
@@ -330,12 +195,11 @@ img {
         input {
             display: none;
 
-            &:checked {
-                ~label {
-                    &::after {
-                        background-image: url(../dist/images/check_icon.png);
-                        @include background_contain;
-                    }
+            &:checked~label {
+                &::after {
+                    background-image: url(../dist/images/check_icon.png);
+                    background-size: contain;
+                    background-repeat: no-repeat;
                 }
             }
         }
@@ -345,13 +209,14 @@ img {
             display: block;
             cursor: pointer;
             user-select: none;
-            font-family: $font_noto_sans;
-            font-size: $small_up_font_size;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 1.4rem;
 
             &::after {
                 content: "";
                 position: absolute;
-                @include item_size(20px, 20px);
+                width: 20px;
+                height: 20px;
                 background-color: #fff;
                 right: 0;
                 border: 1px solid black;
@@ -369,7 +234,7 @@ img {
             border: 1px solid #bbbbbb;
             height: 240px;
             overflow-y: scroll;
-            font-size: $small_font_size;
+            font-size: 1.2rem;
         }
     }
 
@@ -378,28 +243,39 @@ img {
         margin-top: 40px;
         text-align: center;
         color: red;
-        font-size: $defalut_font_size;
+        font-size: 1.6rem;
     }
-
-    /*         .margin_big {
-            font-weight: 700;
-            margin: 20px 0 !important;
-        } */
 }
 
-/************************* privacy_input page ***************************/
 .privacy_input {
-    >h2 {
-        font-size: 20px;
+    .necessary_text {
+        display: block !important;
+    }
+    .privacy_input_page_title {
         padding-bottom: 10px;
         border-bottom: 2px solid black;
+
+        >h2 {
+            display: inline-block;
+            font-family: "Noto Sans KR", sans-serif;
+            font-size: 2rem;
+        }
+
+        >p {
+            display: inline-block;
+            font-family: "Noto Sans KR", sans-serif;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-left: 15px;
+
+            >span {
+                color: red;
+                font-size: 1.2rem;
+            }
+        }
     }
 
     .caution_pop_up_ex {
-        &.pop_up_on {
-            display: block;
-        }
-
         display: none;
         position: fixed;
         top: 0;
@@ -417,8 +293,8 @@ img {
             padding: 30px 20px;
             background-color: red;
             color: #fff;
-            font-size: $small_up_font_size;
-            font-family: $font_noto_sans;
+            font-size: 1.4rem;
+            font-family: "Noto Sans KR", sans-serif;
             text-align: center;
             user-select: none;
             cursor: pointer;
@@ -439,33 +315,56 @@ img {
         }
     }
 
+    .caution_pop_up_ex.pop_up_on {
+        display: block;
+    }
+
+    .guide_message {
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 15px;
+        font-size: 1.2rem;
+    }
+
+    .message_cation {
+        color: red;
+    }
+
     >form {
         .necessary_area {
-            .input_name {}
-
-            .select_gender {}
-
-            .birth_data {}
-
-            .input_id {}
-
-            .input_pw {}
-
-            .input_pw_chk {}
-
             .input_email {
                 flex-wrap: wrap;
-            }
 
-            .input_email_chk {}
+                .email_connecter {
+                    display: inline-block;
+                    margin-left: 15px;
+                }
+            }
         }
 
-        .etc_area {
-            .input_recommender {}
+        li.input_pw {
+            .pw_off {
+                display: inline-block;
+                width: 25px;
+                height: 25px;
+                margin-left: 10px;
+                background: url(../dist/images/pw_block_icon.png) no-repeat;
+                background-size: contain;
+                transform: translateY(4px);
+                transition: all 0.2s;
+                cursor: pointer;
+            }
+
+            .pw_on {
+                background: url(../dist/images/pw_show_icon.PNG) no-repeat;
+                background-size: contain;
+                transform: translateY(6px);
+            }
         }
 
         li {
             display: flex;
+            flex-wrap: wrap;
             padding: 20px 0;
             border-bottom: 1px solid #bbbbbb;
             align-items: center;
@@ -474,18 +373,16 @@ img {
             .important {
                 display: inline-block;
                 color: red;
-                font-size: $small_font_size;
+                font-size: 1.2rem;
                 margin-left: 5px;
             }
-
-            .small_bar {}
 
             input {
                 flex: 0 0 auto;
                 outline: none;
                 padding: 0 10px;
                 border: 1px solid lightgray;
-                font-size: $small_font_size;
+                font-size: 1.2rem;
                 margin-left: 15px;
 
                 &:focus {
@@ -493,15 +390,25 @@ img {
                 }
             }
 
+            .false_on {
+                background-color: rgb(255 242 244);
+                border: 2px solid rgb(237 94 94) !important;
+            }
+
+            .true_on {
+                background-color: rgb(238 255 238);
+                border: 2px solid rgb(127 193 138) !important;
+            }
+
             label {
                 user-select: none;
-                font-family: $font_noto_sans;
-                font-size: $small_up_font_size;
+                font-family: "Noto Sans KR", sans-serif;
+                font-size: 1.4rem;
             }
 
             button {
                 color: white;
-                font-size: $small_font_size;
+                font-size: 1.2rem;
                 border: none;
                 cursor: pointer;
                 background-color: #4136BF;
@@ -520,7 +427,8 @@ img {
                 outline: none;
                 border: 1px solid lightgray;
                 margin-left: 15px;
-                @include item_size(100px, 30px);
+                width: 100px;
+                height: 30px;
 
                 &:focus {
                     border: 1px solid gray;
@@ -528,17 +436,87 @@ img {
             }
 
             .small_bar {
-                @include item_size(100px, 30px);
+                width: 100px;
+                height: 30px;
             }
 
             .medium_bar {
-                @include item_size(200px, 30px);
+                width: 200px;
+                height: 30px;
             }
         }
     }
 }
 
-/************************* prev_next ***************************/
+.confirm {
+    overflow: hidden;
+    width: 1245px;
+    border: none;
+    background-color: #FFFDF6;
+    padding: 0;
+
+    >div {
+        float: left;
+        width: 615px;
+        margin-right: 15px;
+    }
+
+    .confirm_img {
+        height: 600px;
+    }
+
+    .confirm_ment_area {
+        margin-right: 0;
+
+        .carhart_logo {
+            width: 195px;
+            margin: 0 auto 20px;
+        }
+
+        .confirm_ment {
+            font-size: 1.4rem;
+            text-align: center;
+            margin: 30px 0;
+
+            #id_n_title_ment {
+                display: flex;
+                justify-content: center;
+
+                >p {
+                    font-size: 1.6rem;
+                    font-family: "Noto Sans KR", sans-serif;
+                    margin: 5px 10px 0;
+                }
+
+                >h2 {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        .login_page_in_btn_design {
+            display: none;
+            text-align: center;
+            width: 405px;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            background-color: #4136BF;
+            color: white;
+            font-size: 1.4rem;
+            transition: all 0.2s;
+
+            &:hover {
+                background-color: #ffbf00;
+            }
+        }
+
+        .login_page_in_btn_on {
+            display: block !important;
+        }
+    }
+}
+
 .prev_next {
     display: flex;
     width: 615px;
@@ -549,11 +527,12 @@ img {
         outline: none;
         border: none;
         text-align: center;
-        @include item_size(300px, 60px);
+        width: 300px;
+        height: 60px;
         line-height: 60px;
         margin-right: 15px;
-        font-family: $font_perment_marker;
-        font-size: $defalut_font_size;
+        font-family: "Permanent Marker";
+        font-size: 1.6rem;
         background-color: #ffbf00;
         transition: all 0.2s;
         cursor: pointer;
@@ -564,9 +543,7 @@ img {
             color: #fff;
         }
 
-        &.prev {}
-
-        &.next {
+        &:last-child {
             margin-right: 0;
         }
     }
