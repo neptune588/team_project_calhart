@@ -421,6 +421,9 @@ input {
 .wrapper .product_container .product_list_wrapper li:nth-child(3n) {
   margin-right: 0;
 }
+.wrapper .product_container .product_list_wrapper li.link_hidden {
+  display: none;
+}
 .wrapper .product_container .product_list_wrapper li .img_link_01 {
   position: absolute;
   top: 0;

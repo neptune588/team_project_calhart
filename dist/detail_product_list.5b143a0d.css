@@ -636,8 +636,14 @@ input {
   margin-right: 50px;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list li .right_info .rating_star {
+  display: flex;
   color: #ffbf00;
   letter-spacing: -0.8px;
+  margin-right: 50px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_list li .right_info .rating_star li {
+  padding: 0 !important;
+  border-bottom: none;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list .not_ment {
   font-family: "Noto Sans KR", sans-serif;

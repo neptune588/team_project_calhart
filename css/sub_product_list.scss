@@ -502,6 +502,9 @@ input {
                 &:nth-child(3n) {
                     margin-right: 0;
                 }
+                &.link_hidden {
+                    display: none;
+                }
                 .img_link_01 {
                     position: absolute;
                     top: 0;

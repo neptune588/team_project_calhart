@@ -791,14 +791,20 @@ input {
 
                         .right_info {
                             display: flex;
-
+                            
                             span {
                                 margin-right: 50px;
                             }
 
                             .rating_star {
+                                display: flex;
                                 color: $point_color_amber;
                                 letter-spacing: -0.8px;
+                                margin-right: 50px;
+                                li {
+                                    padding: 0 !important;
+                                    border-bottom: none;
+                                }
                             }
                         }
                     }

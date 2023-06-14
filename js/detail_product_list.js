@@ -280,7 +280,7 @@ function createList(array) {
                     </span>
                 </p>
                 <div class="right_info">
-                    <span class="rating_star">${starWrite(array[i], `ratingStar`)}</span>
+                    <ul class="rating_star">${starWrite(array[i], `ratingStar`)}</ul>
                     <span class="review_date date">${array[i].date}</span>
                     <span class="review_id">ju****</span>
                 </div>
@@ -439,13 +439,23 @@ const questionCreateComBtn = document.getElementById('qna_create');
 const qnaUserID = document.getElementById('qna_user_id');
 
 const qnaList = document.querySelector('.qna');
-const qnaNotMentBox = document.querySelector('.qna_not_ment');
+
+//const qnaNotMentBox = document.querySelector('.qna_not_ment');
 
 const qnaCounting = document.querySelector('.qna_couting');
 
 const qnaNoticeMent = document.querySelector('.qna_notice_ment');
 
 const qnaContents = [];
+
+
+/* ment_box selector */
+const newDivNotMentBox = document.createElement('div');
+
+addClassMulti(newDivNotMentBox, ['qna_not_ment', 'not_ment', 'none_on']);
+newDivNotMentBox.textContent = ` 현재 작성된 문의가 없습니다.`;
+qnaList.appendChild(newDivNotMentBox);
+
 
 questionCreateComBtn.addEventListener('click', () => {
     let IDvalue = qnaUserID.value;
@@ -555,7 +565,7 @@ function qnaCreate(object, array) {
     addClass(newDivRightBox, 'right_box');
     newSpanQdate.textContent = object.date;
     newSpanUserID.textContent = IDViewLengthCut(object.userId);
-    
+
     newSpanManageComment.appendChild(newComIcon);
     newDivRightBox.appendChild(newSpanQdate);
     newDivRightBox.appendChild(newSpanUserID);
@@ -597,37 +607,37 @@ function qnaCreate(object, array) {
     fragment.appendChild(newLiQnAlist);
 
     //리뷰 몇개인지 알려줌.
-    qnaCounting.textContent = array.length;
+    qnaCounting.textContent = array.length + 1;
     qnaList.appendChild(fragment);
 
     //0개 되면 알림창
     arrayLengthCheck(array);
 
     let answerInputState = false;
-    newSpanManageComment.addEventListener('click', function() {
-        if(!object.answerState && !answerInputState) {
+    newSpanManageComment.addEventListener('click', function () {
+        if (!object.answerState && !answerInputState) {
             addClass(newDivAnswerBox, 'block_on');
             answerInputState = true;
-        } else if(!object.answerState && answerInputState) {
+        } else if (!object.answerState && answerInputState) {
             removeClass(newDivAnswerBox, 'block_on');
             answerInputState = false;
         }
     });
 
-    newSpanQnADeleteBtn.addEventListener('click', function() {
+    newSpanQnADeleteBtn.addEventListener('click', function () {
         let parentUl = this.closest('.qna');
         let parentli = this.closest('.question_list');
-        if(parentUl) {
+        if (parentUl) {
             let objectNum = array.indexOf(object);
             array.splice(objectNum, 1);
             parentUl.removeChild(parentli);
             //0개 되면 알림창
             arrayLengthCheck(array);
-            qnaCounting.textContent = array.length;
+            qnaCounting.textContent = array.length + 1;
         }
     });
 
-    const argueArray = [newLiQnAlist, newDivAnswerBox, newTextAreaAnswerComment, newSpanQState,  newButtonAnswerCreate, newSpanManagerMent, object];
+    const argueArray = [newLiQnAlist, newDivAnswerBox, newTextAreaAnswerComment, newSpanQState, newButtonAnswerCreate, newSpanManagerMent, object];
     answerClick(argueArray);
 
 }
@@ -699,7 +709,7 @@ function setAttributeMulti(Element, arrays) {
 function answerClick(array) {
     let [nowLi = '', nowAnBox = '', nowTextBox = '', nowQstate = '', nowBtn = '', nowDetail = '', nowobject] = array;
     nowBtn.addEventListener('click', () => {
-        if(nowTextBox.value !== null && nowTextBox.value !== undefined && nowTextBox.value !== '') {
+        if (nowTextBox.value !== null && nowTextBox.value !== undefined && nowTextBox.value !== '') {
             const fragment = document.createDocumentFragment();
 
             //해당하는 리스트의 객체속성 변경
@@ -721,7 +731,7 @@ function answerClick(array) {
             addClass(newDivGuideMent, 'qna_guide_ment');
             addClass(newPSpot, 'spot');
             addClass(newPMent, 'ment');
-            
+
             newSpanAnswer.textContent = `답변`;
             newPSpot.textContent = `↘[CARHARTT] 관리자`;
             newPMent.textContent = nowTextBox.value;
@@ -733,20 +743,20 @@ function answerClick(array) {
 
             fragment.appendChild(newDivMentArea);
             nowLi.appendChild(fragment);
-/*             let receive = '';
-            receive = 
-            `
-                <div class="ment_area">
-                    <span class="answer">답변</span>
-                    <div class="qna_guide_ment">
-                        <p class="spot">↘[CARHARTT] 관리자</p>
-                        <p class="ment">${nowTextBox.value}</p>
-                    </div>
-                </div>
-            `;
-            nowLi.innerHTML += receive; */
+            /*             let receive = '';
+                        receive = 
+                        `
+                            <div class="ment_area">
+                                <span class="answer">답변</span>
+                                <div class="qna_guide_ment">
+                                    <p class="spot">↘[CARHARTT] 관리자</p>
+                                    <p class="ment">${nowTextBox.value}</p>
+                                </div>
+                            </div>
+                        `;
+                        nowLi.innerHTML += receive; */
             nowDetail.addEventListener('click', () => {
-                if(!nowobject.listState) {
+                if (!nowobject.listState) {
                     nowobject.listState = true;
                     removeClass(newDivMentArea, 'none_on');
                 } else {
@@ -758,14 +768,14 @@ function answerClick(array) {
             alert('글자를 입력하세요!');
         }
     });
-    
+
 }
 
 function arrayLengthCheck(array) {
     if (array.length > 0) {
         addClass(qnaNotMentBox, 'none_on');
     } else {
-        removeClass(qnaNotMentBox, 'none_on')
+        removeClass(qnaNotMentBox, 'none_on');
     }
 }
 

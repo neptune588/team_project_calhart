@@ -1,15 +1,20 @@
 {
   "dependencies": {
+    "gh-pages": "^5.0.0",
     "posthtml": "^0.16.6",
     "sass": "^1.62.1",
     "sass-loader": "^13.2.2"
   },
+  "homepage": "https://github.com/neptune588/team_project_calhart.git",
   "name": "team_project",
   "version": "1.0.0",
   "main": "index.html",
   "scripts": {
     "dev": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --public-url ./ --no-content-hash",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+
   },
   "keywords": [],
   "author": "",

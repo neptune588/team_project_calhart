@@ -1063,7 +1063,7 @@ function createList(array) {
     if (_i7 === pageViewLength) {
       break;
     }
-    var list = "\n            <li class=\"review\">\n                <p class=\"review_ment\">\n                    ".concat(array[_i7].text, "\n                    <span id = \"").concat(indexCalc(_i7), "\" class = \"delete\">\n                        <i class=\"fas fa-window-close\"></i>\n                    </span>\n                </p>\n                <div class=\"right_info\">\n                    <span class=\"rating_star\">").concat(starWrite(array[_i7], "ratingStar"), "</span>\n                    <span class=\"review_date date\">").concat(array[_i7].date, "</span>\n                    <span class=\"review_id\">ju****</span>\n                </div>\n            </li>\n        ");
+    var list = "\n            <li class=\"review\">\n                <p class=\"review_ment\">\n                    ".concat(array[_i7].text, "\n                    <span id = \"").concat(indexCalc(_i7), "\" class = \"delete\">\n                        <i class=\"fas fa-window-close\"></i>\n                    </span>\n                </p>\n                <div class=\"right_info\">\n                    <ul class=\"rating_star\">").concat(starWrite(array[_i7], "ratingStar"), "</ul>\n                    <span class=\"review_date date\">").concat(array[_i7].date, "</span>\n                    <span class=\"review_id\">ju****</span>\n                </div>\n            </li>\n        ");
     receive += list;
   }
   reviewList.innerHTML = receive;
@@ -1192,10 +1192,18 @@ var questionLengthBox = document.querySelector('.qna_now_length');
 var questionCreateComBtn = document.getElementById('qna_create');
 var qnaUserID = document.getElementById('qna_user_id');
 var qnaList = document.querySelector('.qna');
-var qnaNotMentBox = document.querySelector('.qna_not_ment');
+
+//const qnaNotMentBox = document.querySelector('.qna_not_ment');
+
 var qnaCounting = document.querySelector('.qna_couting');
 var qnaNoticeMent = document.querySelector('.qna_notice_ment');
 var qnaContents = [];
+
+/* ment_box selector */
+var newDivNotMentBox = document.createElement('div');
+addClassMulti(newDivNotMentBox, ['qna_not_ment', 'not_ment', 'none_on']);
+newDivNotMentBox.textContent = " \uD604\uC7AC \uC791\uC131\uB41C \uBB38\uC758\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.";
+qnaList.appendChild(newDivNotMentBox);
 questionCreateComBtn.addEventListener('click', function () {
   var IDvalue = qnaUserID.value;
   var questionvalue = questionBox.value;
@@ -1315,7 +1323,7 @@ function qnaCreate(object, array) {
   fragment.appendChild(newLiQnAlist);
 
   //리뷰 몇개인지 알려줌.
-  qnaCounting.textContent = array.length;
+  qnaCounting.textContent = array.length + 1;
   qnaList.appendChild(fragment);
 
   //0개 되면 알림창
@@ -1339,7 +1347,7 @@ function qnaCreate(object, array) {
       parentUl.removeChild(parentli);
       //0개 되면 알림창
       arrayLengthCheck(array);
-      qnaCounting.textContent = array.length;
+      qnaCounting.textContent = array.length + 1;
     }
   });
   var argueArray = [newLiQnAlist, newDivAnswerBox, newTextAreaAnswerComment, newSpanQState, newButtonAnswerCreate, newSpanManagerMent, object];
@@ -1645,7 +1653,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65019" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58001" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
