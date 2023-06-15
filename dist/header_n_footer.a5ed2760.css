@@ -321,6 +321,21 @@ input {
   background-color: #ffbf00;
 }
 
+/************************* quick_menu_design ***************************/
+.quick_menu_design {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 100px;
+  height: 220px;
+  transition: all 1s;
+  background-color: #fff;
+  border: 1px solid red;
+  cursor: pointer;
+  z-index: 99999999;
+}
+
 /************************* lnb_ex ***************************/
 .lnb_ex_design {
   background-color: #000;

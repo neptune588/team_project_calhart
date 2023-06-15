@@ -253,6 +253,53 @@ topBtn.addEventListener('click', function () {
   });
 });
 
+/*************** quick_menu ******************/
+var quickMenu = document.getElementById('quick_menu');
+var prevScroll = 0;
+var quickMenuLocate = quickMenu.offsetTop;
+
+/* window.addEventListener('scroll', () => {
+    quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
+}); */
+//정상작동은 되지만 스크롤할때마다 매번 이벤트가 발생됨.
+//따라서 무언가 조치가 필요
+
+//알아보니 debounce라는 개념이 있음
+//셋 타임아웃을 설정하고 예를들면 500밀리세컨드라고 가정
+//500밀리세컨드 안에 동작 이벤트를 넣어놨는데
+//만약 그 안에 스크롤 이벤트가 일어나면 클리어 타임아웃으로 셋 타임아웃을 무효화하여 그 전의 이벤트는 초기화가 되는 원리인듯
+
+//즉 정리해보자면 다음과 같다.
+//로직: 함수 debounce은 셋 타임아웃을 리턴하는 콜백함수이다.
+//cleartimeout으로 셋타임 아웃을 제어할수있게 변수 선언을 해준다.
+//만약에 전에 셋타임아웃이없는 함수가 처음 발동된거면
+//클리어타임아웃은 무시가되고 셋타임아웃이 실행되는거고
+//셋 타임아웃이 있다면 클리어타임아웃으로 셋타임아웃을 클리어하면됨
+//이렇게하면 스크롤할때마다 이벤트가 발생하는것이아닌 셋타임아웃간격을 두고
+//셋타임간격 100이라고치면 100동안 스크롤이벤트가 안일어나면 셋타임 안에 넣어둔 명령어가 실행
+//스크롤이벤트가 일어나면 클리어timeout으로 명령어 삭제하고 다시 셋타임아웃시작
+//콘솔로 확인해보면 scrolly값이 소숫점단위가아닌 큰단위로 바껴잇음
+
+//윈도우 스크롤이벤트가 아닌 다른이벤트에서 디바운스가 필요한경우
+//애플라이 메서드로 this를 바꿔주는 작업이 필요할듯? input 같은?
+
+window.addEventListener('scroll', debounce(60));
+function debounce(delay) {
+  var controlTime;
+  console.log(window.scrollY);
+  return function () {
+    clearTimeout(controlTime);
+    controlTime = setTimeout(function () {
+      console.log(window.scrollY);
+      quickMenu.style.top = "".concat(window.scrollY + quickMenuLocate, "px");
+    }, delay);
+  };
+}
+function scrollEvent(currentScroll) {
+  prevScroll = currentScroll;
+  console.log(window.scrollY, prevScroll);
+}
+
 /*************** common ******************/
 //position값 계산
 function move(LiWidth, count) {
@@ -307,7 +354,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63066" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54834" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

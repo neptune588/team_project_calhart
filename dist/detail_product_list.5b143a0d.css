@@ -337,6 +337,12 @@ input {
 .contents_product_buy .product_info_n_buy_btn_area .price p.color_gray {
   font-size: 1.4rem;
 }
+.contents_product_buy .product_info_n_buy_btn_area .price .limit_quantity {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 700;
+  font-size: 2rem !important;
+  color: black;
+}
 .contents_product_buy .product_info_n_buy_btn_area .select_notice_ment {
   display: none;
   font-size: 1.4rem;
@@ -668,6 +674,25 @@ input {
 .info_container {
   width: 1245px;
   margin: 0 auto;
+}
+.info_container #product_details_section .product_detail_info {
+  display: flex;
+}
+.info_container #product_details_section .product_detail_info p {
+  font-size: 1.4rem !important;
+}
+.info_container #product_details_section .product_detail_info p .model_name {
+  font-weight: 700;
+}
+.info_container #product_details_section .product_detail_info .product_select_img {
+  margin-right: 15px;
+  border: 1px solid black;
+}
+.info_container #product_details_section .product_detail_info .product_select_img img {
+  cursor: pointer;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }
 .info_container #product_reviews_section .product_reviews_area .top {
   display: flex;

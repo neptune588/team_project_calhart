@@ -388,6 +388,21 @@ input {
     }
 }
 
+
+/************************* quick_menu_design ***************************/
+.quick_menu_design {
+    position: absolute;
+    top: 50%; right: 0;
+    transform: translateY(-50%);
+    @include item_size(100px, 220px);
+    transition: all 1s;
+    background-color: #fff;
+    border: 1px solid red;
+    cursor: pointer;
+    z-index: 99999999;
+}
+
+
 /************************* lnb_ex ***************************/
 .lnb_ex_design {
     background-color: $point_color_black;

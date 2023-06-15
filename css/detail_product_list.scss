@@ -428,6 +428,12 @@ input {
                     font-size: $small_up_font_size;
                 }
             }
+            .limit_quantity {
+                font-family: $font_noto_sans;
+                font-weight: 700;
+                font-size: 2rem !important;
+                color: black;
+            }
         }
         .select_notice_ment {
             display: none;
@@ -822,6 +828,26 @@ input {
 /************************* info_container ***************************/
 .info_container {
     @include box_array;
+    #product_details_section {
+        .product_detail_info {
+            display: flex;
+            p {
+                font-size: $small_up_font_size !important;
+                .model_name {
+                    font-weight: 700;
+                }
+            }
+            .product_select_img {
+                margin-right: 15px;
+                border: 1px solid black;
+                img {
+                    cursor: pointer;
+                    @include item_size(200px, 200px);
+                    object-fit: cover;
+                }
+            }
+        }
+    }
 
     #product_reviews_section {
         .product_reviews_area {

@@ -50,10 +50,8 @@ productPlusBtn.addEventListener('click', function () {
     //현재 재고량 몇개인지
     let currentQuntity = changePriceQuntity.textContent;
 
-    if(parseInt(productQuanView.value) === parseInt(currentQuntity)) {
-        addClass(priSelNotMent, 'block_on');
-    }
     if(parseInt(productQuanView.value) > parseInt(currentQuntity)) {
+        addClass(priSelNotMent, 'block_on');
         productQuanView.value = currentQuntity;
     }
 

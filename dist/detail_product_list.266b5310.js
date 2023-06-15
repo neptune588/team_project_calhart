@@ -878,10 +878,8 @@ productPlusBtn.addEventListener('click', function () {
   var currentPrice = totalPrice.dataset.price;
   //현재 재고량 몇개인지
   var currentQuntity = changePriceQuntity.textContent;
-  if (parseInt(productQuanView.value) === parseInt(currentQuntity)) {
-    addClass(priSelNotMent, 'block_on');
-  }
   if (parseInt(productQuanView.value) > parseInt(currentQuntity)) {
+    addClass(priSelNotMent, 'block_on');
     productQuanView.value = currentQuntity;
   }
 
@@ -1735,7 +1733,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63066" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54834" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
