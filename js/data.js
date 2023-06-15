@@ -757,6 +757,7 @@ const detail_page_produdct_list = [
 			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04_hover.jpg`, 
 			`./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05_hover.jpg`, 
 		],
+		limitQuantity: 6,
 	},
 	{
 		propertyNumber: 2,
@@ -779,6 +780,7 @@ const detail_page_produdct_list = [
 			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04_hover.jpg`,
 			`./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05_hover.jpg`,
 		],
+		limitQuantity: 9,
 	},
 
 ]

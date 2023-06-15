@@ -385,22 +385,87 @@ input {
         .price {
             overflow: hidden;
 
-            p {
-                margin-bottom: 5px;
-
-                &.product_money {
+            .product_select_wrapper {
+                display: flex;
+                justify-content: space-between;
+                .product_money {
                     @include sub_title;
                 }
+                .product_select_area {
+                    overflow: hidden;
+                    input {
+                        float: left;
+                        @include item_size(50px, 30px);
+                        padding: 0 5px;
+                        display: block !important;
+                        outline: none;
+                        border: 1px solid #bbbbbb;
+                        border-left: none;
+                        border-right: none;
+                        text-align: center;
+                        font-size: $small_up_font_size;
+                        font-family: $font_noto_sans;
+                    }
+                    .quantity_btn{
+                        float: left;
+                        display: block;
+                        background-color: white;
+                        border: 1px solid #bbbbbb;
+                        font-size: $small_up_font_size;
+                        @include item_size(30px, 30px);
+                        &:hover {
+                            background-color: #ebebeb;
+                            border: 1px solid #bebebe;
+                        }
+                    }
+                }
+                
+            }
+            p {
+                margin-bottom: 5px;
 
                 &.color_gray {
                     font-size: $small_up_font_size;
                 }
             }
         }
+        .select_notice_ment {
+            display: none;
+            font-size: $small_up_font_size;
+            color: red;
+        }
+        .total_price_area {
+            display: flex;
+            justify-content: space-between;
+            font-size: $small_up_font_size;
+            border: 1px solid #bbbbbb;
+            border-bottom: none;
+            margin-top: 15px;
+            padding: 15px 0;
+            background-color: #fff;
+            .total_ment {
+                margin-left: 15px;
+                font-weight: 700;
+                color: $sub_color_free_speach_blue;
+            }
+            .right_total_view {
+                display: flex;
+                align-items: center;
+                >p {
+                    margin-right: 15px;
+                    float: left;
+                }
+                .total_quntaitly {
+                }
+                .total_price {
+                    font-family: $font_noto_sans;
+                }
+            }
+        }
     }
 
     .shipping_n_installment {
-        margin: 15px 0 30px;
+        margin-bottom: 30px;
         padding: 15px 0;
         border-top: 1px solid #bbbbbb;
         border-bottom: 1px solid #bbbbbb;

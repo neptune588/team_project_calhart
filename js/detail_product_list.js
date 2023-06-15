@@ -15,6 +15,77 @@ const changeCodeNum = document.querySelector('.code_number');
 const changeProductName = document.querySelector('.product_name');
 const changeProductMoney = document.querySelector('.product_money');
 const changeProductPoint = document.querySelector('.product_point');
+const changePriceQuntity = document.querySelector('.quantity_number');
+
+const productQuanView = document.getElementById('product_quantity_select');
+//input value 받아서 변경
+const totalQuanNumber = document.querySelector('.total_quntaitly_view');
+//input value * price
+const totalPrice = document.querySelector('.total_price');
+
+/*************** product_quntaitly_select ******************/
+const productMinusBtn = document.getElementById('quantity_minus');
+const productPlusBtn = document.getElementById('quantity_plus');
+//재고량 넘겼을시 나오는 멘트
+const priSelNotMent = document.querySelector('.select_notice_ment');
+
+//재고량
+changePriceQuntity.textContent = detail_page_produdct_list[0].limitQuantity;
+
+productQuanView.addEventListener('input', function () {
+    //숫자 정규식
+    let numberReg = /^\d+$/;
+
+    if(!(numberReg.test(this.value))) {
+        alert('숫자만 입력해라!');
+    }
+});
+
+productPlusBtn.addEventListener('click', function () {
+    let currentValue = productQuanView.value;
+    //수량 표시
+    productQuanView.value = parseInt(currentValue) + 1;
+    //데이터셋에 가격
+    let currentPrice = totalPrice.dataset.price;
+    //현재 재고량 몇개인지
+    let currentQuntity = changePriceQuntity.textContent;
+
+    if(parseInt(productQuanView.value) === parseInt(currentQuntity)) {
+        addClass(priSelNotMent, 'block_on');
+    }
+    if(parseInt(productQuanView.value) > parseInt(currentQuntity)) {
+        productQuanView.value = currentQuntity;
+    }
+
+    //구매량
+    totalQuanNumber.textContent = productQuanView.value;
+    //총 구매가격
+    totalPrice.textContent = `${(currentPrice * productQuanView.value).toLocaleString()} 원`;
+});
+
+productMinusBtn.addEventListener('click', function () {
+    let currentValue = productQuanView.value;
+    //수량 표시
+    productQuanView.value = parseInt(currentValue) - 1;
+    //데이터셋에 가격
+    let currentPrice = totalPrice.dataset.price;
+    //현재 재고량 몇개인지
+    let currentQuntity = changePriceQuntity.textContent;
+    
+    //0이하 가지못하게
+    if (parseInt(productQuanView.value) < 1) {
+        productQuanView.value = 1;
+    }
+
+    if (parseInt(productQuanView.value) < parseInt(currentQuntity)) {
+        removeClass(priSelNotMent, 'block_on');
+    }
+
+    //구매량
+    totalQuanNumber.textContent = productQuanView.value;
+    //price -> 배열의 가격 -> date-set전달 -> dataset * productQuanView.value
+    totalPrice.textContent = `${(currentPrice * productQuanView.value).toLocaleString()} 원`;
+});
 
 
 for (let i = 0; i < viewSmallThumnail.length; i++) {
@@ -41,10 +112,26 @@ for (let i = 0; i < colorSelectBox.length; i++) {
             thumnailChange(viewSmallThumnailHover, i, j, detail_page_produdct_list, `imgSrc02`);
         }
 
+        //코드 초기화
         changeCodeNum.textContent = detail_page_produdct_list[i].productCode;
+        //상품 이름 초기화
         changeProductName.textContent = detail_page_produdct_list[i].productNameKor;
+        //상품 가격 초기화
         changeProductMoney.textContent = detail_page_produdct_list[i].price.toLocaleString();
+        //선택 수량 가격 초기화
+        totalPrice.textContent = `${detail_page_produdct_list[i].price.toLocaleString()} 원`;
+        //데이터셋 상품에 맞게 
+        totalPrice.setAttribute('data-price', `${detail_page_produdct_list[i].price}`);
+        //적립금 초기화
         changeProductPoint.textContent = detail_page_produdct_list[i].price * 0.005;
+        //재고 초기화
+        changePriceQuntity.textContent = detail_page_produdct_list[i].limitQuantity;
+        //수량 초기화
+        productQuanView.value = 1;
+        //총 구매 수량 초기화
+        totalQuanNumber.textContent = productQuanView.value;
+        //멘트 삭제
+        removeClass(priSelNotMent, 'block_on');
     });
 }
 
@@ -75,6 +162,7 @@ function thumnailChange(srcChangeArray, num01, num02, array, imgProperty) {
     srcChangeArray[num02].setAttribute('src', `${array[num01][imgProperty][num02]}`);
     srcChangeArray[num02].setAttribute('alt', `${array[num01][imgProperty][num02]}`);
 }
+
 
 /*************** review 관련  ******************/
 const reviewCreateBtn = document.querySelector('.create_btn');
@@ -447,14 +535,6 @@ const qnaCounting = document.querySelector('.qna_couting');
 const qnaNoticeMent = document.querySelector('.qna_notice_ment');
 
 const qnaContents = [];
-
-
-/* ment_box selector */
-const newDivNotMentBox = document.createElement('div');
-
-addClassMulti(newDivNotMentBox, ['qna_not_ment', 'not_ment', 'none_on']);
-newDivNotMentBox.textContent = ` 현재 작성된 문의가 없습니다.`;
-qnaList.appendChild(newDivNotMentBox);
 
 
 questionCreateComBtn.addEventListener('click', () => {
@@ -931,3 +1011,8 @@ function addClassMulti(Element, ClassArray) {
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);
 }
+
+/* function Num(value) {
+    let result = parseInt(value, 10);
+    return result;
+} */

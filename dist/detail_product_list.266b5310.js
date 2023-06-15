@@ -811,7 +811,8 @@ var detail_page_produdct_list = [{
   productCode: "CA23SSJAJL00358002",
   price: 248000,
   imgSrc01: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05.jpg"],
-  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05_hover.jpg"]
+  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05_hover.jpg"],
+  limitQuantity: 6
 }, {
   propertyNumber: 2,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
@@ -819,7 +820,8 @@ var detail_page_produdct_list = [{
   productCode: "CA23SSJAJL00266002",
   price: 248000,
   imgSrc01: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05.jpg"],
-  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05_hover.jpg"]
+  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05_hover.jpg"],
+  limitQuantity: 9
 }];
 exports.detail_page_produdct_list = detail_page_produdct_list;
 },{}],"js/detail_product_list.js":[function(require,module,exports) {
@@ -846,6 +848,70 @@ var changeCodeNum = document.querySelector('.code_number');
 var changeProductName = document.querySelector('.product_name');
 var changeProductMoney = document.querySelector('.product_money');
 var changeProductPoint = document.querySelector('.product_point');
+var changePriceQuntity = document.querySelector('.quantity_number');
+var productQuanView = document.getElementById('product_quantity_select');
+//input value 받아서 변경
+var totalQuanNumber = document.querySelector('.total_quntaitly_view');
+//input value * price
+var totalPrice = document.querySelector('.total_price');
+
+/*************** product_quntaitly_select ******************/
+var productMinusBtn = document.getElementById('quantity_minus');
+var productPlusBtn = document.getElementById('quantity_plus');
+//재고량 넘겼을시 나오는 멘트
+var priSelNotMent = document.querySelector('.select_notice_ment');
+
+//재고량
+changePriceQuntity.textContent = _data.detail_page_produdct_list[0].limitQuantity;
+productQuanView.addEventListener('input', function () {
+  //숫자 정규식
+  var numberReg = /^\d+$/;
+  if (!numberReg.test(this.value)) {
+    alert('숫자만 입력해라!');
+  }
+});
+productPlusBtn.addEventListener('click', function () {
+  var currentValue = productQuanView.value;
+  //수량 표시
+  productQuanView.value = parseInt(currentValue) + 1;
+  //데이터셋에 가격
+  var currentPrice = totalPrice.dataset.price;
+  //현재 재고량 몇개인지
+  var currentQuntity = changePriceQuntity.textContent;
+  if (parseInt(productQuanView.value) === parseInt(currentQuntity)) {
+    addClass(priSelNotMent, 'block_on');
+  }
+  if (parseInt(productQuanView.value) > parseInt(currentQuntity)) {
+    productQuanView.value = currentQuntity;
+  }
+
+  //구매량
+  totalQuanNumber.textContent = productQuanView.value;
+  //총 구매가격
+  totalPrice.textContent = "".concat((currentPrice * productQuanView.value).toLocaleString(), " \uC6D0");
+});
+productMinusBtn.addEventListener('click', function () {
+  var currentValue = productQuanView.value;
+  //수량 표시
+  productQuanView.value = parseInt(currentValue) - 1;
+  //데이터셋에 가격
+  var currentPrice = totalPrice.dataset.price;
+  //현재 재고량 몇개인지
+  var currentQuntity = changePriceQuntity.textContent;
+
+  //0이하 가지못하게
+  if (parseInt(productQuanView.value) < 1) {
+    productQuanView.value = 1;
+  }
+  if (parseInt(productQuanView.value) < parseInt(currentQuntity)) {
+    removeClass(priSelNotMent, 'block_on');
+  }
+
+  //구매량
+  totalQuanNumber.textContent = productQuanView.value;
+  //price -> 배열의 가격 -> date-set전달 -> dataset * productQuanView.value
+  totalPrice.textContent = "".concat((currentPrice * productQuanView.value).toLocaleString(), " \uC6D0");
+});
 var _loop = function _loop(i) {
   //초기설정
   thumnailChange(viewSmallThumnail, 0, i, _data.detail_page_produdct_list, "imgSrc01");
@@ -871,10 +937,27 @@ var _loop2 = function _loop2(_i) {
       thumnailChange(viewSmallThumnail, _i, j, _data.detail_page_produdct_list, "imgSrc01");
       thumnailChange(viewSmallThumnailHover, _i, j, _data.detail_page_produdct_list, "imgSrc02");
     }
+
+    //코드 초기화
     changeCodeNum.textContent = _data.detail_page_produdct_list[_i].productCode;
+    //상품 이름 초기화
     changeProductName.textContent = _data.detail_page_produdct_list[_i].productNameKor;
+    //상품 가격 초기화
     changeProductMoney.textContent = _data.detail_page_produdct_list[_i].price.toLocaleString();
+    //선택 수량 가격 초기화
+    totalPrice.textContent = "".concat(_data.detail_page_produdct_list[_i].price.toLocaleString(), " \uC6D0");
+    //데이터셋 상품에 맞게 
+    totalPrice.setAttribute('data-price', "".concat(_data.detail_page_produdct_list[_i].price));
+    //적립금 초기화
     changeProductPoint.textContent = _data.detail_page_produdct_list[_i].price * 0.005;
+    //재고 초기화
+    changePriceQuntity.textContent = _data.detail_page_produdct_list[_i].limitQuantity;
+    //수량 초기화
+    productQuanView.value = 1;
+    //총 구매 수량 초기화
+    totalQuanNumber.textContent = productQuanView.value;
+    //멘트 삭제
+    removeClass(priSelNotMent, 'block_on');
   });
 };
 for (var _i = 0; _i < colorSelectBox.length; _i++) {
@@ -1198,12 +1281,6 @@ var qnaList = document.querySelector('.qna');
 var qnaCounting = document.querySelector('.qna_couting');
 var qnaNoticeMent = document.querySelector('.qna_notice_ment');
 var qnaContents = [];
-
-/* ment_box selector */
-var newDivNotMentBox = document.createElement('div');
-addClassMulti(newDivNotMentBox, ['qna_not_ment', 'not_ment', 'none_on']);
-newDivNotMentBox.textContent = " \uD604\uC7AC \uC791\uC131\uB41C \uBB38\uC758\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.";
-qnaList.appendChild(newDivNotMentBox);
 questionCreateComBtn.addEventListener('click', function () {
   var IDvalue = qnaUserID.value;
   var questionvalue = questionBox.value;
@@ -1628,6 +1705,11 @@ function addClassMulti(Element, ClassArray) {
 function removeClass(Element, ClassName) {
   Element.classList.remove(ClassName);
 }
+
+/* function Num(value) {
+    let result = parseInt(value, 10);
+    return result;
+} */
 },{"./data.js":"js/data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -1653,7 +1735,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58001" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63066" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

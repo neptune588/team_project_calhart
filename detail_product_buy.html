@@ -129,9 +129,27 @@
                 </ul><!-- sns_list -->
             </div><!-- rating_n_sns -->
             <section class="price">
-                <p class="product_money">248,000</p>
+                <div class="product_select_wrapper">
+                    <p class="product_money">
+                        248,000
+                    </p>
+                    <div class="product_select_area">
+                        <button type="button" id="quantity_minus" class="quantity_btn"><i class="fas fa-minus"></i></button>
+                        <input type="text" id="product_quantity_select" value="1">
+                        <button type="button" id="quantity_plus" class="quantity_btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
                 <p class="color_gray">적립 <span class="product_point">1240</span> (0.5%)</p>
+                <p class="limit_quantity color_gray">재고량: <span class="quantity_number">9</span></p>
             </section><!-- price -->
+            <p class="select_notice_ment">재고량을 넘어섰습니다!</p>
+            <section class="total_price_area">
+                <p class="total_ment">총 합계 금액</p>
+                <div class="right_total_view">
+                    <p class="total_quntaitly">총<span class="total_quntaitly_view">1</span>개</p>
+                    <p class="total_price" data-price = "248000">248,000 원</p>
+                </div>
+            </section>
             <div class="shipping_n_installment">
                 <ul class="shipping_info">
                     <li class="list_left">
@@ -141,10 +159,10 @@
                         배송정보
                     </li>
                     <li class="list_right">
-                        <p>10만원 이하 3,000원, 10만원 이상 무료배송</p>
-                        <p><span>2시 이전 주문시 내일(수) 도착 예정</span>｜대한통운</p>
-                    </li>
-                </ul><!-- shipping_info -->
+                            <p>10만원 이하 3,000원, 10만원 이상 무료배송</p>
+                            <p><span>2시 이전 주문시 내일(수) 도착 예정</span>｜대한통운</p>
+                        </li>
+                    </ul><!-- shipping_info -->
                 <ul class="installment_info">
                     <li class="list_left">
                         <span class="card_icon">
