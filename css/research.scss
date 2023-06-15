@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Permanent+Marker&display=swap');
+
+/************************* color_plan ***************************/
+$point_color_amber : #ffbf00;
+$point_color_black : #000;
+$main_color_flora_white : #FFFDF6;
+$sub_color_free_speach_blue : #4136BF;
+$color_white : #fff;
+
+/************************* font_plan ***************************/
+@mixin main_title() {
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+@mixin sub_title() {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+$defalut_font_size : 1.6rem;
+$small_font_size : 1.2rem;
+$small_up_font_size : 1.4rem;
+
+$font_noto_sans : 'Noto Sans KR',
+sans-serif;
+$font_perment_marker : 'Permanent Marker';
+
+/************************* gap＆padding ***************************/
+@mixin gap($value) {
+    margin: $value;
+}
+
+@mixin padding($value) {
+    padding: $value;
+}
+
+/************************* background standard  ***************************/
+@mixin background_contain {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@mixin background_cover {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/************************* item_size ***************************/
+@mixin item_size ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+/************************* text_array ***************************/
+@mixin text_array ($height) {
+    text-align: center;
+    line-height: $height;
+}
+
+/************************* center array  ***************************/
+@mixin box_array {
+    width: 1245px;
+    margin: 0 auto;
+}
+
+/************************* defalut_settings ***************************/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html {
+    font-size: 10px;
+    background-color: $main_color_flora_white;
+}
+
+img {
+    width: 100%;
+    vertical-align: bottom;
+}
+
+.sub_title {
+    @include sub_title;
+    @include text_array(20px);
+    margin: 20px 0;
+    font-family: $font_perment_marker;
+}
+
+.page {
+    display: none;
+    width: 615px;
+    padding: 40px 60px;
+    margin: 100px auto 0;
+    background-color: #fff;
+    border: 1px solid #bbbbbb;
+}
+
+.page_on {
+    display: block;
+}
+
+/************************* id_n_pw_research_area_ex ***************************/
+/************************* pop_up_area_ex ***************************/
+/************************* false_on ***************************/
+.id_n_pw_research_area_ex {
+    width: 615px;
+    margin: 100px auto 0;
+    background-color: #fff;
+    border: 1px solid #bbbbbb;
+}
+
+.id_n_pw_research_area {
+    position: relative;
+    width: 435px;
+    margin: 0 auto;
+    font-family: "Noto Sans KR", sans-serif;
+    padding-bottom: 60px;
+
+    .ment {
+        text-align: center;
+        font-size: 1.4rem;
+        margin: 0 auto 20px;
+    }
+
+    .logo_img {
+        display: block;
+        width: 175px;
+        margin: 40px auto 0;
+    }
+
+    .search_btn_design {
+        margin-top: 20px;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        border: none;
+        font-size: 1.6rem;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+        font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .return_login_page {
+        display: block;
+        position: absolute;
+        font-size: 1.2rem;
+        bottom: 20px;
+        right: 0;
+        user-select: none;
+        letter-spacing: -0.4px;
+        transition: all 0.2s;
+
+        &:hover {
+            color: #bbbbbb;
+        }
+    }
+
+    .tap_menu {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 20px 0;
+
+        .tab {
+            width: 217.5px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 1.6rem;
+            color: white;
+            background-color: #4136BF;
+            font-weight: normal;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .tab_on {
+            background-color: #ffbf00 !important;
+        }
+    }
+
+    .show_menu {
+        display: none;
+
+        .guide_message {
+            margin: 15px 0;
+            font-size: 1.2rem;
+        }
+
+        input {
+            display: block;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            outline: none;
+            border: none;
+            background-color: #cfcfcf;
+            padding: 0 15px;
+            transform: all 0.2s;
+
+            &:nth-child(2) {
+                margin-bottom: 15px;
+            }
+
+            &:focus {
+                background-color: #fff;
+                border: 1px solid black;
+            }
+        }
+    }
+
+    .menu_on {
+        display: block;
+    }
+}
+
+.pop_up_area_ex {
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    >div {
+        display: none;
+        position: absolute;
+        width: 405px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+
+        h2 {
+            margin: 10px 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #000;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.4rem;
+            font-family: "Noto Sans KR", sans-serif;
+            margin-top: 20px;
+            user-select: none;
+        }
+    }
+
+    .close_btn {
+        position: absolute;
+        font-size: 2rem;
+        font-weight: 700;
+        top: 5px;
+        right: 20px;
+        cursor: pointer;
+    }
+
+    .confirm_btn_design {
+        color: white;
+        background-color: black;
+        cursor: pointer;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .id_pop_up {
+        padding: 10px 15px;
+
+        .user_id_show_design {
+            margin: 20px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+    }
+
+    .pw_pop_up {
+        padding: 10px 15px;
+
+        #user_pw_show {
+            margin: 0 5px;
+            font-weight: 700;
+        }
+    }
+
+    .pop_up_not {
+        p {
+            &:nth-child(1) {
+                font-size: 1.6rem;
+                margin: 40px 60px;
+            }
+        }
+    }
+}
+
+.pop_up_on {
+    display: block !important;
+}
+
+.false_on {
+    background-color: rgb(255 242 244) !important;
+    border: 2px solid rgb(237 94 94) !important;
+}

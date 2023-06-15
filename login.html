@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calhartt｜Sign_in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/login.scss">
+    <link rel="stylesheet" href="./css/header_n_footer.scss">
+    <script src="./js/header_n_etc.js" defer></script>
+    <script type="module" src="./js/sign_in.js" defer></script>
+</head>
+<body>
+    <include src="./include/header.html"></include>
+    </div>
+    <div class="login_cotainer">
+        <div class="login_box">
+            <h2 class="sub_title">Carhartt Login</h2>
+            <p>회원 로그인</p>
+            <span class="solid"></span>
+            <form action="" id="login_form">
+                <ul class="id_n_pw">
+                    <li>
+                        <input type="text" placeholder="아이디" id="user_id" class="bar" required autofocus maxlength="15">
+                        <div class="guide_message"></div>
+                    </li>
+                    <li>
+                        <input type="password" placeholder="비밀번호" id="user_pw" class="bar" required autofocus maxlength="12">
+                        <input type="checkbox" id="pw_show_block_btn">
+                        <label for="pw_show_block_btn" class="pw_show_block_btn_design"></label>
+                        <div class="guide_message"></div>
+                    </li>
+                </ul>
+                <ul class="login_save_n_search">
+                    <li>
+                        <input type="checkbox" id="id_rm_chk" class="id_chk_design">
+                        <label for="id_rm_chk" class="id_rm">아이디 저장</label>
+                    </li>
+                    <li>
+                        <a href="./research.html">아이디/비밀번호 찾기</a>
+                    </li>
+                </ul>
+            </form>
+            <ul class="sign_in_n_sign_up">
+                <li>
+                    <p id="sign_in_chk">로그인</p>
+                </li>
+                <li>
+                    <a href="./sign_up.html" id="sign_up_chk">회원가입</a>
+                </li>
+            </ul>
+            <p class="easy_notice">간편하게 로그인 하세요!</p>
+            <ul class="sns_login">
+                <li><a href="#!" class="kakao_icon"><img src="./dist/images/sns_01.png" alt="kakao_sns"></a></li>
+                <li><a href="#!" class="facebook_icon"><img src="./dist/images/sns_02.png" alt="fb_sns"></a></li>
+                <li><a href="#!" class="naver_icon"><img src="./dist/images/sns_03.png" alt="naver_sns"></a></li>
+            </ul>
+        </div>
+    </div><!-- login_cotainer -->
+    <include src="./include/footer.html"></include>
+</body>
+</html>
