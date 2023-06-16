@@ -228,6 +228,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`알링턴`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 2,
@@ -245,6 +246,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 3,
@@ -262,6 +264,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 4,
@@ -279,6 +282,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`리그`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 5,
@@ -296,6 +300,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`레터맨`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 6,
@@ -313,6 +318,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`트레버`,`${productNameKor}`],
 	},
 
 	/***************** shirt ******************/
@@ -332,6 +338,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매디슨`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 8,
@@ -349,6 +356,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매닝`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 9,
@@ -366,6 +374,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`몬트레이`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 10,
@@ -383,6 +392,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`크래프트`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 11,
@@ -400,6 +410,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 12,
@@ -417,6 +428,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
 	},
 
 
@@ -437,6 +449,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`헤더`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 14,
@@ -454,6 +467,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`트리하우스`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 15,
@@ -471,6 +485,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`루피너스`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 16,
@@ -488,6 +503,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`키위`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 17,
@@ -505,6 +521,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`로커`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 18,
@@ -522,6 +539,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`피신`,`${productNameKor}`],
 	},
 
 
@@ -542,6 +560,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`재스퍼`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 20,
@@ -559,6 +578,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`스테이트`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 21,
@@ -576,6 +596,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`아이시`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 22,
@@ -593,6 +614,7 @@ const sub_page_product_list = [
 		isSalesRateValue: `30~50`,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`내츄럴`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 23,
@@ -610,6 +632,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`캐리비안`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 24,
@@ -627,6 +650,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`폴로`,`${productNameKor}`],
 	},
 
 
@@ -647,6 +671,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`캐리비안`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 26,
@@ -664,6 +689,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스테이트`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 27,
@@ -681,6 +707,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 28,
@@ -698,6 +725,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`달리아`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 29,
@@ -715,6 +743,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`프론티어`,`${productNameKor}`],
 	},
 	{
 		propertyNumber: 30,
@@ -732,6 +761,7 @@ const sub_page_product_list = [
 		//isSalesRateValue: ``,
 		isSoldOut: false,
 		isGender: `male`,
+		//searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
 	},
 ]
 

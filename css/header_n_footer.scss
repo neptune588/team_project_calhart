@@ -272,6 +272,7 @@ input {
                 width: 800px;
                 margin: 0 auto;
                 margin-top: 10px;
+
                 .search_icon{
                     position: absolute;
                     top: 30px; left: -40px;
@@ -286,7 +287,7 @@ input {
                     display: block;
                     color: black;
                     outline: none;
-                    border: none;
+                    border: 1px solid white;
                     border-bottom: 1px solid #000;
                     padding: 15px 10px;
                     font-family: $font_noto_sans;
@@ -296,6 +297,9 @@ input {
                     &::-webkit-search-results-button,
                     &::-webkit-search-results-decoration {
                         display: none;
+                    }
+                    &:focus {
+                        border: 1px solid $sub_color_free_speach_blue !important;
                     }
                 }
                 .search_delete {
@@ -309,8 +313,17 @@ input {
                         color: black;
                     }
                 }
+                #recommend_search {
+                    display: none;
+                    overflow: hidden;
+                    position: absolute;
+                    background-color: #fff;
+                    @include item_size(100%, 300px);
+                    border: 1px solid #bbb;
+                }
             }
 
+            
             .search_contents {
                 display: flex;
                 width: 800px;

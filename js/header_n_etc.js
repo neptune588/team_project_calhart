@@ -96,6 +96,7 @@ const searchBar = document.querySelector('.search');
 const searchTab = document.getElementById('product_search');
 const searchDelete = document.querySelector('.search_delete');
 
+const recommendSearch = document.getElementById('recommend_search');
 
 let serachTabState = false;
 
@@ -122,12 +123,15 @@ searchOnBtn.addEventListener('click', function () {
 searchCloseBtn.addEventListener('click', () => {
     body.style.overflow = 'visible';
 
+    searchTab.value = '';
+
     serachTabState = false;
 
     removeClass(searchEx, 'block_on');
 
     removeClass(searchBar, 'search_on');
     removeClass(searchCloseBtn, 'search_close_on');
+    removeClass(recommendSearch, 'block_on');
 
 });
 
@@ -135,6 +139,29 @@ searchDelete.addEventListener('click', () => {
     searchTab.focus();
     searchTab.value = '';
 });
+
+//searchTab EVENT
+searchTab.addEventListener('input', function () {
+    addClass(recommendSearch, 'block_on');
+
+    if(this.value === '' || this.value === undefined || this.value === null) {
+        removeClass(recommendSearch, 'block_on');
+    }
+
+    //console.log(e.target.value);
+});
+searchTab.addEventListener('blur', () => {
+    removeClass(recommendSearch, 'block_on');
+});
+searchTab.addEventListener('focus', function () {
+    setTimeout(() => {
+        if (this.value.length > 0) {
+            addClass(recommendSearch, 'block_on');
+        }
+    }, 10);
+});
+
+
 
 
 /*************** top_btn ******************/
@@ -159,9 +186,11 @@ const quickMenu = document.getElementById('quick_menu');
 let prevScroll = 0;
 let quickMenuLocate = quickMenu.offsetTop;
 
-/* window.addEventListener('scroll', () => {
-    quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
-}); */
+window.addEventListener('scroll', () => {
+    console.log(window.scrollY);
+    //quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
+});
+
 //정상작동은 되지만 스크롤할때마다 매번 이벤트가 발생됨.
 //따라서 무언가 조치가 필요
 
@@ -203,13 +232,13 @@ function debounce(delay) {
 }
 
 
-
+/* 
 
 
 function scrollEvent(currentScroll) {
     prevScroll = currentScroll;
     console.log(window.scrollY, prevScroll);
-}
+} */
 
 /*************** common ******************/
 //position값 계산

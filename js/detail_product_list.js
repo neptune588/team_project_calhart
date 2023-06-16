@@ -30,60 +30,83 @@ const productPlusBtn = document.getElementById('quantity_plus');
 const priSelNotMent = document.querySelector('.select_notice_ment');
 
 //재고량
-changePriceQuntity.textContent = detail_page_produdct_list[0].limitQuantity;
+changePriceQuntity.dataset.myQuntity = detail_page_produdct_list[0].limitQuantity;
+changePriceQuntity.textContent = changePriceQuntity.dataset.myQuntity;
 
-productQuanView.addEventListener('input', function () {
-    //숫자 정규식
-    let numberReg = /^\d+$/;
-
-    if(!(numberReg.test(this.value))) {
-        alert('숫자만 입력해라!');
-    }
-});
 
 productPlusBtn.addEventListener('click', function () {
     let currentValue = productQuanView.value;
     //수량 표시
     productQuanView.value = parseInt(currentValue) + 1;
-    //데이터셋에 가격
-    let currentPrice = totalPrice.dataset.price;
+
     //현재 재고량 몇개인지
     let currentQuntity = changePriceQuntity.textContent;
 
-    if(parseInt(productQuanView.value) > parseInt(currentQuntity)) {
+    if (parseInt(productQuanView.value) > parseInt(currentQuntity)) {
         addClass(priSelNotMent, 'block_on');
         productQuanView.value = currentQuntity;
     }
 
-    //구매량
-    totalQuanNumber.textContent = productQuanView.value;
-    //총 구매가격
-    totalPrice.textContent = `${(currentPrice * productQuanView.value).toLocaleString()} 원`;
+    totalCheck();
+
 });
 
 productMinusBtn.addEventListener('click', function () {
     let currentValue = productQuanView.value;
     //수량 표시
     productQuanView.value = parseInt(currentValue) - 1;
-    //데이터셋에 가격
-    let currentPrice = totalPrice.dataset.price;
-    //현재 재고량 몇개인지
-    let currentQuntity = changePriceQuntity.textContent;
-    
+
     //0이하 가지못하게
     if (parseInt(productQuanView.value) < 1) {
         productQuanView.value = 1;
     }
 
+    totalCheck();
+
+});
+
+let prevInput = '';
+productQuanView.addEventListener('input', function (e) {
+    const numberReg = /^\d+$/;
+
+    ///\D/g, '' 숫자 제외한 모든 문자 공백으로 전환
+    if (!(numberReg.test(this.value))) {
+        this.value = this.value.replaceAll(/\D/g, '');
+    }
+
+    if (parseInt(this.value) > changePriceQuntity.dataset.myQuntity) {
+        this.value = prevInput;
+    }
+
+    prevInput = e.target.value;
+
+    inputBlur();
+    totalCheck();
+});
+
+
+function totalCheck() {
+    //현재 재고량 몇개인지
+    let currentQuntity = changePriceQuntity.textContent;
+
     if (parseInt(productQuanView.value) < parseInt(currentQuntity)) {
         removeClass(priSelNotMent, 'block_on');
     }
 
-    //구매량
+    let currentPrice = totalPrice.dataset.price;
     totalQuanNumber.textContent = productQuanView.value;
-    //price -> 배열의 가격 -> date-set전달 -> dataset * productQuanView.value
     totalPrice.textContent = `${(currentPrice * productQuanView.value).toLocaleString()} 원`;
-});
+}
+
+function inputBlur() {
+    productQuanView.addEventListener('blur', function () {
+        if (this.value === '' || this.value === undefined || this.value === null) {
+            this.value = 1;
+        }
+        totalCheck();
+    })
+}
+
 
 
 for (let i = 0; i < viewSmallThumnail.length; i++) {
@@ -123,7 +146,8 @@ for (let i = 0; i < colorSelectBox.length; i++) {
         //적립금 초기화
         changeProductPoint.textContent = detail_page_produdct_list[i].price * 0.005;
         //재고 초기화
-        changePriceQuntity.textContent = detail_page_produdct_list[i].limitQuantity;
+        changePriceQuntity.dataset.myQuntity = detail_page_produdct_list[i].limitQuantity;
+        changePriceQuntity.textContent = changePriceQuntity.dataset.myQuntity;
         //수량 초기화
         productQuanView.value = 1;
         //총 구매 수량 초기화
@@ -689,7 +713,7 @@ function qnaCreate(object, array) {
     qnaList.appendChild(fragment);
 
     //0개 되면 알림창
-    arrayLengthCheck(array);
+    //arrayLengthCheck(array);
 
     let answerInputState = false;
     newSpanManageComment.addEventListener('click', function () {
@@ -710,7 +734,7 @@ function qnaCreate(object, array) {
             array.splice(objectNum, 1);
             parentUl.removeChild(parentli);
             //0개 되면 알림창
-            arrayLengthCheck(array);
+            //arrayLengthCheck(array);
             qnaCounting.textContent = array.length + 1;
         }
     });
@@ -744,6 +768,7 @@ function answerStateReturn(objectProperty) {
 function setAttributeMulti(Element, arrays) {
     //구조 분해 할당을 이용한 setattriubute 반복문
     //구조 분해 할당 예시
+    //강의듣고 이해한것 적은것
 
     //const array = [10, 20, 30];
     //const [a, b ,c] = array;

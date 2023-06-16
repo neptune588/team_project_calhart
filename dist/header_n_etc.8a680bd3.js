@@ -211,6 +211,7 @@ var searchEx = document.querySelector('.search_ex');
 var searchBar = document.querySelector('.search');
 var searchTab = document.getElementById('product_search');
 var searchDelete = document.querySelector('.search_delete');
+var recommendSearch = document.getElementById('recommend_search');
 var serachTabState = false;
 
 //search_on
@@ -230,14 +231,38 @@ searchOnBtn.addEventListener('click', function () {
 //search_off
 searchCloseBtn.addEventListener('click', function () {
   body.style.overflow = 'visible';
+  searchTab.value = '';
   serachTabState = false;
   removeClass(searchEx, 'block_on');
   removeClass(searchBar, 'search_on');
   removeClass(searchCloseBtn, 'search_close_on');
+  removeClass(recommendSearch, 'block_on');
 });
 searchDelete.addEventListener('click', function () {
   searchTab.focus();
   searchTab.value = '';
+});
+
+//searchTab EVENT
+searchTab.addEventListener('input', function () {
+  addClass(recommendSearch, 'block_on');
+  if (this.value === '' || this.value === undefined || this.value === null) {
+    removeClass(recommendSearch, 'block_on');
+  }
+
+  //console.log(e.target.value);
+});
+
+searchTab.addEventListener('blur', function () {
+  removeClass(recommendSearch, 'block_on');
+});
+searchTab.addEventListener('focus', function () {
+  var _this = this;
+  setTimeout(function () {
+    if (_this.value.length > 0) {
+      addClass(recommendSearch, 'block_on');
+    }
+  }, 10);
 });
 
 /*************** top_btn ******************/
@@ -257,10 +282,11 @@ topBtn.addEventListener('click', function () {
 var quickMenu = document.getElementById('quick_menu');
 var prevScroll = 0;
 var quickMenuLocate = quickMenu.offsetTop;
+window.addEventListener('scroll', function () {
+  console.log(window.scrollY);
+  //quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
+});
 
-/* window.addEventListener('scroll', () => {
-    quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
-}); */
 //정상작동은 되지만 스크롤할때마다 매번 이벤트가 발생됨.
 //따라서 무언가 조치가 필요
 
@@ -295,10 +321,14 @@ function debounce(delay) {
     }, delay);
   };
 }
+
+/* 
+
+
 function scrollEvent(currentScroll) {
-  prevScroll = currentScroll;
-  console.log(window.scrollY, prevScroll);
-}
+    prevScroll = currentScroll;
+    console.log(window.scrollY, prevScroll);
+} */
 
 /*************** common ******************/
 //position값 계산
@@ -354,7 +384,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64888" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

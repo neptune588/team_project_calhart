@@ -326,6 +326,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`알링턴`,`${productNameKor}`],
 }, {
   propertyNumber: 2,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uBE14\uB799/\uD654\uC774\uD2B8",
@@ -342,6 +343,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
 }, {
   propertyNumber: 3,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
@@ -358,6 +360,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
 }, {
   propertyNumber: 4,
   productNameKor: "\uB9AC\uADF8 \uC790\uCF13 \uBE14\uB8E8",
@@ -375,6 +378,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`리그`,`${productNameKor}`],
 }, {
   propertyNumber: 5,
   productNameKor: "\uB808\uD130\uB9E8 \uC790\uCF13 \uBE14\uB799/\uBE0C\uB9AD",
@@ -392,6 +396,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`레터맨`,`${productNameKor}`],
 }, {
   propertyNumber: 6,
   productNameKor: "\uD2B8\uB808\uBC84 \uC790\uCF13 \uBE14\uB799/\uBE14\uB799",
@@ -409,6 +414,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`트레버`,`${productNameKor}`],
 }, /***************** shirt ******************/
 {
   propertyNumber: 7,
@@ -427,6 +433,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매디슨`,`${productNameKor}`],
 }, {
   propertyNumber: 8,
   productNameKor: "\uB9E4\uB2DD \uC154\uCE20 \uC790\uCF13 \uB9E4\uB2DD \uCCB4\uD06C, \uB2E4\uD06C \uC5C4\uBC84/\uB808\uB354",
@@ -444,6 +451,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매닝`,`${productNameKor}`],
 }, {
   propertyNumber: 9,
   productNameKor: "\uBAAC\uD2B8\uB808\uC774 \uC154\uCE20 \uC790\uCF13 \uD0A4\uC704 \uC6D0 \uC6CC\uC2DC\uB4DC",
@@ -460,6 +468,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`몬트레이`,`${productNameKor}`],
 }, {
   propertyNumber: 10,
   productNameKor: "\uBC18\uD314 \uD06C\uB798\uD504\uD2B8 \uC154\uCE20 \uC950\uB77C \uB9B0\uC2A4\uB4DC",
@@ -476,6 +485,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`크래프트`,`${productNameKor}`],
 }, {
   propertyNumber: 11,
   productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uC544\uB9D0\uD53C/\uC641\uC2A4",
@@ -492,6 +502,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
 }, {
   propertyNumber: 12,
   productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uD53C\uB2C9\uC2A4/\uC641\uC2A4",
@@ -508,6 +519,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
 }, /***************** swater ******************/
 {
   propertyNumber: 13,
@@ -525,6 +537,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`헤더`,`${productNameKor}`],
 }, {
   propertyNumber: 14,
   productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD2B8\uB9AC\uD558\uC6B0\uC2A4/\uD654\uC774\uD2B8",
@@ -541,6 +554,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`트리하우스`,`${productNameKor}`],
 }, {
   propertyNumber: 15,
   productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uB8E8\uD53C\uB108\uC2A4/\uD654\uC774\uD2B8",
@@ -557,6 +571,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`루피너스`,`${productNameKor}`],
 }, {
   propertyNumber: 16,
   productNameKor: "\uD6C4\uB514\uB4DC \uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD0A4\uC704/\uC2DC\uD2B8\uB860",
@@ -573,6 +588,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`키위`,`${productNameKor}`],
 }, {
   propertyNumber: 17,
   productNameKor: "\uD6C4\uB514\uB4DC \uB85C\uCEE4 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uB2C9\uC2A4/\uBE14\uB799",
@@ -589,6 +605,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`로커`,`${productNameKor}`],
 }, {
   propertyNumber: 18,
   productNameKor: "\uB12C\uC2A8 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uC2E0 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
@@ -605,6 +622,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`피신`,`${productNameKor}`],
 }, /***************** neat ******************/
 {
   propertyNumber: 19,
@@ -623,6 +641,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`재스퍼`,`${productNameKor}`],
 }, {
   propertyNumber: 20,
   productNameKor: "\uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uC2A4\uC6E8\uD130 \uD654\uC774\uD2B8",
@@ -639,6 +658,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`스테이트`,`${productNameKor}`],
 }, {
   propertyNumber: 21,
   productNameKor: "\uB9E4\uB514\uC2A8 \uC2A4\uC6E8\uD130 \uC544\uC774\uC2DC \uC6CC\uD130/\uD504\uB85C\uC2A4\uD2F0\uB4DC \uBE14\uB8E8",
@@ -656,6 +676,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`아이시`,`${productNameKor}`],
 }, {
   propertyNumber: 22,
   productNameKor: "\uC2A4\uD06C\uB9BD\uD2B8 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uB0B4\uCE04\uB7F4",
@@ -673,6 +694,7 @@ var sub_page_product_list = [
   isSalesRateValue: "30~50",
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`내츄럴`,`${productNameKor}`],
 }, {
   propertyNumber: 23,
   productNameKor: "\uC54C\uB354\uC2A4 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uCE90\uB9AC\uBE44\uC548 \uC2DC",
@@ -689,6 +711,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`캐리비안`,`${productNameKor}`],
 }, {
   propertyNumber: 24,
   productNameKor: "\uBC18\uD314 \uCF04\uC6E8\uC774 \uB2C8\uD2B8 \uD3F4\uB85C \uBE14\uB799",
@@ -705,6 +728,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`폴로`,`${productNameKor}`],
 }, /***************** t-shirt ******************/
 {
   propertyNumber: 25,
@@ -722,6 +746,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`캐리비안`,`${productNameKor}`],
 }, {
   propertyNumber: 26,
   productNameKor: "\uBC18\uD314 \uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uD2F0\uC154\uCE20 \uD654\uC774\uD2B8",
@@ -738,6 +763,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스테이트`,`${productNameKor}`],
 }, {
   propertyNumber: 27,
   productNameKor: "\uBC18\uD314 \uD788\uD2B8 \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uC544\uB80C\uAC00",
@@ -754,6 +780,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
 }, {
   propertyNumber: 28,
   productNameKor: "\uBC18\uD314 \uB9E4\uB274\uC5BC \uD2F0\uC154\uCE20 \uB2EC\uB9AC\uC544 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
@@ -770,6 +797,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`달리아`,`${productNameKor}`],
 }, {
   propertyNumber: 29,
   productNameKor: "\uBC18\uD314 \uB274 \uD504\uB860\uD2F0\uC5B4 \uD2F0\uC154\uCE20 \uBC84\uD314\uB85C",
@@ -786,6 +814,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`프론티어`,`${productNameKor}`],
 }, {
   propertyNumber: 30,
   productNameKor: "\uBC18\uD314 \uD31C \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uBE14\uB799",
@@ -802,6 +831,7 @@ var sub_page_product_list = [
   //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
+  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
 }];
 exports.sub_page_product_list = sub_page_product_list;
 var detail_page_produdct_list = [{
@@ -862,54 +892,65 @@ var productPlusBtn = document.getElementById('quantity_plus');
 var priSelNotMent = document.querySelector('.select_notice_ment');
 
 //재고량
-changePriceQuntity.textContent = _data.detail_page_produdct_list[0].limitQuantity;
-productQuanView.addEventListener('input', function () {
-  //숫자 정규식
-  var numberReg = /^\d+$/;
-  if (!numberReg.test(this.value)) {
-    alert('숫자만 입력해라!');
-  }
-});
+changePriceQuntity.dataset.myQuntity = _data.detail_page_produdct_list[0].limitQuantity;
+changePriceQuntity.textContent = changePriceQuntity.dataset.myQuntity;
 productPlusBtn.addEventListener('click', function () {
   var currentValue = productQuanView.value;
   //수량 표시
   productQuanView.value = parseInt(currentValue) + 1;
-  //데이터셋에 가격
-  var currentPrice = totalPrice.dataset.price;
+
   //현재 재고량 몇개인지
   var currentQuntity = changePriceQuntity.textContent;
   if (parseInt(productQuanView.value) > parseInt(currentQuntity)) {
     addClass(priSelNotMent, 'block_on');
     productQuanView.value = currentQuntity;
   }
-
-  //구매량
-  totalQuanNumber.textContent = productQuanView.value;
-  //총 구매가격
-  totalPrice.textContent = "".concat((currentPrice * productQuanView.value).toLocaleString(), " \uC6D0");
+  totalCheck();
 });
 productMinusBtn.addEventListener('click', function () {
   var currentValue = productQuanView.value;
   //수량 표시
   productQuanView.value = parseInt(currentValue) - 1;
-  //데이터셋에 가격
-  var currentPrice = totalPrice.dataset.price;
-  //현재 재고량 몇개인지
-  var currentQuntity = changePriceQuntity.textContent;
 
   //0이하 가지못하게
   if (parseInt(productQuanView.value) < 1) {
     productQuanView.value = 1;
   }
+  totalCheck();
+});
+var prevInput = '';
+productQuanView.addEventListener('input', function (e) {
+  var numberReg = /^\d+$/;
+
+  ///\D/g, '' 숫자 제외한 모든 문자 공백으로 전환
+  if (!numberReg.test(this.value)) {
+    this.value = this.value.replaceAll(/\D/g, '');
+  }
+  if (parseInt(this.value) > changePriceQuntity.dataset.myQuntity) {
+    this.value = prevInput;
+  }
+  prevInput = e.target.value;
+  inputBlur();
+  totalCheck();
+});
+function totalCheck() {
+  //현재 재고량 몇개인지
+  var currentQuntity = changePriceQuntity.textContent;
   if (parseInt(productQuanView.value) < parseInt(currentQuntity)) {
     removeClass(priSelNotMent, 'block_on');
   }
-
-  //구매량
+  var currentPrice = totalPrice.dataset.price;
   totalQuanNumber.textContent = productQuanView.value;
-  //price -> 배열의 가격 -> date-set전달 -> dataset * productQuanView.value
   totalPrice.textContent = "".concat((currentPrice * productQuanView.value).toLocaleString(), " \uC6D0");
-});
+}
+function inputBlur() {
+  productQuanView.addEventListener('blur', function () {
+    if (this.value === '' || this.value === undefined || this.value === null) {
+      this.value = 1;
+    }
+    totalCheck();
+  });
+}
 var _loop = function _loop(i) {
   //초기설정
   thumnailChange(viewSmallThumnail, 0, i, _data.detail_page_produdct_list, "imgSrc01");
@@ -949,7 +990,8 @@ var _loop2 = function _loop2(_i) {
     //적립금 초기화
     changeProductPoint.textContent = _data.detail_page_produdct_list[_i].price * 0.005;
     //재고 초기화
-    changePriceQuntity.textContent = _data.detail_page_produdct_list[_i].limitQuantity;
+    changePriceQuntity.dataset.myQuntity = _data.detail_page_produdct_list[_i].limitQuantity;
+    changePriceQuntity.textContent = changePriceQuntity.dataset.myQuntity;
     //수량 초기화
     productQuanView.value = 1;
     //총 구매 수량 초기화
@@ -1402,7 +1444,8 @@ function qnaCreate(object, array) {
   qnaList.appendChild(fragment);
 
   //0개 되면 알림창
-  arrayLengthCheck(array);
+  //arrayLengthCheck(array);
+
   var answerInputState = false;
   newSpanManageComment.addEventListener('click', function () {
     if (!object.answerState && !answerInputState) {
@@ -1421,7 +1464,7 @@ function qnaCreate(object, array) {
       array.splice(objectNum, 1);
       parentUl.removeChild(parentli);
       //0개 되면 알림창
-      arrayLengthCheck(array);
+      //arrayLengthCheck(array);
       qnaCounting.textContent = array.length + 1;
     }
   });
@@ -1448,6 +1491,7 @@ function answerStateReturn(objectProperty) {
 function setAttributeMulti(Element, arrays) {
   //구조 분해 할당을 이용한 setattriubute 반복문
   //구조 분해 할당 예시
+  //강의듣고 이해한것 적은것
   //const array = [10, 20, 30];
   //const [a, b ,c] = array;
   //과정설명
@@ -1733,7 +1777,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54834" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64888" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
