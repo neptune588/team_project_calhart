@@ -74,7 +74,9 @@ productQuanView.addEventListener('input', function (e) {
         this.value = this.value.replaceAll(/\D/g, '');
     }
 
+    //재고량 넘어서게 입력시 그전 입력값으로 대입 
     if (parseInt(this.value) > changePriceQuntity.dataset.myQuntity) {
+        //console.log(prevInput);
         this.value = prevInput;
     }
 

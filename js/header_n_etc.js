@@ -1,3 +1,7 @@
+import {
+    sub_page_product_list
+} from './data.js'
+
 /*************** header ******************/
 //nav
 const navEx = document.getElementById('lnb_ex');
@@ -140,16 +144,51 @@ searchDelete.addEventListener('click', () => {
     searchTab.value = '';
 });
 
+
+//const searchKeword = [];
+
+/* sub_page_product_list.forEach((object, i) => {
+    let parseStr = object.productNameKor;
+    searchKeword.push(parseStr);
+    console.log(searchKeword[i]);
+    console.log(searchKeword[i].charCodeAt(i));
+}) */
+
+
 //searchTab EVENT
 searchTab.addEventListener('input', function () {
     addClass(recommendSearch, 'block_on');
 
-    if(this.value === '' || this.value === undefined || this.value === null) {
+    if (this.value === '' || this.value === undefined || this.value === null) {
         removeClass(recommendSearch, 'block_on');
     }
+    /*     for(let i = 0; i < this.value.length; i++) {
+            console.log(this.value[i] + ':' + this.value.charCodeAt(i));
+        } */
 
     //console.log(e.target.value);
 });
+searchTab.addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') {
+        const searchValue = encodeURIComponent(e.target.value);
+        //encodeURIComponent란? 괄호안에 오는 값을 url값으로 인코딩할때 쓰는 메서드
+
+        //인코딩을 하는 이유는 
+
+        //URL에 사용할 수 없거나 특수한 의미를 가지는 문자들을 안전하게 전송하기 위해, 
+        //URL은 일부 문자를 특별한 목적으로 예약하고 있기 때문에, 이러한 예약된 문자들은 인코딩되어야 한다.
+
+        //인코딩되어야 하는 문자에는 URL에 사용되는 
+        //구분자인 ? , & , = , #, 슬래시 / , 공백 등이 있다.
+
+        //만약 URL에 이러한 특수문자가 포함되어 있다면, 인코딩하여 안전하게 전송해야 한다고 함.
+
+        const resultUrl = './product_search.html?q=' + searchValue; 
+        //console.log(resultUrl);
+        location.href = resultUrl;
+    }
+});
+
 searchTab.addEventListener('blur', () => {
     removeClass(recommendSearch, 'block_on');
 });
@@ -162,16 +201,8 @@ searchTab.addEventListener('focus', function () {
 });
 
 
-
-
 /*************** top_btn ******************/
 const topBtn = document.querySelector('.top_btn');
-const siteInfoSection = document.querySelector('.site_info');
-const footerEx = document.querySelector('.footer_ex');
-
-let siteInfoHeight = siteInfoSection.offsetHeight;
-let footerExHeight = footerEx.offsetHeight;
-let totalHeight = siteInfoHeight + footerExHeight;
 
 topBtn.addEventListener('click', () => {
     window.scrollTo({
@@ -183,13 +214,13 @@ topBtn.addEventListener('click', () => {
 /*************** quick_menu ******************/
 const quickMenu = document.getElementById('quick_menu');
 
-let prevScroll = 0;
+//let prevScroll = 0;
 let quickMenuLocate = quickMenu.offsetTop;
 
-window.addEventListener('scroll', () => {
+/* window.addEventListener('scroll', () => {
     console.log(window.scrollY);
     //quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
-});
+}); */
 
 //정상작동은 되지만 스크롤할때마다 매번 이벤트가 발생됨.
 //따라서 무언가 조치가 필요
@@ -216,12 +247,12 @@ window.addEventListener('scroll', () => {
 //애플라이 메서드로 this를 바꿔주는 작업이 필요할듯? input 같은?
 
 
-window.addEventListener('scroll', debounce(60)); 
+window.addEventListener('scroll', debounce(60));
 
 function debounce(delay) {
     let controlTime;
-    console.log(window.scrollY);
-    
+    //console.log(window.scrollY);
+
     return function () {
         clearTimeout(controlTime);
         controlTime = setTimeout(() => {
@@ -231,14 +262,6 @@ function debounce(delay) {
     }
 }
 
-
-/* 
-
-
-function scrollEvent(currentScroll) {
-    prevScroll = currentScroll;
-    console.log(window.scrollY, prevScroll);
-} */
 
 /*************** common ******************/
 //position값 계산

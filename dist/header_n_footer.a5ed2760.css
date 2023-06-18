@@ -193,7 +193,7 @@ input {
   height: 100%;
   top: 0;
   left: 0;
-  z-index: 999999;
+  z-index: 999999999;
   background-color: rgba(0, 0, 0, 0.2);
 }
 .header_ex .search_ex .search {
@@ -331,6 +331,9 @@ input {
 }
 .header_ex .search_ex .close_btn:hover {
   background-color: #ffbf00;
+}
+.header_ex .dummy_link {
+  display: none;
 }
 
 /************************* quick_menu_design ***************************/
