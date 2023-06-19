@@ -1,12 +1,13 @@
 /* fetch(getParameter('q'))
 .then(listfilter); */
 
-/* fetch('./search_data.json')
-.then(res => console.log(JSON.stringify(res))); */
+//패치 api가 먹히지않음
+//json파일 경로를 자꾸 못찾음.
 
-import { sub_page_product_list } from './data.js';
 
-console.log(sub_page_product_list);
+fetch('./js/search_data.json')
+.then(res => res.json())
+.then(result => console.log(result));
 
 function getParameter(parameter) {
   const urlObject = new URLSearchParams(location.search);
@@ -17,7 +18,7 @@ function getParameter(parameter) {
   //뒤에오는 문자열을 전달받을수있 다고 한다.
 
   //여기서 q는 key고 = 뒤에 오는게 value이다. 
-  //?질의 q(멋대로설정가능) key ,=, 값 value
+
   //ex ?query='바나나' 라고 가정하면 위의 선언한 객체에서
   //.get('query')를하면 바나나라는 값을 가져오게 될수 있게되는것.
 
