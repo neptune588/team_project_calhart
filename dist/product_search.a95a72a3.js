@@ -124,10 +124,39 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 //패치 api가 먹히지않음
 //json파일 경로를 자꾸 못찾음.
 
-fetch('./js/search_data.json').then(function (res) {
+//js폴더를 dist파일에 넣음으로써 해결완료
+
+/************************ search_product_list ****************************/
+var searchProductWrapper = document.getElementById('product_list');
+var pageSection = document.getElementById('search_pagenation');
+var pageNumber = document.querySelector('.page_number');
+var pageItemView = 12;
+var searchValue = document.querySelector('.search_value');
+var productLengthNotice = document.querySelector('.list_length');
+
+/* async function listSearch() {
+  const listRequest = await fetch('./search_data.json');
+  const jsonChange = await listRequest.json();
+
+  return jsonChange;
+}
+
+listSearch()
+.then((res) => {
+  return listfilter(getParameter('q'), res);
+})
+.then((result) => {
+  console.log(result);
+  //listnPageCreate(result);
+})
+.catch(error => console.log(error)); */
+
+fetch('./search_data.json').then(function (res) {
   return res.json();
-}).then(function (result) {
-  return console.log(result);
+}).then(function (data) {
+  listRequest(getParameter('q'), data);
+}).catch(function (error) {
+  return console.log(error);
 });
 function getParameter(parameter) {
   var urlObject = new URLSearchParams(location.search);
@@ -144,15 +173,51 @@ function getParameter(parameter) {
 
   return urlObject.get(parameter);
 }
-
-/* function listfilter(value,) {
-  const returnArray = sub_page_product_list.filter((object) => {
-    for(let key in object) {
-      if(object[key] === )
+function listfilter() {
+  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var array = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var returnArray = array.filter(function (object) {
+    if (value === '') {
+      return false;
     }
-  })
+    return object.productNameKor.includes(value) || object.productModelName.includes(value) || object.productStyle.includes(value);
+  });
+  console.log(returnArray);
+  return returnArray;
 }
- */
+function lengthShow(value, array) {
+  searchValue.textContent = value;
+  productLengthNotice.textContent = array.length;
+}
+function listRequest(value, data) {
+  var filterArray = listfilter(value, data);
+  lengthShow(value, filterArray);
+  listnPageCreate(filterArray);
+}
+
+/************************ search_tab ****************************/
+var productPageSearchDelete = document.getElementById('search_delete_btn');
+var productPageSearchTab = document.getElementById('product_page_search');
+productPageSearchDelete.addEventListener('click', function () {
+  productPageSearchTab.focus();
+  productPageSearchTab.value = '';
+});
+productPageSearchTab.addEventListener('keyup', function (e) {
+  var _this = this;
+  var time;
+  if (e.key === 'Enter') {
+    clearTimeout(time);
+    time = setTimeout(function () {
+      fetch('./search_data.json').then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        listRequest(_this.value, data);
+      }).catch(function (error) {
+        return console.log(error);
+      });
+    }, 400);
+  }
+});
 function listnPageCreate(array) {
   listCreate(array);
   pageCreate(array);
@@ -198,10 +263,10 @@ function pageControl(array) {
 }
 //페이지 리스트 생성
 function listCreate(array) {
-  productListWrapper.innerHTML = "";
+  searchProductWrapper.innerHTML = "";
   var receive = "";
   if (array.length === 0) {
-    productListWrapper.innerHTML = "\n          <p class=\"lengthNotice\">\n              <i class=\"far fa-times-circle\"></i>\n              \uD574\uB2F9\uD558\uB294 \uC0C1\uD488\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!\n          </p>\n      ";
+    searchProductWrapper.innerHTML = "\n          <div class=\"search_not_ment\">\n            <p>\n              <i class=\"far fa-times-circle\"></i>\n              \uAC80\uC0C9\uC5B4\uC640 \uC77C\uCE58\uD558\uB294 \uB0B4\uC6A9\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.\n            </p>\n            <p>\uB2E4\uB978 \uAC80\uC0C9\uC5B4\uB97C \uC785\uB825\uD558\uC2DC\uAC70\uB098, \uAC80\uC0C9\uC5B4\uC640 \uB744\uC5B4\uC4F0\uAE30\uB97C \uD655\uC778 \uD574\uBCF4\uC138\uC694.</p>\n          </div>\n      ";
   }
   for (var i = 0; i < array.length; i++) {
     if (i === pageItemView) {
@@ -217,7 +282,7 @@ function listCreate(array) {
     }
     receive += list;
   }
-  productListWrapper.innerHTML += receive;
+  searchProductWrapper.innerHTML += receive;
 }
 //배열 받아서 페이지 계산
 function calc(array) {
@@ -287,7 +352,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65514" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50453" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

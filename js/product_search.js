@@ -4,10 +4,42 @@
 //패치 api가 먹히지않음
 //json파일 경로를 자꾸 못찾음.
 
+//js폴더를 dist파일에 넣음으로써 해결완료
 
-fetch('./js/search_data.json')
-.then(res => res.json())
-.then(result => console.log(result));
+/************************ search_product_list ****************************/
+const searchProductWrapper = document.getElementById('product_list');
+const pageSection = document.getElementById('search_pagenation');
+const pageNumber = document.querySelector('.page_number');
+
+const pageItemView = 12;
+
+const searchValue = document.querySelector('.search_value');
+const productLengthNotice = document.querySelector('.list_length');
+
+/* async function listSearch() {
+  const listRequest = await fetch('./search_data.json');
+  const jsonChange = await listRequest.json();
+
+  return jsonChange;
+}
+
+listSearch()
+.then((res) => {
+  return listfilter(getParameter('q'), res);
+})
+.then((result) => {
+  console.log(result);
+  //listnPageCreate(result);
+})
+.catch(error => console.log(error)); */
+
+
+fetch('./search_data.json')
+  .then(res => res.json())
+  .then((data) => {
+    listRequest(getParameter('q'), data);
+  })
+  .catch(error => console.log(error));
 
 function getParameter(parameter) {
   const urlObject = new URLSearchParams(location.search);
@@ -26,14 +58,60 @@ function getParameter(parameter) {
 
 }
 
-/* function listfilter(value,) {
-  const returnArray = sub_page_product_list.filter((object) => {
-    for(let key in object) {
-      if(object[key] === )
+
+function listfilter(value = '', array = []) {
+  const returnArray = array.filter((object) => {
+
+    if (value === '') {
+      return false;
     }
+    
+    return object.productNameKor.includes(value) || object.productModelName.includes(value) || object.productStyle.includes(value);
   })
+
+  console.log(returnArray);
+  return returnArray;
 }
- */
+
+function lengthShow(value, array) {
+  searchValue.textContent = value;
+  productLengthNotice.textContent = array.length;
+}
+
+function listRequest(value, data) {
+  const filterArray = listfilter(value, data);
+
+  lengthShow(value, filterArray);
+  listnPageCreate(filterArray);
+}
+
+/************************ search_tab ****************************/
+const productPageSearchDelete = document.getElementById('search_delete_btn');
+const productPageSearchTab = document.getElementById('product_page_search');
+
+productPageSearchDelete.addEventListener('click', () => {
+  productPageSearchTab.focus();
+  productPageSearchTab.value = '';
+});
+
+productPageSearchTab.addEventListener('keyup', function (e) {
+  let time;
+  if (e.key === 'Enter') {
+    
+    clearTimeout(time);
+    time = setTimeout(() => {
+      fetch('./search_data.json')
+      .then(res => res.json())
+      .then((data) => {
+        listRequest(this.value, data);
+      })
+      .catch(error => console.log(error));
+    }, 400);
+  }
+
+});
+
+
 function listnPageCreate(array) {
   listCreate(array);
   pageCreate(array);
@@ -42,6 +120,7 @@ function listnPageCreate(array) {
 function pageCreate(array) {
   if (array.length === 0) {
     addClass(pageSection, `none_on`);
+
   } else {
     removeClass(pageSection, `none_on`);
   }
@@ -83,15 +162,18 @@ function pageControl(array) {
 }
 //페이지 리스트 생성
 function listCreate(array) {
-  productListWrapper.innerHTML = ``;
+  searchProductWrapper.innerHTML = ``;
   let receive = ``;
 
   if (array.length === 0) {
-    productListWrapper.innerHTML = `
-          <p class="lengthNotice">
+    searchProductWrapper.innerHTML = `
+          <div class="search_not_ment">
+            <p>
               <i class="far fa-times-circle"></i>
-              해당하는 상품이 존재하지 않습니다!
-          </p>
+              검색어와 일치하는 내용이 없습니다.
+            </p>
+            <p>다른 검색어를 입력하시거나, 검색어와 띄어쓰기를 확인 해보세요.</p>
+          </div>
       `;
   }
   for (let i = 0; i < array.length; i++) {
@@ -127,7 +209,7 @@ function listCreate(array) {
 
     receive += list;
   }
-  productListWrapper.innerHTML += receive;
+  searchProductWrapper.innerHTML += receive;
 }
 //배열 받아서 페이지 계산
 function calc(array) {
