@@ -117,62 +117,149 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-  return bundleURL;
+})({"product_search.js":[function(require,module,exports) {
+/* fetch(getParameter('q'))
+.then(listfilter); */
+
+fetch('./search_data.json').then(function (res) {
+  return res.json();
+}).then(function (result) {
+  return console.log(result);
+});
+function getParameter(parameter) {
+  var urlObject = new URLSearchParams(location.search);
+
+  //urlsearchparams란?
+  //url쿼리문자열을 파싱하는 객체로
+  //해당 객체를 생성후 get으로 ?뒤에 설정한 쿼리문자열을 매개변수로 받아
+  //뒤에오는 문자열을 전달받을수있 다고 한다.
+
+  //여기서 q는 key고 = 뒤에 오는게 value이다. 
+
+  //ex ?query='바나나' 라고 가정하면 위의 선언한 객체에서
+  //.get('query')를하면 바나나라는 값을 가져오게 될수 있게되는것.
+
+  return urlObject.get(parameter);
 }
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-    if (matches) {
-      return getBaseURL(matches[0]);
+
+/* function listfilter(value,) {
+  const returnArray = sub_page_product_list.filter((object) => {
+    for(let key in object) {
+      if(object[key] === )
     }
+  })
+}
+ */
+function listnPageCreate(array) {
+  listCreate(array);
+  pageCreate(array);
+}
+function pageCreate(array) {
+  if (array.length === 0) {
+    addClass(pageSection, "none_on");
+  } else {
+    removeClass(pageSection, "none_on");
   }
-  return '/';
-}
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)?\/[^/]+(?:\?.*)?$/, '$1') + '/';
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-function updateLink(link) {
-  var newLink = link.cloneNode();
-  newLink.onload = function () {
-    link.remove();
-  };
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-var cssTimeout = null;
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
+  var receive = "";
+  pageNumber.innerHTML = "";
+  for (var i = 1; i <= calc(array); i++) {
+    var pageInner = "\n          <li>\n              ".concat(i, "\n          </li>\n      ");
+    receive += pageInner;
   }
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
+  pageNumber.innerHTML = receive;
+  //1페이지 활성화 표시
+  if (pageNumber.children.length !== 0) {
+    addClass(pageNumber.children[0], 'page_on');
+  }
+  pageControl(array);
+}
+function pageControl(array) {
+  var pageNumberBtn = document.querySelectorAll('.page_number > li');
+  //페이지 번호에 따라 아이템 생성
+  var _loop = function _loop(i) {
+    pageNumberBtn[i].addEventListener('click', function () {
+      for (var j = 0; j < pageNumberBtn.length; j++) {
+        removeClass(pageNumberBtn[j], 'page_on');
       }
-    }
-    cssTimeout = null;
-  }, 50);
+      //페이지 활성화 효과
+      addClass(pageNumberBtn[i], 'page_on');
+      //복사할 배열을 인자로 받고 인덱스 추출 번호를 계산하여 
+      //복사한다. 그리고 페이지 클릭했을때 이후 해당 배열을 기반으로 리스트 생성
+      var returnSlice = arraySliceCreate(i, pageItemView, array);
+      listCreate(returnSlice);
+    });
+  };
+  for (var i = 0; i < pageNumberBtn.length; i++) {
+    _loop(i);
+  }
 }
-module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"css/login.scss":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"./..\\dist\\images\\login_page_bg.png":[["login_page_bg.583c56ea.png","dist/images/login_page_bg.png"],"dist/images/login_page_bg.png"],"./..\\dist\\images\\pw_show_icon.png":[["pw_show_icon.a49e3731.png","dist/images/pw_show_icon.png"],"dist/images/pw_show_icon.png"],"./..\\dist\\images\\pw_block_icon.png":[["pw_block_icon.48f07475.png","dist/images/pw_block_icon.png"],"dist/images/pw_block_icon.png"],"./..\\dist\\images\\check_icon.png":[["check_icon.0ebbb713.png","dist/images/check_icon.png"],"dist/images/check_icon.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+//페이지 리스트 생성
+function listCreate(array) {
+  productListWrapper.innerHTML = "";
+  var receive = "";
+  if (array.length === 0) {
+    productListWrapper.innerHTML = "\n          <p class=\"lengthNotice\">\n              <i class=\"far fa-times-circle\"></i>\n              \uD574\uB2F9\uD558\uB294 \uC0C1\uD488\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!\n          </p>\n      ";
+  }
+  for (var i = 0; i < array.length; i++) {
+    if (i === pageItemView) {
+      break;
+    }
+    var list = "\n          <li>\n              <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                  <img src = ".concat(array[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n              </a>    \n              <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                  <img src = ").concat(array[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n              </a>\n              <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                  ").concat(array[i].productNameKor, "\n              </a>\n              <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                  ").concat(array[i].productModelName, "\n              </a>\n              <span class = \"price_unit\">\u20A9</span>\n              <span class = \"price\">").concat(array[i].price.toLocaleString(), "</span>\n          </li>\n      ");
+    if (array[i].isBest === true && array[i].isNew === true) {
+      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"best\">BEST</span><span class=\"new\">NEW</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
+    } else if (array[i].isBest === true) {
+      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"best\">BEST</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
+    } else if (array[i].isNew === true) {
+      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"new\">NEW</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
+    }
+    receive += list;
+  }
+  productListWrapper.innerHTML += receive;
+}
+//배열 받아서 페이지 계산
+function calc(array) {
+  return Math.ceil(array.length / pageItemView);
+
+  //math.ceil은 올림 함수이다.
+
+  //총 아이템이 30개이고 
+
+  //한 페이지당 아이템이 12개씩 나온다고 가정을 해보면
+
+  // 1 12 /2 12 /3 6 이 되는데
+
+  //12개로 나눈 나머지 부분에도 페이지를 구현해주기 위해 올림함수를 쓰는것이다.
+
+  // 30 / 12는 2.5 -> 올림 -> 3 나머지 0.5부분도 페이지로 나타나져야 하니까 올림 함수를 이용해 카운트를 올리고 페이지에 표현
+}
+
+//배열 계산 후 복제
+function arraySliceCreate(firstValue, lastValue, array) {
+  var startIndex = (firstValue + 1) * lastValue - lastValue; //sub_page_product_list기준 0, 1, 2
+  var lastIndex = lastValue + startIndex;
+  var returnArray = array.slice(startIndex, lastIndex); //배열복제
+  return returnArray;
+
+  //console.log(returnArray);
+  //console.log(startIndex);
+  //console.log(lastIndex);
+}
+
+//클래스 추가
+function addClass(Element, ClassName) {
+  Element.classList.add(ClassName);
+}
+function addClassMulti(Element, ClassArray) {
+  ClassArray.forEach(function (ClassName) {
+    Element.classList.add(ClassName);
+  });
+}
+
+//클래스 제거
+function removeClass(Element, ClassName) {
+  Element.classList.remove(ClassName);
+}
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -197,7 +284,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56220" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63801" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
@@ -341,5 +428,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/login.c6f93fcd.js.map
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","product_search.js"], null)
+//# sourceMappingURL=/product_search.3e4c7a47.js.map
