@@ -198,6 +198,7 @@ function listRequest(value, data) {
 /************************ search_tab ****************************/
 var productPageSearchDelete = document.getElementById('search_delete_btn');
 var productPageSearchTab = document.getElementById('product_page_search');
+var maxValueLength = 50;
 productPageSearchDelete.addEventListener('click', function () {
   productPageSearchTab.focus();
   productPageSearchTab.value = '';
@@ -205,6 +206,9 @@ productPageSearchDelete.addEventListener('click', function () {
 productPageSearchTab.addEventListener('keyup', function (e) {
   var _this = this;
   var time;
+  if (this.value.length > maxValueLength) {
+    this.value = this.value.substring(0, maxValueLength);
+  }
   if (e.key === 'Enter') {
     clearTimeout(time);
     time = setTimeout(function () {
@@ -352,7 +356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50453" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52643" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

@@ -128,7 +128,7 @@ img {
 			background-color: #bbbbbb;
 			user-select: none;
 		}
-		form {
+		#login_form {
 			width: 405px;
 			margin: 0 auto;
 			.id_n_pw {
@@ -220,62 +220,64 @@ img {
 					}
 				}
 			}
-		}
-		.sign_in_n_sign_up {
-			width: 405px;
-			margin: 40px auto 0;
-			>li {
-				width: 100%;
-				height: 55px;
-				margin-bottom: 15px;
-				text-align: center;
-				user-select: none;
-				&:first-child {
-					background-color: #ffbf00;
-				}
-				&:last-child {
-					background-color: #4136BF;
-				}
-				p {
-					display: block;
-					line-height: 55px;
-					font-size: 1.6rem;
-					color: #fff;
-					font-weight: 700;
-					font-family: "Noto Sans KR", sans-serif;
-					letter-spacing: -0.8px;
-					cursor: pointer;
-				}
-				a {
-					display: block;
-					line-height: 55px;
-					font-size: 1.6rem;
-					color: #fff;
-					font-weight: 700;
-					font-family: "Noto Sans KR", sans-serif;
-					letter-spacing: -0.8px;
-					cursor: pointer;
+
+			.sign_in_n_sign_up {
+				width: 405px;
+				margin: 40px auto 0;
+				>li {
+					width: 100%;
+					height: 55px;
+					margin-bottom: 15px;
+					text-align: center;
+					user-select: none;
+					&:first-child {
+						background-color: #ffbf00;
+					}
+					&:last-child {
+						background-color: #4136BF;
+					}
+					p {
+						display: block;
+						line-height: 55px;
+						font-size: 1.6rem;
+						color: #fff;
+						font-weight: 700;
+						font-family: "Noto Sans KR", sans-serif;
+						letter-spacing: -0.8px;
+						cursor: pointer;
+					}
+					a {
+						display: block;
+						line-height: 55px;
+						font-size: 1.6rem;
+						color: #fff;
+						font-weight: 700;
+						font-family: "Noto Sans KR", sans-serif;
+						letter-spacing: -0.8px;
+						cursor: pointer;
+					}
 				}
 			}
-		}
-		.easy_notice {
-			margin-top: 40px;
-			font-size: 1.6rem;
-		}
-		.sns_login {
-			display: flex;
-			justify-content: center;
-			margin-top: 20px;
-			li {
-				margin-right: 30px;
-				&:last-child {
-					margin-right: 0;
-				}
-				a {
-					display: inline-block;
-					width: 40px;
-					height: 40px;
-					user-select: none;
+			.easy_notice {
+				text-align: center;
+				margin-top: 40px;
+				font-size: 1.6rem;
+			}
+			.sns_login {
+				display: flex;
+				justify-content: center;
+				margin-top: 20px;
+				li {
+					margin-right: 30px;
+					&:last-child {
+						margin-right: 0;
+					}
+					a {
+						display: inline-block;
+						width: 40px;
+						height: 40px;
+						user-select: none;
+					}
 				}
 			}
 		}

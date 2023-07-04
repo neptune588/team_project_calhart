@@ -87,10 +87,12 @@ for (let i = 0; i < chkList.length; i++) {
 
         if (this.checked) {
             fillterCompareArray[currentInputDataIndex].push(this.value);
+            console.log(fillterCompareArray[currentInputDataIndex]);
             //indexCompare(prevChkBoxChecked, input);
         } else {
             let valueIndex = fillterCompareArray[currentInputDataIndex].indexOf(this.value);
             fillterCompareArray[currentInputDataIndex].splice(valueIndex, 1);
+            //console.log(fillterCompareArray[currentInputDataIndex], fillterCompareArray[currentInputDataIndex].splice(valueIndex, 1), fillterCompareArray);
         }
 
         //color section의 인덱스번호가 2라고치면, 그 안에든 input의 데이터번호도 2

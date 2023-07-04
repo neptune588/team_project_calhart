@@ -1,4 +1,5 @@
-const bestProductList = [{
+const bestProductList = [
+	{
 		id: 1,
 		modelName: 'S/S DELRAY SHIRT',
 		name: 'AMALFI/WAX',

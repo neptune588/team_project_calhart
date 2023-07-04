@@ -859,7 +859,6 @@ exports.detail_page_produdct_list = detail_page_produdct_list;
 
 var _data = require("./data.js");
 //버튼 state
-//객체 형식이면 함수 내부에서 데이터 참조 및 변형이 가능
 var btnState = {
   visualMainLeftClicked: false,
   visualMainRightClicked: false,
@@ -870,7 +869,6 @@ var btnState = {
   rightClicked01: false,
   rightClicked02: false
 };
-//객체 형식이면 함수 내부에서 데이터 참조 및 변형이 가능
 var count = {
   bestMoveCount: 0,
   newMoveCount: 0,
@@ -1263,32 +1261,25 @@ for (var _i6 = 0; _i6 < mdsList.length; _i6++) {
 var instaMoveUl = document.querySelectorAll('.insta_frame > ul');
 var instaFrame = document.querySelector('.insta_frame');
 window.addEventListener('scroll', function () {
+  console.log(document.body.offsetHeight);
   //console.log(window.scrollY);
-  if (window.scrollY > 2300) {
-    instaMoveUl.forEach(function (value) {
-      addClass(value, 'animate');
-    });
-  }
+  /*     if(window.scrollY > 2300) {
+          instaMoveUl.forEach((value) => {
+              addClass(value, 'animate');
+          });
+      }  */
 });
+
 instaFrame.addEventListener('mouseover', function () {
-  instaMoveUl.forEach(function (value) {
-    value.style.animationPlayState = 'paused';
+  instaMoveUl.forEach(function (el) {
+    return el.style.animationPlayState = 'paused';
   });
 });
 instaFrame.addEventListener('mouseout', function () {
-  instaMoveUl.forEach(function (value) {
-    value.style.animationPlayState = 'running';
+  instaMoveUl.forEach(function (el) {
+    return el.style.animationPlayState = 'running';
   });
 });
-/* instaMoveUl.forEach((value) => {
-    value.addEventListener('mouseover', () => {
-        value.style.animationPlayState = 'paused';
-    })
-    value.addEventListener('mouseout', () => {
-        value.style.animationPlayState = 'running';
-    })
-})
- */
 
 /*************** common ******************/
 //position값 계산
@@ -1344,7 +1335,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50453" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52643" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

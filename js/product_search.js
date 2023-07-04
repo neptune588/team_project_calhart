@@ -88,6 +88,7 @@ function listRequest(value, data) {
 /************************ search_tab ****************************/
 const productPageSearchDelete = document.getElementById('search_delete_btn');
 const productPageSearchTab = document.getElementById('product_page_search');
+const maxValueLength = 50;
 
 productPageSearchDelete.addEventListener('click', () => {
   productPageSearchTab.focus();
@@ -96,6 +97,9 @@ productPageSearchDelete.addEventListener('click', () => {
 
 productPageSearchTab.addEventListener('keyup', function (e) {
   let time;
+  if (this.value.length > maxValueLength) {
+    this.value = this.value.substring(0, maxValueLength);
+  }
   if (e.key === 'Enter') {
     
     clearTimeout(time);

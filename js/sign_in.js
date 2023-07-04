@@ -2,14 +2,11 @@ import {
     userData
 } from './userdata.js';
 
-
-//전체 감싸는 FORM
-const loginForm = document.getElementById('login_form');
-
 //아이디 입력창
 const userId = document.getElementById('user_id');
 //비밀번호 입력창
 const userPw = document.getElementById('user_pw');
+
 //가이드멘트
 const IDmessage = userId.parentNode.lastElementChild;
 const PWmessage = userPw.parentNode.lastElementChild;
@@ -19,10 +16,7 @@ const showNBlockBtn = document.getElementById('pw_show_block_btn');
 
 //비밀번호 표시 상태 변수
 let pwShowState;
-//아이디 저장 상태 변수
-let IDRememberState;
-//아이디 저장 ON/OFF 버튼
-const userIdRmBtn = document.getElementById('id_rm_chk');
+
 //로그인하기 버튼
 const userSignIn = document.getElementById('sign_in_chk');
 
@@ -30,6 +24,7 @@ const userSignIn = document.getElementById('sign_in_chk');
 showNBlockBtn.addEventListener('click', userPwShow);
 //로그인했을때 조건들 체크
 userSignIn.addEventListener('click', allChks);
+
 //빨간박스 초기화
 userId.addEventListener('keyup', function () {
     falseReset(userId, IDmessage)
@@ -41,9 +36,9 @@ userPw.addEventListener('keyup', function () {
 
 //아이디 체크
 function allChks () {
-    let IdSearch = userData.some((value) => {
-        return value.userIDInfo === userId.value;
-    });
+    const IdSearch = userData.some(object => object.userIDInfo === userId.value);
+
+    console.log(IdSearch);
     if(!IdSearch) {
         IDmessage.textContent = '아이디가 일치하지 않습니다!';
         falseOn(userId, IDmessage);
@@ -53,27 +48,29 @@ function allChks () {
 }
 //비밀번호 체크
 function PWCheck() {
-    let idcheck = userData.findIndex((items)=> {
-        //입력한 밸류값이 items(userData).userIDinfo값에 존재한다면
-        //즉 같다면 해당 인덱스 번호를 반환 그게 아닐시 -1 반환;
-        return items.userIDInfo === userId.value;
-    });
-    let pwcheck = userData.findIndex((items)=> {
-        return items.userPWInfo === userPw.value;
-    });
-    let PWSearch = userData.some((value) => {
-        return value.userPWInfo === userPw.value;
-    });
-    //idcheck pwcheck가 둘다 -1이 나왔다는 말은 해당 밸류값이
-    //userData 배열안에 존재하지 않는다는 말이므로
-    //결국 PWsearch를 통과못해서 false  
+    const PWSearch = userData.some(object => object.userPWInfo === userPw.value);
+    
+    let nowIdIndex = userData.findIndex(object => object.userIDInfo === userId.value);
+    let nowPWIndex = userData.findIndex(object => object.userPWInfo === userPw.value);
 
-    //idcheck !== pwcheck --> 같지 않다면이 true라면 조건문 실행이라는 뜻이기 때문에 알맞지 않음.
-    if(!(PWSearch && idcheck === pwcheck)) {
+    //console.log(PWSearch, nowIdIndex, nowPWIndex);
+
+    if(!PWSearch && (nowIdIndex !== nowPWIndex) ) {
+
+        /*         간단하게 정리하자면, findIndex로 id도  -1이 나오고 pw -1이 나오면 둘이 같은경우가 되는건데
+        왜 이렇게했냐?
+        답은 간단하다, 앞서 id에서 some으로 false면 pw체크까지 못오게 해놨기 때문에
+        즉 pw체크하는 로직에서 id는 이미 일치한다는게 되는것이다. id는 -1이 나오는 경우가 없다고 봐야한다.
+        그러면 이제 pw체크 로직을 봐야하는데, 이미 pw가 없으면 some에서 false -> if문에서 false인경우는
+        걸러놨기때문에 
+        
+        한마디로 pw로직에 왔으면 id는 무조건 통과 따라서 id의 findindex가 -1이 되는경우는 없음. 
+        pw가 -1이라는말은 일치하는게 없다는건데, 그러면 또 idindex !== pwindex 혹은 some이 false라는 조건이 성립하게되니 조건 불만족이 됨. */
+
         PWmessage.textContent = '비밀번호가 일치하지 않습니다!';
         falseOn(userPw, PWmessage);
     } else {
-        location.href = '../index.html';
+        location.href = './index.html';
     }
 }
 
@@ -88,20 +85,35 @@ function userPwShow() {
     }
 }
 //border_red //스타일주는 용도
-function falseOn(object, objectsiblingLast) {
-    objectsiblingLast.style.display = 'block';
-    object.classList.add('false_on');
+function falseOn(el01, el02) {
+    el02.style.display = 'block';
+    addClass(el01, 'false_on');
 }
+
 //타자 입력했을때 보더및 배경해제
-function falseReset(object, objectsiblingLast) {
-    objectsiblingLast.style.display = 'none';
-    object.classList.remove('false_on');
+function falseReset(el01, el02) {
+    el02.style.display = 'none';
+    removeClass(el01, 'false_on');
 }
 
+function addClass(el, className) {
+    el.classList.add(className);
+}
 
-/* //border_green //스타일주는 용도
-function trueOn (object, objectsiblingLast) {
-    objectsiblingLast.style.color = 'green';
-    object.classList.remove('false_on');
-    object.classList.add('true_on');
-} */
+function addClassMulit(el, classArr) {
+    classArr.forEach(className => el.classList.add(className));
+}
+
+function removeClass(el, className) {
+    el.classList.remove(className);
+}
+
+function removeClassMulti(el, classArr) {
+    classArr.forEach(className => el.classList.remove(className));
+}
+
+function setAttributeMulti(el, attrArr) {
+    for(let [attrBefore, attrAfter] of attrArr) {
+        el.setAttribute(attrBefore, attrAfter);
+    }
+}

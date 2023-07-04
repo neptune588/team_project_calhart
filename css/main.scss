@@ -93,7 +93,7 @@ img {
 .sub_title {
     @include sub_title;
     @include text_array(20px);
-    margin: 20px 0;
+    margin: 70px 0 20px;
     font-family: $font_perment_marker;
 }
 

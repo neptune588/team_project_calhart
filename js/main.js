@@ -6,7 +6,6 @@ import {
 } from './data.js';
 
 //버튼 state
-//객체 형식이면 함수 내부에서 데이터 참조 및 변형이 가능
 const btnState = {
     visualMainLeftClicked: false,
     visualMainRightClicked: false,
@@ -20,7 +19,7 @@ const btnState = {
     rightClicked01: false,
     rightClicked02: false,
 }
-//객체 형식이면 함수 내부에서 데이터 참조 및 변형이 가능
+
 const count = {
     bestMoveCount: 0,
     newMoveCount: 0,
@@ -426,33 +425,23 @@ for (let i = 0; i < mdsList.length; i++) {
 /*************** mds_pick_section ******************/
 const instaMoveUl = document.querySelectorAll('.insta_frame > ul');
 const instaFrame = document.querySelector('.insta_frame');
+
 window.addEventListener('scroll' , () => {
+    console.log(document.body.offsetHeight);
     //console.log(window.scrollY);
-    if(window.scrollY > 2300) {
+/*     if(window.scrollY > 2300) {
         instaMoveUl.forEach((value) => {
             addClass(value, 'animate');
         });
-    } 
+    }  */
 });
 instaFrame.addEventListener('mouseover', () => {
-    instaMoveUl.forEach((value) => {
-        value.style.animationPlayState = 'paused';
-    })
+    instaMoveUl.forEach(el => el.style.animationPlayState = 'paused');
 });
 instaFrame.addEventListener('mouseout', () => {
-    instaMoveUl.forEach((value) => {
-        value.style.animationPlayState = 'running';
-    })
+    instaMoveUl.forEach(el => el.style.animationPlayState = 'running');
 });
-/* instaMoveUl.forEach((value) => {
-    value.addEventListener('mouseover', () => {
-        value.style.animationPlayState = 'paused';
-    })
-    value.addEventListener('mouseout', () => {
-        value.style.animationPlayState = 'running';
-    })
-})
- */
+
 
 /*************** common ******************/
 //position값 계산

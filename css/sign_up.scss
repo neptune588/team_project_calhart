@@ -110,14 +110,59 @@ img {
     display: block;
 }
 
-/************************* step ***************************/
-/************************* agree_terms_contents page ***************************/
-/************************* privacy_input page ***************************/
-/* .privacy_input>form li .false_on:focus {
-    border: 1px solid rgb(199, 4, 4);
-} */
-/************************* confirm page ***************************/
-/************************* prev_next ***************************/
+/********************** control_class ************************/
+.none_on {
+    display: none !important;
+}
+
+.block_on {
+    display: block !important;
+}
+
+.full_down_on {
+    width: 100%;
+    height: 400px !important;
+}
+
+.visual_page_on {
+    font-weight: 700;
+}
+
+.hover_on {
+    opacity: 1 !important;
+}
+
+label {
+    display: block;
+    cursor: pointer;
+}
+
+select {
+    outline: none;
+}
+
+input {
+    display: none;
+}
+
+.label_style {
+    font-size: $small_up_font_size;
+}
+
+.clicked {
+    color: black !important;
+}
+
+.search_on {
+    height: 415px !important;
+}
+
+.search_close_on {
+    top: 415px !important;
+}
+
+
+/********************** html_style ************************/
 .step {
     width: 1245px;
     margin: 0 auto;
