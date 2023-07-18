@@ -1128,6 +1128,10 @@ function pageControl(array) {
       //복사한다. 그리고 페이지 클릭했을때 이후 해당 배열을 기반으로 리스트 생성
       var returnSlice = arraySliceCreate(_i4, pageItemView, array);
       listCreate(returnSlice);
+      window.scrollTo({
+        top: 0,
+        smooth: "behaivor"
+      });
     });
   };
   for (var _i4 = 0; _i4 < pageNumberBtn.length; _i4++) {
@@ -1219,7 +1223,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58927" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

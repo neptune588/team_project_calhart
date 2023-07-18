@@ -1,116 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Permanent+Marker&display=swap');
-
-/************************* color_plan ***************************/
-$point_color_amber : #ffbf00;
-$point_color_black : #000;
-$main_color_flora_white : #FFFDF6;
-$sub_color_free_speach_blue : #4136BF;
-$color_white : #fff;
-
-/************************* font_plan ***************************/
-@mixin main_title() {
-    font-size: 2.4rem;
-    font-weight: 700;
-}
-
-@mixin sub_title() {
-    font-size: 2rem;
-    font-weight: 700;
-}
-
-$defalut_font_size : 1.6rem;
-$small_font_size : 1.2rem;
-$small_up_font_size : 1.4rem;
-
-$font_noto_sans : 'Noto Sans KR',
-sans-serif;
-$font_perment_marker : 'Permanent Marker';
-
-/************************* gap＆padding ***************************/
-@mixin gap($value) {
-    margin: $value;
-}
-
-@mixin padding($value) {
-    padding: $value;
-}
-
-/************************* background standard  ***************************/
-@mixin background_contain {
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-@mixin background_cover {
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
-/************************* item_size ***************************/
-@mixin item_size ($width, $height) {
-    width: $width;
-    height: $height;
-}
-
-/************************* text_array ***************************/
-@mixin text_array ($height) {
-    text-align: center;
-    line-height: $height;
-}
-
-/************************* center array  ***************************/
-@mixin box_array {
-    width: 1245px;
-    margin: 0 auto;
-}
-
-/************************* defalut_settings ***************************/
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-html {
-    font-size: 10px;
-    background-color: $main_color_flora_white;
-}
-
-img {
-    width: 100%;
-    vertical-align: bottom;
-}
-
-.sub_title {
-    @include sub_title;
-    @include text_array(20px);
-    margin: 20px 0;
-    font-family: $font_perment_marker;
-}
-
-.btn {
-    position: absolute;
-    top: 50%;
-    font-size: 50px;
-    transform: translateY(-25%);
-    z-index: 9999;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
-
-    &:hover {
-        color: #ffbf00 !important;
-    }
-}
+@import './common.scss';
 
 button {
     border: none;
@@ -181,6 +69,9 @@ input {
     top: 415px !important;
 }
 
+.keyward_list_active {
+    transition: all 1.5s;
+}
 
 /************************* header_ex ***************************/
 .header_ex {
@@ -366,13 +257,6 @@ input {
                     @include background_cover;
                     margin-right: 15px;
                 }
-                .bottom_img01 {
-                    background-image: url(../dist/images/menu_img_1.jpg);
-                }
-                .bottom_img02 {
-                    margin-right: 0;
-                    background-image: url(../dist/images/menu_img_2.jpg);
-                }
             }
         }
 
@@ -407,15 +291,25 @@ input {
 
 /************************* quick_menu_design ***************************/
 .quick_menu_design {
+    display: none;
     position: absolute;
     top: 50%; right: 0;
     transform: translateY(-50%);
     @include item_size(100px, 220px);
-    transition: all 1s;
+    padding: 10px;
+    border: 3px solid rgb(194, 194, 194);
     background-color: #fff;
-    border: 1px solid red;
     cursor: pointer;
+    transition: all 1s;
     z-index: 99999999;
+    .quick_recently_product {
+        overflow: hidden;
+        @include item_size(80px, 80px);
+        img {
+            @include item_size(80px, 80px);
+            object-fit: cover;
+        }
+    }
 }
 
 
@@ -490,14 +384,9 @@ input {
             @include item_size(120px, 20px);
             overflow: hidden;
 
-            .keyward_list {
+            .keyward_list_design {
                 position: absolute;
                 top: 0;
-                overflow: hidden;
-
-                &.keyward_list_active {
-                    transition: all 1s;
-                }
 
                 li {
                     position: relative;

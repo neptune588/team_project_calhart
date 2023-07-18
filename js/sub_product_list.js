@@ -296,6 +296,8 @@ function pageControl(array) {
             //복사한다. 그리고 페이지 클릭했을때 이후 해당 배열을 기반으로 리스트 생성
             let returnSlice = arraySliceCreate(i, pageItemView, array);
             listCreate(returnSlice);
+
+            window.scrollTo({top: 0, smooth: "behaivor"});
         });
     }
 }

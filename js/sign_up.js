@@ -154,9 +154,9 @@ function userPwShow() {
 
 
 //pw가 가려졌을때 캡스락이 눌러졌는지 체크
-userPw.addEventListener('keyup', function() {
+userPw.addEventListener('keyup', function(e) {
     let CapsLock = e.getModifierState('CapsLock');
-    const guideMessageArea = this.parentNode.lastElementChild;
+    let guideMessageArea = this.parentNode.lastElementChild;
     if (!pwToggleState && CapsLock && userPw.value.length > 0) {
         guideMessageArea.textContent = 'Caps Lock을 꺼주세요!'
     }
@@ -167,7 +167,7 @@ userEmailSelected.addEventListener('change', emailSelected);
 //이메일 뒷자리(도메인영역) 셀렉트로 선택했을때(선택영역)
 function emailSelected () {
     let selectedValue = userEmailSelected.options[userEmailSelected.selectedIndex];
-    let guideMessageArea = this.parentNode.lastElementChild;
+    const guideMessageArea = this.parentNode.lastElementChild;
 
     if (selectedValue.value === '' || selectedValue.value === undefined || selectedValue.value === null) {
         userEmailAfter.removeAttribute('disabled');
@@ -381,10 +381,11 @@ function IdValueLoad() {
 
 function showPrevPage() {
     if (pageCount === 0) {
-        location.href = '../login_page/login.html';
+        location.href = './login.html';
     } else if (pageCount === 1) {
         pageCount--;
 
+        nextPageBtn.textContent = `Next`;
         pageOn();
     }
     //초기화
@@ -420,6 +421,7 @@ function pageCheck01() {
         cautionState = true;
         toggleCation();
 
+        nextPageBtn.textContent = `Submit`;
         pageOn();
     }
 }

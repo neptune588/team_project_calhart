@@ -56,6 +56,10 @@ img {
   color: #ffbf00 !important;
 }
 
+.dummy {
+  display: none !important;
+}
+
 /********************** control_class ************************/
 .block_on {
   display: block !important;
@@ -72,6 +76,10 @@ img {
 
 .hover_on {
   opacity: 1 !important;
+}
+
+.visual_trans_active {
+  transition: all 1.5s;
 }
 
 /************************* visual_main ***************************/
@@ -95,33 +103,10 @@ img {
   left: 0;
   transform: translateX(-400vw);
 }
-.visual_main_ex .visual_main .visual_main_frame > ul.visual_trans_active {
-  transition: all 0.6s;
-}
 .visual_main_ex .visual_main .visual_main_frame > ul > li {
   float: left;
   width: 100vw;
   height: 100%;
-}
-.visual_main_ex .visual_main .visual_main_frame > ul > li.visual01 {
-  background-image: url(/visual_main01.23ec38dc.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.visual_main_ex .visual_main .visual_main_frame > ul > li.visual02 {
-  background-image: url(/visual_main02.3fd21b74.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.visual_main_ex .visual_main .visual_main_frame > ul > li.visual03 {
-  background-image: url(/visual_main03.ec7cf75b.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.visual_main_ex .visual_main .visual_main_frame > ul > li.visual04 {
-  background-image: url(/visual_main04.b5fcef7a.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 .visual_main_ex .visual_main .visual_main_frame > ul > li a {
   position: relative;
@@ -129,6 +114,11 @@ img {
   width: 100%;
   height: 100%;
   z-index: 5;
+}
+.visual_main_ex .visual_main .visual_main_frame > ul > li a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .visual_main_ex .visual_main .visual_main_frame > .btn {
   z-index: 1;
@@ -198,7 +188,6 @@ img {
   left: 0;
   width: 6285px;
   height: 300px;
-  transform: translateX(-2520px);
 }
 .product_container .product .product_frame_design .product_list li {
   margin-right: 15px;

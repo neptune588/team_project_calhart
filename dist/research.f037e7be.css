@@ -38,8 +38,26 @@ img {
   font-weight: 700;
   text-align: center;
   line-height: 20px;
-  margin: 20px 0;
+  margin: 70px 0 20px;
   font-family: "Permanent Marker";
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  font-size: 50px;
+  transform: translateY(-25%);
+  z-index: 9999;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+.btn:hover {
+  color: #ffbf00 !important;
+}
+
+.dummy {
+  display: none !important;
 }
 
 .page {
@@ -55,9 +73,6 @@ img {
   display: block;
 }
 
-/************************* id_n_pw_research_area_ex ***************************/
-/************************* pop_up_area_ex ***************************/
-/************************* false_on ***************************/
 .id_n_pw_research_area_ex {
   width: 615px;
   margin: 100px auto 0;

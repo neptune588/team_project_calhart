@@ -858,276 +858,240 @@ exports.detail_page_produdct_list = detail_page_produdct_list;
 "use strict";
 
 var _data = require("./data.js");
-//버튼 state
-var btnState = {
-  visualMainLeftClicked: false,
-  visualMainRightClicked: false,
-  vMainLeftEventClicked: false,
-  vMainRightEventClicked: false,
-  leftClicked01: false,
-  leftClicked02: false,
-  rightClicked01: false,
-  rightClicked02: false
-};
-var count = {
-  bestMoveCount: 0,
-  newMoveCount: 0,
-  visualMainMoveCount: 0
-};
-var arrow = {
-  autoPlayArrow: 'left'
-};
+/*************** visual_main ******************/ //visual_main_ul
+var vmList = document.getElementById('visual_main_ul');
+var visualSrc = [{
+  src: ["./images/visual_main01.jpg"],
+  class: "visual01"
+}, {
+  src: ["./images/visual_main02.jpg"],
+  class: "visual02"
+}, {
+  src: ["./images/visual_main03.jpg"],
+  class: "visual03"
+}, {
+  src: ["./images/visual_main04.jpg"],
+  class: "visual04"
+}];
+vmMaker();
+function vmMaker() {
+  var list = "";
+  var receive = "";
+  visualSrc.forEach(function (obj, i) {
+    list = "\n            <li class=\"visual_main_li ".concat(obj.class, "\">\n                <a href=\"./sub_product_list.html\">\n                    <img src=\"").concat(obj.src, "\" alt=\"vm_img_").concat(i, "\"/>\n                </a>\n            </li>\n        ");
+    receive += list;
+  });
+  vmList.innerHTML = receive;
+  var vmListChild = document.querySelectorAll('.visual_main_li');
+  vmList.appendChild(cloneCreate(vmListChild[0]));
+  //vmListChild[0]가 고정되어있으므로 li가 순차적으로 고정돤0번앞에 추가됨.
+  vmListChild.forEach(function (li) {
+    return vmList.insertBefore(cloneCreate(li), vmListChild[0]);
+  });
+}
 
-/*************** visual_main ******************/
-//visual_main_ul
-var visualMainUl = document.getElementById('visual_main_ul');
-//visual_main_btn
-
+/*************** visual_main_next_prev ******************/
 var visualPrevBtn = document.getElementById('visual_prev_btn');
 var visualNextBtn = document.getElementById('visual_next_btn');
-//visual_main_play_stop_btn
+
+//li 마진값 추출
+var vmLiMargin = parseInt(window.getComputedStyle(vmList.children[0]).getPropertyValue('margin-bottom'), 10);
+//li 마진값 + offsetHeight로 이동값 계산
+var vmMoveValue = moveValueCalc(vmList.children[0]) + vmLiMargin;
+//li 이동시간 추출
+var vmMoveDelay = parseFloat(window.getComputedStyle(document.querySelector('.visual_trans_active')).getPropertyValue('transition-duration')) * 1000;
+//li 이동시간 second(초) 기준으로 재 계산
+
+var vmSlider = {
+  moveEl: vmList,
+  ctrlClass: 'visual_trans_active',
+  moveCount: 0,
+  calcCount: 1,
+  clearCount: 0,
+  moveArrow: "left",
+  moveValue: vmMoveValue,
+  moveTime: vmMoveDelay,
+  countMax: (vmList.children.length - 1) / 2,
+  autoArrow: "left"
+};
+var vmPrevClick = false;
+var vmNextClick = false;
+visualPrevBtn.addEventListener('click', function () {
+  var time;
+  clearTimeout(time);
+  time = setTimeout(function () {
+    vmPrevMove();
+  }, 50);
+});
+visualNextBtn.addEventListener('click', function () {
+  var time;
+  clearTimeout(time);
+  time = setTimeout(function () {
+    vmNextMove();
+  }, 50);
+});
+function vmPrevMove() {
+  if (!vmPrevClick) {
+    vmPrevClick = true;
+    vmSlider.autoArrow = "left", vmSlider.calcCount = 1;
+    vmSlider.countMax = (vmList.children.length - 1) / 2;
+    moveInterval(vmSlider);
+    setTimeout(function () {
+      vmPrevClick = false;
+    }, vmSlider.moveTime + 260);
+  }
+}
+function vmNextMove() {
+  if (!vmNextClick) {
+    vmNextClick = true;
+    vmSlider.autoArrow = "right", vmSlider.calcCount = -1;
+    vmSlider.countMax = (vmList.children.length - 1) * -1 / 2;
+    moveInterval(vmSlider);
+    setTimeout(function () {
+      vmNextClick = false;
+    }, vmSlider.moveTime + 260);
+  }
+}
+
+/*************** visual_main_autoPlay ******************/
 var visualPlay = document.getElementById('play_btn');
 var visualStop = document.getElementById('stop_btn');
-//visual_main_ul li
-var visualMainLi = document.querySelectorAll('.visual_main_li');
-//visual_main_ul li width
-var visualMainLiWidth = visualMainLi[0].offsetWidth;
-visualMainLi.forEach(function (value, index) {
-  addClass(value, "visual0".concat(index + 1));
-});
-cloneCreate01(visualMainLi, visualMainUl);
-cloneCreate02(visualMainLi, visualMainUl);
-
-//autoplay제어 변수
-var visualRepeat;
-if (!btnState.vMainLeftEventClicked) {
-  btnState.vMainLeftEventClicked = true;
-  visualPrevBtn.addEventListener('click', prevPlay);
-}
-if (!btnState.vMainRightEventClicked) {
-  btnState.vMainLeftEventClicked = true;
-  visualNextBtn.addEventListener('click', nextPlay);
-}
+var vmAuto;
 visualPlay.addEventListener('click', function () {
-  visualRepeat = setInterval(function () {
-    //&& btnState.vMainLeftEventClicked
-    //이 부분을 셋인터벌에도 넣게 되면 무한 재생이 아닌 클릭할때마다 한번씩 호출되게됨.
-    if (arrow.autoPlayArrow === 'left') {
-      prevPlay();
-    } else if (arrow.autoPlayArrow === 'right') {
-      nextPlay();
+  vmAuto = setInterval(function () {
+    if (vmSlider.autoArrow === "left") {
+      vmPrevMove();
+    } else if (vmSlider.autoArrow === "right") {
+      vmNextMove();
     }
-  }, 650);
+  }, vmSlider.moveTime);
 });
 visualStop.addEventListener('click', function () {
-  clearInterval(visualRepeat);
-});
-function prevPlay() {
-  if (!btnState.visualMainLeftClicked) {
-    btnState.visualMainLeftClicked = true;
-    arrow.autoPlayArrow = 'left';
-    //방향 지정
-    leftMove(count, 'visualMainMoveCount', visualMainUl, visualMainLiWidth, btnState, 'visualMainLeftClicked', 4, 'visual_trans_active');
-    btnState.vMainLeftEventClicked = false;
-  }
-}
-function nextPlay() {
-  if (!btnState.visualMainRightClicked) {
-    btnState.visualMainRightClicked = true;
-    arrow.autoPlayArrow = 'right';
-    rightMove(count, 'visualMainMoveCount', visualMainUl, visualMainLiWidth, btnState, 'visualMainRightClicked', 4, 'visual_trans_active');
-    btnState.vMainRightEventClicked = false;
-  }
-}
-
-/*************** product_section ******************/
-//bestproductUl
-var bestProductUl = document.getElementById('product_ul01');
-//newproductUl
-var newProductUl = document.getElementById('product_ul02');
-
-//best_product_li_make
-for (var i = 0; i < _data.bestProductList.length; i++) {
-  //요소 추가
-  var addBestLi = document.createElement('li');
-  var bestLiInA = document.createElement('a');
-  var bestLiInImg = document.createElement('img');
-  var bestLiTextModel = document.createElement('span');
-  var bestLiTextName = document.createElement('span');
-
-  //span에 들어가는 text
-  var bestLiTextModelText = document.createTextNode(_data.bestProductList[i].modelName);
-  var bestLiTextNameText = document.createTextNode(_data.bestProductList[i].name);
-
-  //이미지 속성 변경
-  bestLiInImg.setAttribute('src', _data.bestProductList[i].src);
-
-  //삽입 명령어
-  bestLiTextModel.appendChild(bestLiTextModelText);
-  bestLiTextName.appendChild(bestLiTextNameText);
-  bestLiInA.appendChild(bestLiInImg);
-  bestLiInA.appendChild(bestLiTextModel);
-  bestLiInA.appendChild(bestLiTextName);
-  addBestLi.appendChild(bestLiInA);
-  bestProductUl.appendChild(addBestLi);
-
-  //클래스 주기
-
-  bestLiInA.setAttribute('href', '#!');
-  addBestLi.setAttribute('class', 'Best_product_list');
-  //addBestLi.setAttribute('id', "i" + i);
-}
-//new_product_li_make
-for (var _i = 0; _i < _data.newProductList.length; _i++) {
-  //요소 추가
-  var addNewLi = document.createElement('li');
-  var newLiInA = document.createElement('a');
-  var newLiInImg = document.createElement('img');
-  var newLiTextModel = document.createElement('span');
-  var newLiTextName = document.createElement('span');
-
-  //span에 들어가는 text
-  var newLiTextModelText = document.createTextNode(_data.newProductList[_i].modelName);
-  var newLiTextNameText = document.createTextNode(_data.newProductList[_i].name);
-
-  //이미지 속성 변경
-  newLiInImg.setAttribute('src', _data.newProductList[_i].src);
-
-  //삽입 명령어
-  newLiTextModel.appendChild(newLiTextModelText);
-  newLiTextName.appendChild(newLiTextNameText);
-  newLiInA.appendChild(newLiInImg);
-  newLiInA.appendChild(newLiTextModel);
-  newLiInA.appendChild(newLiTextName);
-  addNewLi.appendChild(newLiInA);
-  newProductUl.appendChild(addNewLi);
-
-  //클래스 주기
-
-  newLiInA.setAttribute('href', '#!');
-  addNewLi.setAttribute('class', 'new_product_list');
-}
-
-//best box_arrow_btn
-var prevBtn01 = document.getElementById('prev_btn01');
-var nextBtn01 = document.getElementById('next_btn01');
-//new box_arrow_btn
-var prevBtn02 = document.getElementById('prev_btn02');
-var nextBtn02 = document.getElementById('next_btn02');
-
-//bestList
-var bestLi = document.querySelectorAll('.Best_product_list');
-//bestList
-var newLi = document.querySelectorAll('.new_product_list');
-
-//product seciton li width 추출
-var productLiWidth = bestProductUl.children[0].offsetWidth + 15;
-
-//bestProductClone
-cloneCreate01(bestLi, bestProductUl);
-cloneCreate02(bestLi, bestProductUl);
-
-//newProductClone
-cloneCreate01(newLi, newProductUl);
-cloneCreate02(newLi, newProductUl);
-
-//best_Section_left_Btn
-prevBtn01.addEventListener('click', function () {
-  //연속클릭 방지
-  if (!btnState.leftClicked01) {
-    btnState.leftClicked01 = true;
-    leftMove(count, 'bestMoveCount', bestProductUl, productLiWidth, btnState, 'leftClicked01', 8, 'move_active');
-  }
-});
-//best_Section_right_Btn
-nextBtn01.addEventListener('click', function () {
-  //연속클릭 방지
-  if (!btnState.rightClicked01) {
-    btnState.rightClicked01 = true;
-    rightMove(count, 'bestMoveCount', bestProductUl, productLiWidth, btnState, 'rightClicked01', 8, 'move_active');
-  }
-});
-//new_Section_left_Btn
-prevBtn02.addEventListener('click', function () {
-  //연속클릭 방지
-  if (!btnState.leftClicked02) {
-    btnState.leftClicked02 = true;
-    leftMove(count, 'newMoveCount', newProductUl, productLiWidth, btnState, 'leftClicked02', 8, 'move_active');
-  }
-});
-//new_Section_right_Btn
-nextBtn02.addEventListener('click', function () {
-  //연속클릭 방지
-  if (!btnState.rightClicked02) {
-    btnState.rightClicked02 = true;
-    rightMove(count, 'newMoveCount', newProductUl, productLiWidth, btnState, 'rightClicked02', 8, 'move_active');
+  if (vmAuto) {
+    clearInterval(vmAuto);
   }
 });
 
-//왼쪽 이동 인터벌 함수
-function leftMove(countObject, countValue, productUl, elementWidth, stateObject, stateProperty, maxCounting, ClassName) {
-  var clickCount = 0;
-  var leftMoving = setInterval(function () {
-    //위치 감지 및 left값 지정. leftmove와 값을 공유해야 유기적으로 이동
-    countObject[countValue]++;
-    //공유한 count로 계산,
-    //왼쪽누르면 카운트증가 오른쪽 누르면 카운트 감소이니까
-    //liwidth * count값을 주면된다.
-    //나중에 봐도 이해할수잇게 ex적기
-    //ex : 3 - 2  
-    var moved = move(elementWidth, countObject[countValue]);
-    productUl.style.left = moved;
+/*************** best_n_new_create ******************/
 
-    //인터벌 제어를 위해 
-    clickCount++;
-    if (clickCount === 1) {
-      clearInterval(leftMoving);
-    }
-    if (countObject[countValue] === maxCounting) {
-      countObject[countValue] = 0;
-      setTimeout(function () {
-        removeClass(productUl, ClassName);
-        productUl.style.left = 0;
-      }, 600);
-      setTimeout(function () {
-        addClass(productUl, ClassName);
-      }, 650);
-    }
+//length를 기준으로 계산해야할게 많기 떄문에
+//list생산 함수로 innerhtml로 박아넣고, 그 안에서 클론 생성까지 이루어지게 코드를 짰기 떄문에
+//클론이 되어있지 않은 lenght를 받아올 필요가 있으므로, 미리 초기화해두고 함수안에서 받아오고,
+//그 값을 기준으로 transform 값 밑 maxcount를 구하자.
+var innerLiLength = 0;
+var bestList = document.getElementById('best_product_list');
+var bestPdMaker = {
+  parentEl: bestList,
+  childClass: "best_product_list",
+  data: _data.bestProductList,
+  alt: "best_list_img"
+};
+listMaker(bestPdMaker);
+var newList = document.getElementById('new_product_list');
+var newPdMaker = {
+  parentEl: newList,
+  childClass: "new_product_list",
+  data: _data.newProductList,
+  alt: "new_list_img"
+};
+listMaker(newPdMaker);
+function listMaker(obj) {
+  var list = "";
+  var receive = "";
+  obj.data.forEach(function (innerObj, index) {
+    list = "\n            <li class=\"".concat(obj.childClass, "\">\n                <a href=\"#!\">\n                    <img src=\"").concat(innerObj.src, "\" alt=\"").concat(obj.alt + index, "\"/>\n                    <span>").concat(innerObj.modelName, "</span>\n                    <span>").concat(innerObj.name, "</span>\n                </a>\n            </li>\n        ");
+    receive += list;
   });
-  setTimeout(function () {
-    //애니메이션 다 끝나고 이동 가능하게 버튼활성화
-    stateObject[stateProperty] = false;
-  }, 650);
+  obj.parentEl.innerHTML = receive;
+
+  //children으로 하면 오류가 생겨서, 클래스주고 쿼리셀렉터로 특정했다.
+  var innerLi = document.querySelectorAll(".".concat(obj.childClass));
+  innerLiLength = innerLi.length;
+  innerLi.forEach(function (li) {
+    return obj.parentEl.insertBefore(cloneCreate(li), innerLi[0]);
+  });
+  for (var i = 0; i < innerLiLength / 2; i++) {
+    obj.parentEl.appendChild(cloneCreate(innerLi[i]));
+  }
 }
 
-//오른쪽 이동 인터벌 함수
-function rightMove(countObject, countValue, productUl, elementWidth, stateObject, stateProperty, maxCounting, ClassName) {
-  var clickCount = 0;
-  var rightMoving = setInterval(function () {
-    //위치 감지 및 left값 지정. leftmove와 값을 공유해야 유기적으로 이동
-    countObject[countValue]--;
-    var moved = move(elementWidth, countObject[countValue]);
-    productUl.style.left = moved;
-    //인터벌 제어를 위해 
-    clickCount++;
-    if (clickCount === 1) {
-      clearInterval(rightMoving);
-    }
-    if (countObject[countValue] === maxCounting * -1) {
-      countObject[countValue] = 0;
-      setTimeout(function () {
-        removeClass(productUl, ClassName);
-        productUl.style.left = 0;
-      }, 600);
-      setTimeout(function () {
-        addClass(productUl, ClassName);
-      }, 650);
-    }
-  });
-  setTimeout(function () {
-    //애니메이션 다 끝나고 이동 가능하게 버튼활성화
-    stateObject[stateProperty] = false;
-  }, 650);
+/*************** best_n_new_default_settings ******************/
+var pdListWidth = parseInt(window.getComputedStyle(bestList.children[0]).getPropertyValue('width'), 10);
+var pdListMargin = parseInt(window.getComputedStyle(bestList.children[0]).getPropertyValue('margin-right'), 10);
+var pdListMoveValue = moveValueCalc(bestList.children[0]) + pdListMargin;
+var pdListMoveDelay = parseFloat(window.getComputedStyle(document.querySelector('.move_active')).getPropertyValue('transition-duration')) * 1000;
+var productList = document.querySelectorAll('.product_list');
+productList.forEach(function (ul) {
+  return ul.style.transform = "translateX(-".concat(innerLiLength * (pdListWidth + pdListMargin), "px)");
+});
+
+//console.log(pdListMargin, pdListWidth, pdListMoveValue, pdListMoveDelay);
+
+var bestPdSlider = {
+  moveEl: bestList,
+  ctrlClass: 'move_active',
+  moveCount: 0,
+  calcCount: 1,
+  clearCount: 0,
+  moveArrow: "left",
+  moveValue: pdListMoveValue,
+  moveTime: pdListMoveDelay,
+  countMax: innerLiLength,
+  prevState: false,
+  nextState: false
+};
+var newPdSlider = {
+  moveEl: newList,
+  ctrlClass: 'move_active',
+  moveCount: 0,
+  calcCount: 1,
+  clearCount: 0,
+  moveArrow: "left",
+  moveValue: pdListMoveValue,
+  moveTime: pdListMoveDelay,
+  countMax: innerLiLength,
+  prevState: false,
+  nextState: false
+};
+
+/*************** best_n_new_slider ******************/
+var bestPrevBtn = document.getElementById('prev_btn01');
+var bestNextBtn = document.getElementById('next_btn01');
+var newPrevBtn = document.getElementById('prev_btn02');
+var newNextBtn = document.getElementById('next_btn02');
+bestPrevBtn.addEventListener('click', function () {
+  prevSlide(bestPdSlider);
+});
+bestNextBtn.addEventListener('click', function () {
+  nextSlide(bestPdSlider);
+});
+newPrevBtn.addEventListener('click', function () {
+  prevSlide(newPdSlider);
+});
+newNextBtn.addEventListener('click', function () {
+  nextSlide(newPdSlider);
+});
+function prevSlide(obj) {
+  if (!obj.prevState) {
+    obj.prevState = true;
+    obj.calcCount = 1;
+    obj.countMax = innerLiLength;
+    moveInterval(obj);
+    setTimeout(function () {
+      obj.prevState = false;
+    }, obj.moveTime + 260);
+  }
+}
+function nextSlide(obj) {
+  if (!obj.nextState) {
+    obj.nextState = true;
+    obj.calcCount = -1;
+    obj.countMax = innerLiLength * -1;
+    moveInterval(obj);
+    setTimeout(function () {
+      obj.nextState = false;
+    }, obj.moveTime + 260);
+  }
 }
 
 /*************** look_book_section ******************/
@@ -1160,20 +1124,20 @@ lookBookInnerTextBox.forEach(function (value, index) {
   value.appendChild(newP03);
 });
 //img hover시 text 등장
-var _loop = function _loop(_i2) {
-  hoverImg[_i2].addEventListener('mouseover', function () {
+var _loop = function _loop(i) {
+  hoverImg[i].addEventListener('mouseover', function () {
     for (var j = 0; j < lookBookInnerTextBox.length; j++) {
       removeClass(lookBookInnerTextBox[j], 'hover_on');
     }
-    addClass(lookBookInnerTextBox[_i2], 'hover_on');
+    addClass(lookBookInnerTextBox[i], 'hover_on');
   });
 };
-for (var _i2 = 0; _i2 < hoverImg.length; _i2++) {
-  _loop(_i2);
+for (var i = 0; i < hoverImg.length; i++) {
+  _loop(i);
 }
 //img out시 text 제거
-for (var _i3 = 0; _i3 < hoverImg.length; _i3++) {
-  hoverImg[_i3].addEventListener('mouseout', function () {
+for (var _i = 0; _i < hoverImg.length; _i++) {
+  hoverImg[_i].addEventListener('mouseout', function () {
     for (var j = 0; j < lookBookInnerTextBox.length; j++) {
       removeClass(lookBookInnerTextBox[j], 'hover_on');
     }
@@ -1181,21 +1145,21 @@ for (var _i3 = 0; _i3 < hoverImg.length; _i3++) {
 }
 
 //img등록
-for (var _i4 = 0; _i4 < lookBookTap.length; _i4++) {
-  lookBookTap[_i4].lastElementChild.setAttribute('src', "./images/look_book_thumnail".concat(_i4, ".jpg"));
+for (var _i2 = 0; _i2 < lookBookTap.length; _i2++) {
+  lookBookTap[_i2].lastElementChild.setAttribute('src', "./images/look_book_thumnail".concat(_i2, ".jpg"));
 }
 //탭 순회하면서 클릭이벤트 등록, 클릭했을시 클래스 전부 제거 후 
 //i값에 해당하는 섹션 block_on
-var _loop2 = function _loop2(_i5) {
-  lookBookTap[_i5].addEventListener('click', function () {
+var _loop2 = function _loop2(_i3) {
+  lookBookTap[_i3].addEventListener('click', function () {
     for (var j = 0; j < lookBookViewZone.length; j++) {
       removeClass(lookBookViewZone[j], 'block_on');
     }
-    addClass(lookBookViewZone[_i5], 'block_on');
+    addClass(lookBookViewZone[_i3], 'block_on');
   });
 };
-for (var _i5 = 0; _i5 < lookBookTap.length; _i5++) {
-  _loop2(_i5);
+for (var _i3 = 0; _i3 < lookBookTap.length; _i3++) {
+  _loop2(_i3);
 }
 
 /*************** mds_pick_section ******************/
@@ -1238,20 +1202,20 @@ mdProductInfo.forEach(function (value, index) {
 mdAcodianOn.forEach(function (value, index) {
   value.children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(index + 1, ".jpg"));
 });
-var _loop3 = function _loop3(_i6) {
-  mdsList[_i6].addEventListener('click', function () {
+var _loop3 = function _loop3(_i4) {
+  mdsList[_i4].addEventListener('click', function () {
     for (var j = 0; j < mdsList.length; j++) {
       removeClass(mdsList[j], 'acodian_on');
       removeClass(mdProductInfo[j], 'hover_on');
       mdsList[j].children[0].children[0].setAttribute('src', "./images/mds_0".concat(j + 1, ".jpg"));
     }
-    addClass(mdsList[_i6], 'acodian_on');
-    addClass(mdProductInfo[_i6], 'hover_on');
-    mdsList[_i6].children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(_i6 + 1, ".jpg"));
+    addClass(mdsList[_i4], 'acodian_on');
+    addClass(mdProductInfo[_i4], 'hover_on');
+    mdsList[_i4].children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(_i4 + 1, ".jpg"));
   });
 };
-for (var _i6 = 0; _i6 < mdsList.length; _i6++) {
-  _loop3(_i6);
+for (var _i4 = 0; _i4 < mdsList.length; _i4++) {
+  _loop3(_i4);
 }
 
 //1. 아코디언 상태일때만 mds_acodian이 된다. 그 말인 즉슨 그 클래스가 제거가 되면 이미지는 mds_0 시리즈로 되어야한다.
@@ -1260,16 +1224,14 @@ for (var _i6 = 0; _i6 < mdsList.length; _i6++) {
 /*************** mds_pick_section ******************/
 var instaMoveUl = document.querySelectorAll('.insta_frame > ul');
 var instaFrame = document.querySelector('.insta_frame');
+var condition = document.body.scrollHeight * 0.6;
 window.addEventListener('scroll', function () {
-  console.log(document.body.offsetHeight);
-  //console.log(window.scrollY);
-  /*     if(window.scrollY > 2300) {
-          instaMoveUl.forEach((value) => {
-              addClass(value, 'animate');
-          });
-      }  */
+  if (window.scrollY >= condition) {
+    instaMoveUl.forEach(function (value) {
+      addClass(value, 'animate');
+    });
+  }
 });
-
 instaFrame.addEventListener('mouseover', function () {
   instaMoveUl.forEach(function (el) {
     return el.style.animationPlayState = 'paused';
@@ -1282,9 +1244,34 @@ instaFrame.addEventListener('mouseout', function () {
 });
 
 /*************** common ******************/
-//position값 계산
-function move(LiWidth, count) {
-  return LiWidth * count + "px";
+function moveInterval(obj) {
+  //동작
+  addClass(obj.moveEl, obj.ctrlClass);
+  var repeatMove = setInterval(function () {
+    obj.clearCount = 0;
+    obj.moveCount += obj.calcCount;
+
+    //console.log(obj.moveCount);
+    obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+
+    //리셋
+    if (obj.moveCount === obj.countMax) {
+      //마지막 li 이동 -> delay -> 트랜지션 제거 후 0으로 이동 시키고 -> 인터벌 종료.
+      setTimeout(function () {
+        removeClass(obj.moveEl, obj.ctrlClass);
+
+        //1번으로 이동시키기 위해
+        obj.moveCount = 0;
+        obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+      }, obj.moveTime + 250);
+    }
+
+    //재실행
+    obj.clearCount++;
+    if (obj.clearCount === 1) {
+      clearInterval(repeatMove);
+    }
+  });
 }
 
 //클래스 추가
@@ -1295,20 +1282,11 @@ function addClass(Element, ClassName) {
 function removeClass(Element, ClassName) {
   Element.classList.remove(ClassName);
 }
-
-//클론 만들기 함수01
-function cloneCreate01(elements, parentEle) {
-  for (var _i7 = 0; _i7 < elements.length / 2; _i7++) {
-    var cloneElement = elements[_i7].cloneNode(true);
-    parentEle.appendChild(cloneElement);
-  }
+function moveValueCalc(el) {
+  return el.offsetWidth;
 }
-//클론 만들기 함수02
-function cloneCreate02(elements, parentEle) {
-  for (var _i8 = 0; _i8 < elements.length; _i8++) {
-    var cloneElement = elements[_i8].cloneNode(true);
-    parentEle.insertBefore(cloneElement, elements[0]);
-  }
+function cloneCreate(el) {
+  return el.cloneNode(true);
 }
 },{"./data.js":"js/data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -1335,7 +1313,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58927" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

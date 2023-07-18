@@ -1,6 +1,3 @@
-import {
-    sub_page_product_list
-} from './data.js'
 
 /*************** header ******************/
 //nav
@@ -12,7 +9,7 @@ const liInnerUl = document.querySelectorAll('.li_inner_ul');
 //main_menu_li
 const mainMenuLi = document.querySelectorAll('.main_menu_list > .menu_list');
 //full_down_img box
-const fullDonwInnerImg = document.querySelectorAll('.menu_img');
+const fullDonwInnerImg = document.querySelectorAll('.menu_img > img');
 
 //풀다운 토글
 navEx.addEventListener('mouseover', () => {
@@ -28,63 +25,159 @@ navEx.addEventListener('mouseout', () => {
     }
 });
 
+const navSrc = [
+    {
+        src: ["./images/menu_img_01-1.jpg","./images/menu_img_01-2.jpg"]
+    },
+    {
+        src: ["./images/menu_img_02-1.jpg","./images/menu_img_02-2.jpg"]
+    },
+    {
+        src: ["./images/menu_img_03-1.jpg","./images/menu_img_03-2.jpg"]
+    },
+    {
+        src: ["./images/menu_img_04-1.jpg","./images/menu_img_04-2.jpg"]
+    },
+    {
+        src: ["./images/menu_img_05-1.jpg","./images/menu_img_05-2.jpg"]
+    },
+    {
+        src: ["./images/menu_img_06-1.jpg","./images/menu_img_06-2.jpg"]
+    }
+];
+
 //메인 메뉴 호버에 따라 img박스 속성 변경 
 for (let i = 0; i < mainMenuLi.length; i++) {
     mainMenuLi[i].addEventListener('mouseover', () => {
-        for (let j = 0; j < fullDonwInnerImg.length; j += fullDonwInnerImg.length) {
-            fullDonwInnerImg[j].children[0].setAttribute('src', `./images/menu_img_${i + i}.jpg`);
-            fullDonwInnerImg[j + 1].children[0].setAttribute('src', `./images/menu_img_${i + i + 1}.jpg`);
-        }
+
+        setAttributeMuliti(fullDonwInnerImg[0], [
+            ["src", navSrc[i].src[0]],
+            ["alt", `nav_hover_img${i + 1}-1`]
+        ]);
+        setAttributeMuliti(fullDonwInnerImg[1], [
+            ["src", navSrc[i].src[1]],
+            ["alt", `nav_hover_img${i + 1}-2`]
+        ]);
     });
 }
 
-//keword_auto_move
-const keyWordMoveUl = document.querySelector('.keyward_list');
-const keyWordLiHeight = keyWordMoveUl.children[0].offsetHeight + 5;
+/*************** keword_auto_move ******************/
 
-//style.top 초기화를 위함 + 현재 위치 탐색 카운트
-let keyWordMoveCount = 0;
-let topZeroCount = 0;
+const kewordHref = [
+    {
+        num: 1,
+        href: ["./sub_product_list.html"],
+        content: "티셔츠"
+    },
+    {
+        num: 2,
+        href: ["./sub_product_list.html"],
+        content: "맨투맨"
+    },
+    {
+        num: 3,
+        href: ["./sub_product_list.html"],
+        content: "셔츠"
+    },
+    {
+        num: 4,
+        href: ["./sub_product_list.html"],
+        content: "청바지"
+    },
+    {
+        num: 5,
+        href: ["./sub_product_list.html"],
+        content: "언더웨어"
+    }
+]
 
-let kewordClone = keyWordMoveUl.children[0].cloneNode(true);
-keyWordMoveUl.appendChild(kewordClone);
-//keyword autoplay 
-keyWordMove();
+const keywordList = document.getElementById('keyward_list');
 
-function keyWordMove() {
-    let clearCount = 0;
-    topZeroCount++;
-    //sliderMove(topMoving, keyWordMoveCount, topMoved, keyWordLiHeight ,keyWordMoveUl, clearCount);
-    addClass(keyWordMoveUl, 'keyward_list_active');
-    let topMoving = setInterval(() => {
-        keyWordMoveCount--;
+kewordFrameMaker();
+function kewordFrameMaker() {
+    let list = ``;
+    let receive = ``;
 
-        let topMoved = move(keyWordLiHeight, keyWordMoveCount);
-        keyWordMoveUl.style.top = topMoved;
+    kewordHref.forEach((object) => {
+        list = `
+            <li>
+                <span>${object.num}</span>
+                <a href="${object.href}">${object.content}</a>
+            </li>
+        `
 
-        //동작이 실행 된 후 클리어 카운터 1증가.
+        receive += list;
+    })
+
+    keywordList.innerHTML = receive;
+    keywordList.appendChild(cloneCreate(keywordList.children[0]));
+}
+
+function cloneCreate(el) {
+    return el.cloneNode(true);
+}
+
+/*************** object_list ************/
+//li 마진값 추출
+const keywordMargin = parseInt(window.getComputedStyle(keywordList.children[0]).getPropertyValue('margin-bottom'), 10);
+//li 마진값 + offsetHeight로 이동값 계산
+const moveValue = moveValueCalc(keywordList.children[0]) + keywordMargin;
+//li 이동시간 추출
+const moveDelay = parseFloat(window.getComputedStyle(document.querySelector('.keyward_list_active')).getPropertyValue('transition-duration')) * 1000;
+
+const arguObject = {
+    moveEl: keywordList,
+    ctrlClass: 'keyward_list_active',
+    moveCount: 0,
+    calcCount: -1,
+    moveArrow: "top",
+    moveValue: moveValue,
+    moveTime: moveDelay,
+    countMax: (keywordList.children.length - 1) * -1    
+}
+
+function moveValueCalc(el) {
+    return el.offsetHeight;
+}
+
+/*************** 동작함수 ************/
+let clearCount;
+
+//동작함수 ,리셋함수, 재실행 함수 3단계로 나누어서 코드를 짜자.
+moveInterval(arguObject);
+function moveInterval(obj) {
+    //동작
+    addClass(obj.moveEl, obj.ctrlClass);
+
+    let repeatMove = setInterval(() => {
+        clearCount = 0;
+        obj.moveCount += obj.calcCount;
+        //console.log("현재" + moveCount, "마지막" + keywordList.children.length * -1)
+        obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+        
+        //리셋
+        if(obj.moveCount === obj.countMax) {
+            //마지막 li 이동 -> delay -> 트랜지션 제거 후 0으로 이동 시키고 -> 인터벌 종료.
+            setTimeout(() => {
+                removeClass(obj.moveEl, obj.ctrlClass);
+        
+                //1번으로 이동시키기 위해
+                obj.moveCount = 0;
+                obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+                
+            }, obj.moveTime + 250);
+        }        
+
+        //재실행
         clearCount++;
-
-        //console.log(keyWordMoveCount);
-        //console.log(zeroCount);
-        if (clearCount === 1) {
-            clearInterval(topMoving);
-        }
-        //5번 움직였을시 movecount 초기화.
-        if (keyWordMoveCount === -5) {
-            keyWordMoveCount = 0;
+        if(clearCount === 1) {
+            clearInterval(repeatMove);
+    
+            setTimeout(() => {
+                moveInterval(obj);
+            }, obj.moveTime + 300);
         }
     });
-    setTimeout(() => {
-        if (topZeroCount === 5) {
-            removeClass(keyWordMoveUl, 'keyward_list_active');
-            keyWordMoveUl.style.top = 0;
-            topZeroCount = 0;
-        }
-    }, 1050);
-    setTimeout(() => {
-        keyWordMove();
-    }, 1150);
 }
 
 
@@ -144,30 +237,6 @@ searchDelete.addEventListener('click', () => {
     searchTab.value = '';
 });
 
-
-//const searchKeword = [];
-
-/* sub_page_product_list.forEach((object, i) => {
-    let parseStr = object.productNameKor;
-    searchKeword.push(parseStr);
-    console.log(searchKeword[i]);
-    console.log(searchKeword[i].charCodeAt(i));
-}) */
-
-
-//searchTab EVENT
-searchTab.addEventListener('input', function () {
-    addClass(recommendSearch, 'block_on');
-
-    if (this.value === '' || this.value === undefined || this.value === null) {
-        removeClass(recommendSearch, 'block_on');
-    }
-    /*     for(let i = 0; i < this.value.length; i++) {
-            console.log(this.value[i] + ':' + this.value.charCodeAt(i));
-        } */
-
-    //console.log(e.target.value);
-});
 searchTab.addEventListener('keyup', function (e) {
     if (e.key === 'Enter') {
         const searchValue = encodeURIComponent(e.target.value);
@@ -239,12 +308,6 @@ let quickMenuLocate = quickMenu.offsetTop;
 //이렇게하면 스크롤할때마다 이벤트가 발생하는것이아닌 셋타임아웃간격을 두고
 //셋타임간격 100이라고치면 100동안 스크롤이벤트가 안일어나면 셋타임 안에 넣어둔 명령어가 실행
 //스크롤이벤트가 일어나면 클리어timeout으로 명령어 삭제하고 다시 셋타임아웃시작
-//콘솔로 확인해보면 scrolly값이 소숫점단위가아닌 큰단위로 바껴잇음
-
-
-
-//윈도우 스크롤이벤트가 아닌 다른이벤트에서 디바운스가 필요한경우
-//애플라이 메서드로 this를 바꿔주는 작업이 필요할듯? input 같은?
 
 
 window.addEventListener('scroll', debounce(60));
@@ -256,7 +319,6 @@ function debounce(delay) {
     return function () {
         clearTimeout(controlTime);
         controlTime = setTimeout(() => {
-            console.log(window.scrollY);
             quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
         }, delay);
     }
@@ -264,10 +326,6 @@ function debounce(delay) {
 
 
 /*************** common ******************/
-//position값 계산
-function move(LiWidth, count) {
-    return (LiWidth * count) + `px`;
-}
 
 //클래스 추가
 function addClass(Element, ClassName) {
@@ -277,18 +335,13 @@ function addClass(Element, ClassName) {
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);
 }
+function setAttributeMuliti(el, attrArr) {
+/*     attrArr.forEach((innerArr) => {
+        const [attrName, attrValue] = innerArr;
+        el.setAttribute(attrName, attrValue);
+    }) */
 
-//클론 만들기 함수01
-function cloneCreate01(elements, parentEle) {
-    for (let i = 0; i < elements.length / 2; i++) {
-        let cloneElement = elements[i].cloneNode(true);
-        parentEle.appendChild(cloneElement);
-    }
-}
-//클론 만들기 함수02
-function cloneCreate02(elements, parentEle) {
-    for (let i = 0; i < elements.length; i++) {
-        let cloneElement = elements[i].cloneNode(true);
-        parentEle.insertBefore(cloneElement, elements[0]);
+    for(let [attrName, attrValue] of attrArr) {
+        el.setAttribute(attrName, attrValue)
     }
 }

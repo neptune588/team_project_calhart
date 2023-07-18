@@ -117,748 +117,16 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"js/data.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.sub_page_product_list = exports.newProductList = exports.mdsProductList = exports.lookBookProudctList = exports.detail_page_produdct_list = exports.bestProductList = void 0;
-var bestProductList = [{
-  id: 1,
-  modelName: 'S/S DELRAY SHIRT',
-  name: 'AMALFI/WAX',
-  price: 118000,
-  src: './images/bp_01.jpg'
-}, {
-  id: 2,
-  modelName: 'S/S LUMEN SHIRT',
-  name: 'LUMEN PRINT, BLACK',
-  price: 175000,
-  src: './images/bp_02.jpg'
-}, {
-  id: 3,
-  modelName: 'S/S BOOGIE T-SHIRT',
-  name: 'DAHLIA HEAVY STONE WASH',
-  price: 175000,
-  src: './images/bp_03.jpg'
-}, {
-  id: 4,
-  modelName: 'BIG BUCK BANDANA',
-  name: 'SOUVENIR PRINT, BLACK',
-  price: 58000,
-  src: './images/bp_04.jpg'
-}, {
-  id: 5,
-  modelName: 'SINGLE KNEE SHORT SMITH',
-  name: 'BLUE STONE WASHED',
-  price: 135000,
-  src: './images/bp_05.jpg'
-}, {
-  id: 6,
-  modelName: 'SINGLE KNEE SHORT SMITH',
-  name: 'BLACK STONE WASHED',
-  price: 135000,
-  src: './images/bp_06.jpg'
-}, {
-  id: 7,
-  modelName: 'DETROIT JACKET',
-  name: 'BLACK/BLACK RINSED',
-  price: 288000,
-  src: './images/bp_07.jpg'
-}, {
-  id: 8,
-  modelName: 'WYNTON BUCKET HAT',
-  name: 'JURA/YUCCA STONE WASHED',
-  price: 85000,
-  src: './images/bp_08.jpg'
-}];
-exports.bestProductList = bestProductList;
-var newProductList = [{
-  id: 1,
-  modelName: 'SALEDO JACKET',
-  name: 'BLACK LIGHT USED WASH',
-  price: 245000,
-  src: './images/np_01.jpg'
-}, {
-  id: 2,
-  modelName: 'SALEDO JACKET',
-  name: 'BLUE STONE WASHED',
-  price: 208000,
-  src: './images/np_02.jpg'
-}, {
-  id: 3,
-  modelName: 'COASTAL PANT',
-  name: 'WHITE/BLACK',
-  price: 173000,
-  src: './images/np_03.jpg'
-}, {
-  id: 4,
-  modelName: 'DOUBLE KNEE PANT FAIRFIELD',
-  name: 'BLUE HEAVY STONE WASH',
-  price: 173000,
-  src: './images/np_04.jpg'
-}, {
-  id: 5,
-  modelName: 'ISLAND SWIM TRUNKS',
-  name: 'KIWI/BLACK',
-  price: 108000,
-  src: './images/np_05.jpg'
-}, {
-  id: 6,
-  modelName: 'ISLAND SWIM TRUNKS',
-  name: 'MARINA PRINT, ATOM BLUE/WHITE',
-  price: 123000,
-  src: './images/np_06.jpg'
-}, {
-  id: 7,
-  modelName: 'DELRAY CAP',
-  name: 'WALL/CITRON',
-  price: 78000,
-  src: './images/np_07.jpg'
-}, {
-  id: 8,
-  modelName: 'SIBERIAN PARKA KEYCHAIN',
-  name: 'GOLD',
-  price: 33000,
-  src: './images/np_08.jpg'
-}];
-exports.newProductList = newProductList;
-var lookBookProudctList = [{
-  propertyNumber: 1,
-  modelName: 'S/S MARINA SHIRT',
-  name: 'MARINA PRINT, ARCADE',
-  price: '145,000'
-}, {
-  propertyNumber: 2,
-  modelName: 'DOUBLE KNEE PANT DEARBORN',
-  name: 'WAX STONE WASHED',
-  price: '168,000'
-}, {
-  propertyNumber: 3,
-  modelName: 'BACKLEY CAP',
-  name: 'LUPINUS',
-  price: '58,000'
-}, {
-  propertyNumber: 4,
-  modelName: 'W S/S TAMAS TROPICS SHIRT',
-  name: 'TAMAS TROPICS PRINT, PARADISE BIRD',
-  price: '168,000'
-}, {
-  propertyNumber: 5,
-  modelName: 'W TRISTIN SHORT',
-  name: 'WAX RINSED',
-  price: '138,000'
-}, {
-  propertyNumber: 6,
-  modelName: 'MADISON LOGO CAP',
-  name: 'WALL',
-  price: '68,000'
-}, {
-  propertyNumber: 7,
-  modelName: 'BAYFIELD TOTESTORM BLUE FADED',
-  name: 'STORM BLUE FADED',
-  price: '108,000'
-}, {
-  propertyNumber: 8,
-  modelName: 'S/S BRAXTON SHIRT',
-  name: 'WHITE/WHITE',
-  price: '118,000'
-}, {
-  propertyNumber: 9,
-  modelName: 'LANDON SHORT ROBERTSON',
-  name: 'BLUE BLEACHED',
-  price: '135,000'
-}];
-exports.lookBookProudctList = lookBookProudctList;
-var mdsProductList = [{
-  propertyNumber: 1,
-  nameEng: 'LEAGUE JACKET',
-  nameKor: '리그 자켓 블루',
-  etc: 'BLUE',
-  productNumber: 'CA22FWJAJL00026001',
-  price: '₩ 263,000'
-}, {
-  propertyNumber: 2,
-  nameEng: 'LEAGUE JACKET',
-  nameKor: '리그 자켓 펜스 와이어',
-  etc: 'FENCE WIRE',
-  productNumber: 'CA22FWJAJL10290001',
-  price: '₩ 263,000'
-}, {
-  propertyNumber: 3,
-  nameEng: 'MONTANA BLAZER',
-  nameKor: '몬타나 블레이저 시위드',
-  etc: 'SEAWEED',
-  productNumber: 'CA22FWJAJL10066001',
-  price: '₩ 243,000'
-}, {
-  propertyNumber: 4,
-  nameEng: 'S/S MIRAGE SHIRT',
-  nameKor: '반팔 미라지 셔츠 미라지 프린트, 프로스티드 블루',
-  etc: 'MIRAGE PRINT, FROSTED BLUE',
-  productNumber: 'CA22SSSHSS09401001',
-  price: '₩ 135,000'
-}];
-exports.mdsProductList = mdsProductList;
-var sub_page_product_list = [
-/* 	컬러,
-	할인율,
-	판매량,
-	새로 나온것,
-	품절된것인지, */
-
-/***************** jaket ******************/
-{
-  propertyNumber: 1,
-  productNameKor: "\uC54C\uB9C1\uD134 \uBCA0\uC2A4\uD2B8 \uC5D0\uC77C \uD5E4\uBE44 \uC2A4\uD1A4 \uC6CC\uC2DC",
-  productModelName: "ALE HEAVY STONE WASH",
-  productColor: "brown",
-  productStyle: "jaket",
-  price: 283000,
-  priceRate: "250000~500000",
-  imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
-  isNew: true,
-  isBest: true,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`알링턴`,`${productNameKor}`],
-}, {
-  propertyNumber: 2,
-  productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uBE14\uB799/\uD654\uC774\uD2B8",
-  productModelName: "COASTAL JACKET BLACK",
-  productColor: "black",
-  productStyle: "jaket",
-  price: 248000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-1.jpg", "./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-0.jpg"],
-  isNew: true,
-  isBest: true,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
-}, {
-  propertyNumber: 3,
-  productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
-  productModelName: "COASTAL JACKET WHITE",
-  productColor: "white",
-  productStyle: "jaket",
-  price: 248000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-1.jpg", "./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-0.jpg"],
-  isNew: true,
-  isBest: true,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
-}, {
-  propertyNumber: 4,
-  productNameKor: "\uB9AC\uADF8 \uC790\uCF13 \uBE14\uB8E8",
-  productModelName: "LEAGUE JACKET",
-  productColor: "blue",
-  productStyle: "jaket",
-  price: 263000,
-  priceRate: "250000~500000",
-  imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`리그`,`${productNameKor}`],
-}, {
-  propertyNumber: 5,
-  productNameKor: "\uB808\uD130\uB9E8 \uC790\uCF13 \uBE14\uB799/\uBE0C\uB9AD",
-  productModelName: "LETTERMAN JACKET",
-  productColor: "black",
-  productStyle: "jaket",
-  price: 258000,
-  priceRate: "250000~500000",
-  imgSrc: ["./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-1.jpg", "./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`레터맨`,`${productNameKor}`],
-}, {
-  propertyNumber: 6,
-  productNameKor: "\uD2B8\uB808\uBC84 \uC790\uCF13 \uBE14\uB799/\uBE14\uB799",
-  productModelName: "TREVOR JACKET",
-  productColor: "black",
-  productStyle: "jaket",
-  price: 343000,
-  priceRate: "250000~500000",
-  imgSrc: ["./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-1.jpg", "./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`트레버`,`${productNameKor}`],
-}, /***************** shirt ******************/
-{
-  propertyNumber: 7,
-  productNameKor: "\uAE34\uD314 \uB9E4\uB514\uC2A8 \uC154\uCE20 \uD398\uC77C \uCFFC\uCE20/\uD654\uC774\uD2B8",
-  productModelName: "L/S MADISON SHIRT",
-  productColor: "pink",
-  productStyle: "shirt",
-  price: 113000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-1.jpg", "./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매디슨`,`${productNameKor}`],
-}, {
-  propertyNumber: 8,
-  productNameKor: "\uB9E4\uB2DD \uC154\uCE20 \uC790\uCF13 \uB9E4\uB2DD \uCCB4\uD06C, \uB2E4\uD06C \uC5C4\uBC84/\uB808\uB354",
-  productModelName: "MANNING SHIRT JAC",
-  productColor: "brown",
-  productStyle: "shirt",
-  price: 278000,
-  priceRate: "250000~500000",
-  imgSrc: ["./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-1.jpg", "./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매닝`,`${productNameKor}`],
-}, {
-  propertyNumber: 9,
-  productNameKor: "\uBAAC\uD2B8\uB808\uC774 \uC154\uCE20 \uC790\uCF13 \uD0A4\uC704 \uC6D0 \uC6CC\uC2DC\uB4DC",
-  productModelName: "MONTEREY SHIRT JAC",
-  productColor: "green",
-  productStyle: "shirt",
-  price: 218000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-1.jpg", "./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`몬트레이`,`${productNameKor}`],
-}, {
-  propertyNumber: 10,
-  productNameKor: "\uBC18\uD314 \uD06C\uB798\uD504\uD2B8 \uC154\uCE20 \uC950\uB77C \uB9B0\uC2A4\uB4DC",
-  productModelName: "S/S CRAFT SHIRT",
-  productColor: "greenDown",
-  productStyle: "shirt",
-  price: 123000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-1.jpg", "./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`크래프트`,`${productNameKor}`],
-}, {
-  propertyNumber: 11,
-  productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uC544\uB9D0\uD53C/\uC641\uC2A4",
-  productModelName: "S/S DELRAY SHIRT",
-  productColor: "blue",
-  productStyle: "shirt",
-  price: 118000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-1.jpg", "./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
-}, {
-  propertyNumber: 12,
-  productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uD53C\uB2C9\uC2A4/\uC641\uC2A4",
-  productModelName: "S/S DELRAY SHIRT",
-  productColor: "orange",
-  productStyle: "shirt",
-  price: 118000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-1.jpg", "./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-0.jpg"],
-  isNew: true,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
-}, /***************** swater ******************/
-{
-  propertyNumber: 13,
-  productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uADF8\uB808\uC774 \uD5E4\uB354/\uBE14\uB799",
-  productModelName: "CARHARTT SWEATSHIRT",
-  productColor: "gray",
-  productStyle: "sweater",
-  price: 138000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-1.jpg", "./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`헤더`,`${productNameKor}`],
-}, {
-  propertyNumber: 14,
-  productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD2B8\uB9AC\uD558\uC6B0\uC2A4/\uD654\uC774\uD2B8",
-  productModelName: "CARHARTT SWEATSHIRT",
-  productColor: "greenDown",
-  productStyle: "sweater",
-  price: 138000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-1.jpg", "./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`트리하우스`,`${productNameKor}`],
-}, {
-  propertyNumber: 15,
-  productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uB8E8\uD53C\uB108\uC2A4/\uD654\uC774\uD2B8",
-  productModelName: "CARHARTT SWEATSHIRT",
-  productColor: "purple",
-  productStyle: "sweater",
-  price: 138000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-1.jpg", "./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`루피너스`,`${productNameKor}`],
-}, {
-  propertyNumber: 16,
-  productNameKor: "\uD6C4\uB514\uB4DC \uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD0A4\uC704/\uC2DC\uD2B8\uB860",
-  productModelName: "HOODED CARHARTT SWEATSHIRT",
-  productColor: "green",
-  productStyle: "sweater",
-  price: 148000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-1.jpg", "./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`키위`,`${productNameKor}`],
-}, {
-  propertyNumber: 17,
-  productNameKor: "\uD6C4\uB514\uB4DC \uB85C\uCEE4 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uB2C9\uC2A4/\uBE14\uB799",
-  productModelName: "HOODED LOCKER SWEATSHIRT",
-  productColor: "orange",
-  productStyle: "sweater",
-  price: 153000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-1.jpg", "./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`로커`,`${productNameKor}`],
-}, {
-  propertyNumber: 18,
-  productNameKor: "\uB12C\uC2A8 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uC2E0 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
-  productModelName: "NELSON SWEATSHIRT",
-  productColor: "skyBlue",
-  productStyle: "sweater",
-  price: 163000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-1.jpg", "./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`피신`,`${productNameKor}`],
-}, /***************** neat ******************/
-{
-  propertyNumber: 19,
-  productNameKor: "\uC568\uBE44\uC5B8 \uAC00\uB514\uAC74 \uC7AC\uC2A4\uD37C \uD5E4\uB354",
-  productModelName: "ALBION CARDIGAN",
-  productColor: "brown",
-  productStyle: "neat",
-  price: 218000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-1.jpg", "./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`재스퍼`,`${productNameKor}`],
-}, {
-  propertyNumber: 20,
-  productNameKor: "\uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uC2A4\uC6E8\uD130 \uD654\uC774\uD2B8",
-  productModelName: "COAST STATE SWEATER",
-  productColor: "gray",
-  productStyle: "neat",
-  price: 185000,
-  priceRate: "150000~250000",
-  imgSrc: ["./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-1.jpg", "./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`스테이트`,`${productNameKor}`],
-}, {
-  propertyNumber: 21,
-  productNameKor: "\uB9E4\uB514\uC2A8 \uC2A4\uC6E8\uD130 \uC544\uC774\uC2DC \uC6CC\uD130/\uD504\uB85C\uC2A4\uD2F0\uB4DC \uBE14\uB8E8",
-  productModelName: "MADISON SWEATER",
-  productColor: "blue",
-  productStyle: "neat",
-  price: 95000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-1.jpg", "./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`아이시`,`${productNameKor}`],
-}, {
-  propertyNumber: 22,
-  productNameKor: "\uC2A4\uD06C\uB9BD\uD2B8 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uB0B4\uCE04\uB7F4",
-  productModelName: "SCRIPT KNIT VEST",
-  productColor: "white",
-  productStyle: "neat",
-  price: 98000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-1.jpg", "./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
-  isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`내츄럴`,`${productNameKor}`],
-}, {
-  propertyNumber: 23,
-  productNameKor: "\uC54C\uB354\uC2A4 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uCE90\uB9AC\uBE44\uC548 \uC2DC",
-  productModelName: "S/S ALDUS KNIT VEST",
-  productColor: "skyBlue",
-  productStyle: "neat",
-  price: 113000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-1.jpg", "./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`캐리비안`,`${productNameKor}`],
-}, {
-  propertyNumber: 24,
-  productNameKor: "\uBC18\uD314 \uCF04\uC6E8\uC774 \uB2C8\uD2B8 \uD3F4\uB85C \uBE14\uB799",
-  productModelName: "S/S KENWAY KNIT POLO",
-  productColor: "black",
-  productStyle: "neat",
-  price: 148000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-1.jpg", "./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`폴로`,`${productNameKor}`],
-}, /***************** t-shirt ******************/
-{
-  propertyNumber: 25,
-  productNameKor: "\uBC18\uD314 \uC140\uB9AC \uD2F0\uC154\uCE20 \uCE90\uB9AC\uBE44\uC548 \uC2DC",
-  productModelName: "S/S CELLY T-SHIRT",
-  productColor: "blue",
-  productStyle: "TShirt",
-  price: 85000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-1.jpg", "./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`캐리비안`,`${productNameKor}`],
-}, {
-  propertyNumber: 26,
-  productNameKor: "\uBC18\uD314 \uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uD2F0\uC154\uCE20 \uD654\uC774\uD2B8",
-  productModelName: "S/S COAST STATE T-SHIRT",
-  productColor: "white",
-  productStyle: "TShirt",
-  price: 98000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-1.jpg", "./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스테이트`,`${productNameKor}`],
-}, {
-  propertyNumber: 27,
-  productNameKor: "\uBC18\uD314 \uD788\uD2B8 \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uC544\uB80C\uAC00",
-  productModelName: "S/S HEAT SCRIPT T-SHIRT",
-  productColor: "purple",
-  productStyle: "TShirt",
-  price: 75000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-1.jpg", "./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
-}, {
-  propertyNumber: 28,
-  productNameKor: "\uBC18\uD314 \uB9E4\uB274\uC5BC \uD2F0\uC154\uCE20 \uB2EC\uB9AC\uC544 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
-  productModelName: "S/S MANUAL T-SHIRT",
-  productColor: "pink",
-  productStyle: "TShirt",
-  price: 93000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-1.jpg", "./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`달리아`,`${productNameKor}`],
-}, {
-  propertyNumber: 29,
-  productNameKor: "\uBC18\uD314 \uB274 \uD504\uB860\uD2F0\uC5B4 \uD2F0\uC154\uCE20 \uBC84\uD314\uB85C",
-  productModelName: "S/S NEW FRONTIER T-SHIRT",
-  productColor: "brown",
-  productStyle: "TShirt",
-  price: 78000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-1.jpg", "./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`프론티어`,`${productNameKor}`],
-}, {
-  propertyNumber: 30,
-  productNameKor: "\uBC18\uD314 \uD31C \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uBE14\uB799",
-  productModelName: "S/S PALM SCRIPT T-SHIRT",
-  productColor: "black",
-  productStyle: "TShirt",
-  price: 75000,
-  priceRate: "50000~150000",
-  imgSrc: ["./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-1.jpg", "./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-0.jpg"],
-  isNew: false,
-  isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
-}];
-exports.sub_page_product_list = sub_page_product_list;
-var detail_page_produdct_list = [{
-  propertyNumber: 1,
-  productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uBE14\uB799/\uD654\uC774\uD2B8",
-  productModelName: "COASTAL JACKET BLACK",
-  productCode: "CA23SSJAJL00358002",
-  price: 248000,
-  imgSrc01: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05.jpg"],
-  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00358002_thumnail/CA23SSJAJL00358002-05_hover.jpg"],
-  limitQuantity: 6
-}, {
-  propertyNumber: 2,
-  productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
-  productModelName: "COASTAL JACKET WHITE",
-  productCode: "CA23SSJAJL00266002",
-  price: 248000,
-  imgSrc01: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05.jpg"],
-  imgSrc02: ["./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-01_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-02_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-03_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-04_hover.jpg", "./images/detail_page_img/CA23SSJAJL00266002_thumnail/CA23SSJAJL00266002-05_hover.jpg"],
-  limitQuantity: 9
-}];
-exports.detail_page_produdct_list = detail_page_produdct_list;
-},{}],"js/header_n_etc.js":[function(require,module,exports) {
-"use strict";
-
-var _data = require("./data.js");
-/*************** header ******************/ //nav
+})({"js/header_n_etc.js":[function(require,module,exports) {
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+/*************** header ******************/
+//nav
 var navEx = document.getElementById('lnb_ex');
 //full_down_menu
 var fullDownMenu = document.getElementById('full_down_menu_ex');
@@ -867,7 +135,7 @@ var liInnerUl = document.querySelectorAll('.li_inner_ul');
 //main_menu_li
 var mainMenuLi = document.querySelectorAll('.main_menu_list > .menu_list');
 //full_down_img box
-var fullDonwInnerImg = document.querySelectorAll('.menu_img');
+var fullDonwInnerImg = document.querySelectorAll('.menu_img > img');
 
 //풀다운 토글
 navEx.addEventListener('mouseover', function () {
@@ -882,64 +150,126 @@ navEx.addEventListener('mouseout', function () {
     removeClass(liInnerUl[i], 'block_on');
   }
 });
+var navSrc = [{
+  src: ["./images/menu_img_01-1.jpg", "./images/menu_img_01-2.jpg"]
+}, {
+  src: ["./images/menu_img_02-1.jpg", "./images/menu_img_02-2.jpg"]
+}, {
+  src: ["./images/menu_img_03-1.jpg", "./images/menu_img_03-2.jpg"]
+}, {
+  src: ["./images/menu_img_04-1.jpg", "./images/menu_img_04-2.jpg"]
+}, {
+  src: ["./images/menu_img_05-1.jpg", "./images/menu_img_05-2.jpg"]
+}, {
+  src: ["./images/menu_img_06-1.jpg", "./images/menu_img_06-2.jpg"]
+}];
 
 //메인 메뉴 호버에 따라 img박스 속성 변경 
 var _loop = function _loop(i) {
   mainMenuLi[i].addEventListener('mouseover', function () {
-    for (var j = 0; j < fullDonwInnerImg.length; j += fullDonwInnerImg.length) {
-      fullDonwInnerImg[j].children[0].setAttribute('src', "./images/menu_img_".concat(i + i, ".jpg"));
-      fullDonwInnerImg[j + 1].children[0].setAttribute('src', "./images/menu_img_".concat(i + i + 1, ".jpg"));
-    }
+    setAttributeMuliti(fullDonwInnerImg[0], [["src", navSrc[i].src[0]], ["alt", "nav_hover_img".concat(i + 1, "-1")]]);
+    setAttributeMuliti(fullDonwInnerImg[1], [["src", navSrc[i].src[1]], ["alt", "nav_hover_img".concat(i + 1, "-2")]]);
   });
 };
 for (var i = 0; i < mainMenuLi.length; i++) {
   _loop(i);
 }
 
-//keword_auto_move
-var keyWordMoveUl = document.querySelector('.keyward_list');
-var keyWordLiHeight = keyWordMoveUl.children[0].offsetHeight + 5;
+/*************** keword_auto_move ******************/
 
-//style.top 초기화를 위함 + 현재 위치 탐색 카운트
-var keyWordMoveCount = 0;
-var topZeroCount = 0;
-var kewordClone = keyWordMoveUl.children[0].cloneNode(true);
-keyWordMoveUl.appendChild(kewordClone);
-//keyword autoplay 
-keyWordMove();
-function keyWordMove() {
-  var clearCount = 0;
-  topZeroCount++;
-  //sliderMove(topMoving, keyWordMoveCount, topMoved, keyWordLiHeight ,keyWordMoveUl, clearCount);
-  addClass(keyWordMoveUl, 'keyward_list_active');
-  var topMoving = setInterval(function () {
-    keyWordMoveCount--;
-    var topMoved = move(keyWordLiHeight, keyWordMoveCount);
-    keyWordMoveUl.style.top = topMoved;
+var kewordHref = [{
+  num: 1,
+  href: ["./sub_product_list.html"],
+  content: "티셔츠"
+}, {
+  num: 2,
+  href: ["./sub_product_list.html"],
+  content: "맨투맨"
+}, {
+  num: 3,
+  href: ["./sub_product_list.html"],
+  content: "셔츠"
+}, {
+  num: 4,
+  href: ["./sub_product_list.html"],
+  content: "청바지"
+}, {
+  num: 5,
+  href: ["./sub_product_list.html"],
+  content: "언더웨어"
+}];
+var keywordList = document.getElementById('keyward_list');
+kewordFrameMaker();
+function kewordFrameMaker() {
+  var list = "";
+  var receive = "";
+  kewordHref.forEach(function (object) {
+    list = "\n            <li>\n                <span>".concat(object.num, "</span>\n                <a href=\"").concat(object.href, "\">").concat(object.content, "</a>\n            </li>\n        ");
+    receive += list;
+  });
+  keywordList.innerHTML = receive;
+  keywordList.appendChild(cloneCreate(keywordList.children[0]));
+}
+function cloneCreate(el) {
+  return el.cloneNode(true);
+}
 
-    //동작이 실행 된 후 클리어 카운터 1증가.
-    clearCount++;
+/*************** object_list ************/
+//li 마진값 추출
+var keywordMargin = parseInt(window.getComputedStyle(keywordList.children[0]).getPropertyValue('margin-bottom'), 10);
+//li 마진값 + offsetHeight로 이동값 계산
+var moveValue = moveValueCalc(keywordList.children[0]) + keywordMargin;
+//li 이동시간 추출
+var moveDelay = parseFloat(window.getComputedStyle(document.querySelector('.keyward_list_active')).getPropertyValue('transition-duration')) * 1000;
+var arguObject = {
+  moveEl: keywordList,
+  ctrlClass: 'keyward_list_active',
+  moveCount: 0,
+  calcCount: -1,
+  moveArrow: "top",
+  moveValue: moveValue,
+  moveTime: moveDelay,
+  countMax: (keywordList.children.length - 1) * -1
+};
+function moveValueCalc(el) {
+  return el.offsetHeight;
+}
 
-    //console.log(keyWordMoveCount);
-    //console.log(zeroCount);
-    if (clearCount === 1) {
-      clearInterval(topMoving);
+/*************** 동작함수 ************/
+var clearCount;
+
+//동작함수 ,리셋함수, 재실행 함수 3단계로 나누어서 코드를 짜자.
+moveInterval(arguObject);
+function moveInterval(obj) {
+  //동작
+  addClass(obj.moveEl, obj.ctrlClass);
+  var repeatMove = setInterval(function () {
+    clearCount = 0;
+    obj.moveCount += obj.calcCount;
+    //console.log("현재" + moveCount, "마지막" + keywordList.children.length * -1)
+    obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+
+    //리셋
+    if (obj.moveCount === obj.countMax) {
+      //마지막 li 이동 -> delay -> 트랜지션 제거 후 0으로 이동 시키고 -> 인터벌 종료.
+      setTimeout(function () {
+        removeClass(obj.moveEl, obj.ctrlClass);
+
+        //1번으로 이동시키기 위해
+        obj.moveCount = 0;
+        obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+      }, obj.moveTime + 250);
     }
-    //5번 움직였을시 movecount 초기화.
-    if (keyWordMoveCount === -5) {
-      keyWordMoveCount = 0;
+
+    //재실행
+    clearCount++;
+    if (clearCount === 1) {
+      clearInterval(repeatMove);
+      setTimeout(function () {
+        moveInterval(obj);
+      }, obj.moveTime + 300);
     }
   });
-  setTimeout(function () {
-    if (topZeroCount === 5) {
-      removeClass(keyWordMoveUl, 'keyward_list_active');
-      keyWordMoveUl.style.top = 0;
-      topZeroCount = 0;
-    }
-  }, 1050);
-  setTimeout(function () {
-    keyWordMove();
-  }, 1150);
 }
 
 /*************** search ******************/
@@ -981,29 +311,6 @@ searchDelete.addEventListener('click', function () {
   searchTab.focus();
   searchTab.value = '';
 });
-
-//const searchKeword = [];
-
-/* sub_page_product_list.forEach((object, i) => {
-    let parseStr = object.productNameKor;
-    searchKeword.push(parseStr);
-    console.log(searchKeword[i]);
-    console.log(searchKeword[i].charCodeAt(i));
-}) */
-
-//searchTab EVENT
-searchTab.addEventListener('input', function () {
-  addClass(recommendSearch, 'block_on');
-  if (this.value === '' || this.value === undefined || this.value === null) {
-    removeClass(recommendSearch, 'block_on');
-  }
-  /*     for(let i = 0; i < this.value.length; i++) {
-          console.log(this.value[i] + ':' + this.value.charCodeAt(i));
-      } */
-
-  //console.log(e.target.value);
-});
-
 searchTab.addEventListener('keyup', function (e) {
   if (e.key === 'Enter') {
     var searchValue = encodeURIComponent(e.target.value);
@@ -1072,10 +379,6 @@ var quickMenuLocate = quickMenu.offsetTop;
 //이렇게하면 스크롤할때마다 이벤트가 발생하는것이아닌 셋타임아웃간격을 두고
 //셋타임간격 100이라고치면 100동안 스크롤이벤트가 안일어나면 셋타임 안에 넣어둔 명령어가 실행
 //스크롤이벤트가 일어나면 클리어timeout으로 명령어 삭제하고 다시 셋타임아웃시작
-//콘솔로 확인해보면 scrolly값이 소숫점단위가아닌 큰단위로 바껴잇음
-
-//윈도우 스크롤이벤트가 아닌 다른이벤트에서 디바운스가 필요한경우
-//애플라이 메서드로 this를 바꿔주는 작업이 필요할듯? input 같은?
 
 window.addEventListener('scroll', debounce(60));
 function debounce(delay) {
@@ -1085,17 +388,12 @@ function debounce(delay) {
   return function () {
     clearTimeout(controlTime);
     controlTime = setTimeout(function () {
-      console.log(window.scrollY);
       quickMenu.style.top = "".concat(window.scrollY + quickMenuLocate, "px");
     }, delay);
   };
 }
 
 /*************** common ******************/
-//position값 계산
-function move(LiWidth, count) {
-  return LiWidth * count + "px";
-}
 
 //클래스 추가
 function addClass(Element, ClassName) {
@@ -1105,22 +403,27 @@ function addClass(Element, ClassName) {
 function removeClass(Element, ClassName) {
   Element.classList.remove(ClassName);
 }
-
-//클론 만들기 함수01
-function cloneCreate01(elements, parentEle) {
-  for (var _i = 0; _i < elements.length / 2; _i++) {
-    var cloneElement = elements[_i].cloneNode(true);
-    parentEle.appendChild(cloneElement);
+function setAttributeMuliti(el, attrArr) {
+  /*     attrArr.forEach((innerArr) => {
+          const [attrName, attrValue] = innerArr;
+          el.setAttribute(attrName, attrValue);
+      }) */
+  var _iterator = _createForOfIteratorHelper(attrArr),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var _step$value = _slicedToArray(_step.value, 2),
+        attrName = _step$value[0],
+        attrValue = _step$value[1];
+      el.setAttribute(attrName, attrValue);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
   }
 }
-//클론 만들기 함수02
-function cloneCreate02(elements, parentEle) {
-  for (var _i2 = 0; _i2 < elements.length; _i2++) {
-    var cloneElement = elements[_i2].cloneNode(true);
-    parentEle.insertBefore(cloneElement, elements[0]);
-  }
-}
-},{"./data.js":"js/data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1145,7 +448,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58927" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

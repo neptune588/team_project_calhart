@@ -377,6 +377,12 @@ input {
 
     >form {
         .necessary_area {
+            .notice_ment {
+                color: rgb(64, 64, 64);
+                margin-top: 15px;
+                font-size: $small_up_font_size;
+                font-family: $font_noto_sans;
+            }
             .input_email {
                 flex-wrap: wrap;
 

@@ -38,7 +38,7 @@ img {
   font-weight: 700;
   text-align: center;
   line-height: 20px;
-  margin: 20px 0;
+  margin: 70px 0 20px;
   font-family: "Permanent Marker";
 }
 
@@ -54,6 +54,10 @@ img {
 }
 .btn:hover {
   color: #ffbf00 !important;
+}
+
+.dummy {
+  display: none !important;
 }
 
 button {

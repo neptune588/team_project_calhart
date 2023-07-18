@@ -5,295 +5,274 @@ import {
     mdsProductList,
 } from './data.js';
 
-//버튼 state
-const btnState = {
-    visualMainLeftClicked: false,
-    visualMainRightClicked: false,
-
-    vMainLeftEventClicked: false,
-    vMainRightEventClicked: false,
-
-    leftClicked01: false,
-    leftClicked02: false,
-
-    rightClicked01: false,
-    rightClicked02: false,
-}
-
-const count = {
-    bestMoveCount: 0,
-    newMoveCount: 0,
-    visualMainMoveCount: 0,
-}
-
-const arrow = {
-    autoPlayArrow: 'left',
-}
-
 /*************** visual_main ******************/
 //visual_main_ul
-const visualMainUl = document.getElementById('visual_main_ul');
-//visual_main_btn
+const vmList = document.getElementById('visual_main_ul');
 
+const visualSrc = [
+    {
+        src: ["./images/visual_main01.jpg"],
+        class: "visual01"
+    },
+    {
+        src: ["./images/visual_main02.jpg"],
+        class: "visual02"
+    },
+    {
+        src: ["./images/visual_main03.jpg"],
+        class: "visual03"
+    },
+    {
+        src: ["./images/visual_main04.jpg"],
+        class: "visual04"
+    }
+]
+
+vmMaker();
+function vmMaker() {
+    let list = ``;
+    let receive = ``;
+
+    visualSrc.forEach((obj, i) => {
+        list = `
+            <li class="visual_main_li ${obj.class}">
+                <a href="./sub_product_list.html">
+                    <img src="${obj.src}" alt="vm_img_${i}"/>
+                </a>
+            </li>
+        `
+        
+        receive += list;
+    })
+
+    vmList.innerHTML = receive;
+
+    const vmListChild = document.querySelectorAll('.visual_main_li'); 
+    
+    vmList.appendChild(cloneCreate(vmListChild[0]));
+    //vmListChild[0]가 고정되어있으므로 li가 순차적으로 고정돤0번앞에 추가됨.
+    vmListChild.forEach(li => vmList.insertBefore(cloneCreate(li), vmListChild[0]));
+}
+
+/*************** visual_main_next_prev ******************/
 const visualPrevBtn = document.getElementById('visual_prev_btn');
 const visualNextBtn = document.getElementById('visual_next_btn');
-//visual_main_play_stop_btn
+
+//li 마진값 추출
+const vmLiMargin = parseInt(window.getComputedStyle(vmList.children[0]).getPropertyValue('margin-bottom'), 10);
+//li 마진값 + offsetHeight로 이동값 계산
+const vmMoveValue = moveValueCalc(vmList.children[0]) + vmLiMargin;
+//li 이동시간 추출
+const vmMoveDelay = parseFloat(window.getComputedStyle(document.querySelector('.visual_trans_active')).getPropertyValue('transition-duration')) * 1000;
+//li 이동시간 second(초) 기준으로 재 계산
+
+const vmSlider = {
+    moveEl: vmList,
+    ctrlClass: 'visual_trans_active',
+    moveCount: 0,
+    calcCount: 1,
+    clearCount: 0,
+    moveArrow: "left",
+    moveValue: vmMoveValue,
+    moveTime: vmMoveDelay,
+    countMax: (vmList.children.length - 1) / 2,
+    autoArrow: "left",
+}
+
+let vmPrevClick = false;
+let vmNextClick = false;
+
+visualPrevBtn.addEventListener('click', () => {
+    let time; 
+    clearTimeout(time);
+
+    time = setTimeout(() => {vmPrevMove()}, 50);
+});
+visualNextBtn.addEventListener('click', () => {
+    let time; 
+    clearTimeout(time);
+
+    time = setTimeout(() => {vmNextMove()}, 50);
+});
+
+function vmPrevMove() {
+    if(!vmPrevClick) {
+        vmPrevClick = true;
+
+        vmSlider.autoArrow = "left",
+        vmSlider.calcCount = 1;
+        vmSlider.countMax = (vmList.children.length - 1) / 2;
+        
+        moveInterval(vmSlider);
+        setTimeout(() => {vmPrevClick = false}, vmSlider.moveTime + 260);
+    }
+}
+function vmNextMove() {
+    if(!vmNextClick) {
+        vmNextClick = true;
+
+        vmSlider.autoArrow = "right",
+        vmSlider.calcCount = -1;
+        vmSlider.countMax = ((vmList.children.length - 1) * -1) / 2;
+    
+        moveInterval(vmSlider);
+        setTimeout(() => {vmNextClick = false}, vmSlider.moveTime + 260);
+    }
+}
+
+/*************** visual_main_autoPlay ******************/
 const visualPlay = document.getElementById('play_btn');
 const visualStop = document.getElementById('stop_btn');
-//visual_main_ul li
-const visualMainLi = document.querySelectorAll('.visual_main_li');
-//visual_main_ul li width
-const visualMainLiWidth = visualMainLi[0].offsetWidth;
 
-
-visualMainLi.forEach((value, index) => {
-    addClass(value, `visual0${index+1}`);
-});
-
-cloneCreate01(visualMainLi, visualMainUl);
-cloneCreate02(visualMainLi, visualMainUl);
-
-
-
-//autoplay제어 변수
-let visualRepeat;
-
-if (!btnState.vMainLeftEventClicked) {
-    btnState.vMainLeftEventClicked = true;
-    visualPrevBtn.addEventListener('click', prevPlay);
-}
-if (!btnState.vMainRightEventClicked) {
-    btnState.vMainLeftEventClicked = true;
-    visualNextBtn.addEventListener('click', nextPlay);
-}
+let vmAuto;
 visualPlay.addEventListener('click', () => {
-    visualRepeat = setInterval(() => {
-        //&& btnState.vMainLeftEventClicked
-        //이 부분을 셋인터벌에도 넣게 되면 무한 재생이 아닌 클릭할때마다 한번씩 호출되게됨.
-        if (arrow.autoPlayArrow === 'left') {
-            prevPlay();
-        } else if (arrow.autoPlayArrow === 'right') {
-            nextPlay();
+    vmAuto = setInterval(() => {
+        if(vmSlider.autoArrow === "left") {
+            vmPrevMove();
+        } else if(vmSlider.autoArrow === "right") {
+            vmNextMove();
         }
-    }, 650);
-});
+    }, vmSlider.moveTime);
+})
 visualStop.addEventListener('click', () => {
-    clearInterval(visualRepeat);
-});
-
-function prevPlay() {
-    if (!btnState.visualMainLeftClicked) {
-        btnState.visualMainLeftClicked = true;
-        arrow.autoPlayArrow = 'left';
-        //방향 지정
-        leftMove(count, 'visualMainMoveCount', visualMainUl, visualMainLiWidth, btnState, 'visualMainLeftClicked', 4, 'visual_trans_active');
-        btnState.vMainLeftEventClicked = false;
+    if(vmAuto) {
+        clearInterval(vmAuto);
     }
+})
+
+/*************** best_n_new_create ******************/
+
+//length를 기준으로 계산해야할게 많기 떄문에
+//list생산 함수로 innerhtml로 박아넣고, 그 안에서 클론 생성까지 이루어지게 코드를 짰기 떄문에
+//클론이 되어있지 않은 lenght를 받아올 필요가 있으므로, 미리 초기화해두고 함수안에서 받아오고,
+//그 값을 기준으로 transform 값 밑 maxcount를 구하자.
+let innerLiLength = 0;
+
+const bestList = document.getElementById('best_product_list');
+const bestPdMaker = {
+    parentEl: bestList,
+    childClass: "best_product_list",
+    data: bestProductList,
+    alt: "best_list_img"
 }
 
-function nextPlay() {
-    if (!btnState.visualMainRightClicked) {
-        btnState.visualMainRightClicked = true;
-        arrow.autoPlayArrow = 'right';
-        rightMove(count, 'visualMainMoveCount', visualMainUl, visualMainLiWidth, btnState, 'visualMainRightClicked', 4, 'visual_trans_active');
-        btnState.vMainRightEventClicked = false;
-    }
+listMaker(bestPdMaker);
+
+const newList = document.getElementById('new_product_list');
+const newPdMaker = {
+    parentEl: newList,
+    childClass: "new_product_list",
+    data: newProductList,
+    alt: "new_list_img"
 }
 
-/*************** product_section ******************/
-//bestproductUl
-const bestProductUl = document.getElementById('product_ul01');
-//newproductUl
-const newProductUl = document.getElementById('product_ul02');
+listMaker(newPdMaker);
 
-//best_product_li_make
-for (let i = 0; i < bestProductList.length; i++) {
-    //요소 추가
-    let addBestLi = document.createElement('li');
-    let bestLiInA = document.createElement('a');
-    let bestLiInImg = document.createElement('img');
-    let bestLiTextModel = document.createElement('span');
-    let bestLiTextName = document.createElement('span');
+function listMaker(obj) {
+    let list = ``;
+    let receive = ``;
 
-    //span에 들어가는 text
-    let bestLiTextModelText = document.createTextNode(bestProductList[i].modelName);
-    let bestLiTextNameText = document.createTextNode(bestProductList[i].name);
+    obj.data.forEach((innerObj, index) => {
+        list = `
+            <li class="${obj.childClass}">
+                <a href="#!">
+                    <img src="${innerObj.src}" alt="${obj.alt + index}"/>
+                    <span>${innerObj.modelName}</span>
+                    <span>${innerObj.name}</span>
+                </a>
+            </li>
+        `
 
-    //이미지 속성 변경
-    bestLiInImg.setAttribute('src', bestProductList[i].src);
-
-    //삽입 명령어
-    bestLiTextModel.appendChild(bestLiTextModelText);
-    bestLiTextName.appendChild(bestLiTextNameText);
-    bestLiInA.appendChild(bestLiInImg);
-    bestLiInA.appendChild(bestLiTextModel);
-    bestLiInA.appendChild(bestLiTextName);
-    addBestLi.appendChild(bestLiInA);
-
-    bestProductUl.appendChild(addBestLi);
-
-    //클래스 주기
-
-    bestLiInA.setAttribute('href', '#!');
-    addBestLi.setAttribute('class', 'Best_product_list');
-    //addBestLi.setAttribute('id', "i" + i);
-}
-//new_product_li_make
-for (let i = 0; i < newProductList.length; i++) {
-    //요소 추가
-    let addNewLi = document.createElement('li');
-    let newLiInA = document.createElement('a');
-    let newLiInImg = document.createElement('img');
-    let newLiTextModel = document.createElement('span');
-    let newLiTextName = document.createElement('span');
-
-    //span에 들어가는 text
-    let newLiTextModelText = document.createTextNode(newProductList[i].modelName);
-    let newLiTextNameText = document.createTextNode(newProductList[i].name);
-
-    //이미지 속성 변경
-    newLiInImg.setAttribute('src', newProductList[i].src);
-
-    //삽입 명령어
-    newLiTextModel.appendChild(newLiTextModelText);
-    newLiTextName.appendChild(newLiTextNameText);
-    newLiInA.appendChild(newLiInImg);
-    newLiInA.appendChild(newLiTextModel);
-    newLiInA.appendChild(newLiTextName);
-    addNewLi.appendChild(newLiInA);
-
-    newProductUl.appendChild(addNewLi);
-
-    //클래스 주기
-
-    newLiInA.setAttribute('href', '#!');
-    addNewLi.setAttribute('class', 'new_product_list');
-}
-
-//best box_arrow_btn
-const prevBtn01 = document.getElementById('prev_btn01');
-const nextBtn01 = document.getElementById('next_btn01');
-//new box_arrow_btn
-const prevBtn02 = document.getElementById('prev_btn02');
-const nextBtn02 = document.getElementById('next_btn02');
-
-//bestList
-const bestLi = document.querySelectorAll('.Best_product_list');
-//bestList
-const newLi = document.querySelectorAll('.new_product_list');
-
-//product seciton li width 추출
-let productLiWidth = bestProductUl.children[0].offsetWidth + 15;
-
-//bestProductClone
-cloneCreate01(bestLi, bestProductUl);
-cloneCreate02(bestLi, bestProductUl);
-
-//newProductClone
-cloneCreate01(newLi, newProductUl);
-cloneCreate02(newLi, newProductUl);
-
-//best_Section_left_Btn
-prevBtn01.addEventListener('click', function () {
-    //연속클릭 방지
-    if (!btnState.leftClicked01) {
-        btnState.leftClicked01 = true;
-        leftMove(count, 'bestMoveCount', bestProductUl, productLiWidth, btnState, 'leftClicked01', 8, 'move_active');
-    }
-});
-//best_Section_right_Btn
-nextBtn01.addEventListener('click', function () {
-    //연속클릭 방지
-    if (!btnState.rightClicked01) {
-        btnState.rightClicked01 = true;
-        rightMove(count, 'bestMoveCount', bestProductUl, productLiWidth, btnState, 'rightClicked01', 8, 'move_active');
-    }
-});
-//new_Section_left_Btn
-prevBtn02.addEventListener('click', function () {
-    //연속클릭 방지
-    if (!btnState.leftClicked02) {
-        btnState.leftClicked02 = true;
-        leftMove(count, 'newMoveCount', newProductUl, productLiWidth, btnState, 'leftClicked02', 8, 'move_active');
-    }
-});
-//new_Section_right_Btn
-nextBtn02.addEventListener('click', function () {
-    //연속클릭 방지
-    if (!btnState.rightClicked02) {
-        btnState.rightClicked02 = true;
-        rightMove(count, 'newMoveCount', newProductUl, productLiWidth, btnState, 'rightClicked02', 8, 'move_active');
-    }
-});
-
-//왼쪽 이동 인터벌 함수
-function leftMove(countObject, countValue, productUl, elementWidth, stateObject, stateProperty, maxCounting, ClassName) {
-    let clickCount = 0;
-    let leftMoving = setInterval(() => {
-        //위치 감지 및 left값 지정. leftmove와 값을 공유해야 유기적으로 이동
-        countObject[countValue]++;
-        //공유한 count로 계산,
-        //왼쪽누르면 카운트증가 오른쪽 누르면 카운트 감소이니까
-        //liwidth * count값을 주면된다.
-        //나중에 봐도 이해할수잇게 ex적기
-        //ex : 3 - 2  
-        let moved = move(elementWidth, countObject[countValue]);
-        productUl.style.left = moved;
-
-        //인터벌 제어를 위해 
-        clickCount++;
-        if (clickCount === 1) {
-            clearInterval(leftMoving);
-        }
-        if (countObject[countValue] === maxCounting) {
-            countObject[countValue] = 0;
-            setTimeout(() => {
-                removeClass(productUl, ClassName);
-                productUl.style.left = 0;
-            }, 600);
-            setTimeout(() => {
-                addClass(productUl, ClassName);
-            }, 650);
-        }
+        receive += list;
     });
-    setTimeout(() => {
-        //애니메이션 다 끝나고 이동 가능하게 버튼활성화
-        stateObject[stateProperty] = false;
-    }, 650);
+
+    obj.parentEl.innerHTML = receive;
+
+    //children으로 하면 오류가 생겨서, 클래스주고 쿼리셀렉터로 특정했다.
+    const innerLi = document.querySelectorAll(`.${obj.childClass}`);
+    innerLiLength = innerLi.length;
+    
+    innerLi.forEach(li => obj.parentEl.insertBefore(cloneCreate(li), innerLi[0]));
+    for(let i = 0; i < innerLiLength / 2; i++) {
+        obj.parentEl.appendChild(cloneCreate(innerLi[i]));
+    }
 }
 
-//오른쪽 이동 인터벌 함수
-function rightMove(countObject, countValue, productUl, elementWidth, stateObject, stateProperty, maxCounting, ClassName) {
-    let clickCount = 0;
-    let rightMoving = setInterval(() => {
-        //위치 감지 및 left값 지정. leftmove와 값을 공유해야 유기적으로 이동
-        countObject[countValue]--;
+/*************** best_n_new_default_settings ******************/
+const pdListWidth = parseInt(window.getComputedStyle(bestList.children[0]).getPropertyValue('width'), 10);
+const pdListMargin = parseInt(window.getComputedStyle(bestList.children[0]).getPropertyValue('margin-right'), 10);
+const pdListMoveValue = moveValueCalc(bestList.children[0]) + pdListMargin;
+const pdListMoveDelay = parseFloat(window.getComputedStyle(document.querySelector('.move_active')).getPropertyValue('transition-duration')) * 1000;
 
-        let moved = move(elementWidth, countObject[countValue]);
+const productList = document.querySelectorAll('.product_list');
+productList.forEach(ul => ul.style.transform = `translateX(-${innerLiLength * (pdListWidth + pdListMargin)}px)`);
 
-        productUl.style.left = moved;
-        //인터벌 제어를 위해 
-        clickCount++;
-        if (clickCount === 1) {
-            clearInterval(rightMoving);
-        }
-        if (countObject[countValue] === (maxCounting * -1)) {
-            countObject[countValue] = 0;
-            setTimeout(() => {
-                removeClass(productUl, ClassName);
-                productUl.style.left = 0;
-            }, 600);
-            setTimeout(() => {
-                addClass(productUl, ClassName);
-            }, 650);
-        }
-    });
-    setTimeout(() => {
-        //애니메이션 다 끝나고 이동 가능하게 버튼활성화
-        stateObject[stateProperty] = false;
-    }, 650);
+//console.log(pdListMargin, pdListWidth, pdListMoveValue, pdListMoveDelay);
+
+const bestPdSlider = {
+    moveEl: bestList,
+    ctrlClass: 'move_active',
+    moveCount: 0,
+    calcCount: 1,
+    clearCount: 0,
+    moveArrow: "left",
+    moveValue: pdListMoveValue,
+    moveTime: pdListMoveDelay,
+    countMax: innerLiLength,
+    prevState: false,
+    nextState: false,
 }
 
+const newPdSlider = {
+    moveEl: newList,
+    ctrlClass: 'move_active',
+    moveCount: 0,
+    calcCount: 1,
+    clearCount: 0,
+    moveArrow: "left",
+    moveValue: pdListMoveValue,
+    moveTime: pdListMoveDelay,
+    countMax: innerLiLength,
+    prevState: false,
+    nextState: false,
+}
+
+/*************** best_n_new_slider ******************/
+const bestPrevBtn = document.getElementById('prev_btn01');
+const bestNextBtn = document.getElementById('next_btn01');
+
+const newPrevBtn = document.getElementById('prev_btn02');
+const newNextBtn = document.getElementById('next_btn02');
+
+bestPrevBtn.addEventListener('click', () => {prevSlide(bestPdSlider)});
+bestNextBtn.addEventListener('click', () => {nextSlide(bestPdSlider)});
+
+newPrevBtn.addEventListener('click', () => {prevSlide(newPdSlider)});
+newNextBtn.addEventListener('click', () => {nextSlide(newPdSlider)});
+
+function prevSlide (obj) {
+    if(!obj.prevState) {
+        obj.prevState = true;
+
+        obj.calcCount = 1;
+        obj.countMax = innerLiLength;
+        
+        moveInterval(obj);
+        setTimeout(() => {obj.prevState = false}, obj.moveTime + 260);
+    }
+}
+
+function nextSlide (obj) {
+    if(!obj.nextState) {
+        obj.nextState = true;
+
+        obj.calcCount = -1;
+        obj.countMax = innerLiLength * -1;
+        
+        moveInterval(obj);
+        setTimeout(() => {obj.nextState = false}, obj.moveTime + 260);
+    }
+}
 
 /*************** look_book_section ******************/
 //룩북 썸네일 탭
@@ -426,14 +405,13 @@ for (let i = 0; i < mdsList.length; i++) {
 const instaMoveUl = document.querySelectorAll('.insta_frame > ul');
 const instaFrame = document.querySelector('.insta_frame');
 
+let condition = document.body.scrollHeight * 0.6;
 window.addEventListener('scroll' , () => {
-    console.log(document.body.offsetHeight);
-    //console.log(window.scrollY);
-/*     if(window.scrollY > 2300) {
+    if(window.scrollY >= condition) {
         instaMoveUl.forEach((value) => {
             addClass(value, 'animate');
         });
-    }  */
+    } 
 });
 instaFrame.addEventListener('mouseover', () => {
     instaMoveUl.forEach(el => el.style.animationPlayState = 'paused');
@@ -444,9 +422,37 @@ instaFrame.addEventListener('mouseout', () => {
 
 
 /*************** common ******************/
-//position값 계산
-function move(LiWidth, count) {
-    return (LiWidth * count) + `px`;
+function moveInterval(obj) {
+    //동작
+    addClass(obj.moveEl, obj.ctrlClass);
+
+    let repeatMove = setInterval(() => {
+        obj.clearCount = 0;
+        obj.moveCount += obj.calcCount;
+
+        //console.log(obj.moveCount);
+        obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+        
+        //리셋
+        if(obj.moveCount === obj.countMax) {
+            //마지막 li 이동 -> delay -> 트랜지션 제거 후 0으로 이동 시키고 -> 인터벌 종료.
+            setTimeout(() => {
+                removeClass(obj.moveEl, obj.ctrlClass);
+        
+                //1번으로 이동시키기 위해
+                obj.moveCount = 0;
+                obj.moveEl.style[obj.moveArrow] = obj.moveCount * obj.moveValue + 'px';
+                
+            }, obj.moveTime + 250);
+        }        
+
+        //재실행
+        obj.clearCount++;
+        if(obj.clearCount === 1) {
+            clearInterval(repeatMove);
+        }
+
+    });
 }
 
 //클래스 추가
@@ -457,18 +463,10 @@ function addClass(Element, ClassName) {
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);
 }
-
-//클론 만들기 함수01
-function cloneCreate01(elements, parentEle) {
-    for (let i = 0; i < elements.length / 2; i++) {
-        let cloneElement = elements[i].cloneNode(true);
-        parentEle.appendChild(cloneElement);
-    }
+function moveValueCalc(el) {
+    return el.offsetWidth;
 }
-//클론 만들기 함수02
-function cloneCreate02(elements, parentEle) {
-    for (let i = 0; i < elements.length; i++) {
-        let cloneElement = elements[i].cloneNode(true);
-        parentEle.insertBefore(cloneElement, elements[0]);
-    }
+
+function cloneCreate(el) {
+    return el.cloneNode(true);
 }

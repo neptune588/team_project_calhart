@@ -38,7 +38,7 @@ img {
   font-weight: 700;
   text-align: center;
   line-height: 20px;
-  margin: 20px 0;
+  margin: 70px 0 20px;
   font-family: "Permanent Marker";
 }
 
@@ -54,6 +54,10 @@ img {
 }
 .btn:hover {
   color: #ffbf00 !important;
+}
+
+.dummy {
+  display: none !important;
 }
 
 button {
@@ -123,6 +127,10 @@ input {
 
 .search_close_on {
   top: 415px !important;
+}
+
+.keyward_list_active {
+  transition: all 1.5s;
 }
 
 /************************* header_ex ***************************/
@@ -303,13 +311,6 @@ input {
   background-repeat: no-repeat;
   margin-right: 15px;
 }
-.header_ex .search_ex .search .bottom_img_box .bottom_img01 {
-  background-image: url(/menu_img_1.5aa23dc1.jpg);
-}
-.header_ex .search_ex .search .bottom_img_box .bottom_img02 {
-  margin-right: 0;
-  background-image: url(/menu_img_2.0e523a48.jpg);
-}
 .header_ex .search_ex .close_btn {
   position: absolute;
   width: 180px;
@@ -338,17 +339,29 @@ input {
 
 /************************* quick_menu_design ***************************/
 .quick_menu_design {
+  display: none;
   position: absolute;
   top: 50%;
   right: 0;
   transform: translateY(-50%);
   width: 100px;
   height: 220px;
-  transition: all 1s;
+  padding: 10px;
+  border: 3px solid rgb(194, 194, 194);
   background-color: #fff;
-  border: 1px solid red;
   cursor: pointer;
+  transition: all 1s;
   z-index: 99999999;
+}
+.quick_menu_design .quick_recently_product {
+  overflow: hidden;
+  width: 80px;
+  height: 80px;
+}
+.quick_menu_design .quick_recently_product img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
 }
 
 /************************* lnb_ex ***************************/
@@ -418,15 +431,11 @@ input {
   height: 20px;
   overflow: hidden;
 }
-.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list {
+.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list_design {
   position: absolute;
   top: 0;
-  overflow: hidden;
 }
-.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list.keyward_list_active {
-  transition: all 1s;
-}
-.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list li {
+.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list_design li {
   position: relative;
   margin-left: 20px;
   margin-bottom: 5px;
@@ -434,17 +443,17 @@ input {
   height: 20px;
   background-color: #fff;
 }
-.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list li:last-child {
+.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list_design li:last-child {
   margin-bottom: 0;
 }
-.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list li a {
+.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list_design li a {
   display: block;
   padding-left: 10px;
   line-height: 20px;
   font-size: 1.4rem;
   font-family: "Noto Sans KR", sans-serif;
 }
-.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list li span {
+.lnb_ex_design .lnb .real_time_keyward_frame .keyward_list_design li span {
   position: absolute;
   width: 20px;
   height: 20px;

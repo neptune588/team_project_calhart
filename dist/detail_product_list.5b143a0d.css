@@ -2,10 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&family=Permanent+Marker&display=swap");
 /************************* color_plan ***************************/
 /************************* font_plan ***************************/
-.color_gray {
-  color: rgb(119, 119, 119);
-}
-
 /************************* gap＆padding ***************************/
 /************************* background standard  ***************************/
 /************************* item_size ***************************/
@@ -23,7 +19,6 @@ li {
 }
 
 a {
-  display: block;
   text-decoration: none;
   color: inherit;
 }
@@ -43,7 +38,7 @@ img {
   font-weight: 700;
   text-align: center;
   line-height: 20px;
-  margin: 20px 0;
+  margin: 70px 0 20px;
   font-family: "Permanent Marker";
 }
 
@@ -59,6 +54,10 @@ img {
 }
 .btn:hover {
   color: #ffbf00 !important;
+}
+
+.dummy {
+  display: none !important;
 }
 
 button {
