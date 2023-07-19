@@ -272,43 +272,44 @@ var lookBookProudctList = [{
 }];
 exports.lookBookProudctList = lookBookProudctList;
 var mdsProductList = [{
-  propertyNumber: 1,
-  nameEng: 'LEAGUE JACKET',
-  nameKor: '리그 자켓 블루',
-  etc: 'BLUE',
-  productNumber: 'CA22FWJAJL00026001',
-  price: '₩ 263,000'
+  infoData: {
+    nameEng: 'LEAGUE JACKET',
+    nameKor: '리그 자켓 블루',
+    etc: 'BLUE',
+    productNumber: 'CA22FWJAJL00026001',
+    price: '₩ 263,000'
+  },
+  src: ["./images/mds_01.jpg", "./images/mds_acodian_01.jpg"]
 }, {
-  propertyNumber: 2,
-  nameEng: 'LEAGUE JACKET',
-  nameKor: '리그 자켓 펜스 와이어',
-  etc: 'FENCE WIRE',
-  productNumber: 'CA22FWJAJL10290001',
-  price: '₩ 263,000'
+  infoData: {
+    nameEng: 'LEAGUE JACKET',
+    nameKor: '리그 자켓 펜스 와이어',
+    etc: 'FENCE WIRE',
+    productNumber: 'CA22FWJAJL10290001',
+    price: '₩ 263,000'
+  },
+  src: ["./images/mds_02.jpg", "./images/mds_acodian_02.jpg"]
 }, {
-  propertyNumber: 3,
-  nameEng: 'MONTANA BLAZER',
-  nameKor: '몬타나 블레이저 시위드',
-  etc: 'SEAWEED',
-  productNumber: 'CA22FWJAJL10066001',
-  price: '₩ 243,000'
+  infoData: {
+    nameEng: 'MONTANA BLAZER',
+    nameKor: '몬타나 블레이저 시위드',
+    etc: 'SEAWEED',
+    productNumber: 'CA22FWJAJL10066001',
+    price: '₩ 243,000'
+  },
+  src: ["./images/mds_03.jpg", "./images/mds_acodian_03.jpg"]
 }, {
-  propertyNumber: 4,
-  nameEng: 'S/S MIRAGE SHIRT',
-  nameKor: '반팔 미라지 셔츠 미라지 프린트, 프로스티드 블루',
-  etc: 'MIRAGE PRINT, FROSTED BLUE',
-  productNumber: 'CA22SSSHSS09401001',
-  price: '₩ 135,000'
+  infoData: {
+    nameEng: 'S/S MIRAGE SHIRT',
+    nameKor: '반팔 미라지 셔츠 미라지 프린트, 프로스티드 블루',
+    etc: 'MIRAGE PRINT, FROSTED BLUE',
+    productNumber: 'CA22SSSHSS09401001',
+    price: '₩ 135,000'
+  },
+  src: ["./images/mds_04.jpg", "./images/mds_acodian_04.jpg"]
 }];
 exports.mdsProductList = mdsProductList;
-var sub_page_product_list = [
-/* 	컬러,
-	할인율,
-	판매량,
-	새로 나온것,
-	품절된것인지, */
-
-/***************** jaket ******************/
+var sub_page_product_list = [/***************** jaket ******************/
 {
   propertyNumber: 1,
   productNameKor: "\uC54C\uB9C1\uD134 \uBCA0\uC2A4\uD2B8 \uC5D0\uC77C \uD5E4\uBE44 \uC2A4\uD1A4 \uC6CC\uC2DC",
@@ -320,13 +321,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
   isNew: true,
   isBest: true,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`알링턴`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 2,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uBE14\uB799/\uD654\uC774\uD2B8",
@@ -338,12 +334,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-1.jpg", "./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-0.jpg"],
   isNew: true,
   isBest: true,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 3,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
@@ -355,12 +346,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-1.jpg", "./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-0.jpg"],
   isNew: true,
   isBest: true,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 4,
   productNameKor: "\uB9AC\uADF8 \uC790\uCF13 \uBE14\uB8E8",
@@ -372,13 +358,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`리그`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 5,
   productNameKor: "\uB808\uD130\uB9E8 \uC790\uCF13 \uBE14\uB799/\uBE0C\uB9AD",
@@ -390,13 +371,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-1.jpg", "./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`레터맨`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 6,
   productNameKor: "\uD2B8\uB808\uBC84 \uC790\uCF13 \uBE14\uB799/\uBE14\uB799",
@@ -408,13 +384,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-1.jpg", "./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`트레버`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** shirt ******************/
 {
   propertyNumber: 7,
@@ -427,13 +398,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-1.jpg", "./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매디슨`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 8,
   productNameKor: "\uB9E4\uB2DD \uC154\uCE20 \uC790\uCF13 \uB9E4\uB2DD \uCCB4\uD06C, \uB2E4\uD06C \uC5C4\uBC84/\uB808\uB354",
@@ -445,13 +411,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-1.jpg", "./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매닝`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 9,
   productNameKor: "\uBAAC\uD2B8\uB808\uC774 \uC154\uCE20 \uC790\uCF13 \uD0A4\uC704 \uC6D0 \uC6CC\uC2DC\uB4DC",
@@ -463,12 +424,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-1.jpg", "./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`몬트레이`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 10,
   productNameKor: "\uBC18\uD314 \uD06C\uB798\uD504\uD2B8 \uC154\uCE20 \uC950\uB77C \uB9B0\uC2A4\uB4DC",
@@ -480,12 +436,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-1.jpg", "./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`크래프트`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 11,
   productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uC544\uB9D0\uD53C/\uC641\uC2A4",
@@ -497,12 +448,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-1.jpg", "./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 12,
   productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uD53C\uB2C9\uC2A4/\uC641\uC2A4",
@@ -514,12 +460,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-1.jpg", "./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** swater ******************/
 {
   propertyNumber: 13,
@@ -532,12 +473,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-1.jpg", "./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`헤더`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 14,
   productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD2B8\uB9AC\uD558\uC6B0\uC2A4/\uD654\uC774\uD2B8",
@@ -549,12 +485,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-1.jpg", "./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`트리하우스`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 15,
   productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uB8E8\uD53C\uB108\uC2A4/\uD654\uC774\uD2B8",
@@ -566,12 +497,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-1.jpg", "./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`루피너스`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 16,
   productNameKor: "\uD6C4\uB514\uB4DC \uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD0A4\uC704/\uC2DC\uD2B8\uB860",
@@ -583,12 +509,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-1.jpg", "./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`키위`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 17,
   productNameKor: "\uD6C4\uB514\uB4DC \uB85C\uCEE4 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uB2C9\uC2A4/\uBE14\uB799",
@@ -600,12 +521,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-1.jpg", "./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`로커`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 18,
   productNameKor: "\uB12C\uC2A8 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uC2E0 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
@@ -617,12 +533,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-1.jpg", "./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`피신`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** neat ******************/
 {
   propertyNumber: 19,
@@ -635,13 +546,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-1.jpg", "./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`재스퍼`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 20,
   productNameKor: "\uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uC2A4\uC6E8\uD130 \uD654\uC774\uD2B8",
@@ -653,12 +559,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-1.jpg", "./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`스테이트`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 21,
   productNameKor: "\uB9E4\uB514\uC2A8 \uC2A4\uC6E8\uD130 \uC544\uC774\uC2DC \uC6CC\uD130/\uD504\uB85C\uC2A4\uD2F0\uB4DC \uBE14\uB8E8",
@@ -670,13 +571,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-1.jpg", "./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`아이시`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 22,
   productNameKor: "\uC2A4\uD06C\uB9BD\uD2B8 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uB0B4\uCE04\uB7F4",
@@ -688,13 +584,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-1.jpg", "./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`내츄럴`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 23,
   productNameKor: "\uC54C\uB354\uC2A4 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uCE90\uB9AC\uBE44\uC548 \uC2DC",
@@ -706,12 +597,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-1.jpg", "./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`캐리비안`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 24,
   productNameKor: "\uBC18\uD314 \uCF04\uC6E8\uC774 \uB2C8\uD2B8 \uD3F4\uB85C \uBE14\uB799",
@@ -723,12 +609,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-1.jpg", "./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`폴로`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** t-shirt ******************/
 {
   propertyNumber: 25,
@@ -741,12 +622,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-1.jpg", "./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`캐리비안`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 26,
   productNameKor: "\uBC18\uD314 \uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uD2F0\uC154\uCE20 \uD654\uC774\uD2B8",
@@ -758,12 +634,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-1.jpg", "./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스테이트`,`${productNameKor}`],
 }, {
   propertyNumber: 27,
   productNameKor: "\uBC18\uD314 \uD788\uD2B8 \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uC544\uB80C\uAC00",
@@ -775,12 +647,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-1.jpg", "./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
 }, {
   propertyNumber: 28,
   productNameKor: "\uBC18\uD314 \uB9E4\uB274\uC5BC \uD2F0\uC154\uCE20 \uB2EC\uB9AC\uC544 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
@@ -792,12 +660,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-1.jpg", "./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`달리아`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 29,
   productNameKor: "\uBC18\uD314 \uB274 \uD504\uB860\uD2F0\uC5B4 \uD2F0\uC154\uCE20 \uBC84\uD314\uB85C",
@@ -809,12 +672,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-1.jpg", "./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`프론티어`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 30,
   productNameKor: "\uBC18\uD314 \uD31C \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uBE14\uB799",
@@ -826,12 +684,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-1.jpg", "./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
+  isSoldOut: false
 }];
 exports.sub_page_product_list = sub_page_product_list;
 var detail_page_produdct_list = [{
@@ -912,46 +765,25 @@ var vmSlider = {
   moveValue: vmMoveValue,
   moveTime: vmMoveDelay,
   countMax: (vmList.children.length - 1) / 2,
-  autoArrow: "left"
+  immunCount: (vmList.children.length - 1) / 2,
+  autoArrow: "left",
+  prevState: false,
+  nextState: false
 };
-var vmPrevClick = false;
-var vmNextClick = false;
 visualPrevBtn.addEventListener('click', function () {
   var time;
   clearTimeout(time);
   time = setTimeout(function () {
-    vmPrevMove();
+    vmSlider.autoArrow = "left", prevSlide(vmSlider);
   }, 50);
 });
 visualNextBtn.addEventListener('click', function () {
   var time;
   clearTimeout(time);
   time = setTimeout(function () {
-    vmNextMove();
+    vmSlider.autoArrow = "right", nextSlide(vmSlider);
   }, 50);
 });
-function vmPrevMove() {
-  if (!vmPrevClick) {
-    vmPrevClick = true;
-    vmSlider.autoArrow = "left", vmSlider.calcCount = 1;
-    vmSlider.countMax = (vmList.children.length - 1) / 2;
-    moveInterval(vmSlider);
-    setTimeout(function () {
-      vmPrevClick = false;
-    }, vmSlider.moveTime + 260);
-  }
-}
-function vmNextMove() {
-  if (!vmNextClick) {
-    vmNextClick = true;
-    vmSlider.autoArrow = "right", vmSlider.calcCount = -1;
-    vmSlider.countMax = (vmList.children.length - 1) * -1 / 2;
-    moveInterval(vmSlider);
-    setTimeout(function () {
-      vmNextClick = false;
-    }, vmSlider.moveTime + 260);
-  }
-}
 
 /*************** visual_main_autoPlay ******************/
 var visualPlay = document.getElementById('play_btn');
@@ -960,9 +792,9 @@ var vmAuto;
 visualPlay.addEventListener('click', function () {
   vmAuto = setInterval(function () {
     if (vmSlider.autoArrow === "left") {
-      vmPrevMove();
+      prevSlide(vmSlider);
     } else if (vmSlider.autoArrow === "right") {
-      vmNextMove();
+      nextSlide(vmSlider);
     }
   }, vmSlider.moveTime);
 });
@@ -1037,6 +869,7 @@ var bestPdSlider = {
   moveValue: pdListMoveValue,
   moveTime: pdListMoveDelay,
   countMax: innerLiLength,
+  immunCount: innerLiLength,
   prevState: false,
   nextState: false
 };
@@ -1050,6 +883,7 @@ var newPdSlider = {
   moveValue: pdListMoveValue,
   moveTime: pdListMoveDelay,
   countMax: innerLiLength,
+  immunCount: innerLiLength,
   prevState: false,
   nextState: false
 };
@@ -1075,7 +909,7 @@ function prevSlide(obj) {
   if (!obj.prevState) {
     obj.prevState = true;
     obj.calcCount = 1;
-    obj.countMax = innerLiLength;
+    obj.countMax = obj.immunCount;
     moveInterval(obj);
     setTimeout(function () {
       obj.prevState = false;
@@ -1086,164 +920,13 @@ function nextSlide(obj) {
   if (!obj.nextState) {
     obj.nextState = true;
     obj.calcCount = -1;
-    obj.countMax = innerLiLength * -1;
+    obj.countMax = obj.immunCount * -1;
     moveInterval(obj);
     setTimeout(function () {
       obj.nextState = false;
     }, obj.moveTime + 260);
   }
 }
-
-/*************** look_book_section ******************/
-//룩북 썸네일 탭
-//배열로 변환하기 위해 let사용
-var lookBookTap = document.querySelectorAll('.look_book_show_tab');
-//룩북 view 존
-var lookBookViewZone = document.querySelectorAll('.look_book_view');
-//text_box
-var lookBookInnerTextBox = document.querySelectorAll('.text_box');
-//hover_img
-var hoverImg = document.querySelectorAll('.hover_img');
-
-/* const bigLookBook = document.getElementById('look_book_thm_area_01');
-const smallLookBook = document.getElementById('look_book_thm_area_02'); */
-
-/* //배열 변환.
-lookBookTap = LookBookfunctionList.changeArray(lookBookTap); */
-
-//text박스 text생성
-lookBookInnerTextBox.forEach(function (value, index) {
-  var newP01 = document.createElement('p');
-  var newP02 = document.createElement('p');
-  var newP03 = document.createElement('p');
-  newP01.textContent = _data.lookBookProudctList[index].modelName;
-  newP02.textContent = _data.lookBookProudctList[index].name;
-  newP03.textContent = _data.lookBookProudctList[index].price;
-  value.appendChild(newP01);
-  value.appendChild(newP02);
-  value.appendChild(newP03);
-});
-//img hover시 text 등장
-var _loop = function _loop(i) {
-  hoverImg[i].addEventListener('mouseover', function () {
-    for (var j = 0; j < lookBookInnerTextBox.length; j++) {
-      removeClass(lookBookInnerTextBox[j], 'hover_on');
-    }
-    addClass(lookBookInnerTextBox[i], 'hover_on');
-  });
-};
-for (var i = 0; i < hoverImg.length; i++) {
-  _loop(i);
-}
-//img out시 text 제거
-for (var _i = 0; _i < hoverImg.length; _i++) {
-  hoverImg[_i].addEventListener('mouseout', function () {
-    for (var j = 0; j < lookBookInnerTextBox.length; j++) {
-      removeClass(lookBookInnerTextBox[j], 'hover_on');
-    }
-  });
-}
-
-//img등록
-for (var _i2 = 0; _i2 < lookBookTap.length; _i2++) {
-  lookBookTap[_i2].lastElementChild.setAttribute('src', "./images/look_book_thumnail".concat(_i2, ".jpg"));
-}
-//탭 순회하면서 클릭이벤트 등록, 클릭했을시 클래스 전부 제거 후 
-//i값에 해당하는 섹션 block_on
-var _loop2 = function _loop2(_i3) {
-  lookBookTap[_i3].addEventListener('click', function () {
-    for (var j = 0; j < lookBookViewZone.length; j++) {
-      removeClass(lookBookViewZone[j], 'block_on');
-    }
-    addClass(lookBookViewZone[_i3], 'block_on');
-  });
-};
-for (var _i3 = 0; _i3 < lookBookTap.length; _i3++) {
-  _loop2(_i3);
-}
-
-/*************** mds_pick_section ******************/
-
-//mdlist
-var mdsList = document.querySelectorAll('.md_list');
-//mdAcodian
-var mdAcodianOn = document.querySelectorAll('.acodian_on');
-var mdProductInfo = document.querySelectorAll('.product_info');
-mdProductInfo.forEach(function (value, index) {
-  var newP01 = document.createElement('p');
-  var newP02 = document.createElement('p');
-  var newP03 = document.createElement('p');
-  var newP04 = document.createElement('p');
-  var newP05 = document.createElement('p');
-  var button = document.createElement('a');
-  newP01.textContent = _data.mdsProductList[index].nameEng;
-  newP02.textContent = _data.mdsProductList[index].etc;
-  newP03.textContent = _data.mdsProductList[index].nameKor;
-  newP04.textContent = _data.mdsProductList[index].productNumber;
-  newP05.textContent = _data.mdsProductList[index].price;
-  button.textContent = '구매하기';
-  value.appendChild(newP01);
-  value.appendChild(newP02);
-  value.appendChild(newP03);
-  value.appendChild(newP04);
-  value.appendChild(newP05);
-  value.appendChild(button);
-  addClass(newP01, 'md_info_text01');
-  addClass(newP02, 'md_info_text02');
-  addClass(newP03, 'md_info_text03');
-  addClass(newP04, 'md_info_text04');
-  addClass(newP05, 'md_info_text05');
-  addClass(button, 'buy_button');
-  button.setAttribute('href', '#!');
-});
-
-//하나는 아코디언상태여야기 때문에 아코디언 부여. 
-//쿼리셀렉터 올로 잡아뒀기때문에 반복문을 안쓸꺼면 mdsList[0].children[0].children[0] 이런식으로 잡을수잇다.
-mdAcodianOn.forEach(function (value, index) {
-  value.children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(index + 1, ".jpg"));
-});
-var _loop3 = function _loop3(_i4) {
-  mdsList[_i4].addEventListener('click', function () {
-    for (var j = 0; j < mdsList.length; j++) {
-      removeClass(mdsList[j], 'acodian_on');
-      removeClass(mdProductInfo[j], 'hover_on');
-      mdsList[j].children[0].children[0].setAttribute('src', "./images/mds_0".concat(j + 1, ".jpg"));
-    }
-    addClass(mdsList[_i4], 'acodian_on');
-    addClass(mdProductInfo[_i4], 'hover_on');
-    mdsList[_i4].children[0].children[0].setAttribute('src', "./images/mds_acodian_0".concat(_i4 + 1, ".jpg"));
-  });
-};
-for (var _i4 = 0; _i4 < mdsList.length; _i4++) {
-  _loop3(_i4);
-}
-
-//1. 아코디언 상태일때만 mds_acodian이 된다. 그 말인 즉슨 그 클래스가 제거가 되면 이미지는 mds_0 시리즈로 되어야한다.
-//2. 따라서 그렇게 mds를 다 부여하고, 내가 클릭한 녀석 즉 i에게만 mds_acodian을 부여하면 되는것이다.
-
-/*************** mds_pick_section ******************/
-var instaMoveUl = document.querySelectorAll('.insta_frame > ul');
-var instaFrame = document.querySelector('.insta_frame');
-var condition = document.body.scrollHeight * 0.6;
-window.addEventListener('scroll', function () {
-  if (window.scrollY >= condition) {
-    instaMoveUl.forEach(function (value) {
-      addClass(value, 'animate');
-    });
-  }
-});
-instaFrame.addEventListener('mouseover', function () {
-  instaMoveUl.forEach(function (el) {
-    return el.style.animationPlayState = 'paused';
-  });
-});
-instaFrame.addEventListener('mouseout', function () {
-  instaMoveUl.forEach(function (el) {
-    return el.style.animationPlayState = 'running';
-  });
-});
-
-/*************** common ******************/
 function moveInterval(obj) {
   //동작
   addClass(obj.moveEl, obj.ctrlClass);
@@ -1273,7 +956,135 @@ function moveInterval(obj) {
     }
   });
 }
+function moveValueCalc(el) {
+  return el.offsetWidth;
+}
+function cloneCreate(el) {
+  return el.cloneNode(true);
+}
 
+/*************** look_book_section ******************/
+var lBkTap = document.querySelectorAll('.look_book_show_tab');
+//룩북 view 존
+var lBkViewZone = document.querySelectorAll('.look_book_view');
+//text_box
+var lBkInnerTxtBox = document.querySelectorAll('.text_box');
+//hover_img
+var hoverImg = document.querySelectorAll('.hover_img');
+
+//text박스 text생성
+lBkInnerTxtBox.forEach(function (el, index) {
+  var newP01 = document.createElement('p');
+  var newP02 = document.createElement('p');
+  var newP03 = document.createElement('p');
+  newP01.textContent = _data.lookBookProudctList[index].modelName;
+  newP02.textContent = _data.lookBookProudctList[index].name;
+  newP03.textContent = _data.lookBookProudctList[index].price;
+  el.appendChild(newP01);
+  el.appendChild(newP02);
+  el.appendChild(newP03);
+});
+
+//img hover시 text 등장
+var _loop = function _loop(i) {
+  hoverImg[i].addEventListener('mouseover', function () {
+    for (var j = 0; j < lBkInnerTxtBox.length; j++) {
+      removeClass(lBkInnerTxtBox[j], 'hover_on');
+    }
+    addClass(lBkInnerTxtBox[i], 'hover_on');
+  });
+};
+for (var i = 0; i < hoverImg.length; i++) {
+  _loop(i);
+}
+//img out시 text 제거
+for (var _i = 0; _i < hoverImg.length; _i++) {
+  hoverImg[_i].addEventListener('mouseout', function () {
+    for (var j = 0; j < lBkInnerTxtBox.length; j++) {
+      removeClass(lBkInnerTxtBox[j], 'hover_on');
+    }
+  });
+}
+
+//img등록
+for (var _i2 = 0; _i2 < lBkTap.length; _i2++) {
+  lBkTap[_i2].lastElementChild.setAttribute('src', "./images/look_book_thumnail".concat(_i2, ".jpg"));
+}
+//탭 순회하면서 클릭이벤트 등록, 클릭했을시 클래스 전부 제거 후 
+//i값에 해당하는 섹션 block_on
+var _loop2 = function _loop2(_i3) {
+  lBkTap[_i3].addEventListener('click', function () {
+    for (var j = 0; j < lBkViewZone.length; j++) {
+      removeClass(lBkViewZone[j], 'block_on');
+    }
+    addClass(lBkViewZone[_i3], 'block_on');
+  });
+};
+for (var _i3 = 0; _i3 < lBkTap.length; _i3++) {
+  _loop2(_i3);
+}
+
+/*************** mds_pick_section ******************/
+var mdsListArea = document.getElementById('mds_list_area');
+mdListMaker();
+function mdListMaker() {
+  var list = "";
+  var receive = "";
+  _data.mdsProductList.forEach(function (obj, i) {
+    list = "\n            <li class=\"".concat(i === 0 ? "md_list acodian_on" : "md_list", "\">\n                <a class=\"img_link\" href=\"#!\">\n                    <img src=\"").concat(obj.src[0], "\" alt=\"mds_").concat(i, "\"/>\n                </a>\n                <div class=\"product_info\">\n                    <p>\n                        ").concat(mdTextMaker(obj.infoData), "\n                    </p>\n                    <button class=\"buy_button\">\n                        <a href=\"#!\">\n                            \uAD6C\uB9E4\uD558\uAE30\n                        </a>\n                    </button>\n                </div>\n            </li>\n            ");
+    if (i === 0) {
+      list = list.replaceAll("<img src=\"".concat(obj.src[0], "\" alt=\"mds_").concat(i, "\"/>"), "<img src=\"".concat(obj.src[1], "\" alt=\"mds_hover_").concat(i, "\"/>"));
+    }
+    receive += list;
+  });
+  mdsListArea.innerHTML = receive;
+  var mdList = document.querySelectorAll('.md_list');
+  var acordianImg = document.querySelectorAll('.md_list img');
+  var _loop3 = function _loop3(_i4) {
+    mdList[_i4].addEventListener('click', function () {
+      for (var j = 0; j < mdList.length; j++) {
+        removeClass(mdList[j], "acodian_on");
+        acordianImg[j].src = _data.mdsProductList[j].src[0];
+      }
+      addClass(mdList[_i4], "acodian_on");
+      acordianImg[_i4].src = _data.mdsProductList[_i4].src[1];
+    });
+  };
+  for (var _i4 = 0; _i4 < mdList.length; _i4++) {
+    _loop3(_i4);
+  }
+}
+function mdTextMaker(myObj) {
+  var text = "";
+  for (var key in myObj) {
+    text += myObj[key] + "<br />";
+  }
+  return text;
+}
+
+/*************** mds_pick_section ******************/
+var instaMoveUl = document.querySelectorAll('.insta_frame > ul');
+var instaFrame = document.querySelector('.insta_frame');
+var condition = document.body.scrollHeight * 0.6;
+window.addEventListener('scroll', function () {
+  if (window.scrollY >= condition) {
+    instaMoveUl.forEach(function (value) {
+      addClass(value, 'animate');
+    });
+  }
+});
+instaFrame.addEventListener('mouseover', function () {
+  instaMoveUl.forEach(function (el) {
+    return el.style.animationPlayState = 'paused';
+  });
+});
+instaFrame.addEventListener('mouseout', function () {
+  instaMoveUl.forEach(function (el) {
+    return el.style.animationPlayState = 'running';
+  });
+});
+
+/*************** common ******************/
 //클래스 추가
 function addClass(Element, ClassName) {
   Element.classList.add(ClassName);
@@ -1281,12 +1092,6 @@ function addClass(Element, ClassName) {
 //클래스 제거
 function removeClass(Element, ClassName) {
   Element.classList.remove(ClassName);
-}
-function moveValueCalc(el) {
-  return el.offsetWidth;
-}
-function cloneCreate(el) {
-  return el.cloneNode(true);
 }
 },{"./data.js":"js/data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -1313,7 +1118,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52856" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

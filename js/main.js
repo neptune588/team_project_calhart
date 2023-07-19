@@ -76,49 +76,30 @@ const vmSlider = {
     moveValue: vmMoveValue,
     moveTime: vmMoveDelay,
     countMax: (vmList.children.length - 1) / 2,
+    immunCount: (vmList.children.length - 1) / 2,
     autoArrow: "left",
+    prevState: false,
+    nextState: false,
 }
-
-let vmPrevClick = false;
-let vmNextClick = false;
 
 visualPrevBtn.addEventListener('click', () => {
     let time; 
     clearTimeout(time);
 
-    time = setTimeout(() => {vmPrevMove()}, 50);
+    time = setTimeout(() => {
+        vmSlider.autoArrow = "left",
+        prevSlide(vmSlider);
+    }, 50)
 });
 visualNextBtn.addEventListener('click', () => {
     let time; 
     clearTimeout(time);
 
-    time = setTimeout(() => {vmNextMove()}, 50);
-});
-
-function vmPrevMove() {
-    if(!vmPrevClick) {
-        vmPrevClick = true;
-
-        vmSlider.autoArrow = "left",
-        vmSlider.calcCount = 1;
-        vmSlider.countMax = (vmList.children.length - 1) / 2;
-        
-        moveInterval(vmSlider);
-        setTimeout(() => {vmPrevClick = false}, vmSlider.moveTime + 260);
-    }
-}
-function vmNextMove() {
-    if(!vmNextClick) {
-        vmNextClick = true;
-
+    time = setTimeout(() => {
         vmSlider.autoArrow = "right",
-        vmSlider.calcCount = -1;
-        vmSlider.countMax = ((vmList.children.length - 1) * -1) / 2;
-    
-        moveInterval(vmSlider);
-        setTimeout(() => {vmNextClick = false}, vmSlider.moveTime + 260);
-    }
-}
+        nextSlide(vmSlider);
+    }, 50);
+});
 
 /*************** visual_main_autoPlay ******************/
 const visualPlay = document.getElementById('play_btn');
@@ -128,9 +109,9 @@ let vmAuto;
 visualPlay.addEventListener('click', () => {
     vmAuto = setInterval(() => {
         if(vmSlider.autoArrow === "left") {
-            vmPrevMove();
+            prevSlide(vmSlider);
         } else if(vmSlider.autoArrow === "right") {
-            vmNextMove();
+            nextSlide(vmSlider);
         }
     }, vmSlider.moveTime);
 })
@@ -219,6 +200,7 @@ const bestPdSlider = {
     moveValue: pdListMoveValue,
     moveTime: pdListMoveDelay,
     countMax: innerLiLength,
+    immunCount: innerLiLength,
     prevState: false,
     nextState: false,
 }
@@ -233,6 +215,7 @@ const newPdSlider = {
     moveValue: pdListMoveValue,
     moveTime: pdListMoveDelay,
     countMax: innerLiLength,
+    immunCount: innerLiLength,
     prevState: false,
     nextState: false,
 }
@@ -255,7 +238,7 @@ function prevSlide (obj) {
         obj.prevState = true;
 
         obj.calcCount = 1;
-        obj.countMax = innerLiLength;
+        obj.countMax = obj.immunCount;
         
         moveInterval(obj);
         setTimeout(() => {obj.prevState = false}, obj.moveTime + 260);
@@ -267,161 +250,13 @@ function nextSlide (obj) {
         obj.nextState = true;
 
         obj.calcCount = -1;
-        obj.countMax = innerLiLength * -1;
+        obj.countMax = obj.immunCount * -1;
         
         moveInterval(obj);
         setTimeout(() => {obj.nextState = false}, obj.moveTime + 260);
     }
 }
 
-/*************** look_book_section ******************/
-//룩북 썸네일 탭
-//배열로 변환하기 위해 let사용
-let lookBookTap = document.querySelectorAll('.look_book_show_tab');
-//룩북 view 존
-const lookBookViewZone = document.querySelectorAll('.look_book_view');
-//text_box
-const lookBookInnerTextBox = document.querySelectorAll('.text_box');
-//hover_img
-const hoverImg = document.querySelectorAll('.hover_img');
-
-/* const bigLookBook = document.getElementById('look_book_thm_area_01');
-const smallLookBook = document.getElementById('look_book_thm_area_02'); */
-
-/* //배열 변환.
-lookBookTap = LookBookfunctionList.changeArray(lookBookTap); */
-
-//text박스 text생성
-lookBookInnerTextBox.forEach((value, index) => {
-    let newP01 = document.createElement('p');
-    let newP02 = document.createElement('p');
-    let newP03 = document.createElement('p');
-
-    newP01.textContent = lookBookProudctList[index].modelName;
-    newP02.textContent = lookBookProudctList[index].name;
-    newP03.textContent = lookBookProudctList[index].price;
-
-    value.appendChild(newP01);
-    value.appendChild(newP02);
-    value.appendChild(newP03);
-});
-//img hover시 text 등장
-for (let i = 0; i < hoverImg.length; i++) {
-    hoverImg[i].addEventListener('mouseover', () => {
-        for (let j = 0; j < lookBookInnerTextBox.length; j++) {
-            removeClass(lookBookInnerTextBox[j], 'hover_on');
-        }
-        addClass(lookBookInnerTextBox[i], 'hover_on');
-    });
-}
-//img out시 text 제거
-for (let i = 0; i < hoverImg.length; i++) {
-    hoverImg[i].addEventListener('mouseout', () => {
-        for (let j = 0; j < lookBookInnerTextBox.length; j++) {
-            removeClass(lookBookInnerTextBox[j], 'hover_on');
-        }
-    });
-}
-
-//img등록
-for (let i = 0; i < lookBookTap.length; i++) {
-    lookBookTap[i].lastElementChild.setAttribute('src', `./images/look_book_thumnail${i}.jpg`);
-}
-//탭 순회하면서 클릭이벤트 등록, 클릭했을시 클래스 전부 제거 후 
-//i값에 해당하는 섹션 block_on
-for (let i = 0; i < lookBookTap.length; i++) {
-    lookBookTap[i].addEventListener('click', () => {
-        for (let j = 0; j < lookBookViewZone.length; j++) {
-            removeClass(lookBookViewZone[j], 'block_on');
-        }
-        addClass(lookBookViewZone[i], 'block_on');
-    });
-}
-
-
-/*************** mds_pick_section ******************/
-
-//mdlist
-const mdsList = document.querySelectorAll('.md_list');
-//mdAcodian
-const mdAcodianOn = document.querySelectorAll('.acodian_on');
-const mdProductInfo = document.querySelectorAll('.product_info');
-
-mdProductInfo.forEach((value, index) => {
-    let newP01 = document.createElement('p');
-    let newP02 = document.createElement('p');
-    let newP03 = document.createElement('p');
-    let newP04 = document.createElement('p');
-    let newP05 = document.createElement('p');
-    let button = document.createElement('a');
-
-    newP01.textContent = mdsProductList[index].nameEng;
-    newP02.textContent = mdsProductList[index].etc;
-    newP03.textContent = mdsProductList[index].nameKor;
-    newP04.textContent = mdsProductList[index].productNumber;
-    newP05.textContent = mdsProductList[index].price;
-    button.textContent = '구매하기';
-
-    value.appendChild(newP01);
-    value.appendChild(newP02);
-    value.appendChild(newP03);
-    value.appendChild(newP04);
-    value.appendChild(newP05);
-    value.appendChild(button);
-
-    addClass(newP01, 'md_info_text01');
-    addClass(newP02, 'md_info_text02');
-    addClass(newP03, 'md_info_text03');
-    addClass(newP04, 'md_info_text04');
-    addClass(newP05, 'md_info_text05');
-    addClass(button, 'buy_button');
-    button.setAttribute('href', '#!');
-});
-
-//하나는 아코디언상태여야기 때문에 아코디언 부여. 
-//쿼리셀렉터 올로 잡아뒀기때문에 반복문을 안쓸꺼면 mdsList[0].children[0].children[0] 이런식으로 잡을수잇다.
-mdAcodianOn.forEach((value, index) => {
-    value.children[0].children[0].setAttribute('src', `./images/mds_acodian_0${index + 1}.jpg`);
-});
-
-for (let i = 0; i < mdsList.length; i++) {
-    mdsList[i].addEventListener('click', () => {
-        for(let j = 0; j < mdsList.length; j++) {
-            removeClass(mdsList[j], 'acodian_on');
-            removeClass(mdProductInfo[j], 'hover_on');
-            mdsList[j].children[0].children[0].setAttribute('src', `./images/mds_0${j + 1}.jpg`);
-        }
-        addClass(mdsList[i], 'acodian_on');
-        addClass(mdProductInfo[i], 'hover_on');
-        mdsList[i].children[0].children[0].setAttribute('src', `./images/mds_acodian_0${i + 1}.jpg`);
-    });
-}
-
-//1. 아코디언 상태일때만 mds_acodian이 된다. 그 말인 즉슨 그 클래스가 제거가 되면 이미지는 mds_0 시리즈로 되어야한다.
-//2. 따라서 그렇게 mds를 다 부여하고, 내가 클릭한 녀석 즉 i에게만 mds_acodian을 부여하면 되는것이다.
-
-
-/*************** mds_pick_section ******************/
-const instaMoveUl = document.querySelectorAll('.insta_frame > ul');
-const instaFrame = document.querySelector('.insta_frame');
-
-let condition = document.body.scrollHeight * 0.6;
-window.addEventListener('scroll' , () => {
-    if(window.scrollY >= condition) {
-        instaMoveUl.forEach((value) => {
-            addClass(value, 'animate');
-        });
-    } 
-});
-instaFrame.addEventListener('mouseover', () => {
-    instaMoveUl.forEach(el => el.style.animationPlayState = 'paused');
-});
-instaFrame.addEventListener('mouseout', () => {
-    instaMoveUl.forEach(el => el.style.animationPlayState = 'running');
-});
-
-
-/*************** common ******************/
 function moveInterval(obj) {
     //동작
     addClass(obj.moveEl, obj.ctrlClass);
@@ -455,6 +290,154 @@ function moveInterval(obj) {
     });
 }
 
+function moveValueCalc(el) {
+    return el.offsetWidth;
+}
+
+function cloneCreate(el) {
+    return el.cloneNode(true);
+}
+
+/*************** look_book_section ******************/
+const lBkTap = document.querySelectorAll('.look_book_show_tab');
+//룩북 view 존
+const lBkViewZone = document.querySelectorAll('.look_book_view');
+//text_box
+const lBkInnerTxtBox = document.querySelectorAll('.text_box');
+//hover_img
+const hoverImg = document.querySelectorAll('.hover_img');
+
+//text박스 text생성
+lBkInnerTxtBox.forEach((el, index) => {
+    let newP01 = document.createElement('p');
+    let newP02 = document.createElement('p');
+    let newP03 = document.createElement('p');
+
+    newP01.textContent = lookBookProudctList[index].modelName;
+    newP02.textContent = lookBookProudctList[index].name;
+    newP03.textContent = lookBookProudctList[index].price;
+
+    el.appendChild(newP01);
+    el.appendChild(newP02);
+    el.appendChild(newP03);
+});
+
+//img hover시 text 등장
+for (let i = 0; i < hoverImg.length; i++) {
+    hoverImg[i].addEventListener('mouseover', () => {
+        for (let j = 0; j < lBkInnerTxtBox.length; j++) {
+            removeClass(lBkInnerTxtBox[j], 'hover_on');
+        }
+        addClass(lBkInnerTxtBox[i], 'hover_on');
+    });
+}
+//img out시 text 제거
+for (let i = 0; i < hoverImg.length; i++) {
+    hoverImg[i].addEventListener('mouseout', () => {
+        for (let j = 0; j < lBkInnerTxtBox.length; j++) {
+            removeClass(lBkInnerTxtBox[j], 'hover_on');
+        }
+    });
+}
+
+//img등록
+for (let i = 0; i < lBkTap.length; i++) {
+    lBkTap[i].lastElementChild.setAttribute('src', `./images/look_book_thumnail${i}.jpg`);
+}
+//탭 순회하면서 클릭이벤트 등록, 클릭했을시 클래스 전부 제거 후 
+//i값에 해당하는 섹션 block_on
+for (let i = 0; i < lBkTap.length; i++) {
+    lBkTap[i].addEventListener('click', () => {
+        for (let j = 0; j < lBkViewZone.length; j++) {
+            removeClass(lBkViewZone[j], 'block_on');
+        }
+        addClass(lBkViewZone[i], 'block_on');
+
+    });
+}
+
+/*************** mds_pick_section ******************/
+const mdsListArea = document.getElementById('mds_list_area');
+
+mdListMaker();
+function mdListMaker() {
+    let list = ``;
+    let receive = ``;
+
+    mdsProductList.forEach((obj, i) => {
+        list = `
+            <li class="${i === 0 ? "md_list acodian_on" : "md_list"}">
+                <a class="img_link" href="#!">
+                    <img src="${obj.src[0]}" alt="mds_${i}"/>
+                </a>
+                <div class="product_info">
+                    <p>
+                        ${mdTextMaker(obj.infoData)}
+                    </p>
+                    <button class="buy_button">
+                        <a href="#!">
+                            구매하기
+                        </a>
+                    </button>
+                </div>
+            </li>
+            `
+        if(i === 0) {
+            list = list.replaceAll(`<img src="${obj.src[0]}" alt="mds_${i}"/>`,`<img src="${obj.src[1]}" alt="mds_hover_${i}"/>`)
+        }
+
+        receive += list;
+
+    })
+
+    mdsListArea.innerHTML = receive;
+
+    const mdList = document.querySelectorAll('.md_list');
+    const acordianImg = document.querySelectorAll('.md_list img');
+
+    for(let i = 0; i < mdList.length; i++) {
+        mdList[i].addEventListener('click', () => {
+            for(let j = 0; j < mdList.length; j++) {
+                removeClass(mdList[j], "acodian_on");
+                acordianImg[j].src = mdsProductList[j].src[0];
+            }
+            addClass(mdList[i], "acodian_on");
+            acordianImg[i].src = mdsProductList[i].src[1];
+        })
+    }
+}
+
+function mdTextMaker(myObj) {
+    let text = ``;
+
+    for(let key in myObj) {
+        text += myObj[key] + "<br />";
+    }
+
+    return text;
+}
+
+/*************** mds_pick_section ******************/
+const instaMoveUl = document.querySelectorAll('.insta_frame > ul');
+const instaFrame = document.querySelector('.insta_frame');
+
+let condition = document.body.scrollHeight * 0.6;
+window.addEventListener('scroll' , () => {
+    if(window.scrollY >= condition) {
+        instaMoveUl.forEach((value) => {
+            addClass(value, 'animate');
+        });
+    } 
+});
+instaFrame.addEventListener('mouseover', () => {
+    instaMoveUl.forEach(el => el.style.animationPlayState = 'paused');
+});
+instaFrame.addEventListener('mouseout', () => {
+    instaMoveUl.forEach(el => el.style.animationPlayState = 'running');
+});
+
+
+/*************** common ******************/
 //클래스 추가
 function addClass(Element, ClassName) {
     Element.classList.add(ClassName);
@@ -462,11 +445,4 @@ function addClass(Element, ClassName) {
 //클래스 제거
 function removeClass(Element, ClassName) {
     Element.classList.remove(ClassName);
-}
-function moveValueCalc(el) {
-    return el.offsetWidth;
-}
-
-function cloneCreate(el) {
-    return el.cloneNode(true);
 }

@@ -1,10 +1,3 @@
-/* fetch(getParameter('q'))
-.then(listfilter); */
-
-//패치 api가 먹히지않음
-//json파일 경로를 자꾸 못찾음.
-
-//js폴더를 dist파일에 넣음으로써 해결완료
 
 /************************ search_product_list ****************************/
 const searchProductWrapper = document.getElementById('product_list');
@@ -16,25 +9,8 @@ const pageItemView = 12;
 const searchValue = document.querySelector('.search_value');
 const productLengthNotice = document.querySelector('.list_length');
 
-/* async function listSearch() {
-  const listRequest = await fetch('./search_data.json');
-  const jsonChange = await listRequest.json();
 
-  return jsonChange;
-}
-
-listSearch()
-.then((res) => {
-  return listfilter(getParameter('q'), res);
-})
-.then((result) => {
-  console.log(result);
-  //listnPageCreate(result);
-})
-.catch(error => console.log(error)); */
-
-
-fetch('./search_data.json')
+fetch('./product_search_data.json')
   .then(res => res.json())
   .then((data) => {
     listRequest(getParameter('q'), data);

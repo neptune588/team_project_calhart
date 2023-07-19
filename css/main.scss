@@ -227,7 +227,7 @@
 
 /************************* main_issue_contents ***************************/
 .main_issue_contents {
-    .look_book {
+    .look_book_design {
         @include box_array;
         margin-bottom: 40px;
 
@@ -515,7 +515,7 @@
         }
     }
 
-    .mds_pick {
+    .mds_pick_design {
         @include box_array;
         margin-bottom: 40px;
 
@@ -551,10 +551,6 @@
                             color: white;
                             font-size: $defalut_font_size;
                             font-family: $font_noto_sans;
-                            letter-spacing: -0.8px;
-                        }
-                        .md_info_text04 {
-                            margin-bottom: 10px;
                         }
                         .buy_button {
                             display: inline-block;

@@ -118,14 +118,6 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/product_search.js":[function(require,module,exports) {
-/* fetch(getParameter('q'))
-.then(listfilter); */
-
-//패치 api가 먹히지않음
-//json파일 경로를 자꾸 못찾음.
-
-//js폴더를 dist파일에 넣음으로써 해결완료
-
 /************************ search_product_list ****************************/
 var searchProductWrapper = document.getElementById('product_list');
 var pageSection = document.getElementById('search_pagenation');
@@ -133,25 +125,7 @@ var pageNumber = document.querySelector('.page_number');
 var pageItemView = 12;
 var searchValue = document.querySelector('.search_value');
 var productLengthNotice = document.querySelector('.list_length');
-
-/* async function listSearch() {
-  const listRequest = await fetch('./search_data.json');
-  const jsonChange = await listRequest.json();
-
-  return jsonChange;
-}
-
-listSearch()
-.then((res) => {
-  return listfilter(getParameter('q'), res);
-})
-.then((result) => {
-  console.log(result);
-  //listnPageCreate(result);
-})
-.catch(error => console.log(error)); */
-
-fetch('./search_data.json').then(function (res) {
+fetch('./product_search_data.json').then(function (res) {
   return res.json();
 }).then(function (data) {
   listRequest(getParameter('q'), data);
@@ -356,7 +330,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52856" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

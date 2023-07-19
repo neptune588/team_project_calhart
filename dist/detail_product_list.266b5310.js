@@ -272,43 +272,44 @@ var lookBookProudctList = [{
 }];
 exports.lookBookProudctList = lookBookProudctList;
 var mdsProductList = [{
-  propertyNumber: 1,
-  nameEng: 'LEAGUE JACKET',
-  nameKor: '리그 자켓 블루',
-  etc: 'BLUE',
-  productNumber: 'CA22FWJAJL00026001',
-  price: '₩ 263,000'
+  infoData: {
+    nameEng: 'LEAGUE JACKET',
+    nameKor: '리그 자켓 블루',
+    etc: 'BLUE',
+    productNumber: 'CA22FWJAJL00026001',
+    price: '₩ 263,000'
+  },
+  src: ["./images/mds_01.jpg", "./images/mds_acodian_01.jpg"]
 }, {
-  propertyNumber: 2,
-  nameEng: 'LEAGUE JACKET',
-  nameKor: '리그 자켓 펜스 와이어',
-  etc: 'FENCE WIRE',
-  productNumber: 'CA22FWJAJL10290001',
-  price: '₩ 263,000'
+  infoData: {
+    nameEng: 'LEAGUE JACKET',
+    nameKor: '리그 자켓 펜스 와이어',
+    etc: 'FENCE WIRE',
+    productNumber: 'CA22FWJAJL10290001',
+    price: '₩ 263,000'
+  },
+  src: ["./images/mds_02.jpg", "./images/mds_acodian_02.jpg"]
 }, {
-  propertyNumber: 3,
-  nameEng: 'MONTANA BLAZER',
-  nameKor: '몬타나 블레이저 시위드',
-  etc: 'SEAWEED',
-  productNumber: 'CA22FWJAJL10066001',
-  price: '₩ 243,000'
+  infoData: {
+    nameEng: 'MONTANA BLAZER',
+    nameKor: '몬타나 블레이저 시위드',
+    etc: 'SEAWEED',
+    productNumber: 'CA22FWJAJL10066001',
+    price: '₩ 243,000'
+  },
+  src: ["./images/mds_03.jpg", "./images/mds_acodian_03.jpg"]
 }, {
-  propertyNumber: 4,
-  nameEng: 'S/S MIRAGE SHIRT',
-  nameKor: '반팔 미라지 셔츠 미라지 프린트, 프로스티드 블루',
-  etc: 'MIRAGE PRINT, FROSTED BLUE',
-  productNumber: 'CA22SSSHSS09401001',
-  price: '₩ 135,000'
+  infoData: {
+    nameEng: 'S/S MIRAGE SHIRT',
+    nameKor: '반팔 미라지 셔츠 미라지 프린트, 프로스티드 블루',
+    etc: 'MIRAGE PRINT, FROSTED BLUE',
+    productNumber: 'CA22SSSHSS09401001',
+    price: '₩ 135,000'
+  },
+  src: ["./images/mds_04.jpg", "./images/mds_acodian_04.jpg"]
 }];
 exports.mdsProductList = mdsProductList;
-var sub_page_product_list = [
-/* 	컬러,
-	할인율,
-	판매량,
-	새로 나온것,
-	품절된것인지, */
-
-/***************** jaket ******************/
+var sub_page_product_list = [/***************** jaket ******************/
 {
   propertyNumber: 1,
   productNameKor: "\uC54C\uB9C1\uD134 \uBCA0\uC2A4\uD2B8 \uC5D0\uC77C \uD5E4\uBE44 \uC2A4\uD1A4 \uC6CC\uC2DC",
@@ -320,13 +321,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-1.jpg", "./images/sub_page_img/CA22FWJAJH10144002/CA22FWJAJH10144002-0.jpg"],
   isNew: true,
   isBest: true,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`알링턴`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 2,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uBE14\uB799/\uD654\uC774\uD2B8",
@@ -338,12 +334,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-1.jpg", "./images/sub_page_img/CA23SSJAJL00358002/CA23SSJAJL00358002-0.jpg"],
   isNew: true,
   isBest: true,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 3,
   productNameKor: "\uCF54\uC2A4\uD0C8 \uC790\uCF13 \uD654\uC774\uD2B8/\uBE14\uB799",
@@ -355,12 +346,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-1.jpg", "./images/sub_page_img/CA23SSJAJL00266002/CA23SSJAJL00266002-0.jpg"],
   isNew: true,
   isBest: true,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`코스탈`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 4,
   productNameKor: "\uB9AC\uADF8 \uC790\uCF13 \uBE14\uB8E8",
@@ -372,13 +358,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-1.jpg", "./images/sub_page_img/CA22FWJAJL00026001/CA22FWJAJL00026001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`리그`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 5,
   productNameKor: "\uB808\uD130\uB9E8 \uC790\uCF13 \uBE14\uB799/\uBE0C\uB9AD",
@@ -390,13 +371,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-1.jpg", "./images/sub_page_img/CA22FWJAJL10171001/CA22FWJAJL10171001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`레터맨`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 6,
   productNameKor: "\uD2B8\uB808\uBC84 \uC790\uCF13 \uBE14\uB799/\uBE14\uB799",
@@ -408,13 +384,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-1.jpg", "./images/sub_page_img/CA22FWJAHS00285001/CA22FWJAHS00285001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`jaket`,`자켓`,`자`,`ㅈ`,`트레버`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** shirt ******************/
 {
   propertyNumber: 7,
@@ -427,13 +398,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-1.jpg", "./images/sub_page_img/CA22SSSHLS09389001/CA22SSSHLS09389001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매디슨`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 8,
   productNameKor: "\uB9E4\uB2DD \uC154\uCE20 \uC790\uCF13 \uB9E4\uB2DD \uCCB4\uD06C, \uB2E4\uD06C \uC5C4\uBC84/\uB808\uB354",
@@ -445,13 +411,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-1.jpg", "./images/sub_page_img/CA22FWJAJL10139001/CA22FWJAJL10139001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`매닝`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 9,
   productNameKor: "\uBAAC\uD2B8\uB808\uC774 \uC154\uCE20 \uC790\uCF13 \uD0A4\uC704 \uC6D0 \uC6CC\uC2DC\uB4DC",
@@ -463,12 +424,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-1.jpg", "./images/sub_page_img/CA23SSJAJL11129001/CA23SSJAJL11129001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`몬트레이`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 10,
   productNameKor: "\uBC18\uD314 \uD06C\uB798\uD504\uD2B8 \uC154\uCE20 \uC950\uB77C \uB9B0\uC2A4\uB4DC",
@@ -480,12 +436,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-1.jpg", "./images/sub_page_img/CA23SSSHSS11170001/CA23SSSHSS11170001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`크래프트`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 11,
   productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uC544\uB9D0\uD53C/\uC641\uC2A4",
@@ -497,12 +448,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-1.jpg", "./images/sub_page_img/CA23SSSHSS11171001/CA23SSSHSS11171001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 12,
   productNameKor: "\uBC18\uD314 \uB378\uB808\uC774 \uC154\uCE20 \uD53C\uB2C9\uC2A4/\uC641\uC2A4",
@@ -514,12 +460,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-1.jpg", "./images/sub_page_img/CA23SSSHSS11172001/CA23SSSHSS11172001-0.jpg"],
   isNew: true,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`델레이`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** swater ******************/
 {
   propertyNumber: 13,
@@ -532,12 +473,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-1.jpg", "./images/sub_page_img/CA23SSSWCR00991001/CA23SSSWCR00991001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`헤더`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 14,
   productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD2B8\uB9AC\uD558\uC6B0\uC2A4/\uD654\uC774\uD2B8",
@@ -549,12 +485,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-1.jpg", "./images/sub_page_img/CA23SSSWCR06655001/CA23SSSWCR06655001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`sweater`,`스웨터`,`스`,`ㅅ`,`트리하우스`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 15,
   productNameKor: "\uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uB8E8\uD53C\uB108\uC2A4/\uD654\uC774\uD2B8",
@@ -566,12 +497,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-1.jpg", "./images/sub_page_img/CA23SSSWCR11284001/CA23SSSWCR11284001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`루피너스`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 16,
   productNameKor: "\uD6C4\uB514\uB4DC \uCE7C\uD558\uD2B8 \uC2A4\uC6FB\uC154\uCE20 \uD0A4\uC704/\uC2DC\uD2B8\uB860",
@@ -583,12 +509,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-1.jpg", "./images/sub_page_img/CA23SSSWCR11230001/CA23SSSWCR11230001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`키위`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 17,
   productNameKor: "\uD6C4\uB514\uB4DC \uB85C\uCEE4 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uB2C9\uC2A4/\uBE14\uB799",
@@ -600,12 +521,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-1.jpg", "./images/sub_page_img/CA23SSSWHO11200001/CA23SSSWHO11200001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`로커`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 18,
   productNameKor: "\uB12C\uC2A8 \uC2A4\uC6FB\uC154\uCE20 \uD53C\uC2E0 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
@@ -617,12 +533,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-1.jpg", "./images/sub_page_img/CA23SSSWCR11195001/CA23SSSWCR11195001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`shirt`,`셔츠`,`셔`,`ㅅ`,`피신`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** neat ******************/
 {
   propertyNumber: 19,
@@ -635,13 +546,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-1.jpg", "./images/sub_page_img/CA22FWKNKC10174001/CA22FWKNKC10174001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`재스퍼`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 20,
   productNameKor: "\uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uC2A4\uC6E8\uD130 \uD654\uC774\uD2B8",
@@ -653,12 +559,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-1.jpg", "./images/sub_page_img/CA23SSKNKP00040001/CA23SSKNKP00040001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`스테이트`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 21,
   productNameKor: "\uB9E4\uB514\uC2A8 \uC2A4\uC6E8\uD130 \uC544\uC774\uC2DC \uC6CC\uD130/\uD504\uB85C\uC2A4\uD2F0\uB4DC \uBE14\uB8E8",
@@ -670,13 +571,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-1.jpg", "./images/sub_page_img/CA22SSKNKP09357001/CA22SSKNKP09357001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`아이시`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 22,
   productNameKor: "\uC2A4\uD06C\uB9BD\uD2B8 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uB0B4\uCE04\uB7F4",
@@ -688,13 +584,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-1.jpg", "./images/sub_page_img/CA22FWKNKP00104001/CA22FWKNKP00104001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: true,
-  isSalesRate: 40 / 100,
-  // 곱하기 해주기
   isSalesRateValue: "30~50",
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`내츄럴`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 23,
   productNameKor: "\uC54C\uB354\uC2A4 \uB2C8\uD2B8 \uBCA0\uC2A4\uD2B8 \uCE90\uB9AC\uBE44\uC548 \uC2DC",
@@ -706,12 +597,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-1.jpg", "./images/sub_page_img/CA23SSKNKP11280001/CA23SSKNKP11280001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`캐리비안`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 24,
   productNameKor: "\uBC18\uD314 \uCF04\uC6E8\uC774 \uB2C8\uD2B8 \uD3F4\uB85C \uBE14\uB799",
@@ -723,12 +609,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-1.jpg", "./images/sub_page_img/CA23SSKNKP00002002/CA23SSKNKP00002002-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`neat`,`니트`,`니`,`ㄴ`,`폴로`,`${productNameKor}`],
+  isSoldOut: false
 }, /***************** t-shirt ******************/
 {
   propertyNumber: 25,
@@ -741,12 +622,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-1.jpg", "./images/sub_page_img/CA23SSTSSS11280001/CA23SSTSSS11280001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`캐리비안`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 26,
   productNameKor: "\uBC18\uD314 \uCF54\uC2A4\uD2B8 \uC2A4\uD14C\uC774\uD2B8 \uD2F0\uC154\uCE20 \uD654\uC774\uD2B8",
@@ -758,12 +634,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-1.jpg", "./images/sub_page_img/CA23SSTSSS00040026/CA23SSTSSS00040026-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스테이트`,`${productNameKor}`],
 }, {
   propertyNumber: 27,
   productNameKor: "\uBC18\uD314 \uD788\uD2B8 \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uC544\uB80C\uAC00",
@@ -775,12 +647,8 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-1.jpg", "./images/sub_page_img/CA23SSTSSS11234002/CA23SSTSSS11234002-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
   isSoldOut: false,
   isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
 }, {
   propertyNumber: 28,
   productNameKor: "\uBC18\uD314 \uB9E4\uB274\uC5BC \uD2F0\uC154\uCE20 \uB2EC\uB9AC\uC544 \uAC00\uBA3C\uD2B8 \uB2E4\uC774\uB4DC",
@@ -792,12 +660,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-1.jpg", "./images/sub_page_img/CA23SSTSSS11190002/CA23SSTSSS11190002-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`달리아`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 29,
   productNameKor: "\uBC18\uD314 \uB274 \uD504\uB860\uD2F0\uC5B4 \uD2F0\uC154\uCE20 \uBC84\uD314\uB85C",
@@ -809,12 +672,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-1.jpg", "./images/sub_page_img/CA23SSTSSS11110001/CA23SSTSSS11110001-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`프론티어`,`${productNameKor}`],
+  isSoldOut: false
 }, {
   propertyNumber: 30,
   productNameKor: "\uBC18\uD314 \uD31C \uC2A4\uD06C\uB9BD\uD2B8 \uD2F0\uC154\uCE20 \uBE14\uB799",
@@ -826,12 +684,7 @@ var sub_page_product_list = [
   imgSrc: ["./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-1.jpg", "./images/sub_page_img/CA23SSTSSS00002018/CA23SSTSSS00002018-0.jpg"],
   isNew: false,
   isBest: false,
-  isSales: false,
-  //isSalesRate: 1, 
-  //isSalesRateValue: ``,
-  isSoldOut: false,
-  isGender: "male"
-  //searchKeword : [`TShirt`,`티셔츠`,`티`,`ㅌ`,`스크립트`,`${productNameKor}`],
+  isSoldOut: false
 }];
 exports.sub_page_product_list = sub_page_product_list;
 var detail_page_produdct_list = [{
@@ -1783,7 +1636,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52856" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

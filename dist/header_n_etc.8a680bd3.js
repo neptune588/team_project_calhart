@@ -239,7 +239,9 @@ function moveValueCalc(el) {
 var clearCount;
 
 //동작함수 ,리셋함수, 재실행 함수 3단계로 나누어서 코드를 짜자.
-moveInterval(arguObject);
+setInterval(function () {
+  moveInterval(arguObject);
+}, arguObject.moveTime + 300);
 function moveInterval(obj) {
   //동작
   addClass(obj.moveEl, obj.ctrlClass);
@@ -265,9 +267,6 @@ function moveInterval(obj) {
     clearCount++;
     if (clearCount === 1) {
       clearInterval(repeatMove);
-      setTimeout(function () {
-        moveInterval(obj);
-      }, obj.moveTime + 300);
     }
   });
 }
@@ -448,7 +447,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54457" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52856" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
