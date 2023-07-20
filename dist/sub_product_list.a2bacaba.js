@@ -707,10 +707,193 @@ var detail_page_produdct_list = [{
   limitQuantity: 9
 }];
 exports.detail_page_produdct_list = detail_page_produdct_list;
+},{}],"js/sub_page_filter_data.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.filterSections = void 0;
+var filterSections = [{
+  sectnId: "menu_list_section",
+  sectnClass: ["menu_list_section_design"],
+  sectnIn: {
+    titleInfo: {
+      titleWrapClass: ["side_top"],
+      titleStr: "TOP",
+      titleClass: ["menu_title"],
+      resetIcon: ["fas fa-sync"],
+      resetClass: ["reset"],
+      resetStr: "리셋하기"
+    },
+    liInfo: {
+      ulId: "product_ment_list",
+      ulClass: ["product_menu_list_design", "check_detect"],
+      cmnLabelClass: ["chk_box"],
+      cmnInputType: "checkbox",
+      isSpan: false,
+      innerLi: [{
+        inputId: "jaket_cloth",
+        inputValue: "jaket",
+        labelStr: "자켓"
+      }, {
+        inputId: "sweater_cloth",
+        inputValue: "sweater",
+        labelStr: "스웨터"
+      }, {
+        inputId: "neat_cloth",
+        inputValue: "neat",
+        labelStr: "니트"
+      }, {
+        inputId: "shirt_cloth",
+        inputValue: "shirt",
+        labelStr: "셔츠"
+      }, {
+        inputId: "T_shirt_cloth",
+        inputValue: "TShirt",
+        labelStr: "티셔츠"
+      }]
+    }
+  }
+}, {
+  sectnId: "price_select_section",
+  sectnClass: ["price_select_design", "filter_section", "check_design"],
+  sectnIn: {
+    titleInfo: {
+      titleStr: "가격",
+      titleClass: ["info_title"]
+    },
+    liInfo: {
+      ulId: "price_list",
+      ulClass: ["price_list_design", "check_detect"],
+      isSpan: true,
+      cmnSpanClass: ["chk_box"],
+      cmnLabelClass: ["label_style"],
+      cmnInputType: ["checkbox"],
+      innerLi: [{
+        inputId: "price_range_0_50000",
+        inputValue: "0~50000",
+        labelStr: "0 ~ 50,000원"
+      }, {
+        inputId: "price_range_50000_150000",
+        inputValue: "50000~150000",
+        labelStr: "50,000원 ~ 150,000원"
+      }, {
+        inputId: "price_range_150000_250000",
+        inputValue: "150000~250000",
+        labelStr: "150,000원 ~ 250,000원"
+      }, {
+        inputId: "price_range_250000_500000",
+        inputValue: "250000~500000",
+        labelStr: "250,000원 ~ 500,000원"
+      }, {
+        inputId: "price_500000_up",
+        inputValue: "500000~",
+        labelStr: "500,000원 이상"
+      }]
+    }
+  }
+}, {
+  sectnId: "color_select_section",
+  sectnClass: ["color_select_design", "filter_section", "check_design"],
+  sectnIn: {
+    titleInfo: {
+      titleStr: "색상",
+      titleClass: ["info_title"]
+    },
+    liInfo: {
+      ulId: "color_list",
+      ulClass: ["color_list_design", "check_detect"],
+      isSpan: false,
+      cmnInputType: ["checkbox"],
+      innerLi: [{
+        inputId: "color_black",
+        inputValue: "black",
+        individualClass: ["black_box"]
+      }, {
+        inputId: "color_white",
+        inputValue: "white",
+        individualClass: ["white_box"]
+      }, {
+        inputId: "color_gray",
+        inputValue: "gray",
+        individualClass: ["gray_box"]
+      }, {
+        inputId: "color_brown",
+        inputValue: "brown",
+        individualClass: ["brown_box"]
+      }, {
+        inputId: "color_blue",
+        inputValue: "blue",
+        individualClass: ["blue_box"]
+      }, {
+        inputId: "color_sky_blue",
+        inputValue: "skyBlue",
+        individualClass: ["sky_blue_box"]
+      }, {
+        inputId: "color_green",
+        inputValue: "green",
+        individualClass: ["green_box"]
+      }, {
+        inputId: "color_green_down",
+        inputValue: "greenDown",
+        individualClass: ["green_down_box"]
+      }, {
+        inputId: "color_orange",
+        inputValue: "orange",
+        individualClass: ["orange_box"]
+      }, {
+        inputId: "color_pink",
+        inputValue: "pink",
+        individualClass: ["pink_box"]
+      }, {
+        inputId: "color_purple",
+        inputValue: "purple",
+        individualClass: ["purple_box"]
+      }]
+    }
+  }
+}, {
+  sectnId: "sale_select_section",
+  sectnClass: ["sale_select_design", "filter_section", "check_design"],
+  sectnIn: {
+    titleInfo: {
+      titleStr: "할인율",
+      titleClass: ["info_title"]
+    },
+    liInfo: {
+      ulId: "sale_list",
+      ulClass: ["sale_list_design", "check_detect"],
+      isSpan: true,
+      cmnSpanClass: ["chk_box"],
+      cmnLabelClass: ["label_style"],
+      cmnInputType: ["checkbox"],
+      innerLi: [{
+        inputId: "sale_range_0_30",
+        inputValue: "0~30",
+        labelStr: "0% ~ 30%"
+      }, {
+        inputId: "sale_range_30_50",
+        inputValue: "30~50",
+        labelStr: "30% ~ 50%"
+      }, {
+        inputId: "sale_range_50_70",
+        inputValue: "50~70",
+        labelStr: "50% ~ 70%"
+      }, {
+        inputId: "sale_70_up",
+        inputValue: "70~",
+        labelStr: "70% 이상"
+      }]
+    }
+  }
+}];
+exports.filterSections = filterSections;
 },{}],"js/sub_product_list.js":[function(require,module,exports) {
 "use strict";
 
 var _data = require("./data");
+var _sub_page_filter_data = require("./sub_page_filter_data");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -721,47 +904,117 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 var pdWrapper = document.querySelector('.product_list_wrapper');
 var pageSection = document.querySelector('.pagenation');
 var pageNumber = document.querySelector('.page_number');
+var sideFilter = document.querySelector('.side_filter');
 var listArr = _toConsumableArray(_data.sub_page_product_list);
 var viewLength = 12;
 var listInfo = {
-  wrapper: pdWrapper,
+  arr: listArr,
+  liWrapper: pdWrapper,
   maxView: viewLength,
-  arr: listArr
+  pageWrapper: pageSection,
+  pageNumber: pageNumber
 };
-function listCreate(obj) {
-  var wrapper = obj.wrapper,
-    maxView = obj.maxView,
-    arr = obj.arr;
+filterMaker();
+function filterMaker() {
+  var contents = "";
+  var receive = "";
+  _sub_page_filter_data.filterSections.forEach(function (obj, index) {
+    contents = "\n        <div id=\"".concat(obj.sectnId, "\" class=\"").concat(classReduce(obj.sectnClass), "\">\n            <h2 class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleClass), "\">").concat(obj.sectnIn.titleInfo.titleStr, "</h2>\n            <ul id=\"").concat(obj.sectnIn.liInfo.ulId, "\" class=\"").concat(classReduce(obj.sectnIn.liInfo.ulClass), "\">\n                ").concat(filterLiCreate(obj.sectnIn.liInfo), "\n            </ul>\n        </div>\n        ");
+    if (index === 0) {
+      contents = "\n            <div id=\"".concat(obj.sectnId, "\" class=\"").concat(classReduce(obj.sectnClass), "\">\n                <div class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleWrapClass), "\">\n                    <h2 class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleClass), "\">").concat(obj.sectnIn.titleInfo.titleStr, "</h2>\n                    <div class=\"").concat(classReduce(obj.sectnIn.titleInfo.resetClass), "\"><i class=\"").concat(classReduce(obj.sectnIn.titleInfo.resetIcon), "\"></i>").concat(obj.sectnIn.titleInfo.resetStr, "</div>\n                </div>\n                <ul id=\"").concat(obj.sectnIn.liInfo.ulId, "\" class=\"").concat(classReduce(obj.sectnIn.liInfo.ulClass), "\">\n                    ").concat(filterLiCreate(obj.sectnIn.liInfo), "\n                </ul>\n            </div>\n            ");
+    }
+    receive += contents;
+  });
+  sideFilter.innerHTML = receive;
+}
+function classReduce(arr) {
+  var total = arr.reduce(function (cur, next) {
+    return cur + " " + next;
+  });
+  return total;
+}
+function filterLiCreate(parentObj) {
   var list = "";
   var receive = "";
-  if (arr.length === 0) {
-    wrapper.innerHTML = "\n        <p class=\"lengthNotice\">\n            <i class=\"far fa-times-circle\"></i>\n            \uD574\uB2F9\uD558\uB294 \uC0C1\uD488\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!\n        </p>\n        ";
-  }
-  for (var i = 0; i < arr.length; i++) {
-    if (i === maxView) {
-      break;
-    }
-    list = "\n            <li>\n                <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                    <img src = ".concat(arr[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n                </a>    \n                <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                    <img src = ").concat(arr[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n                </a>\n                <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                    ").concat(arr[i].productNameKor, "\n                </a>\n                <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                    ").concat(arr[i].productModelName, "\n                </a>\n                <span class = \"price_unit\">\u20A9</span>\n                <span class = \"price\">").concat(arr[i].price.toLocaleString(), "</span>\n            </li>\n        ");
-    if (arr[i].isBest && arr[i].isNew) {
-      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"best\">BEST</span><span class=\"new\">NEW</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
-    } else if (arr[i].isBest) {
-      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"best\">BEST</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
-    } else if (arr[i].isNew) {
-      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"new\">NEW</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
+  parentObj.innerLi.forEach(function (obj) {
+    list = "\n        <li>\n            <input type=\"".concat(parentObj.cmnInputType, "\" id=").concat(obj.inputId, ">\n            <label for=\"").concat(obj.inputId, "\" class=\"").concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\">").concat(obj.labelStr ? obj.labelStr : "", "</label>\n        </li>        \n        ");
+    if (parentObj.isSpan) {
+      list = "\n                <li>\n                    <label class=\"".concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\" for=\"").concat(obj.inputId, "\">\n                        <input type=\"").concat(parentObj.cmnInputType, "\" id=\"").concat(obj.inputId, "\" value=\"").concat(obj.inputValue, "\">\n                        <span class=\"").concat(classReduce(parentObj.cmnSpanClass), "\"></span>\n                        ").concat(obj.labelStr, "\n                    </label>\n                </li>\n            ");
     }
     receive += list;
-  }
-  wrapper.innerHTML = receive;
+  });
+  return receive;
 }
-function pageCreate(obj) {
-  var list = "";
-  var receive = "";
-  for (var i = 1; i <= pageCalc(); i++) {}
+
+/* function listCreate(obj) {
+    let {liWrapper, maxView, arr, pageWrapper, pageNumber} = obj;
+
+    let list = ``;
+    let receive = ``;
+
+    if(arr.length === 0) {
+        liWrapper.innerHTML = `
+        <p class="lengthNotice">
+            <i class="far fa-times-circle"></i>
+            해당하는 상품이 존재하지 않습니다!
+        </p>
+        `
+    }
+
+    for(let i = 0; i < arr.length; i++) {
+        if(i === maxView) {
+            break;
+        }
+        list = `
+            <li>
+                <a class = "img_link_01" href = './detail_product_buy.html'>
+                    <img src = ${arr[i].imgSrc[0]} alt = "product_img_${i}">
+                </a>    
+                <a class = "img_link_02" href = './detail_product_buy.html'>
+                    <img src = ${arr[i].imgSrc[1]} alt = "product_img_${i}_hover">
+                </a>
+                <a class = "product_name" href = "./detail_product_buy.html">
+                    ${arr[i].productNameKor}
+                </a>
+                <a class = "model_name" href = "./detail_product_buy.html">
+                    ${arr[i].productModelName}
+                </a>
+                <span class = "price_unit">₩</span>
+                <span class = "price">${arr[i].price.toLocaleString()}</span>
+            </li>
+        `
+        if (arr[i].isBest && arr[i].isNew) {
+            list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="best">BEST</span><span class="new">NEW</span><a class = "product_name" href = "./detail_product_buy.html">`);
+        } else if (arr[i].isBest) {
+            list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="best">BEST</span><a class = "product_name" href = "./detail_product_buy.html">`);
+        } else if (arr[i].isNew) {
+            list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="new">NEW</span><a class = "product_name" href = "./detail_product_buy.html">`);
+        }
+        receive += list;
+    }
+    liWrapper.innerHTML = receive;
+
+    handleSort();
+    pageCreate(arr, pageWrapper, pageNumber);
 }
-function pageCalc(arr, viewLength) {
-  var pageNum = Math.ceil(arr.length / viewLength);
-  return pageNum;
+
+function handleSort(){
+
 }
+
+function pageCreate(myArr, maxView) {
+    let list = ``;
+    let receive = ``;
+
+    for(let i = 1; i <= pageCalc(myArr, maxView); i++) {
+
+    }
+}
+
+function pageCalc (arr, viewLength) {
+    const pageNum = Math.ceil(arr.length / viewLength);
+    return pageNum;
+} */
 
 /*************** filter_view_control ******************/
 var filterBox = document.querySelector('.filter_btn');
@@ -770,19 +1023,25 @@ var filterState = false;
 filterBox.addEventListener('click', function () {
   if (!filterState) {
     addClass(filterBox, 'filter_on');
-    filterSection.forEach(function (value) {
-      addClass(value, "block_on");
+    filterSection.forEach(function (section) {
+      return addClass(section, "block_on");
     });
     filterState = true;
   } else {
     removeClass(filterBox, 'filter_on');
-    filterSection.forEach(function (value) {
-      removeClass(value, "block_on");
+    filterSection.forEach(function (section) {
+      return removeClass(section, "block_on");
     });
     filterState = false;
   }
 });
-},{"./data":"js/data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+function addClass(el, className) {
+  el.classList.add(className);
+}
+function removeClass(el, className) {
+  el.classList.remove(className);
+}
+},{"./data":"js/data.js","./sub_page_filter_data":"js/sub_page_filter_data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -807,7 +1066,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52856" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54662" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

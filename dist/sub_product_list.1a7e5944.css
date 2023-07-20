@@ -194,15 +194,15 @@ input {
   margin-bottom: 10px;
   letter-spacing: -0.2px;
 }
-.wrapper .side_filter .menu_list_section .side_top {
+.wrapper .side_filter .menu_list_section_design .side_top {
   display: flex;
   padding: 15px 0;
   border-bottom: 4px solid black;
 }
-.wrapper .side_filter .menu_list_section .side_top .menu_title {
+.wrapper .side_filter .menu_list_section_design .side_top .menu_title {
   font-size: 2.4rem;
 }
-.wrapper .side_filter .menu_list_section .side_top .reset {
+.wrapper .side_filter .menu_list_section_design .side_top .reset {
   margin-top: 30px;
   user-select: none;
   cursor: pointer;
@@ -212,44 +212,45 @@ input {
   transition: all 0.2s;
   color: #4136BF;
 }
-.wrapper .side_filter .menu_list_section .side_top .reset i {
+.wrapper .side_filter .menu_list_section_design .side_top .reset i {
   margin-right: 5px;
 }
-.wrapper .side_filter .menu_list_section .side_top .reset:hover {
+.wrapper .side_filter .menu_list_section_design .side_top .reset:hover {
   color: #ffbf00;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list {
+.wrapper .side_filter .menu_list_section_design .product_menu_list_design {
   font-size: 1.4rem;
   font-family: "Noto Sans KR", sans-serif;
   font-weight: 700;
   padding: 20px 0;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list li {
+.wrapper .side_filter .menu_list_section_design .product_menu_list_design li {
   margin-bottom: 10px;
   user-select: none;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list li:last-child {
+.wrapper .side_filter .menu_list_section_design .product_menu_list_design li:last-child {
   margin-bottom: 0;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list li input:checked ~ label {
+.wrapper .side_filter .menu_list_section_design .product_menu_list_design li input:checked ~ label {
   color: black;
 }
-.wrapper .side_filter .menu_list_section .product_menu_list li label {
+.wrapper .side_filter .menu_list_section_design .product_menu_list_design li label {
   cursor: pointer;
   display: block;
   color: gray;
   transition: all 0.1s;
 }
-.wrapper .side_filter .color_select ul {
+.wrapper .side_filter .color_select_design ul {
   display: flex;
+  flex-wrap: wrap;
 }
-.wrapper .side_filter .color_select ul li input:checked ~ label {
+.wrapper .side_filter .color_select_design ul li input:checked ~ label {
   border: 4px solid black;
 }
-.wrapper .side_filter .color_select ul li input:checked ~ .black_box {
+.wrapper .side_filter .color_select_design ul li input:checked ~ .black_box {
   border: 4px solid #ffbf00;
 }
-.wrapper .side_filter .color_select ul li label {
+.wrapper .side_filter .color_select_design ul li label {
   display: block;
   width: 20px;
   height: 20px;
@@ -257,45 +258,45 @@ input {
   margin-right: 15px;
   margin-bottom: 15px;
 }
-.wrapper .side_filter .color_select ul li label.black_box {
+.wrapper .side_filter .color_select_design ul li label.black_box {
   background-color: black;
 }
-.wrapper .side_filter .color_select ul li label.white_box {
+.wrapper .side_filter .color_select_design ul li label.white_box {
   background-color: white;
   border: 1px solid #bbbbbb;
 }
-.wrapper .side_filter .color_select ul li label.gray_box {
+.wrapper .side_filter .color_select_design ul li label.gray_box {
   background-color: gray;
 }
-.wrapper .side_filter .color_select ul li label.brown_box {
+.wrapper .side_filter .color_select_design ul li label.brown_box {
   background-color: burlywood;
 }
-.wrapper .side_filter .color_select ul li label.blue_box {
+.wrapper .side_filter .color_select_design ul li label.blue_box {
   background-color: rgb(0, 81, 255);
 }
-.wrapper .side_filter .color_select ul li label.sky_blue_box {
+.wrapper .side_filter .color_select_design ul li label.sky_blue_box {
   background-color: skyblue;
 }
-.wrapper .side_filter .color_select ul li label.green_box {
+.wrapper .side_filter .color_select_design ul li label.green_box {
   background-color: rgb(9, 163, 9);
 }
-.wrapper .side_filter .color_select ul li label.green_down_box {
+.wrapper .side_filter .color_select_design ul li label.green_down_box {
   background-color: rgb(16, 90, 16);
 }
-.wrapper .side_filter .color_select ul li label.orange_box {
+.wrapper .side_filter .color_select_design ul li label.orange_box {
   background-color: orange;
 }
-.wrapper .side_filter .color_select ul li label.pink_box {
+.wrapper .side_filter .color_select_design ul li label.pink_box {
   background-color: pink;
 }
-.wrapper .side_filter .color_select ul li label.purple_box {
+.wrapper .side_filter .color_select_design ul li label.purple_box {
   background-color: rgb(155, 13, 155);
 }
-.wrapper .side_filter .price_select label {
+.wrapper .side_filter .price_select_design label {
   margin-bottom: 10px;
   letter-spacing: -0.2px;
 }
-.wrapper .side_filter .sale_select label {
+.wrapper .side_filter .sale_select_design label {
   margin-bottom: 10px;
   letter-spacing: -0.2px;
 }

@@ -128,7 +128,7 @@ input {
             }
         }
 
-        .menu_list_section {
+        .menu_list_section_design {
             .side_top {
                 display: flex;
                 padding: 15px 0;
@@ -154,7 +154,7 @@ input {
                 }
             }
 
-            .product_menu_list {
+            .product_menu_list_design {
                 font-size: $small_up_font_size;
                 font-family: $font_noto_sans;
                 font-weight: 700;
@@ -181,9 +181,10 @@ input {
             }
         }
 
-        .color_select {
+        .color_select_design {
             ul {
                 display: flex;
+                flex-wrap: wrap;
                 li {
                     input {
                         &:checked ~ label {
@@ -238,14 +239,14 @@ input {
             }
         }
 
-        .price_select {
+        .price_select_design {
             label {
                 margin-bottom: 10px;
                 letter-spacing: -0.2px;
             }
         }
 
-        .sale_select {
+        .sale_select_design {
             label {
                 margin-bottom: 10px;
                 letter-spacing: -0.2px;

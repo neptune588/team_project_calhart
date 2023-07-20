@@ -684,4 +684,4 @@ export {
 	mdsProductList,
 	sub_page_product_list,
 	detail_page_produdct_list,
-};
+}

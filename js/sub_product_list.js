@@ -1,27 +1,101 @@
 import { sub_page_product_list } from './data';
+import { filterSections } from './sub_page_filter_data';
 
 /*************** product_list ******************/
 const pdWrapper = document.querySelector('.product_list_wrapper');
 const pageSection = document.querySelector('.pagenation');
 const pageNumber = document.querySelector('.page_number');
+const sideFilter = document.querySelector('.side_filter');
 
 const listArr = [...sub_page_product_list];
 const viewLength = 12;
 
 const listInfo = {
-    wrapper: pdWrapper,
-    maxView: viewLength,
     arr: listArr,
+    liWrapper: pdWrapper,
+    maxView: viewLength,
+    pageWrapper: pageSection,
+    pageNumber: pageNumber,
 }
 
-function listCreate(obj) {
-    let {wrapper, maxView, arr} = obj;
+filterMaker();
+function filterMaker() {
+    let contents = ``;
+    let receive = ``;
+
+    filterSections.forEach((obj, index) => {
+        contents = `
+        <div id="${obj.sectnId}" class="${classReduce(obj.sectnClass)}">
+            <h2 class="${classReduce(obj.sectnIn.titleInfo.titleClass)}">${obj.sectnIn.titleInfo.titleStr}</h2>
+            <ul id="${obj.sectnIn.liInfo.ulId}" class="${classReduce(obj.sectnIn.liInfo.ulClass)}">
+                ${filterLiCreate(obj.sectnIn.liInfo)}
+            </ul>
+        </div>
+        `
+
+        if(index === 0) {
+            contents = `
+            <div id="${obj.sectnId}" class="${classReduce(obj.sectnClass)}">
+                <div class="${classReduce(obj.sectnIn.titleInfo.titleWrapClass)}">
+                    <h2 class="${classReduce(obj.sectnIn.titleInfo.titleClass)}">${obj.sectnIn.titleInfo.titleStr}</h2>
+                    <div class="${classReduce(obj.sectnIn.titleInfo.resetClass)}"><i class="${classReduce(obj.sectnIn.titleInfo.resetIcon)}"></i>${obj.sectnIn.titleInfo.resetStr}</div>
+                </div>
+                <ul id="${obj.sectnIn.liInfo.ulId}" class="${classReduce(obj.sectnIn.liInfo.ulClass)}">
+                    ${filterLiCreate(obj.sectnIn.liInfo)}
+                </ul>
+            </div>
+            `
+        } 
+
+        receive += contents;
+    })
+
+    sideFilter.innerHTML = receive;
+}
+
+function classReduce(arr) {
+    const total = arr.reduce((cur, next) => cur + " " + next);
+    return total;
+}
+function filterLiCreate(parentObj) {
+    let list = ``;
+    let receive = ``;
+
+    parentObj.innerLi.forEach((obj) => {
+
+        list = `
+        <li>
+            <input type="${parentObj.cmnInputType}" id=${obj.inputId}>
+            <label for="${obj.inputId}" class="${parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass)}">${obj.labelStr ? obj.labelStr : ""}</label>
+        </li>        
+        `
+        
+        if(parentObj.isSpan) {
+            list = `
+                <li>
+                    <label class="${parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass)}" for="${obj.inputId}">
+                        <input type="${parentObj.cmnInputType}" id="${obj.inputId}" value="${obj.inputValue}">
+                        <span class="${classReduce(parentObj.cmnSpanClass)}"></span>
+                        ${obj.labelStr}
+                    </label>
+                </li>
+            `
+        } 
+        
+
+        receive += list;
+    })
+    return receive;
+}
+
+/* function listCreate(obj) {
+    let {liWrapper, maxView, arr, pageWrapper, pageNumber} = obj;
 
     let list = ``;
     let receive = ``;
 
     if(arr.length === 0) {
-        wrapper.innerHTML = `
+        liWrapper.innerHTML = `
         <p class="lengthNotice">
             <i class="far fa-times-circle"></i>
             해당하는 상품이 존재하지 않습니다!
@@ -60,14 +134,21 @@ function listCreate(obj) {
         }
         receive += list;
     }
-    wrapper.innerHTML = receive;
+    liWrapper.innerHTML = receive;
+
+    handleSort();
+    pageCreate(arr, pageWrapper, pageNumber);
 }
 
-function pageCreate(obj) {
+function handleSort(){
+
+}
+
+function pageCreate(myArr, maxView) {
     let list = ``;
     let receive = ``;
 
-    for(let i = 1; i <= pageCalc(); i++) {
+    for(let i = 1; i <= pageCalc(myArr, maxView); i++) {
 
     }
 }
@@ -75,7 +156,7 @@ function pageCreate(obj) {
 function pageCalc (arr, viewLength) {
     const pageNum = Math.ceil(arr.length / viewLength);
     return pageNum;
-}
+} */
 
 /*************** filter_view_control ******************/
 const filterBox = document.querySelector('.filter_btn');
@@ -85,15 +166,18 @@ let filterState = false;
 filterBox.addEventListener('click', () => {
     if (!filterState) {
         addClass(filterBox, 'filter_on');
-        filterSection.forEach((value) => {
-            addClass(value, `block_on`);
-        });
+        filterSection.forEach(section => addClass(section, `block_on`));
         filterState = true;
     } else {
         removeClass(filterBox, 'filter_on');
-        filterSection.forEach((value) => {
-            removeClass(value, `block_on`);
-        });
+        filterSection.forEach(section => removeClass(section, `block_on`));
         filterState = false;
     }
 });
+
+function addClass(el, className) {
+    el.classList.add(className);
+}
+function removeClass(el, className) {
+    el.classList.remove(className);
+}
