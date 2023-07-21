@@ -900,20 +900,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-/*************** product_list ******************/
-var pdWrapper = document.querySelector('.product_list_wrapper');
-var pageSection = document.querySelector('.pagenation');
-var pageNumber = document.querySelector('.page_number');
+/*************** filter_create ******************/
 var sideFilter = document.querySelector('.side_filter');
-var listArr = _toConsumableArray(_data.sub_page_product_list);
-var viewLength = 12;
-var listInfo = {
-  arr: listArr,
-  liWrapper: pdWrapper,
-  maxView: viewLength,
-  pageWrapper: pageSection,
-  pageNumber: pageNumber
-};
 filterMaker();
 function filterMaker() {
   var contents = "";
@@ -937,7 +925,7 @@ function filterLiCreate(parentObj) {
   var list = "";
   var receive = "";
   parentObj.innerLi.forEach(function (obj) {
-    list = "\n        <li>\n            <input type=\"".concat(parentObj.cmnInputType, "\" id=").concat(obj.inputId, ">\n            <label for=\"").concat(obj.inputId, "\" class=\"").concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\">").concat(obj.labelStr ? obj.labelStr : "", "</label>\n        </li>        \n        ");
+    list = "\n        <li>\n            <input type=\"".concat(parentObj.cmnInputType, "\" id=").concat(obj.inputId, " value=\"").concat(obj.inputValue, "\">\n            <label for=\"").concat(obj.inputId, "\" class=\"").concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\">").concat(obj.labelStr ? obj.labelStr : "", "</label>\n        </li>        \n        ");
     if (parentObj.isSpan) {
       list = "\n                <li>\n                    <label class=\"".concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\" for=\"").concat(obj.inputId, "\">\n                        <input type=\"").concat(parentObj.cmnInputType, "\" id=\"").concat(obj.inputId, "\" value=\"").concat(obj.inputValue, "\">\n                        <span class=\"").concat(classReduce(parentObj.cmnSpanClass), "\"></span>\n                        ").concat(obj.labelStr, "\n                    </label>\n                </li>\n            ");
     }
@@ -945,78 +933,6 @@ function filterLiCreate(parentObj) {
   });
   return receive;
 }
-
-/* function listCreate(obj) {
-    let {liWrapper, maxView, arr, pageWrapper, pageNumber} = obj;
-
-    let list = ``;
-    let receive = ``;
-
-    if(arr.length === 0) {
-        liWrapper.innerHTML = `
-        <p class="lengthNotice">
-            <i class="far fa-times-circle"></i>
-            해당하는 상품이 존재하지 않습니다!
-        </p>
-        `
-    }
-
-    for(let i = 0; i < arr.length; i++) {
-        if(i === maxView) {
-            break;
-        }
-        list = `
-            <li>
-                <a class = "img_link_01" href = './detail_product_buy.html'>
-                    <img src = ${arr[i].imgSrc[0]} alt = "product_img_${i}">
-                </a>    
-                <a class = "img_link_02" href = './detail_product_buy.html'>
-                    <img src = ${arr[i].imgSrc[1]} alt = "product_img_${i}_hover">
-                </a>
-                <a class = "product_name" href = "./detail_product_buy.html">
-                    ${arr[i].productNameKor}
-                </a>
-                <a class = "model_name" href = "./detail_product_buy.html">
-                    ${arr[i].productModelName}
-                </a>
-                <span class = "price_unit">₩</span>
-                <span class = "price">${arr[i].price.toLocaleString()}</span>
-            </li>
-        `
-        if (arr[i].isBest && arr[i].isNew) {
-            list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="best">BEST</span><span class="new">NEW</span><a class = "product_name" href = "./detail_product_buy.html">`);
-        } else if (arr[i].isBest) {
-            list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="best">BEST</span><a class = "product_name" href = "./detail_product_buy.html">`);
-        } else if (arr[i].isNew) {
-            list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="new">NEW</span><a class = "product_name" href = "./detail_product_buy.html">`);
-        }
-        receive += list;
-    }
-    liWrapper.innerHTML = receive;
-
-    handleSort();
-    pageCreate(arr, pageWrapper, pageNumber);
-}
-
-function handleSort(){
-
-}
-
-function pageCreate(myArr, maxView) {
-    let list = ``;
-    let receive = ``;
-
-    for(let i = 1; i <= pageCalc(myArr, maxView); i++) {
-
-    }
-}
-
-function pageCalc (arr, viewLength) {
-    const pageNum = Math.ceil(arr.length / viewLength);
-    return pageNum;
-} */
-
-/*************** filter_view_control ******************/
 var filterBox = document.querySelector('.filter_btn');
 var filterSection = document.querySelectorAll('.filter_section');
 var filterState = false;
@@ -1035,6 +951,193 @@ filterBox.addEventListener('click', function () {
     filterState = false;
   }
 });
+
+/*************** list_create ******************/
+var pdWrapper = document.querySelector('.product_list_wrapper');
+var pageSection = document.querySelector('.pagenation');
+var pageNumber = document.querySelector('.page_number');
+var prevPage = document.getElementById('prev_btn');
+var nextPage = document.getElementById('next_btn');
+var firstPage = document.getElementById('first_prev_btn');
+var lastPage = document.getElementById('last_next_btn');
+var sortChk = document.getElementById('sort_chk');
+var listArr = _toConsumableArray(_data.sub_page_product_list);
+var viewLength = 12;
+var listObj = {
+  liWrapper: pdWrapper,
+  maxView: viewLength,
+  pageWrapper: pageNumber,
+  pageSection: pageSection,
+  pagePrev: prevPage,
+  pageNext: nextPage,
+  pageFirst: firstPage,
+  pageLast: lastPage,
+  paegLength: 0,
+  curPageIndex: 0
+};
+handleSort(listObj, listArr);
+function handleSort(obj, arr) {
+  listCreate(obj, arr);
+  pageCreate(obj, arr);
+  var sortArr;
+  sortChk.addEventListener('change', function (e) {
+    var nowValue = e.target.value;
+    if (nowValue === "defalut" || nowValue === "latest") {
+      sortArr = _toConsumableArray(arr).sort(function (cur, next) {
+        return cur.propertyNumber - next.propertyNumber;
+      });
+    }
+    if (nowValue === "price") {
+      sortArr = _toConsumableArray(arr).sort(function (cur, next) {
+        if (cur.price < next.price) {
+          return -1;
+        } else if (cur.price === next.price) {
+          return 0;
+        }
+      });
+    }
+    obj.curPageIndex = 0;
+    listCreate(obj, sortArr);
+    pageCreate(obj, sortArr);
+  });
+}
+function listCreate(obj, arr) {
+  var list01 = "";
+  var list02 = "";
+  var list03 = "";
+  var receive = "";
+  if (arr.length === 0) {
+    obj.liWrapper.innerHTML = "\n        <p class=\"lengthNotice\">\n            <i class=\"far fa-times-circle\"></i>\n            \uD574\uB2F9\uD558\uB294 \uC0C1\uD488\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!\n        </p>\n        ";
+  }
+  for (var i = 0; i < arr.length; i++) {
+    if (i === obj.maxView) {
+      break;
+    }
+    list01 = "\n                <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                    <img src = ".concat(arr[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n                </a>    \n                <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                    <img src = ").concat(arr[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n                </a>\n            ");
+    list02 = "\n                <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                    ".concat(arr[i].productNameKor, "\n                </a>\n                <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                    ").concat(arr[i].productModelName, "\n                </a>\n                <span class = \"price_unit\">\u20A9</span>\n                <span class = \"price\">").concat(arr[i].price.toLocaleString(), "</span>\n            ");
+    if (arr[i].isNew) {
+      list02 = "\n                <span class=\"new\">NEW</span>\n                ".concat(list02, "\n            ");
+    }
+    if (arr[i].isBest) {
+      list02 = "\n                <span class=\"best\">BEST</span>\n                ".concat(list02, "\n            ");
+    }
+    list03 = "\n        <li>\n            ".concat(list01, "\n            ").concat(list02, "\n        </li>\n        ");
+    receive += list03;
+  }
+  obj.liWrapper.innerHTML = receive;
+}
+function pageCreate(obj, arr) {
+  var list = "";
+  var receive = "";
+  obj.paegLength = pageCalc(arr, obj.maxView);
+  if (arr.length === 0) {
+    obj.pageSection.innerHTML = "";
+  }
+  for (var i = 0; i < obj.paegLength; i++) {
+    list = "<li>".concat(i + 1, "</li>");
+    if (i === obj.curPageIndex) {
+      list = "<li class=\"page_on\">".concat(i + 1, "</li>");
+    }
+    receive += list;
+  }
+  obj.pageWrapper.innerHTML = receive;
+  pageControl(obj, arr);
+}
+function pageControl(obj, arr) {
+  var pageBtn = obj.pageWrapper.querySelectorAll('li');
+  pageBtn.forEach(function (page, index) {
+    page.addEventListener('click', function () {
+      /*             first = 0 * 12 -> 0 
+                  last = first( == 0) + 12
+      
+                  first = 1 * 12 -> 12
+                  last = first( == 12) + 12 */
+
+      for (var j = 0; j < pageBtn.length; j++) {
+        removeClass(pageBtn[j], 'page_on');
+      }
+      addClass(page, 'page_on');
+      obj.curPageIndex = index;
+      var first = index * obj.maxView;
+      var last = first + obj.maxView;
+      var result = _toConsumableArray(arr).splice(first, last);
+      listCreate(obj, result);
+      window.scrollTo({
+        top: 0,
+        smooth: "behaivor"
+      });
+    });
+  });
+  obj.pagePrev.addEventListener('click', function () {
+    return pagePrevClick(obj, arr, pageBtn);
+  });
+  obj.pageNext.addEventListener('click', function () {
+    return pagePrevClick(obj, arr, pageBtn);
+  });
+}
+function pagePrevClick(obj, arr, pageBtn) {
+  return function () {
+    obj.curPageIndex = obj.curPageIndex - 1;
+    console.log(obj.curPageIndex);
+    if (obj.curPageIndex < 0) {
+      obj.curPageIndex = 0;
+      alert('첫번쨰 페이지 입니다!');
+      console.log(obj.curPageIndex);
+    } else {
+      for (var j = 0; j < pageBtn.length; j++) {
+        removeClass(pageBtn[j], 'page_on');
+      }
+      addClass(pageBtn[obj.curPageIndex], 'page_on');
+      var first = obj.curPageIndex * obj.maxView;
+      var last = first + obj.maxView;
+      var result = _toConsumableArray(arr).splice(first, last);
+      listCreate(obj, result);
+      window.scrollTo({
+        top: 0,
+        smooth: "behaivor"
+      });
+    }
+  };
+}
+function pageNextClick(obj, arr, pageBtn) {
+  return function () {
+    //next누르면 페이지[0] -> 페이지[1]되고 그거 기반으로 리스트가 뽑힘.
+    obj.curPageIndex = obj.curPageIndex + 1;
+    console.log(obj.curPageIndex);
+
+    //+1이된 curPageIndex가 page의 갯수와 같아졌다는 뜻은, 마지막 페이지라는 뜻이니까
+    //즉 마지막 페이지에서 next를 눌렀다는 뜻이니까
+    //curPageIndex를 다시 마지막 인덱스로 만들어줌.
+    if (obj.curPageIndex >= obj.paegLength) {
+      obj.curPageIndex = obj.paegLength - 1;
+      alert('마지막 페이지 입니다!');
+    } else {
+      for (var j = 0; j < pageBtn.length; j++) {
+        removeClass(pageBtn[j], 'page_on');
+      }
+      addClass(pageBtn[obj.curPageIndex], 'page_on');
+      var first = obj.curPageIndex * obj.maxView;
+      var last = first + obj.maxView;
+      var result = _toConsumableArray(arr).splice(first, last);
+      listCreate(obj, result);
+      window.scrollTo({
+        top: 0,
+        smooth: "behaivor"
+      });
+    }
+  };
+}
+function pageCalc(arr, viewLength) {
+  /*     let pageNum;
+      if(arr.length % viewLength > 0) {
+          pageNum = Math.floor((arr.length / viewLength)) + 1
+      } else {
+          pageNum = arr.length / viewLength
+      } */
+
+  var pageNum = Math.ceil(arr.length / viewLength);
+  return pageNum;
+}
 function addClass(el, className) {
   el.classList.add(className);
 }
@@ -1066,7 +1169,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54662" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55767" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
