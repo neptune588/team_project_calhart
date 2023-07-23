@@ -716,7 +716,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.filterSections = void 0;
 var filterSections = [{
   sectnId: "menu_list_section",
-  sectnClass: ["menu_list_section_design"],
+  sectnClass: ["menu_list_section_design", "check_section"],
   sectnIn: {
     titleInfo: {
       titleWrapClass: ["side_top"],
@@ -757,7 +757,7 @@ var filterSections = [{
   }
 }, {
   sectnId: "price_select_section",
-  sectnClass: ["price_select_design", "filter_section", "check_design"],
+  sectnClass: ["price_select_design", "filter_section", "check_design", "check_section"],
   sectnIn: {
     titleInfo: {
       titleStr: "가격",
@@ -795,7 +795,7 @@ var filterSections = [{
   }
 }, {
   sectnId: "color_select_section",
-  sectnClass: ["color_select_design", "filter_section", "check_design"],
+  sectnClass: ["color_select_design", "filter_section", "check_design", "check_section"],
   sectnIn: {
     titleInfo: {
       titleStr: "색상",
@@ -855,7 +855,7 @@ var filterSections = [{
   }
 }, {
   sectnId: "sale_select_section",
-  sectnClass: ["sale_select_design", "filter_section", "check_design"],
+  sectnClass: ["sale_select_design", "filter_section", "check_design", "check_section"],
   sectnIn: {
     titleInfo: {
       titleStr: "할인율",
@@ -907,9 +907,9 @@ function filterMaker() {
   var contents = "";
   var receive = "";
   _sub_page_filter_data.filterSections.forEach(function (obj, index) {
-    contents = "\n        <div id=\"".concat(obj.sectnId, "\" class=\"").concat(classReduce(obj.sectnClass), "\">\n            <h2 class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleClass), "\">").concat(obj.sectnIn.titleInfo.titleStr, "</h2>\n            <ul id=\"").concat(obj.sectnIn.liInfo.ulId, "\" class=\"").concat(classReduce(obj.sectnIn.liInfo.ulClass), "\">\n                ").concat(filterLiCreate(obj.sectnIn.liInfo), "\n            </ul>\n        </div>\n        ");
+    contents = "\n        <div id=\"".concat(obj.sectnId, "\" class=\"").concat(classReduce(obj.sectnClass), "\">\n            <h2 class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleClass), "\">").concat(obj.sectnIn.titleInfo.titleStr, "</h2>\n            <ul id=\"").concat(obj.sectnIn.liInfo.ulId, "\" class=\"").concat(classReduce(obj.sectnIn.liInfo.ulClass), "\">\n                ").concat(filterLiCreate(obj.sectnIn.liInfo, index), "\n            </ul>\n        </div>\n        ");
     if (index === 0) {
-      contents = "\n            <div id=\"".concat(obj.sectnId, "\" class=\"").concat(classReduce(obj.sectnClass), "\">\n                <div class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleWrapClass), "\">\n                    <h2 class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleClass), "\">").concat(obj.sectnIn.titleInfo.titleStr, "</h2>\n                    <div class=\"").concat(classReduce(obj.sectnIn.titleInfo.resetClass), "\"><i class=\"").concat(classReduce(obj.sectnIn.titleInfo.resetIcon), "\"></i>").concat(obj.sectnIn.titleInfo.resetStr, "</div>\n                </div>\n                <ul id=\"").concat(obj.sectnIn.liInfo.ulId, "\" class=\"").concat(classReduce(obj.sectnIn.liInfo.ulClass), "\">\n                    ").concat(filterLiCreate(obj.sectnIn.liInfo), "\n                </ul>\n            </div>\n            ");
+      contents = "\n            <div id=\"".concat(obj.sectnId, "\" class=\"").concat(classReduce(obj.sectnClass), "\">\n                <div class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleWrapClass), "\">\n                    <h2 class=\"").concat(classReduce(obj.sectnIn.titleInfo.titleClass), "\">").concat(obj.sectnIn.titleInfo.titleStr, "</h2>\n                    <div class=\"").concat(classReduce(obj.sectnIn.titleInfo.resetClass), "\"><i class=\"").concat(classReduce(obj.sectnIn.titleInfo.resetIcon), "\"></i>").concat(obj.sectnIn.titleInfo.resetStr, "</div>\n                </div>\n                <ul id=\"").concat(obj.sectnIn.liInfo.ulId, "\" class=\"").concat(classReduce(obj.sectnIn.liInfo.ulClass), "\">\n                    ").concat(filterLiCreate(obj.sectnIn.liInfo, index), "\n                </ul>\n            </div>\n            ");
     }
     receive += contents;
   });
@@ -921,13 +921,13 @@ function classReduce(arr) {
   });
   return total;
 }
-function filterLiCreate(parentObj) {
+function filterLiCreate(parentObj, parentIndex) {
   var list = "";
   var receive = "";
   parentObj.innerLi.forEach(function (obj) {
-    list = "\n        <li>\n            <input type=\"".concat(parentObj.cmnInputType, "\" id=").concat(obj.inputId, " value=\"").concat(obj.inputValue, "\">\n            <label for=\"").concat(obj.inputId, "\" class=\"").concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\">").concat(obj.labelStr ? obj.labelStr : "", "</label>\n        </li>        \n        ");
+    list = "\n        <li>\n            <input type=\"".concat(parentObj.cmnInputType, "\" id=").concat(obj.inputId, " value=\"").concat(obj.inputValue, "\" data-my-filter-index=").concat(parentIndex, ">\n            <label for=\"").concat(obj.inputId, "\" class=\"").concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\">").concat(obj.labelStr ? obj.labelStr : "", "</label>\n        </li>        \n        ");
     if (parentObj.isSpan) {
-      list = "\n                <li>\n                    <label class=\"".concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\" for=\"").concat(obj.inputId, "\">\n                        <input type=\"").concat(parentObj.cmnInputType, "\" id=\"").concat(obj.inputId, "\" value=\"").concat(obj.inputValue, "\">\n                        <span class=\"").concat(classReduce(parentObj.cmnSpanClass), "\"></span>\n                        ").concat(obj.labelStr, "\n                    </label>\n                </li>\n            ");
+      list = "\n                <li>\n                    <label class=\"".concat(parentObj.cmnLabelClass ? classReduce(parentObj.cmnLabelClass) : classReduce(obj.individualClass), "\" for=\"").concat(obj.inputId, "\">\n                        <input type=\"").concat(parentObj.cmnInputType, "\" id=\"").concat(obj.inputId, "\" value=\"").concat(obj.inputValue, "\" data-my-filter-index=").concat(parentIndex, ">\n                        <span class=\"").concat(classReduce(parentObj.cmnSpanClass), "\"></span>\n                        ").concat(obj.labelStr, "\n                    </label>\n                </li>\n            ");
     }
     receive += list;
   });
@@ -955,7 +955,7 @@ filterBox.addEventListener('click', function () {
 /*************** list_create ******************/
 var pdWrapper = document.querySelector('.product_list_wrapper');
 var pageSection = document.querySelector('.pagenation');
-var pageNumber = document.querySelector('.page_number');
+var pageNumberWrapper = document.querySelector('.page_number_wrapper');
 var prevPage = document.getElementById('prev_btn');
 var nextPage = document.getElementById('next_btn');
 var firstPage = document.getElementById('first_prev_btn');
@@ -964,31 +964,71 @@ var sortChk = document.getElementById('sort_chk');
 var listArr = _toConsumableArray(_data.sub_page_product_list);
 var viewLength = 12;
 var listObj = {
+  referenceArr: listArr,
   liWrapper: pdWrapper,
   maxView: viewLength,
-  pageWrapper: pageNumber,
+  pageNumber: null,
+  pageWrapper: pageNumberWrapper,
   pageSection: pageSection,
-  pagePrev: prevPage,
-  pageNext: nextPage,
-  pageFirst: firstPage,
-  pageLast: lastPage,
   paegLength: 0,
   curPageIndex: 0
 };
 handleSort(listObj, listArr);
-function handleSort(obj, arr) {
-  listCreate(obj, arr);
-  pageCreate(obj, arr);
+prevPage.addEventListener('click', function () {
+  return pagePrevClick(listObj);
+});
+firstPage.addEventListener('click', function () {
+  if (listObj.curPageIndex === 0) {
+    alert('첫번째 페이지 입니다!');
+  } else {
+    var copy = _toConsumableArray(listObj.referenceArr).splice(0, listObj.maxView);
+    listObj.curPageIndex = 0;
+    listObj.pageNumber.forEach(function (li) {
+      return removeClass(li, 'page_on');
+    });
+    addClass(listObj.pageNumber[0], 'page_on');
+    listCreate(listObj, copy);
+    window.scrollTo({
+      top: 0,
+      smooth: "behaivor"
+    });
+  }
+});
+nextPage.addEventListener('click', function () {
+  return pageNextClick(listObj);
+});
+lastPage.addEventListener('click', function () {
+  if (listObj.curPageIndex === listObj.pageNumber.length - 1) {
+    alert('마지막 페이지 입니다!');
+  } else {
+    var first = (listObj.pageNumber.length - 1) * listObj.maxView;
+    var last = first + listObj.maxView;
+    var copy = _toConsumableArray(listObj.referenceArr).splice(first, last);
+    listObj.curPageIndex = listObj.pageNumber.length - 1;
+    listObj.pageNumber.forEach(function (li) {
+      return removeClass(li, 'page_on');
+    });
+    addClass(listObj.pageNumber[listObj.curPageIndex], 'page_on');
+    listCreate(listObj, copy);
+    window.scrollTo({
+      top: 0,
+      smooth: "behaivor"
+    });
+  }
+});
+function handleSort(obj) {
+  listCreate(obj, obj.referenceArr);
+  pageCreate(obj);
   var sortArr;
   sortChk.addEventListener('change', function (e) {
     var nowValue = e.target.value;
     if (nowValue === "defalut" || nowValue === "latest") {
-      sortArr = _toConsumableArray(arr).sort(function (cur, next) {
+      sortArr = _toConsumableArray(obj.referenceArr).sort(function (cur, next) {
         return cur.propertyNumber - next.propertyNumber;
       });
     }
     if (nowValue === "price") {
-      sortArr = _toConsumableArray(arr).sort(function (cur, next) {
+      sortArr = _toConsumableArray(obj.referenceArr).sort(function (cur, next) {
         if (cur.price < next.price) {
           return -1;
         } else if (cur.price === next.price) {
@@ -997,10 +1037,14 @@ function handleSort(obj, arr) {
       });
     }
     obj.curPageIndex = 0;
+    obj.referenceArr = sortArr;
     listCreate(obj, sortArr);
-    pageCreate(obj, sortArr);
+    pageCreate(obj);
   });
 }
+
+//리스트를 만들때는 splice로 자른 arr도 리스트도 뽑아줘야하므로
+//arr을 따로 파라미터로 받자. 
 function listCreate(obj, arr) {
   var list01 = "";
   var list02 = "";
@@ -1026,11 +1070,11 @@ function listCreate(obj, arr) {
   }
   obj.liWrapper.innerHTML = receive;
 }
-function pageCreate(obj, arr) {
+function pageCreate(obj) {
   var list = "";
   var receive = "";
-  obj.paegLength = pageCalc(arr, obj.maxView);
-  if (arr.length === 0) {
+  obj.paegLength = pageCalc(obj.referenceArr, obj.maxView);
+  if (obj.referenceArr.length === 0) {
     obj.pageSection.innerHTML = "";
   }
   for (var i = 0; i < obj.paegLength; i++) {
@@ -1041,16 +1085,20 @@ function pageCreate(obj, arr) {
     receive += list;
   }
   obj.pageWrapper.innerHTML = receive;
-  pageControl(obj, arr);
+  pageControl(obj);
 }
-function pageControl(obj, arr) {
+function pageControl(obj) {
   var pageBtn = obj.pageWrapper.querySelectorAll('li');
+  //매번 객체에 바뀐 el 갱신
+  //prev,next btn은 매번 새로 덮어씌워지는게 아니므로, 오브젝트에 항상 el을 갱신시켜주고
+  //그 el에게 page_on클래스를 주자.
+
+  obj.pageNumber = pageBtn;
   pageBtn.forEach(function (page, index) {
     page.addEventListener('click', function () {
       /*             first = 0 * 12 -> 0 
                   last = first( == 0) + 12
-      
-                  first = 1 * 12 -> 12
+                    first = 1 * 12 -> 12
                   last = first( == 12) + 12 */
 
       for (var j = 0; j < pageBtn.length; j++) {
@@ -1060,7 +1108,7 @@ function pageControl(obj, arr) {
       obj.curPageIndex = index;
       var first = index * obj.maxView;
       var last = first + obj.maxView;
-      var result = _toConsumableArray(arr).splice(first, last);
+      var result = _toConsumableArray(obj.referenceArr).splice(first, last);
       listCreate(obj, result);
       window.scrollTo({
         top: 0,
@@ -1068,64 +1116,52 @@ function pageControl(obj, arr) {
       });
     });
   });
-  obj.pagePrev.addEventListener('click', function () {
-    return pagePrevClick(obj, arr, pageBtn);
-  });
-  obj.pageNext.addEventListener('click', function () {
-    return pagePrevClick(obj, arr, pageBtn);
-  });
 }
-function pagePrevClick(obj, arr, pageBtn) {
-  return function () {
-    obj.curPageIndex = obj.curPageIndex - 1;
+function pagePrevClick(obj) {
+  obj.curPageIndex = obj.curPageIndex - 1;
+  if (obj.curPageIndex < 0) {
+    obj.curPageIndex = 0;
+    alert('첫번쨰 페이지 입니다!');
     console.log(obj.curPageIndex);
-    if (obj.curPageIndex < 0) {
-      obj.curPageIndex = 0;
-      alert('첫번쨰 페이지 입니다!');
-      console.log(obj.curPageIndex);
-    } else {
-      for (var j = 0; j < pageBtn.length; j++) {
-        removeClass(pageBtn[j], 'page_on');
-      }
-      addClass(pageBtn[obj.curPageIndex], 'page_on');
-      var first = obj.curPageIndex * obj.maxView;
-      var last = first + obj.maxView;
-      var result = _toConsumableArray(arr).splice(first, last);
-      listCreate(obj, result);
-      window.scrollTo({
-        top: 0,
-        smooth: "behaivor"
-      });
+  } else {
+    for (var j = 0; j < obj.pageNumber.length; j++) {
+      removeClass(obj.pageNumber[j], 'page_on');
     }
-  };
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+    var first = obj.curPageIndex * obj.maxView;
+    var last = first + obj.maxView;
+    var result = _toConsumableArray(obj.referenceArr).splice(first, last);
+    listCreate(obj, result);
+    window.scrollTo({
+      top: 0,
+      smooth: "behaivor"
+    });
+  }
 }
-function pageNextClick(obj, arr, pageBtn) {
-  return function () {
-    //next누르면 페이지[0] -> 페이지[1]되고 그거 기반으로 리스트가 뽑힘.
-    obj.curPageIndex = obj.curPageIndex + 1;
-    console.log(obj.curPageIndex);
+function pageNextClick(obj) {
+  //next누르면 페이지[0] -> 페이지[1]되고 그거 기반으로 리스트가 뽑힘.
+  obj.curPageIndex = obj.curPageIndex + 1;
 
-    //+1이된 curPageIndex가 page의 갯수와 같아졌다는 뜻은, 마지막 페이지라는 뜻이니까
-    //즉 마지막 페이지에서 next를 눌렀다는 뜻이니까
-    //curPageIndex를 다시 마지막 인덱스로 만들어줌.
-    if (obj.curPageIndex >= obj.paegLength) {
-      obj.curPageIndex = obj.paegLength - 1;
-      alert('마지막 페이지 입니다!');
-    } else {
-      for (var j = 0; j < pageBtn.length; j++) {
-        removeClass(pageBtn[j], 'page_on');
-      }
-      addClass(pageBtn[obj.curPageIndex], 'page_on');
-      var first = obj.curPageIndex * obj.maxView;
-      var last = first + obj.maxView;
-      var result = _toConsumableArray(arr).splice(first, last);
-      listCreate(obj, result);
-      window.scrollTo({
-        top: 0,
-        smooth: "behaivor"
-      });
+  //+1이된 curPageIndex가 page의 갯수와 같아졌다는 뜻은, 마지막 페이지라는 뜻이니까
+  //즉 마지막 페이지에서 next를 눌렀다는 뜻이니까
+  //curPageIndex를 다시 마지막 인덱스로 만들어줌.
+  if (obj.curPageIndex >= obj.paegLength) {
+    obj.curPageIndex = obj.paegLength - 1;
+    alert('마지막 페이지 입니다!');
+  } else {
+    for (var j = 0; j < obj.pageNumber.length; j++) {
+      removeClass(obj.pageNumber[j], 'page_on');
     }
-  };
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+    var first = obj.curPageIndex * obj.maxView;
+    var last = first + obj.maxView;
+    var result = _toConsumableArray(obj.referenceArr).splice(first, last);
+    listCreate(obj, result);
+    window.scrollTo({
+      top: 0,
+      smooth: "behaivor"
+    });
+  }
 }
 function pageCalc(arr, viewLength) {
   /*     let pageNum;
@@ -1137,6 +1173,42 @@ function pageCalc(arr, viewLength) {
 
   var pageNum = Math.ceil(arr.length / viewLength);
   return pageNum;
+}
+
+/*************** filter_check ******************/
+var filterChkSections = document.querySelectorAll('.check_section');
+var filterChk = document.querySelectorAll('.check_section input');
+var filtersArr = Array.from({
+  length: filterChkSections.length
+}, function () {
+  return [];
+});
+//fill()로 빈배열을 만들엇을때는 0의자리에잇는 배열을 수정해도 전부 다 바뀌게 되더라.
+//참조: https://velog.io/@teihong93/Array.from%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%B0%B0%EC%97%B4%EC%9D%98-%EC%B4%88%EA%B8%B0%ED%99%94
+
+//console.log(filterChkSections, filterChk, filtersArr);
+
+filterChk.forEach(function (input) {
+  input.addEventListener('click', function () {
+    var nowIndex = input.dataset.myFilterIndex;
+    if (input.checked) {
+      filtersArr[nowIndex].push(input.value);
+    } else {
+      var valueIdx = filtersArr[nowIndex].indexOf(input.value);
+      filtersArr[nowIndex].splice(valueIdx, 1);
+    }
+    var result = filterArr(listObj, filtersArr[nowIndex], filtersArr);
+  });
+});
+function filterArr(obj, parentArr) {
+  //1) 첫 기준 배열은 바닐라 배열
+  //2) 반복이 끝날때마다 기준 배열(반복 메서드가 돌아가는) 배열은 걸러진 배열로 바뀌어야 한다.
+
+  var changeArr;
+  var result;
+  changeArr = obj.referenceArr;
+  result = changeArr.forEach(function (obj) {});
+  changeArr = result;
 }
 function addClass(el, className) {
   el.classList.add(className);
@@ -1169,7 +1241,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55767" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51599" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

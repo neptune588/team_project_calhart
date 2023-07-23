@@ -1,7 +1,7 @@
 const filterSections = [
   {
       sectnId: "menu_list_section",
-      sectnClass: ["menu_list_section_design"],
+      sectnClass: ["menu_list_section_design","check_section"],
       sectnIn: {
           titleInfo: {
               titleWrapClass: ["side_top"],
@@ -49,7 +49,7 @@ const filterSections = [
   },
   {
       sectnId: "price_select_section",
-      sectnClass: ["price_select_design", "filter_section", "check_design"],
+      sectnClass: ["price_select_design", "filter_section", "check_design", "check_section"],
       sectnIn: {
           titleInfo: {
               titleStr: "가격",
@@ -94,7 +94,7 @@ const filterSections = [
   },
   {
       sectnId: "color_select_section",
-      sectnClass: ["color_select_design", "filter_section", "check_design"],
+      sectnClass: ["color_select_design", "filter_section", "check_design", "check_section"],
       sectnIn: {
           titleInfo: {
               titleStr: "색상",
@@ -167,7 +167,7 @@ const filterSections = [
   },
   {
       sectnId: "sale_select_section",
-      sectnClass: ["sale_select_design", "filter_section", "check_design"],
+      sectnClass: ["sale_select_design", "filter_section", "check_design", "check_section"],
       sectnIn: {
           titleInfo: {
               titleStr: "할인율",
