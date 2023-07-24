@@ -321,6 +321,40 @@ input {
             .sort_n_filter_btn_toggle_area {
                 float: right;
                 display: flex;
+                .sold_out_area_design {
+                    label {
+                        color: #bbbbbb;
+                        .chk_box {
+                            position: relative;
+                            display: inline-block;
+                            width: 15px; height: 15px;
+                            transform: translateY(2px);
+                            background-color: white;
+                            margin-left: 5px;
+                            border: 1px solid gray;
+                            transition: all 0.2s;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                display: none;
+                                top: 0; left: 0;
+                                @include item_size(100%, 100%);
+                                background-color: rgb(67, 67, 67);
+                                transform: scale(0.8);
+                            }
+                        }
+                    }
+                    input {
+                        &#sold_out_chk:checked ~ label {
+                            color: black;
+                            .chk_box {
+                                &::after {
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
 
                 .sort_style {
                     font-size: $small_up_font_size;

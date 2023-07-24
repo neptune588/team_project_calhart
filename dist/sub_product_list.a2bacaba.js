@@ -971,9 +971,13 @@ var listObj = {
   pageWrapper: pageNumberWrapper,
   pageSection: pageSection,
   paegLength: 0,
-  curPageIndex: 0
+  curPageIndex: 0,
+  sortState: {
+    price: false,
+    default: false
+  }
 };
-handleSort(listObj, listArr);
+handleSort(listObj);
 prevPage.addEventListener('click', function () {
   return pagePrevClick(listObj);
 });
@@ -1017,17 +1021,41 @@ lastPage.addEventListener('click', function () {
   }
 });
 function handleSort(obj) {
-  listCreate(obj, obj.referenceArr);
-  pageCreate(obj);
   var sortArr;
+  if (!obj.sortState.default && !obj.sortState.price) {
+    listCreate(obj, obj.referenceArr);
+    pageCreate(obj);
+  } else if (obj.sortState.default) {
+    sortArr = _toConsumableArray(obj.referenceArr).sort(function (cur, next) {
+      return cur.propertyNumber - next.propertyNumber;
+    });
+    obj.referenceArr = sortArr;
+    listCreate(obj, obj.referenceArr);
+    pageCreate(obj);
+  } else if (obj.sortState.price) {
+    sortArr = _toConsumableArray(obj.referenceArr).sort(function (cur, next) {
+      if (cur.price < next.price) {
+        return -1;
+      } else if (cur.price === next.price) {
+        return 0;
+      }
+    });
+    obj.referenceArr = sortArr;
+    listCreate(obj, obj.referenceArr);
+    pageCreate(obj);
+  }
   sortChk.addEventListener('change', function (e) {
     var nowValue = e.target.value;
     if (nowValue === "defalut" || nowValue === "latest") {
+      stateReset(obj.sortState, false);
+      obj.sortState.default = true;
       sortArr = _toConsumableArray(obj.referenceArr).sort(function (cur, next) {
         return cur.propertyNumber - next.propertyNumber;
       });
     }
     if (nowValue === "price") {
+      stateReset(obj.sortState, false);
+      obj.sortState.price = true;
       sortArr = _toConsumableArray(obj.referenceArr).sort(function (cur, next) {
         if (cur.price < next.price) {
           return -1;
@@ -1042,6 +1070,11 @@ function handleSort(obj) {
     pageCreate(obj);
   });
 }
+function stateReset(obj, bool) {
+  for (var key in obj) {
+    obj[key] = bool;
+  }
+}
 
 //리스트를 만들때는 splice로 자른 arr도 리스트도 뽑아줘야하므로
 //arr을 따로 파라미터로 받자. 
@@ -1051,40 +1084,44 @@ function listCreate(obj, arr) {
   var list03 = "";
   var receive = "";
   if (arr.length === 0) {
-    obj.liWrapper.innerHTML = "\n        <p class=\"lengthNotice\">\n            <i class=\"far fa-times-circle\"></i>\n            \uD574\uB2F9\uD558\uB294 \uC0C1\uD488\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!\n        </p>\n        ";
+    obj.liWrapper.innerHTML = "\n            <p class=\"lengthNotice\">\n                <i class=\"far fa-times-circle\"></i>\n                \uD574\uB2F9\uD558\uB294 \uC0C1\uD488\uC774 \uC874\uC7AC\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4!\n            </p>\n        ";
+  } else {
+    for (var i = 0; i < arr.length; i++) {
+      if (i === obj.maxView) {
+        break;
+      }
+      list01 = "\n                    <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                        <img src = ".concat(arr[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n                    </a>    \n                    <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                        <img src = ").concat(arr[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n                    </a>\n                ");
+      list02 = "\n                    <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                        ".concat(arr[i].productNameKor, "\n                    </a>\n                    <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                        ").concat(arr[i].productModelName, "\n                    </a>\n                    <span class = \"price_unit\">\u20A9</span>\n                    <span class = \"price\">").concat(arr[i].price.toLocaleString(), "</span>\n                ");
+      if (arr[i].isNew) {
+        list02 = "\n                    <span class=\"new\">NEW</span>\n                    ".concat(list02, "\n                ");
+      }
+      if (arr[i].isBest) {
+        list02 = "\n                    <span class=\"best\">BEST</span>\n                    ".concat(list02, "\n                ");
+      }
+      list03 = "\n            <li>\n                ".concat(list01, "\n                ").concat(list02, "\n            </li>\n            ");
+      receive += list03;
+    }
+    obj.liWrapper.innerHTML = receive;
   }
-  for (var i = 0; i < arr.length; i++) {
-    if (i === obj.maxView) {
-      break;
-    }
-    list01 = "\n                <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                    <img src = ".concat(arr[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n                </a>    \n                <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                    <img src = ").concat(arr[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n                </a>\n            ");
-    list02 = "\n                <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                    ".concat(arr[i].productNameKor, "\n                </a>\n                <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                    ").concat(arr[i].productModelName, "\n                </a>\n                <span class = \"price_unit\">\u20A9</span>\n                <span class = \"price\">").concat(arr[i].price.toLocaleString(), "</span>\n            ");
-    if (arr[i].isNew) {
-      list02 = "\n                <span class=\"new\">NEW</span>\n                ".concat(list02, "\n            ");
-    }
-    if (arr[i].isBest) {
-      list02 = "\n                <span class=\"best\">BEST</span>\n                ".concat(list02, "\n            ");
-    }
-    list03 = "\n        <li>\n            ".concat(list01, "\n            ").concat(list02, "\n        </li>\n        ");
-    receive += list03;
-  }
-  obj.liWrapper.innerHTML = receive;
 }
 function pageCreate(obj) {
+  //console.log(obj.referenceArr);
   var list = "";
   var receive = "";
   obj.paegLength = pageCalc(obj.referenceArr, obj.maxView);
   if (obj.referenceArr.length === 0) {
-    obj.pageSection.innerHTML = "";
-  }
-  for (var i = 0; i < obj.paegLength; i++) {
-    list = "<li>".concat(i + 1, "</li>");
-    if (i === obj.curPageIndex) {
-      list = "<li class=\"page_on\">".concat(i + 1, "</li>");
+    addClass(obj.pageSection, 'none_on');
+  } else {
+    for (var i = 0; i < obj.paegLength; i++) {
+      list = "<li>".concat(i + 1, "</li>");
+      if (i === obj.curPageIndex) {
+        list = "<li class=\"page_on\">".concat(i + 1, "</li>");
+      }
+      receive += list;
     }
-    receive += list;
+    obj.pageWrapper.innerHTML = receive;
+    removeClass(obj.pageSection, 'none_on');
   }
-  obj.pageWrapper.innerHTML = receive;
   pageControl(obj);
 }
 function pageControl(obj) {
@@ -1122,7 +1159,7 @@ function pagePrevClick(obj) {
   if (obj.curPageIndex < 0) {
     obj.curPageIndex = 0;
     alert('첫번쨰 페이지 입니다!');
-    console.log(obj.curPageIndex);
+    //console.log(obj.curPageIndex);
   } else {
     for (var j = 0; j < obj.pageNumber.length; j++) {
       removeClass(obj.pageNumber[j], 'page_on');
@@ -1183,7 +1220,7 @@ var filtersArr = Array.from({
 }, function () {
   return [];
 });
-//fill()로 빈배열을 만들엇을때는 0의자리에잇는 배열을 수정해도 전부 다 바뀌게 되더라.
+//fill()로 빈배열을 만들엇을때는 인덱스0번에 있는 배열을 수정해도 전부 다 바뀌게 되더라.
 //참조: https://velog.io/@teihong93/Array.from%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%B0%B0%EC%97%B4%EC%9D%98-%EC%B4%88%EA%B8%B0%ED%99%94
 
 //console.log(filterChkSections, filterChk, filtersArr);
@@ -1197,19 +1234,57 @@ filterChk.forEach(function (input) {
       var valueIdx = filtersArr[nowIndex].indexOf(input.value);
       filtersArr[nowIndex].splice(valueIdx, 1);
     }
-    var result = filterArr(listObj, filtersArr[nowIndex], filtersArr);
+
+    //console.log(filtersArr);
+    filterArr(listObj, filtersArr, listArr);
   });
 });
-function filterArr(obj, parentArr) {
+function filterArr(obj, parentArr, immunArr) {
   //1) 첫 기준 배열은 바닐라 배열
   //2) 반복이 끝날때마다 기준 배열(반복 메서드가 돌아가는) 배열은 걸러진 배열로 바뀌어야 한다.
+  //3) 즉 각 필터 조건 섹션을 전부 순회해야 하면서 1조건 순회하면 그 배열을 기준으로 2조건을 순회하고 ... 3.. 4.. 이런식으로 짜야하는데, length가 0이라는 말은 조건이 없다는거니까 그것들은 건너뛰게 코드를 짜자.
 
-  var changeArr;
-  var result;
-  changeArr = obj.referenceArr;
-  result = changeArr.forEach(function (obj) {});
-  changeArr = result;
+  var result = [];
+  var changeArr = immunArr;
+  var _loop = function _loop(i) {
+    if (parentArr[i].length === 0) {
+      return "continue";
+    }
+    result = changeArr.filter(function (obj) {
+      //obj 1개를 검사 -> 해당 obj의 key값을 Object.keys를 통해 배열에 담고
+      //some 메서드를 사용해서 검사한다. some은 조건에맞으면 boolean으로 반환되기 떄문에
+      //true이면 filter에서 true에 속하는 obj를 배열에 담게되는것임.
+      //한 key속성에 대하여 1차원 배열의 value가 순회된다. 있으면 true 없으면 false;
+      //즉 value와 같으면 그 즉시 순회가 전부 멈추고 가장 상위의 obj가 배열에 속하게 됨.
+      //ex key -> a obj["a"] === value 없으면 그 다음 key 그다음 key ... 
+      return Object.keys(obj).some(function (key) {
+        return parentArr[i].some(function (value) {
+          return obj[key] === value;
+        });
+      });
+    });
+    changeArr = result;
+  };
+  for (var i = 0; i < parentArr.length; i++) {
+    var _ret = _loop(i);
+    if (_ret === "continue") continue;
+  }
+  obj.referenceArr = result;
+  handleSort(obj);
 }
+
+/*************** chk_reset ******************/
+var resetBtn = document.querySelector('.reset');
+resetBtn.addEventListener('click', function () {
+  stateReset(listObj.sortState, 'false');
+  sortChk.value = "defalut";
+  listObj.referenceArr = listArr;
+  listObj.curPageIndex = 0;
+  filterChk.forEach(function (input) {
+    return input.checked = false;
+  });
+  handleSort(listObj);
+});
 function addClass(el, className) {
   el.classList.add(className);
 }
@@ -1241,7 +1316,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51599" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58424" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

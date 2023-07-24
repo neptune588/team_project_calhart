@@ -35,10 +35,13 @@
           <button class="all tab_on">All</button>
         </div><!-- gender_tab_area -->
         <div class="sort_n_filter_btn_toggle_area">
-          <label class="sort_style" for="sold_out_chk">
-            품절상품 제외
+          <div id="sold_out_area" class="sold_out_area_design">
             <input type="checkbox" id="sold_out_chk">
-          </label>
+            <label class="sort_style label_style" for="sold_out_chk">
+              품절상품 제외
+              <span class="chk_box"></span>
+            </label>
+          </div>
           <select class="sort_style" name="" id="sort_chk">
             <option value="defalut">기본</option>
             <option value="price">가격순</option>
