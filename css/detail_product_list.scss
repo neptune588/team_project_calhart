@@ -276,7 +276,7 @@ input {
             .product_select_wrapper {
                 display: flex;
                 justify-content: space-between;
-                .product_money {
+                .product_money_design {
                     @include sub_title;
                 }
                 .product_select_area {
@@ -351,7 +351,7 @@ input {
                 }
                 .total_quntaitly {
                 }
-                .total_price {
+                .total_price_design {
                     font-family: $font_noto_sans;
                 }
             }
@@ -403,21 +403,25 @@ input {
             margin-bottom: 5px;
         }
 
-        .select_list {
+        .select_list_design {
             display: flex;
             margin-bottom: 30px;
 
             li {
                 margin-right: 15px;
-                transition: all 0.2s;
+                transition: all 0.1s;
                 @include background_cover;
-
+                border: 1px solid $main_color_flora_white;
+                
                 &:hover {
-                    outline: 1px solid $point_color_amber;
+                    border: 1px solid $point_color_amber;
                 }
 
                 a {
-                    @include item_size(90px, 90px);
+                    img {
+                        object-fit: cover;
+                        @include item_size(90px, 90px);
+                    }
                 }
             }
         }
@@ -474,7 +478,7 @@ input {
     }
 
     .size_n_buy {
-        .size_chk_btn {
+        .size_chk_btn_design {
             height: 60px;
             text-align: center;
             line-height: 60px;
@@ -551,7 +555,7 @@ input {
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                @include item_size(645px, 700px);
+                @include item_size(645px, 85%);
                 background-color: rgb(131, 131, 131);
 
                 .sub_title {
@@ -560,7 +564,7 @@ input {
 
                 .size_chk_modal_inner {
                     margin: 0 auto;
-                    @include item_size(465px, 550px);
+                    @include item_size(465px, 80%);
                     background-color: white;
 
                     .check_title {
@@ -607,7 +611,7 @@ input {
                             }
 
                             .input_in_bottom {
-                                .siez_search_btn {
+                                .size_search_btn_design {
                                     display: block;
                                     @include item_size(365px, 40px);
                                     margin: 15px auto 0;
@@ -693,10 +697,10 @@ input {
                     }
                 }
 
-                .modal_close_btn {
+                .modal_close_btn_design {
                     position: absolute;
-                    top: -50px;
-                    right: -10px;
+                    top: 15px;
+                    right: 15px;
     
                     i {
                         display: inline-block;
@@ -803,7 +807,7 @@ input {
                     @include item_size(105px, 40px);
                 }
 
-                .review_create {
+                .review_create_area_design {
                     display: none;
                     margin-top: 20px;
 
@@ -817,7 +821,7 @@ input {
                             font-size: $small_up_font_size;
                         }
 
-                        .review_rating_star {
+                        .review_rating_star_design {
                             display: flex;
                             margin-left: 15px;
                             align-items: center;
@@ -837,6 +841,35 @@ input {
                             }
                         }
                     }
+                    .review_id_pw_area {
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 15px;
+                        label {
+                            font-size: $defalut_font_size;
+                            font-family: $font_noto_sans;
+                            margin-right: 10px;
+                        }
+                        input {
+                            display: block;
+                        }
+                        .re_id_area {
+                            display: flex;
+                            align-items: center;
+                            margin-right: 15px;
+                            #review_user_id {
+                                padding: 5px 10px;
+                            }
+                        }
+                        .re_pw_area {
+                            display: flex;
+                            align-items: center;
+                            #review_user_pw {
+                                padding: 5px 15px;
+                            }
+                        }
+                    }
+
                     #review_text_box {
                         width: 100%;
                         padding: 20px;

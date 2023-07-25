@@ -716,30 +716,356 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-/******************** view_thumnail ********************/ //change_list
+//change_list
 var pdCodeNum = document.getElementById('code_number');
+var quantityNum = document.getElementById('quantity_number');
+var totalPrice = document.getElementById('total_price');
+var pdMoney = document.getElementById('product_money');
+
+/******************** view_thumnail ********************/
 var viewContainer = document.getElementById('view_thumnail');
 var viewThum = document.querySelectorAll('.thumnail_box');
 var viewSmallThum = document.querySelectorAll('.img_box');
-function thumCreate(arr) {
-  arr.forEach(function (obj) {
-    var list01 = "\n            \n        ";
-    var list02 = "\n        \n        ";
-  });
-}
+var detailItem = _toConsumableArray(_data.detail_page_produdct_list);
 viewContainer.addEventListener('mousemove', function (e) {
   viewThum[1].style.transform = "translate(".concat(e.offsetX * -2, "px, ").concat(e.offsetY * -2, "px)");
 });
 viewContainer.addEventListener('mouseout', function () {
   viewThum[1].style.transform = "translate(0px, 0px)";
 });
-viewSmallThum.forEach(function (imgBx) {
+
+/******************** init_settings ********************/
+txtChange(quantityNum, detailItem[0].limitQuantity);
+txtChange(pdCodeNum, detailItem[0].productCode);
+txtChange(totalPrice, "".concat(detailItem[0].price.toLocaleString(), " \uC6D0"));
+txtChange(pdMoney, detailItem[0].price.toLocaleString());
+viewSmallThum.forEach(function (imgBx, i) {
   imgBx.addEventListener('click', function () {
-    viewThum[0].querySelector('img').src = imgBx.querySelector('img').src;
+    viewThum[0].children[0].src = detailItem[0].imgSrc01[i];
+    viewThum[1].children[0].src = detailItem[0].imgSrc02[i];
   });
 });
+
+/******************** color_select + handleEv ********************/
+var colorSelArea = document.getElementById('select_list');
+colorBoxCreate(detailItem);
+function colorBoxCreate(arr) {
+  var list = "";
+  var receive = "";
+  arr.forEach(function (obj, i) {
+    list = "\n            <li class=\"color_select_box\">\n                <a href=\"#!\">\n                    <img src=\"".concat(obj.imgSrc01[0], "\" alt=\"select_img").concat(i, "\"/>\n                </a>\n            </li>        \n        ");
+    receive += list;
+  });
+  colorSelArea.innerHTML = receive;
+  handleSelect(arr);
+}
+function handleSelect(arr) {
+  //color_select
+  var colorSelBox = document.querySelectorAll('.color_select_box');
+  colorSelBox.forEach(function (box, i) {
+    box.addEventListener('click', function () {
+      viewThum[0].children[0].src = arr[i].imgSrc01[0];
+      viewThum[1].children[0].src = arr[i].imgSrc02[0];
+      viewSmallThum.forEach(function (imgBx, j) {
+        return imgBx.children[0].src = arr[i].imgSrc01[j];
+      });
+      thumChange(arr, i);
+      styleCodeChange(arr, i);
+      quantityChange(arr, i);
+    });
+  });
+}
+function thumChange(arr, parentIdx) {
+  //small_thum_select
+  viewSmallThum.forEach(function (imgBx, i) {
+    imgBx.addEventListener('click', function () {
+      viewThum[0].children[0].src = arr[parentIdx].imgSrc01[i];
+      viewThum[1].children[0].src = arr[parentIdx].imgSrc02[i];
+    });
+  });
+}
+function styleCodeChange(arr, parentIdx) {
+  pdCodeNum.textContent = arr[parentIdx].productCode;
+}
+function quantityChange(arr, parentIdx) {
+  quantityNum.textContent = arr[parentIdx].limitQuantity;
+}
+
+/******************** size_select ********************/
+var sizeList = document.querySelectorAll('.size_list > li');
+sizeBtnClick();
+function sizeBtnClick() {
+  var clickIndex = null;
+  sizeList.forEach(function (btn, i) {
+    btn.addEventListener('click', function () {
+      if (clickIndex !== i) {
+        clickIndex = i;
+        for (var j = 0; j < sizeList.length; j++) {
+          removeClass(sizeList[j], 'bgc_amber');
+        }
+        addClass(btn, 'bgc_amber');
+      } else if (clickIndex === i) {
+        clickIndex = null;
+        removeClass(btn, 'bgc_amber');
+      }
+    });
+  });
+}
+
+/******************** size_check ********************/
+var sizeModalOnBtn = document.getElementById('size_chk_btn');
+var sizeModalCloseBtn = document.getElementById('modal_close_btn');
+var sizeModal = document.querySelector('.size_chk_modal_ex');
+var heightInput = document.getElementById('height_input');
+var weightInput = document.getElementById('weight_input');
+var numberInput = document.querySelectorAll('.only_number');
+var noticeMent = document.querySelector('.notice_ment');
+var sizeCalcBtn = document.getElementById('size_search_btn');
+var sizeShow = document.querySelector('.show_txt');
+modalEv();
+function modalEv() {
+  var modalState = false;
+  sizeModalOnBtn.addEventListener('click', function () {
+    if (!modalState) {
+      modalState = true;
+      addClass(sizeModal, 'block_on');
+      setTimeout(function () {
+        heightInput.focus();
+      }, 10);
+    }
+  });
+  sizeModalCloseBtn.addEventListener('click', function () {
+    if (modalState) {
+      modalState = false;
+      removeClass(sizeModal, 'block_on');
+      numberInput.forEach(function (input) {
+        return valueChange(input, "");
+      });
+      removeClass(noticeMent, "block_on");
+    }
+  });
+}
+modalInputChk();
+function modalInputChk() {
+  var conditionRegex = /^\d+$/;
+  var maxLength = 3;
+  numberInput.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (!conditionRegex.test(input.value)) {
+        input.value = "";
+        addClass(noticeMent, "block_on");
+        txtChange(noticeMent.children[0], "숫자만 입력 가능합니다.");
+      } else {
+        removeClass(noticeMent, "block_on");
+      }
+      if (input.value.length > maxLength) {
+        input.value = input.value.substring(0, maxLength);
+      }
+    });
+  });
+}
+sizeCalcBtn.addEventListener('click', function () {
+  var cm = heightInput.value;
+  var kg = weightInput.value;
+  var condition = cm && kg;
+  if (condition !== null && condition !== "" && condition !== undefined) {
+    sizeCalc(cm, kg);
+  } else {
+    addClass(noticeMent, "block_on");
+    txtChange(noticeMent.children[0], "유효한 입력값이 아닙니다.");
+  }
+});
+function sizeCalc(height, weight) {
+  var calc = weight / (height * 2) * 100;
+  //22.8888이라고 가정하면 x100 -> 2288.88 -> 버림 2288 -> /100 -> 22.88;
+  var bmi = Math.floor(calc * 100) / 100;
+  if (bmi > 25 && bmi <= 35) {
+    txtChange(sizeShow, "XL");
+  } else if (bmi > 23 && bmi <= 25) {
+    txtChange(sizeShow, "L");
+  } else if (bmi > 18.5 && bmi <= 23) {
+    txtChange(sizeShow, "M");
+  } else if (bmi > 17.5 && bmi <= 18.5) {
+    txtChange(sizeShow, "S");
+  } else if (bmi > 14 && bmi <= 17.5) {
+    txtChange(sizeShow, "XS");
+  } else {
+    txtChange(sizeShow, "없음");
+  }
+}
+
+/******************** reveiw ********************/
+var rviewCrtBtn = document.getElementById('review_create_btn');
+var rviewArea = document.getElementById('review_create_area');
+var rviewLengthView = document.getElementById('review_now_length');
+var rviewTxtBox = document.getElementById('review_text_box');
+var rviewCrtComplete = document.getElementById('create_complete');
+var rviewID = document.getElementById('review_user_id');
+var rviewPW = document.getElementById('review_user_pw');
+var rviewIDNPW = document.querySelectorAll('.review_id_pw');
+var IDMinLength = rviewID.getAttribute('minlength');
+var IDMaxLength = rviewID.getAttribute('maxlength');
+var PWMinLength = rviewPW.getAttribute('minlength');
+var PWMaxLength = rviewPW.getAttribute('maxlength');
+var rviewRatingLi = document.querySelectorAll('#review_rating_star > li');
+var rviewRatingStar = document.querySelectorAll('#review_rating_star > li > i');
+console.log(rviewRatingLi, rviewRatingStar);
+var rviewNoticeMent = document.getElementById('review_notice_ment');
+var reviewData = [{
+  time: ["2023-01-01/05:28:48"],
+  private: {
+    id: "ju1548",
+    pw: "1345"
+  },
+  rating: 5,
+  reviewText: ["봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요."]
+}];
+var starSave = {
+  nowRating: null,
+  clickState: false
+};
+var starMaxCount = 5;
+
+//object create 참조: https://leehwarang.github.io/docs/tech/constructor.html
+function RviewObj(time, id, pw) {
+  var ratingIdx = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+  var reviewText = arguments.length > 4 ? arguments[4] : undefined;
+  this.time = time;
+  this.privacy = {
+    id: id,
+    pw: pw
+  };
+  this.ratingIdx = ratingIdx;
+  this.reviewText = [reviewText];
+}
+
+//review_chk_btn
+rviewClick();
+function rviewClick() {
+  var rviewChkState = false;
+  rviewCrtBtn.addEventListener('click', function () {
+    if (!rviewChkState) {
+      rviewChkState = true;
+      addClass(rviewArea, 'block_on');
+      setTimeout(function () {
+        rviewTxtBox.focus();
+      }, 10);
+    } else {
+      rviewChkState = false;
+      removeClass(rviewArea, 'block_on');
+      valueChange(rviewTxtBox, "");
+      txtChange(rviewLengthView, "0 \uC790");
+    }
+  });
+}
+
+//review_id_pw_chk
+rviewIDNPW.forEach(function (inputBar) {
+  return inputBar.addEventListener('input', function () {
+    idNPwChk(inputBar);
+    if (rviewNoticeMent.textContent.length > 0) {
+      txtChange(rviewNoticeMent, "");
+    }
+  });
+});
+function idNPwChk(myInput) {
+  var maxLength = parseInt(myInput.getAttribute('maxlength'), 10);
+  if (myInput.value.length > maxLength) {
+    myInput.value = myInput.value.substring(0, maxLength);
+  }
+}
+
+//review_input_event
+rviewTxtBox.addEventListener('input', function () {
+  txtChange(rviewLengthView, "".concat(rviewTxtBox.value.length, " \uC790"));
+  if (rviewNoticeMent.textContent.length > 0) {
+    txtChange(rviewNoticeMent, "");
+  }
+});
+
+//review_rating_click_event
+rviewRatingLi.forEach(function (li, i) {
+  return li.addEventListener('click', function () {
+    ratingClick(i);
+  });
+});
+function ratingClick(parentIdx) {
+  if (parentIdx !== starSave.nowRating) {
+    starSave.nowRating = parentIdx;
+    starSave.clickState = true;
+    for (var i = 0; i < starMaxCount; i++) {
+      if (i <= starSave.nowRating) {
+        changeClass(rviewRatingStar[i], ["far", "fas"]);
+      } else {
+        changeClass(rviewRatingStar[i], ["fas", "far"]);
+      }
+    }
+  } else {
+    starSave.nowRating = null;
+    starSave.clickState = false;
+    for (var _i = 0; _i < starMaxCount; _i++) {
+      changeClass(rviewRatingStar[_i], ["fas", "far"]);
+    }
+  }
+}
+
+//review_create_complete
+rviewComplete();
+function rviewComplete() {
+  rviewCrtComplete.addEventListener('click', function () {
+    var nowTxt = rviewTxtBox.value;
+    var idCondition = rviewID.value.length >= IDMinLength && rviewID.value.length <= IDMaxLength;
+    var pwCondition = rviewPW.value.length >= PWMinLength && rviewPW.value.length <= PWMaxLength;
+    if (nowTxt !== null && nowTxt !== "" && nowTxt !== undefined && idCondition && pwCondition && starSave.clickState) {
+      var property = [calcDate(), rviewID.value, rviewPW.value, 0, nowTxt];
+      reviewData.push(_construct(RviewObj, property));
+      rviewID.focus();
+      txtChange(rviewNoticeMent, "");
+    } else if (!idCondition) {
+      txtChange(rviewNoticeMent, "ID\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
+    } else if (!pwCondition) {
+      txtChange(rviewNoticeMent, "PW\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
+    } else if (!starSave.clickState) {
+      txtChange(rviewNoticeMent, "\uB9AC\uBDF0 \uBCC4\uC810\uC744 \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
+    } else {
+      txtChange(rviewNoticeMent, "\uB0B4\uC6A9\uC744 \uC785\uB825 \uD574\uC8FC\uC138\uC694.");
+    }
+  });
+}
+function calcDate() {
+  var newDate = new Date();
+  var nowYear = newDate.getFullYear();
+  var nowMonth = newDate.getMonth() + 1;
+  var nowDay = newDate.getDate();
+  var nowHours = newDate.getHours();
+  var nowMinutes = newDate.getMinutes();
+  var nowSeconds = newDate.getSeconds();
+  var dateArr = [nowDay, nowMonth, nowHours, nowMinutes, nowSeconds];
+  for (var i = 0; i < dateArr.length; i++) {
+    if (dateArr[i] < 10) {
+      dateArr[i] = "0".concat(dateArr[i]);
+    }
+  }
+  var result = "".concat(nowYear, "-").concat(dateArr[0], "-").concat(dateArr[1], "/").concat(dateArr[2], ":").concat(dateArr[3], ":").concat(dateArr[4]);
+  return result;
+}
+function valueChange(el) {
+  var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  el.value = value;
+}
+function txtChange(el) {
+  var txt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  el.textContent = txt;
+}
 function setAttributeMuliti(el, attrArr) {
   var _iterator = _createForOfIteratorHelper(attrArr),
     _step;
@@ -755,6 +1081,17 @@ function setAttributeMuliti(el, attrArr) {
   } finally {
     _iterator.f();
   }
+}
+function addClass(el, ClassName) {
+  el.classList.add(ClassName);
+}
+function removeClass(el, ClassName) {
+  el.classList.remove(ClassName);
+}
+function changeClass(el) {
+  var _el$classList;
+  var arr = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  (_el$classList = el.classList).replace.apply(_el$classList, _toConsumableArray(arr));
 }
 },{"./data.js":"js/data.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -781,7 +1118,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58424" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50109" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

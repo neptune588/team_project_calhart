@@ -151,7 +151,7 @@
         <div class="product_view_area">
             <section class="style_code">
                 <p class="color_gray">스타일코드</p>
-                <p id="code_number" class="code_number_design">CA23SSJAJL00358002</p>
+                <p id="code_number" class="code_number_design"></p>
             </section><!-- style_code -->
             <section id="view_thumnail" class="view_thumnail_design">
                 <div class="view_img01 thumnail_box">
@@ -245,8 +245,8 @@
             </div><!-- rating_n_sns -->
             <section class="price">
                 <div class="product_select_wrapper">
-                    <p class="product_money">
-                        248,000
+                    <p id="product_money" class="product_money_design">
+                        
                     </p>
                     <div class="product_select_area">
                         <button type="button" id="quantity_minus" class="quantity_btn"><i class="fas fa-minus"></i></button>
@@ -255,14 +255,14 @@
                     </div>
                 </div>
                 <p class="color_gray">적립 <span class="product_point">1240</span> (0.5%)</p>
-                <p class="limit_quantity color_gray">재고량: <span class="quantity_number"></span></p>
+                <p class="limit_quantity color_gray">재고량: <span id="quantity_number"></span></p>
             </section><!-- price -->
             <p class="select_notice_ment">재고가 부족합니다!</p>    
             <section class="total_price_area">
                 <p class="total_ment">총 합계 금액</p>
                 <div class="right_total_view">
                     <p class="total_quntaitly">총<span class="total_quntaitly_view">1</span>개</p>
-                    <p class="total_price" data-price="248000">248,000 원</p>
+                    <p id="total_price" class="total_price_design"></p>
                 </div>
             </section>
             <div class="shipping_n_installment">
@@ -290,17 +290,8 @@
             </div><!-- shipping_n_installment -->
             <section class="cloth_color_select">
                 <p class="color_gray">색상</p>
-                <ul class="select_list">
-                    <li class="color_select_box">
-                        <a href="#!">
-                            <img src="/CA23SSJAJL00358002-01.e9e2807f.jpg" alt="select_img01">
-                        </a>
-                    </li>
-                    <li class="color_select_box">
-                        <a href="#!">
-                            <img src="/CA23SSJAJL00266002-01.0d9befcd.jpg" alt="seleclt_img02">
-                        </a>
-                    </li>
+                <ul id="select_list" class="select_list_design">
+
                 </ul><!-- color_select -->
             </section><!-- cloth_color_select -->
             <section class="size_select">
@@ -318,7 +309,7 @@
                 <p class="point_right">최대 3% 적립</p>
             </section><!-- point -->
             <div class="size_n_buy">
-                <div class="size_chk_btn">
+                <div id="size_chk_btn" class="size_chk_btn_design">
                     <span class="size_icon"></span>
                     <span class="size_btn_ment"><i class="fas fa-tshirt"></i>고객님 사이즈를 체크해 보세요!</span>
                 </div><!-- size_chk_btn -->
@@ -348,7 +339,7 @@
                                         <p></p>
                                     </div>
                                     <div class="input_in_bottom">
-                                        <button class="siez_search_btn">사이즈 찾기</button>
+                                        <button id="size_search_btn" class="size_search_btn_design">사이즈 찾기</button>
                                     </div>
                                 </div>
                                 <div class="size_show_area">
@@ -411,7 +402,7 @@
                                 </div>
                             </div><!-- size_chk_box_area -->
                         </div>
-                        <div class="modal_close_btn">
+                        <div id="modal_close_btn" class="modal_close_btn_design">
                             <i class="fas fa-times"></i>
                         </div>
                     </div><!-- size_chk_modal -->
@@ -501,18 +492,18 @@
 
                         </ul>
                     </div>
-                    <div class="create_btn blue_btn">
+                    <div id="review_create_btn" class="create_btn blue_btn">
                         글쓰기
                     </div>
-                    <div class="review_create">
+                    <div id="review_create_area" class="review_create_area_design">
                         <div class="text_top_area">
                             <div class="str_length">
                                 현재
-                                <span class="review_now_length">0 자</span>
+                                <span id="review_now_length">0 자</span>
                                 <span class="notice"></span>
                                 /최대 100자
                             </div>
-                            <ul class="review_rating_star">
+                            <ul id="review_rating_star" class="review_rating_star_design">
                                 <li><i class="far fa-star"></i></li>
                                 <li><i class="far fa-star"></i></li>
                                 <li><i class="far fa-star"></i></li>
@@ -520,8 +511,20 @@
                                 <li><i class="far fa-star"></i></li>
                             </ul>
                         </div>
-                        <div class="review_notice_ment nt_ment"></div>
+                        <div class="review_id_pw_area">
+                            <div class="re_id_area">
+                                <div class="notice">*아이디는 최소 2자에서 12자까지 작성 가능합니다.</div>
+                                <label for="review_user_id">ID</label>
+                                <input id="review_user_id" type="text" minlength="2" maxlength="12" placeholder="최소 2자 최대 12자" class="review_id_pw">
+                            </div>
+                            <div class="re_pw_area">
+                                <div class="notice">*패스워드는 최소 4자에서 20자까지 작성 가능합니다.</div>
+                                <label for="review_user_pw">PW</label>
+                                <input id="review_user_pw" type="password" minlength="2" maxlength="20" placeholder="최소 4자 최대 20자" class="review_id_pw"> 
+                            </div>
+                        </div>
                         <textarea id="review_text_box" cols="10" rows="4" maxlength="100"></textarea>
+                        <p id="review_notice_ment" class="nt_ment"></p>
                         <button id="create_complete" class="blue_btn" type="button">작성완료</button>
                     </div>
                 </form>

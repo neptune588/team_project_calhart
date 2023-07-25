@@ -301,7 +301,7 @@ input {
   display: flex;
   justify-content: space-between;
 }
-.contents_product_buy .product_info_n_buy_btn_area .price .product_select_wrapper .product_money {
+.contents_product_buy .product_info_n_buy_btn_area .price .product_select_wrapper .product_money_design {
   font-size: 2rem;
   font-weight: 700;
 }
@@ -375,7 +375,7 @@ input {
   margin-right: 15px;
   float: left;
 }
-.contents_product_buy .product_info_n_buy_btn_area .total_price_area .right_total_view .total_price {
+.contents_product_buy .product_info_n_buy_btn_area .total_price_area .right_total_view .total_price_design {
   font-family: "Noto Sans KR", sans-serif;
 }
 .contents_product_buy .shipping_n_installment {
@@ -415,20 +415,22 @@ input {
   font-family: "Noto Sans KR", sans-serif;
   margin-bottom: 5px;
 }
-.contents_product_buy .cloth_color_select .select_list {
+.contents_product_buy .cloth_color_select .select_list_design {
   display: flex;
   margin-bottom: 30px;
 }
-.contents_product_buy .cloth_color_select .select_list li {
+.contents_product_buy .cloth_color_select .select_list_design li {
   margin-right: 15px;
-  transition: all 0.2s;
+  transition: all 0.1s;
   background-size: cover;
   background-repeat: no-repeat;
+  border: 1px solid #FFFDF6;
 }
-.contents_product_buy .cloth_color_select .select_list li:hover {
-  outline: 1px solid #ffbf00;
+.contents_product_buy .cloth_color_select .select_list_design li:hover {
+  border: 1px solid #ffbf00;
 }
-.contents_product_buy .cloth_color_select .select_list li a {
+.contents_product_buy .cloth_color_select .select_list_design li a img {
+  object-fit: cover;
   width: 90px;
   height: 90px;
 }
@@ -472,7 +474,7 @@ input {
   float: right;
   color: #2DB400;
 }
-.contents_product_buy .size_n_buy .size_chk_btn {
+.contents_product_buy .size_n_buy .size_chk_btn_design {
   height: 60px;
   text-align: center;
   line-height: 60px;
@@ -482,15 +484,15 @@ input {
   transition: all 0.3s;
   cursor: pointer;
 }
-.contents_product_buy .size_n_buy .size_chk_btn:hover {
+.contents_product_buy .size_n_buy .size_chk_btn_design:hover {
   border: 2px solid black;
 }
-.contents_product_buy .size_n_buy .size_chk_btn .size_btn_ment {
+.contents_product_buy .size_n_buy .size_chk_btn_design .size_btn_ment {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
 }
-.contents_product_buy .size_n_buy .size_chk_btn .size_btn_ment i {
+.contents_product_buy .size_n_buy .size_chk_btn_design .size_btn_ment i {
   font-size: 20px;
   margin-right: 15px;
 }
@@ -543,7 +545,7 @@ input {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 645px;
-  height: 700px;
+  height: 85%;
   background-color: rgb(131, 131, 131);
 }
 .contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .sub_title {
@@ -552,7 +554,7 @@ input {
 .contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner {
   margin: 0 auto;
   width: 465px;
-  height: 550px;
+  height: 80%;
   background-color: white;
 }
 .contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .check_title {
@@ -590,7 +592,7 @@ input {
   margin-top: 5px;
   padding: 0 5px;
 }
-.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_bottom .siez_search_btn {
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_bottom .size_search_btn_design {
   display: block;
   width: 365px;
   height: 40px;
@@ -601,7 +603,7 @@ input {
   font-size: 1.4rem;
   transition: all 0.2s;
 }
-.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_bottom .siez_search_btn:hover {
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .input_in_bottom .size_search_btn_design:hover {
   background-color: rgb(134, 134, 134);
 }
 .contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .input_area .notice_ment {
@@ -660,12 +662,12 @@ input {
 .contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .size_chk_modal_inner .size_chk_box_area .size_show_area .size_list_chart ul:last-child {
   border-bottom: 1px solid gray;
 }
-.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .modal_close_btn {
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .modal_close_btn_design {
   position: absolute;
-  top: -50px;
-  right: -10px;
+  top: 15px;
+  right: 15px;
 }
-.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .modal_close_btn i {
+.contents_product_buy .size_n_buy .size_chk_modal_ex .size_chk_modal .modal_close_btn_design i {
   display: inline-block;
   font-size: 40px;
   background-color: #fff;
@@ -752,20 +754,20 @@ input {
   width: 105px;
   height: 40px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design {
   display: none;
   margin-top: 20px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .text_top_area {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area .str_length {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .text_top_area .str_length {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.4rem;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area .review_rating_star {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .text_top_area .review_rating_star_design {
   display: flex;
   margin-left: 15px;
   align-items: center;
@@ -775,14 +777,42 @@ input {
   font-size: 20px;
   color: #4136BF;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area .review_rating_star li {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .text_top_area .review_rating_star_design li {
   margin-right: 5px;
   cursor: pointer;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create .text_top_area .review_rating_star li:last-child {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .text_top_area .review_rating_star_design li:last-child {
   margin-right: 0;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create #review_text_box {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area label {
+  font-size: 1.6rem;
+  font-family: "Noto Sans KR", sans-serif;
+  margin-right: 10px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area input {
+  display: block;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_id_area {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_id_area #review_user_id {
+  padding: 5px 10px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_pw_area {
+  display: flex;
+  align-items: center;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_pw_area #review_user_pw {
+  padding: 5px 15px;
+}
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design #review_text_box {
   width: 100%;
   padding: 20px;
   background-color: #fff;
@@ -790,7 +820,7 @@ input {
   border: 1px solid #bbbbbb;
   resize: none;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create #create_complete {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design #create_complete {
   display: block;
   text-align: center;
   width: 195px;
