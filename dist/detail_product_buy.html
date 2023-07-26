@@ -446,10 +446,7 @@
                     </div><!-- best_review_btn -->
                 </div>
                 <form action="" id="review_form">
-                    <ul class="review_list list_area">
-<!--                         <div class="not_ment">
-                            현재 작성된 후기가 없습니다.
-                        </div> -->
+                    <ul id="review_list" class="review_list_design list_area">
                         <li>
                             <p class="review_ment">
                                 봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요
@@ -466,29 +463,9 @@
                                 <span class="review_id">ju****</span>
                             </div>
                         </li>
-<!--                         <li>
-                            <p class="review_ment">
-                                너무 부담스럽지 않고 편하게 입고나가도 좋네요!
-                            </p>
-                            <div class="right_info">
-                                <span class="rating_star"></span>
-                                <span class="review_date date">2023-01-01</span>
-                                <span class="review_id">sq****</span>
-                            </div>
-                        </li>
-                        <li>
-                            <p class="review_ment">
-                                색감이 화사하고 가볍고 요즘 날씨에 입기에 잘 맞네요 꾸안꾸룩에 최고입니다
-                            </p>
-                            <div class="right_info">
-                                <span class="rating_star"></span>
-                                <span class="review_date date">2023-01-01</span>
-                                <span class="review_id">dy****</span>
-                            </div>
-                        </li>  -->
                     </ul><!-- review_list -->
                     <div class="review_pagenation pagenation">
-                        <ul class="review_page_list page_list">
+                        <ul id="review_page_list" class="review_page_list_design page_list">
 
                         </ul>
                     </div>
@@ -512,18 +489,23 @@
                             </ul>
                         </div>
                         <div class="review_id_pw_area">
+                            <div class="notice_area"></div>
                             <div class="re_id_area">
                                 <div class="notice">*아이디는 최소 2자에서 12자까지 작성 가능합니다.</div>
-                                <label for="review_user_id">ID</label>
-                                <input id="review_user_id" type="text" minlength="2" maxlength="12" placeholder="최소 2자 최대 12자" class="review_id_pw">
+                                <div class="input_area">
+                                    <label for="review_user_id">ID</label>
+                                    <input id="review_user_id" type="text" minlength="2" maxlength="12" placeholder="최소 2자 최대 12자" class="review_id_pw review_reset">
+                                </div>
                             </div>
                             <div class="re_pw_area">
                                 <div class="notice">*패스워드는 최소 4자에서 20자까지 작성 가능합니다.</div>
-                                <label for="review_user_pw">PW</label>
-                                <input id="review_user_pw" type="password" minlength="2" maxlength="20" placeholder="최소 4자 최대 20자" class="review_id_pw"> 
+                                <div class="input_area">
+                                    <label for="review_user_pw">PW</label>
+                                    <input id="review_user_pw" type="password" minlength="4" maxlength="20" placeholder="최소 4자 최대 20자" class="review_id_pw review_reset"> 
+                                </div>
                             </div>
                         </div>
-                        <textarea id="review_text_box" cols="10" rows="4" maxlength="100"></textarea>
+                        <textarea id="review_text_box" cols="10" rows="4" maxlength="100" class="review_reset"></textarea>
                         <p id="review_notice_ment" class="nt_ment"></p>
                         <button id="create_complete" class="blue_btn" type="button">작성완료</button>
                     </div>

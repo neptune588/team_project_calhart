@@ -754,7 +754,7 @@ input {
             }
 
             #review_form {
-                .review_list {
+                .review_list_design {
                     margin: 20px 0;
 
                     li {
@@ -845,16 +845,7 @@ input {
                         display: flex;
                         align-items: center;
                         margin-bottom: 15px;
-                        label {
-                            font-size: $defalut_font_size;
-                            font-family: $font_noto_sans;
-                            margin-right: 10px;
-                        }
-                        input {
-                            display: block;
-                        }
                         .re_id_area {
-                            display: flex;
                             align-items: center;
                             margin-right: 15px;
                             #review_user_id {
@@ -862,11 +853,27 @@ input {
                             }
                         }
                         .re_pw_area {
-                            display: flex;
                             align-items: center;
                             #review_user_pw {
                                 padding: 5px 15px;
                             }
+                        }
+                        .notice {
+                            margin-bottom: 15px;
+                            color: rgb(58, 58, 58);
+                            font-family: $font_noto_sans;
+                            font-size: $small_font_size;
+                        }
+                        .input_area {
+                            display: flex;
+                        }
+                        label {
+                            font-size: $defalut_font_size;
+                            font-family: $font_noto_sans;
+                            margin-right: 10px;
+                        }
+                        input {
+                            display: block;
                         }
                     }
 

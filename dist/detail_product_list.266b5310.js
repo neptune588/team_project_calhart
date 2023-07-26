@@ -711,11 +711,6 @@ exports.detail_page_produdct_list = detail_page_produdct_list;
 "use strict";
 
 var _data = require("./data.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct.bind(); } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
@@ -909,31 +904,41 @@ var rviewArea = document.getElementById('review_create_area');
 var rviewLengthView = document.getElementById('review_now_length');
 var rviewTxtBox = document.getElementById('review_text_box');
 var rviewCrtComplete = document.getElementById('create_complete');
+var rviewListArea = document.getElementById('review_list');
+var rviewPageArea = document.getElementById('review_page_list');
 var rviewID = document.getElementById('review_user_id');
 var rviewPW = document.getElementById('review_user_pw');
 var rviewIDNPW = document.querySelectorAll('.review_id_pw');
+var rviewCounting = document.querySelector('.review_couting');
 var IDMinLength = rviewID.getAttribute('minlength');
 var IDMaxLength = rviewID.getAttribute('maxlength');
 var PWMinLength = rviewPW.getAttribute('minlength');
 var PWMaxLength = rviewPW.getAttribute('maxlength');
 var rviewRatingLi = document.querySelectorAll('#review_rating_star > li');
 var rviewRatingStar = document.querySelectorAll('#review_rating_star > li > i');
-console.log(rviewRatingLi, rviewRatingStar);
+var rviewResetEl = document.querySelectorAll('.review_reset');
 var rviewNoticeMent = document.getElementById('review_notice_ment');
-var reviewData = [{
-  time: ["2023-01-01/05:28:48"],
-  private: {
-    id: "ju1548",
-    pw: "1345"
-  },
-  rating: 5,
-  reviewText: ["봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요."]
-}];
 var starSave = {
   nowRating: null,
   clickState: false
 };
 var starMaxCount = 5;
+var reviewInfo = {
+  liData: [{
+    time: ["2023-01-01/05:28:48"],
+    privacy: {
+      id: "ju1548",
+      pw: "1345"
+    },
+    ratingIdx: 4,
+    reviewText: ["봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요."]
+  }],
+  liWrapper: rviewListArea,
+  liMaxView: 6,
+  liLengthView: rviewCounting,
+  pageIdx: 0,
+  pageWrapper: rviewPageArea
+};
 
 //object create 참조: https://leehwarang.github.io/docs/tech/constructor.html
 function RviewObj(time, id, pw) {
@@ -962,7 +967,7 @@ function rviewClick() {
     } else {
       rviewChkState = false;
       removeClass(rviewArea, 'block_on');
-      valueChange(rviewTxtBox, "");
+      rviewReset();
       txtChange(rviewLengthView, "0 \uC790");
     }
   });
@@ -1010,11 +1015,7 @@ function ratingClick(parentIdx) {
       }
     }
   } else {
-    starSave.nowRating = null;
-    starSave.clickState = false;
-    for (var _i = 0; _i < starMaxCount; _i++) {
-      changeClass(rviewRatingStar[_i], ["fas", "far"]);
-    }
+    starReset();
   }
 }
 
@@ -1026,10 +1027,15 @@ function rviewComplete() {
     var idCondition = rviewID.value.length >= IDMinLength && rviewID.value.length <= IDMaxLength;
     var pwCondition = rviewPW.value.length >= PWMinLength && rviewPW.value.length <= PWMaxLength;
     if (nowTxt !== null && nowTxt !== "" && nowTxt !== undefined && idCondition && pwCondition && starSave.clickState) {
-      var property = [calcDate(), rviewID.value, rviewPW.value, 0, nowTxt];
-      reviewData.push(_construct(RviewObj, property));
-      rviewID.focus();
-      txtChange(rviewNoticeMent, "");
+      var property = [calcDate(), rviewID.value, rviewPW.value, starSave.nowRating, nowTxt];
+      reviewInfo.liData.push(_construct(RviewObj, property));
+
+      //리셋
+      rviewReset();
+      starReset();
+      reviewMaker(reviewInfo, arrSplice(reviewInfo));
+      pageCreate(reviewInfo);
+      reviewInfo.pageIdx = Math.floor(reviewInfo.liData.length / reviewInfo.liMaxView);
     } else if (!idCondition) {
       txtChange(rviewNoticeMent, "ID\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
     } else if (!pwCondition) {
@@ -1041,6 +1047,64 @@ function rviewComplete() {
     }
   });
 }
+
+//review_text_area_reset;
+function rviewReset() {
+  rviewResetEl.forEach(function (input) {
+    return valueChange(input, "");
+  });
+  txtChange(rviewNoticeMent, "");
+  txtChange(rviewLengthView, "0 \uC790");
+  rviewID.focus();
+}
+//review_select_star_reset
+function starReset() {
+  starSave.nowRating = null;
+  starSave.clickState = false;
+  for (var i = 0; i < starMaxCount; i++) {
+    changeClass(rviewRatingStar[i], ["fas", "far"]);
+  }
+}
+//list_setting
+function arrSplice(obj) {
+  var first = obj.pageIdx * obj.liMaxView;
+  var last = first + obj.liMaxView;
+  var splice = _toConsumableArray(obj.liData).splice(first, last);
+  return splice;
+}
+//review_page_create
+function pageCreate(obj) {
+  var list = "";
+  for (var i = 0; i <= obj.pageIdx; i++) {
+    list += "<li class=\"".concat(i === obj.pageIdx ? "page_on" : "", "\">").concat(i + 1, "</li>");
+  }
+  obj.pageWrapper.innerHTML = list;
+}
+//review_list_create
+function reviewMaker(obj, arr) {
+  var receive = "";
+  for (var i = 0; i < arr.length; i++) {
+    var list = "\n                <li class=\"review\">\n                    <p class=\"review_ment\">\n                        ".concat(arr[i].reviewText, "\n                        <span class = \"").concat(i === 0 && obj.pageIdx === 0 ? "delete none_on" : "delete", "\">\n                            <i class=\"fas fa-window-close\"></i>\n                        </span>\n                    </p>\n                    <div class=\"right_info\">\n                    <ul class=\"rating_star\">").concat(starCreate(arr[i].ratingIdx), "</ul>\n                        <span class=\"review_date date\">").concat(arr[i].time, "</span>\n                        <span class=\"review_id\">").concat(idHide(arr[i].privacy.id), "</span>\n                    </div>\n                </li>\n                ");
+    receive += list;
+  }
+  obj.liWrapper.innerHTML = receive;
+  txtChange(obj.liLengthView, "".concat(obj.liData.length));
+  handleDelete(obj);
+}
+function handleDelete(obj) {
+  var deleteBtn = obj.liWrapper.querySelectorAll('.delete');
+  deleteBtn.forEach(function (btn, idx) {
+    btn.addEventListener('click', function () {
+      obj.liData.splice(idx, 1);
+      //페이지 넘기기 위해 1개를 더 빼준다.
+      obj.pageIdx = Math.floor((obj.liData.length - 1) / obj.liMaxView);
+      reviewMaker(obj, arrSplice(obj));
+      pageCreate(obj);
+    });
+  });
+}
+
+//date_calc
 function calcDate() {
   var newDate = new Date();
   var nowYear = newDate.getFullYear();
@@ -1049,14 +1113,31 @@ function calcDate() {
   var nowHours = newDate.getHours();
   var nowMinutes = newDate.getMinutes();
   var nowSeconds = newDate.getSeconds();
-  var dateArr = [nowDay, nowMonth, nowHours, nowMinutes, nowSeconds];
-  for (var i = 0; i < dateArr.length; i++) {
-    if (dateArr[i] < 10) {
-      dateArr[i] = "0".concat(dateArr[i]);
-    }
+  function numChange(num) {
+    return num < 10 ? "0".concat(num) : num;
   }
-  var result = "".concat(nowYear, "-").concat(dateArr[0], "-").concat(dateArr[1], "/").concat(dateArr[2], ":").concat(dateArr[3], ":").concat(dateArr[4]);
+  var result = "".concat(nowYear, "-").concat(numChange(nowMonth), "-").concat(numChange(nowDay), "/").concat(numChange(nowHours), ":").concat(numChange(nowMinutes), ":").concat(numChange(nowSeconds));
   return result;
+}
+//id_hide (ex: aa****)
+function idHide(txt) {
+  var cut = txt.substring(0, 2);
+  var hide = '*'.repeat(txt.length - cut.length);
+  return cut + hide;
+}
+//view_star_create(표기용)
+function starCreate(num) {
+  var list = "";
+  var receive = "";
+  for (var i = 0; i < starMaxCount; i++) {
+    if (i <= num) {
+      list = " <li><i class=\"fas fa-star\"></i></li>";
+    } else {
+      list = " <li><i class=\"far fa-star\"></i></li>";
+    }
+    receive += list;
+  }
+  return receive;
 }
 function valueChange(el) {
   var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
@@ -1065,22 +1146,6 @@ function valueChange(el) {
 function txtChange(el) {
   var txt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
   el.textContent = txt;
-}
-function setAttributeMuliti(el, attrArr) {
-  var _iterator = _createForOfIteratorHelper(attrArr),
-    _step;
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = _slicedToArray(_step.value, 2),
-        first = _step$value[0],
-        last = _step$value[1];
-      el.setAttribute(first, last);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
 }
 function addClass(el, ClassName) {
   el.classList.add(ClassName);
@@ -1118,7 +1183,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50419" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
