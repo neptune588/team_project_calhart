@@ -119,6 +119,10 @@ input {
   font-weight: 700;
 }
 
+.flex_on {
+  display: flex !important;
+}
+
 /************************* contents_product_buy ***************************/
 .contents_product_buy {
   display: flex;
@@ -718,6 +722,8 @@ input {
   justify-content: space-between;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_list_design li .review_ment {
+  display: flex;
+  align-items: center;
   width: 65%;
   margin-left: 15px;
 }
@@ -784,39 +790,33 @@ input {
 .info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .text_top_area .review_rating_star_design li:last-child {
   margin-right: 0;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_id_area {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area .re_id_area {
   align-items: center;
   margin-right: 15px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_id_area #review_user_id {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area .re_id_area #review_user_id {
   padding: 5px 10px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_pw_area {
-  align-items: center;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .re_pw_area #review_user_pw {
-  padding: 5px 15px;
-}
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .notice {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area .notice {
   margin-bottom: 15px;
   color: rgb(58, 58, 58);
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.2rem;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area .input_area {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area .input_area {
   display: flex;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area label {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area label {
   font-size: 1.6rem;
   font-family: "Noto Sans KR", sans-serif;
   margin-right: 10px;
 }
-.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_pw_area input {
+.info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design .review_id_area input {
   display: block;
 }
 .info_container #product_reviews_section .product_reviews_area #review_form .review_create_area_design #review_text_box {
@@ -856,158 +856,160 @@ input {
   color: #4136BF;
   font-weight: 700;
 }
-.info_container #qna_section .qna_notice .question_btn {
+.info_container #qna_section .qna_notice .question_btn_design {
   width: 195px;
   height: 60px;
   margin: 0 auto;
   border: 3px solid #4136BF;
 }
-.info_container #qna_section .qna_notice .question_btn a {
+.info_container #qna_section .qna_notice .question_btn_design a {
   font-size: 2rem;
   font-weight: 700;
   text-align: center;
   color: #4136BF;
   line-height: 60px;
 }
-.info_container #qna_section #qna_form .create_question {
+.info_container #qna_section #qna_form .create_question_design {
   display: none;
   margin-bottom: 30px;
 }
-.info_container #qna_section #qna_form .create_question .create_question_top {
+.info_container #qna_section #qna_form .create_question_design .create_question_top {
   display: flex;
   align-items: center;
 }
-.info_container #qna_section #qna_form .create_question .create_question_top label {
+.info_container #qna_section #qna_form .create_question_design .create_question_top label {
   font-size: 1.6rem;
   font-family: "Noto Sans KR", sans-serif;
   margin-right: 10px;
 }
-.info_container #qna_section #qna_form .create_question .create_question_top #qna_user_id {
+.info_container #qna_section #qna_form .create_question_design .create_question_top #qna_user_id {
   padding: 5px 10px;
 }
-.info_container #qna_section #qna_form .create_question .str_length {
+.info_container #qna_section #qna_form .create_question_design .str_length {
   margin: 15px 0;
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.4rem;
 }
-.info_container #qna_section #qna_form .create_question #create_question_ment {
+.info_container #qna_section #qna_form .create_question_design #create_question_ment {
   width: 100%;
   padding: 20px;
   resize: none;
   outline: none;
   border: 1px solid #bbbbbb;
 }
-.info_container #qna_section #qna_form .create_question #qna_create {
+.info_container #qna_section #qna_form .create_question_design #qna_create {
   margin-top: 15px;
 }
-.info_container #qna_section #qna_form .create_question input {
+.info_container #qna_section #qna_form .create_question_design input {
   display: block;
   outline: none;
   border: 1px solid #bbbbbb;
 }
-.info_container #qna_section #qna_form .qna .question_list {
+.info_container #qna_section #qna_form .qna_design .question_list {
   padding: 0;
 }
-.info_container #qna_section #qna_form .qna .question_list.answer_complete {
+.info_container #qna_section #qna_form .qna_design .question_list.answer_complete {
   cursor: pointer;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box {
   overflow: hidden;
   padding: 30px 0;
   user-select: none;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .left_box {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .left_box {
   display: flex;
   width: 70%;
   float: left;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .left_box span {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .left_box span {
   display: inline-block;
   margin-left: 15px;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .left_box p {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .left_box p {
   margin-left: 40px;
   text-align: center;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .left_box .qna_ment {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .left_box .qna_ment {
   display: flex;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .left_box .qna_ment .qna_list_delete {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .left_box .qna_ment .qna_list_delete {
   cursor: pointer;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .left_box .qna_ment .manager_ment_on {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .left_box .qna_ment .manager_ment_on {
   display: none;
   margin-left: 25px;
   cursor: pointer;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .right_box {
-  width: 30%;
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .right_box {
   float: right;
+  display: flex;
+  width: 30%;
+  align-items: center;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .right_box span {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .right_box span {
   width: 100px;
   display: inline-block;
   margin-right: 50px;
   text-align: center;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .right_box span.date {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .right_box span.date {
   width: 120px;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .right_box span.comment_click_on {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .right_box span.comment_click_on {
   width: 50px;
   margin-right: 0;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .right_box i {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .right_box i {
   font-size: 20px;
   cursor: pointer;
 }
-.info_container #qna_section #qna_form .qna .question_list .question_box .delete {
+.info_container #qna_section #qna_form .qna_design .question_list .question_box .delete {
   margin-left: 15px;
   cursor: pointer;
 }
-.info_container #qna_section #qna_form .qna .question_list .answer_box {
+.info_container #qna_section #qna_form .qna_design .question_list .answer_box .ment_input {
   display: none;
 }
-.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_input > h2 {
+.info_container #qna_section #qna_form .qna_design .question_list .answer_box .ment_input > h2 {
   font-size: 1.6rem;
   font-family: "Noto Sans KR", sans-serif;
   margin: 10px 0;
 }
-.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_input .answer_text_box {
+.info_container #qna_section #qna_form .qna_design .question_list .answer_box .ment_input .answer_text_box {
   width: 100%;
   padding: 10px;
   resize: none;
   outline: none;
   border: 1px solid #bbbbbb;
 }
-.info_container #qna_section #qna_form .qna .question_list .answer_box .ment_input .answer_create {
+.info_container #qna_section #qna_form .qna_design .question_list .answer_box .ment_input .answer_create {
   display: block;
   width: 210px;
   height: 40px;
   margin: 15px 0 20px;
   margin-left: auto;
 }
-.info_container #qna_section #qna_form .qna .question_list .ment_area {
-  display: flex;
+.info_container #qna_section #qna_form .qna_design .question_list .ment_area {
+  display: none;
   align-items: center;
   padding: 20px 0;
   font-size: 1.6rem;
   border-top: 1px solid #bbbbbb;
 }
-.info_container #qna_section #qna_form .qna .question_list .ment_area .answer {
+.info_container #qna_section #qna_form .qna_design .question_list .ment_area .answer {
   margin-left: 15px;
   font-size: 1.4rem;
 }
-.info_container #qna_section #qna_form .qna .question_list .ment_area .qna_guide_ment {
+.info_container #qna_section #qna_form .qna_design .question_list .ment_area .guide_ment_area {
   width: 90%;
   margin-left: 50px;
   font-size: 1.4rem;
 }
-.info_container #qna_section #qna_form .qna .question_list .ment_area .qna_guide_ment .spot {
+.info_container #qna_section #qna_form .qna_design .question_list .ment_area .guide_ment_area .spot {
   font-size: 1.6rem;
   font-family: "Noto Sans KR", sans-serif;
 }
-.info_container #qna_section #qna_form .qna .qna_not_ment {
+.info_container #qna_section #qna_form .qna_design .qna_not_ment {
   font-family: "Noto Sans KR", sans-serif;
   text-align: center;
   font-size: 30px;

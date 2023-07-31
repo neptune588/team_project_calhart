@@ -64,7 +64,9 @@ input {
     color: white;
     font-weight: 700;
 }
-
+.flex_on {
+    display: flex !important;
+}
 
 /************************* contents_product_buy ***************************/
 .contents_product_buy {
@@ -763,6 +765,8 @@ input {
                         justify-content: space-between;
 
                         .review_ment {
+                            display: flex;
+                            align-items: center;
                             width: 65%;
                             margin-left: 15px;
 
@@ -841,7 +845,7 @@ input {
                             }
                         }
                     }
-                    .review_id_pw_area {
+                    .review_id_area {
                         display: flex;
                         align-items: center;
                         margin-bottom: 15px;
@@ -850,12 +854,6 @@ input {
                             margin-right: 15px;
                             #review_user_id {
                                 padding: 5px 10px;
-                            }
-                        }
-                        .re_pw_area {
-                            align-items: center;
-                            #review_user_pw {
-                                padding: 5px 15px;
                             }
                         }
                         .notice {
@@ -925,7 +923,7 @@ input {
                 }
             }
 
-            .question_btn {
+            .question_btn_design {
                 @include item_size(195px, 60px);
                 margin: 0 auto;
                 border: 3px solid $sub_color_free_speach_blue;
@@ -940,7 +938,7 @@ input {
         }
 
         #qna_form {
-            .create_question {
+            .create_question_design {
                 display: none;
                 margin-bottom: 30px;
 
@@ -984,7 +982,7 @@ input {
                 }
             }
 
-            .qna {
+            .qna_design {
                 .question_list {
                     padding: 0;
                     &.answer_complete {
@@ -1024,8 +1022,10 @@ input {
                         }
 
                         .right_box {
-                            width: 30%;
                             float: right;
+                            display: flex;
+                            width: 30%;
+                            align-items: center;
 
                             span {
                                 width: 100px;
@@ -1055,9 +1055,8 @@ input {
                     }
 
                     .answer_box {
-                        display: none;
-
                         .ment_input {
+                            display: none;
                             >h2 {
                                 font-size: $defalut_font_size;
                                 font-family: $font_noto_sans;
@@ -1081,7 +1080,7 @@ input {
                         }
                     }
                     .ment_area {
-                        display: flex;
+                        display: none;
                         align-items: center;
                         padding: 20px 0;
                         font-size: $defalut_font_size;
@@ -1090,7 +1089,7 @@ input {
                             margin-left: 15px;
                             font-size: $small_up_font_size;
                         }
-                        .qna_guide_ment {
+                        .guide_ment_area {
                             width: 90%;
                             margin-left: 50px;
                             font-size: $small_up_font_size;

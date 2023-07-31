@@ -339,7 +339,7 @@
                     </ul><!-- review_list -->
                     <div class="review_pagenation pagenation">
                         <ul id="review_page_list" class="review_page_list_design page_list">
-
+                            <li class="page_on">1</li>
                         </ul>
                     </div>
                     <div id="review_create_btn" class="create_btn blue_btn">
@@ -351,7 +351,7 @@
                                 현재
                                 <span id="review_now_length">0 자</span>
                                 <span class="notice"></span>
-                                /최대 100자
+                                /최대 200자
                             </div>
                             <ul id="review_rating_star" class="review_rating_star_design">
                                 <li><i class="far fa-star"></i></li>
@@ -361,24 +361,17 @@
                                 <li><i class="far fa-star"></i></li>
                             </ul>
                         </div>
-                        <div class="review_id_pw_area">
+                        <div class="review_id_area">
                             <div class="notice_area"></div>
                             <div class="re_id_area">
-                                <div class="notice">*아이디는 최소 2자에서 12자까지 작성 가능합니다.</div>
+                                <div class="notice">*아이디는 최소 2자에서 8자까지 작성 가능합니다.</div>
                                 <div class="input_area">
                                     <label for="review_user_id">ID</label>
-                                    <input id="review_user_id" type="text" minlength="2" maxlength="12" placeholder="최소 2자 최대 12자" class="review_id_pw review_reset">
-                                </div>
-                            </div>
-                            <div class="re_pw_area">
-                                <div class="notice">*패스워드는 최소 4자에서 20자까지 작성 가능합니다.</div>
-                                <div class="input_area">
-                                    <label for="review_user_pw">PW</label>
-                                    <input id="review_user_pw" type="password" minlength="4" maxlength="20" placeholder="최소 4자 최대 20자" class="review_id_pw review_reset"> 
+                                    <input id="review_user_id" type="text" minlength="2" maxlength="8" placeholder="최소 2자 최대 12자" class="review_id_pw review_reset">
                                 </div>
                             </div>
                         </div>
-                        <textarea id="review_text_box" cols="10" rows="4" maxlength="100" class="review_reset"></textarea>
+                        <textarea id="review_text_box" cols="10" rows="4" maxlength="200" class="review_reset"></textarea>
                         <p id="review_notice_ment" class="nt_ment"></p>
                         <button id="create_complete" class="blue_btn" type="button">작성완료</button>
                     </div>
@@ -396,32 +389,32 @@
             <div class="qna_notice">
                 <p class="guide_01">제품에 관한 궁금한 점을 올리시면 신속한 답변을 드립니다.</p>
                 <p class="guide_02">배송,결제,교환/반품 등에 대한 문의는 <span>고객센터>이메일상담</span>을 이용해주세요.</p>
-                <div class="question_btn">
+                <div id="question_btn" class="question_btn_design">
                     <a href="#!">문의하기</a>
                 </div>
             </div>
             <form action="" id="qna_form">
-                <div class="create_question">
+                <div id="create_question" class="create_question_design">
                     <div class="create_question_top">
                         <label for="qna_user_id">ID</label>
-                        <input id="qna_user_id" type="text" maxlength="12" placeholder="최대 12자">
+                        <input id="qna_user_id" type="text" minlength="2" maxlength="8" placeholder="최소 2자 최대 8자" class="qna_reset">
                     </div><!-- create_question_top -->
                     <div class="str_length">
                         현재
-                        <span class="qna_now_length">0 자</span>
+                        <span id="qna_now_length">0 자</span>
                         <span class="notice"></span>
-                        /최대 100자
+                        /최대 150자
                     </div><!-- str_length -->
-                    <div class="qna_notice_ment nt_ment"></div>
-                    <textarea id="create_question_ment" cols="10" rows="4" maxlength="150"></textarea>
+                    <div id="qna_notice_ment" class="nt_ment"></div>
+                    <textarea id="create_question_ment" cols="10" rows="4" maxlength="150" class="qna_reset"></textarea>
                     <div id="qna_create" class="blue_btn">문의 작성완료</div>
                 </div><!-- create_question -->
                 <p class="total_info">전체 (총 <span class="qna_couting">1</span>건)</p>
-                <ul class="qna list_area">
+                <ul id="qna_list" class="qna_design list_area">
                     <li class="question_list">
                         <div class="question_box">
                             <div class="left_box">
-                                <span class="state_answer_complete">답변완료</span>
+                                <span class="answer_state">답변완료</span>
                                 <p class="qna_ment">배송은 얼마나 걸리나요??<span></span></p>
                             </div>
                             <div class="right_box">
@@ -437,7 +430,7 @@
                                     답변하기
                                 </button>
                             </div>
-                                <div class="ment_area">
+                            <div class="ment_area">
                                 <span class="answer">답변</span>
                                 <div class="qna_guide_ment">
                                     <p class="spot"><span></span>[CARHARTT] 관리자</p>
@@ -450,9 +443,9 @@
                         </div>
                     </li>
                 </ul><!-- qna -->
-                <div class="qna_pagenation pagenation">
-                    <ul class="qna_page_list page_list">
-
+                <div id="qna_pagenation" class="pagenation">
+                    <ul id="qna_page_list" class="page_list">
+                        <li class="page_on">1</li>
                     </ul>
                 </div>
             </form><!-- qna_form -->

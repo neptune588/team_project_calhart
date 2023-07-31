@@ -907,13 +907,9 @@ var rviewCrtComplete = document.getElementById('create_complete');
 var rviewListArea = document.getElementById('review_list');
 var rviewPageArea = document.getElementById('review_page_list');
 var rviewID = document.getElementById('review_user_id');
-var rviewPW = document.getElementById('review_user_pw');
-var rviewIDNPW = document.querySelectorAll('.review_id_pw');
 var rviewCounting = document.querySelector('.review_couting');
-var IDMinLength = rviewID.getAttribute('minlength');
-var IDMaxLength = rviewID.getAttribute('maxlength');
-var PWMinLength = rviewPW.getAttribute('minlength');
-var PWMaxLength = rviewPW.getAttribute('maxlength');
+var rviewIDMinLength = rviewID.getAttribute('minlength');
+var rviewIDMaxLength = rviewID.getAttribute('maxlength');
 var rviewRatingLi = document.querySelectorAll('#review_rating_star > li');
 var rviewRatingStar = document.querySelectorAll('#review_rating_star > li > i');
 var rviewResetEl = document.querySelectorAll('.review_reset');
@@ -923,31 +919,24 @@ var starSave = {
   clickState: false
 };
 var starMaxCount = 5;
+var brLength = 50;
 var reviewInfo = {
-  liData: [{
-    time: ["2023-01-01/05:28:48"],
-    privacy: {
-      id: "ju1548",
-      pw: "1345"
-    },
-    ratingIdx: 4,
-    reviewText: ["봄에 입기 딱 좋아요! 핏도 너무 오버하지않고 딱 떨어져서 좋아요."]
-  }],
+  type: "review",
+  liData: [],
   liWrapper: rviewListArea,
   liMaxView: 6,
-  liLengthView: rviewCounting,
+  liTotalLength: rviewCounting,
   pageIdx: 0,
   pageWrapper: rviewPageArea
 };
 
 //object create 참조: https://leehwarang.github.io/docs/tech/constructor.html
-function RviewObj(time, id, pw) {
-  var ratingIdx = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
-  var reviewText = arguments.length > 4 ? arguments[4] : undefined;
+function RviewObj(time, id) {
+  var ratingIdx = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var reviewText = arguments.length > 3 ? arguments[3] : undefined;
   this.time = time;
   this.privacy = {
-    id: id,
-    pw: pw
+    id: id
   };
   this.ratingIdx = ratingIdx;
   this.reviewText = [reviewText];
@@ -962,7 +951,7 @@ function rviewClick() {
       rviewChkState = true;
       addClass(rviewArea, 'block_on');
       setTimeout(function () {
-        rviewTxtBox.focus();
+        rviewID.focus();
       }, 10);
     } else {
       rviewChkState = false;
@@ -973,21 +962,10 @@ function rviewClick() {
   });
 }
 
-//review_id_pw_chk
-rviewIDNPW.forEach(function (inputBar) {
-  return inputBar.addEventListener('input', function () {
-    idNPwChk(inputBar);
-    if (rviewNoticeMent.textContent.length > 0) {
-      txtChange(rviewNoticeMent, "");
-    }
-  });
+//review_id_chk
+rviewID.addEventListener('input', function () {
+  lengthChk(rviewID, rviewNoticeMent);
 });
-function idNPwChk(myInput) {
-  var maxLength = parseInt(myInput.getAttribute('maxlength'), 10);
-  if (myInput.value.length > maxLength) {
-    myInput.value = myInput.value.substring(0, maxLength);
-  }
-}
 
 //review_input_event
 rviewTxtBox.addEventListener('input', function () {
@@ -1018,45 +996,6 @@ function ratingClick(parentIdx) {
     starReset();
   }
 }
-
-//review_create_complete
-rviewComplete();
-function rviewComplete() {
-  rviewCrtComplete.addEventListener('click', function () {
-    var nowTxt = rviewTxtBox.value;
-    var idCondition = rviewID.value.length >= IDMinLength && rviewID.value.length <= IDMaxLength;
-    var pwCondition = rviewPW.value.length >= PWMinLength && rviewPW.value.length <= PWMaxLength;
-    if (nowTxt !== null && nowTxt !== "" && nowTxt !== undefined && idCondition && pwCondition && starSave.clickState) {
-      var property = [calcDate(), rviewID.value, rviewPW.value, starSave.nowRating, nowTxt];
-      reviewInfo.liData.push(_construct(RviewObj, property));
-
-      //리셋
-      rviewReset();
-      starReset();
-      reviewMaker(reviewInfo, arrSplice(reviewInfo));
-      pageCreate(reviewInfo);
-      reviewInfo.pageIdx = Math.floor(reviewInfo.liData.length / reviewInfo.liMaxView);
-    } else if (!idCondition) {
-      txtChange(rviewNoticeMent, "ID\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
-    } else if (!pwCondition) {
-      txtChange(rviewNoticeMent, "PW\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
-    } else if (!starSave.clickState) {
-      txtChange(rviewNoticeMent, "\uB9AC\uBDF0 \uBCC4\uC810\uC744 \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
-    } else {
-      txtChange(rviewNoticeMent, "\uB0B4\uC6A9\uC744 \uC785\uB825 \uD574\uC8FC\uC138\uC694.");
-    }
-  });
-}
-
-//review_text_area_reset;
-function rviewReset() {
-  rviewResetEl.forEach(function (input) {
-    return valueChange(input, "");
-  });
-  txtChange(rviewNoticeMent, "");
-  txtChange(rviewLengthView, "0 \uC790");
-  rviewID.focus();
-}
 //review_select_star_reset
 function starReset() {
   starSave.nowRating = null;
@@ -1065,43 +1004,321 @@ function starReset() {
     changeClass(rviewRatingStar[i], ["fas", "far"]);
   }
 }
-//list_setting
-function arrSplice(obj) {
-  var first = obj.pageIdx * obj.liMaxView;
-  var last = first + obj.liMaxView;
-  var splice = _toConsumableArray(obj.liData).splice(first, last);
-  return splice;
+
+//review_create_complete
+rviewComplete();
+function rviewComplete() {
+  rviewCrtComplete.addEventListener('click', function () {
+    var nowTxt = rviewTxtBox.value;
+    var idCondition = rviewID.value.length >= rviewIDMinLength && rviewID.value.length <= rviewIDMaxLength;
+    if (nowTxt !== null && nowTxt !== "" && nowTxt !== undefined && idCondition && starSave.clickState) {
+      var property = [calcDate(), rviewID.value, starSave.nowRating, nowTxt];
+      var resetEl = [rviewResetEl, rviewNoticeMent, rviewLengthView, rviewID];
+      reviewInfo.liData.push(_construct(RviewObj, property));
+
+      //리셋
+      textReset.apply(void 0, resetEl);
+      starReset();
+      listMaker(reviewInfo, arrSlice(reviewInfo.pageIdx, reviewInfo));
+      pageCreate(reviewInfo);
+      reviewInfo.pageIdx = Math.floor(reviewInfo.liData.length / reviewInfo.liMaxView);
+    } else if (!idCondition) {
+      txtChange(rviewNoticeMent, "ID\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
+    } else if (!starSave.clickState) {
+      txtChange(rviewNoticeMent, "\uB9AC\uBDF0 \uBCC4\uC810\uC744 \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
+    } else {
+      txtChange(rviewNoticeMent, "\uB0B4\uC6A9\uC744 \uC785\uB825 \uD574\uC8FC\uC138\uC694.");
+    }
+  });
 }
-//review_page_create
+
+//view_star_create(표기용)
+function starCreate(num) {
+  var list = "";
+  var receive = "";
+  for (var i = 0; i < starMaxCount; i++) {
+    if (i <= num) {
+      list = " <li><i class=\"fas fa-star\"></i></li>";
+    } else {
+      list = " <li><i class=\"far fa-star\"></i></li>";
+    }
+    receive += list;
+  }
+  return receive;
+}
+/******************** qna ********************/
+var qnaCraateBtn = document.getElementById('question_btn');
+var qnaArea = document.getElementById('create_question');
+var qnaTxtBox = document.getElementById('create_question_ment');
+var qnaCrtComplete = document.getElementById('qna_create');
+var qnaListArea = document.getElementById('qna_list');
+var qnaPageArea = document.getElementById('qna_page_list');
+var qnaID = document.getElementById('qna_user_id');
+var qnaCounting = document.querySelector('.qna_couting');
+var qnaIDMinLength = qnaID.getAttribute('minlength');
+var qnaIDMaxLength = qnaID.getAttribute('maxlength');
+var qnaLengthView = document.getElementById('qna_now_length');
+var qnaResetEl = document.querySelectorAll('.qna_reset');
+var qnaNoticeMent = document.getElementById('qna_notice_ment');
+var qnaInfo = {
+  type: "qna",
+  liData: [],
+  liWrapper: qnaListArea,
+  liMaxView: 6,
+  liTotalLength: qnaCounting,
+  pageIdx: 0,
+  pageWrapper: qnaPageArea,
+  managerName: "[CARHARTT] 관리자"
+};
+
+//object create 참조: https://leehwarang.github.io/docs/tech/constructor.html
+function QnaObj(time, id) {
+  var questionTxt = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "";
+  this.time = time;
+  this.privacy = {
+    id: id
+  };
+  this.answerInfo = {
+    answerClick: false,
+    answerState: false,
+    answerMentClick: false,
+    answerTxt: [""]
+  };
+  this.questionTxt = [questionTxt];
+}
+//review_chk_btn
+qnaClick();
+function qnaClick() {
+  var qnaChkState = false;
+  qnaCraateBtn.addEventListener('click', function () {
+    if (!qnaChkState) {
+      qnaChkState = true;
+      addClass(qnaArea, 'block_on');
+      setTimeout(function () {
+        qnaID.focus();
+      }, 10);
+    } else {
+      qnaChkState = false;
+      removeClass(qnaArea, 'block_on');
+      txtChange(qnaLengthView, "0 \uC790");
+    }
+  });
+}
+
+//qna_id_chk
+qnaID.addEventListener('input', function () {
+  lengthChk(qnaID, qnaNoticeMent);
+});
+
+//review_input_event
+qnaTxtBox.addEventListener('input', function () {
+  txtChange(qnaLengthView, "".concat(qnaTxtBox.value.length, " \uC790"));
+  if (qnaNoticeMent.textContent.length > 0) {
+    txtChange(qnaNoticeMent, "");
+  }
+});
+
+//qna_create_complete
+qnaComplete();
+function qnaComplete() {
+  qnaCrtComplete.addEventListener('click', function () {
+    var nowTxt = qnaTxtBox.value;
+    var idCondition = qnaID.value.length >= qnaIDMinLength && qnaID.value.length <= qnaIDMaxLength;
+    if (nowTxt !== null && nowTxt !== "" && nowTxt !== undefined && idCondition) {
+      var property = [calcDate(), qnaID.value, nowTxt];
+      var resetEl = [qnaResetEl, qnaNoticeMent, qnaLengthView, qnaID];
+      qnaInfo.liData.push(_construct(QnaObj, property));
+
+      //리셋
+      textReset.apply(void 0, resetEl);
+      listMaker(qnaInfo, arrSlice(qnaInfo.pageIdx, qnaInfo));
+      pageCreate(qnaInfo);
+      qnaInfo.pageIdx = Math.floor(qnaInfo.liData.length / qnaInfo.liMaxView);
+    } else if (!idCondition) {
+      txtChange(qnaNoticeMent, "ID\uB97C \uC591\uC2DD\uC5D0 \uB9DE\uAC8C \uC791\uC131 \uD574\uC8FC\uC138\uC694.");
+    } else {
+      txtChange(qnaNoticeMent, "\uB0B4\uC6A9\uC744 \uC785\uB825 \uD574\uC8FC\uC138\uC694.");
+    }
+  });
+}
+function handleAnswer(obj) {
+  //관리자 답변 작성 Area ON/OFF BTN
+  var answerChk = obj.liWrapper.querySelectorAll('.comment_click_on');
+  //관리자 답변 작성 Area
+  var answerInputArea = obj.liWrapper.querySelectorAll('.ment_input');
+  //관리자 답변 작성 Area안 텍스트 박스
+  var answerTxtArea = obj.liWrapper.querySelectorAll('.answer_text_box');
+  //관리자 답변 작성 완료 BTN
+  var answerBtn = obj.liWrapper.querySelectorAll('.answer_create');
+  //관리자 멘트 AREA 보기 ON/OFF BTN
+  var answerMentOnBtn = obj.liWrapper.querySelectorAll('.manager_ment_on');
+
+  //관리자 멘트 AREA
+  var answerMentArea = obj.liWrapper.querySelectorAll('.ment_area');
+  //관리자 멘트 TEXT_VIEW
+  var answerMentTxt = obj.liWrapper.querySelectorAll('.anmswer_ment');
+  //관리자가 답변을 작성 하였는지 안하였는지 표시
+  var answerStateView = obj.liWrapper.querySelectorAll('.answer_state');
+
+  //답변 작성 창 ON/OFF
+  answerChk.forEach(function (chkBtn, i) {
+    chkBtn.addEventListener('click', function () {
+      if (!obj.liData[i].answerInfo.answerClick && !obj.liData[i].answerInfo.answerState) {
+        obj.liData[i].answerInfo.answerClick = true;
+        addClass(answerInputArea[i], 'block_on');
+      } else {
+        obj.liData[i].answerInfo.answerClick = false;
+        removeClass(answerInputArea[i], 'block_on');
+      }
+    });
+  });
+
+  //답변 작성 완료
+  answerBtn.forEach(function (comBtn, i) {
+    comBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (answerTxtArea[i].value !== undefined && answerTxtArea[i].value !== "" && answerTxtArea[i].value !== "") {
+        //답변 달리면 작성창 안뜨게
+        obj.liData[i].answerInfo.answerState = true;
+        obj.liData[i].answerInfo.answerTxt[0] = answerTxtArea[i].value;
+        txtChange(answerMentTxt[i], answerTxtArea[i].value);
+        txtChange(answerStateView[i], "답변완료");
+
+        //멘트 열람 버튼
+        addClass(answerMentOnBtn[i], 'block_on');
+        //답변 텍스트박스 제거
+        removeClass(answerInputArea[i], 'block_on');
+      } else {
+        alert("관리자 답변을 작성 해주세요!");
+      }
+    });
+  });
+
+  //답변 보기 ON/OFF
+  answerMentOnBtn.forEach(function (openBtn, i) {
+    openBtn.addEventListener('click', function () {
+      if (!obj.liData[i].answerInfo.answerMentClick) {
+        obj.liData[i].answerInfo.answerMentClick = true;
+        addClass(answerMentArea[i], 'flex_on');
+      } else {
+        obj.liData[i].answerInfo.answerMentClick = false;
+        removeClass(answerMentArea[i], 'flex_on');
+      }
+    });
+  });
+}
+
+/******************** common ********************/
+//list_create
+function listMaker(obj, arr) {
+  var receive = "";
+  if (obj.type === "review") {
+    if (arr.length === 0) {
+      obj.liWrapper.innerHTML = "\n                <div class=\"not_ment\">\n                    \uD604\uC7AC \uC791\uC131\uB41C \uB9AC\uBDF0\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.\n                </div>\n            ";
+    } else {
+      for (var i = 0; i < arr.length; i++) {
+        var list = "\n                        <li class=\"review\">\n                            <p class=\"review_ment\">\n                                ".concat(arr[i].reviewText[0].length > brLength ? lineBrake(arr[i].reviewText[0]) : arr[i].reviewText[0], "\n                                <span class=\"delete\">\n                                    <i class=\"fas fa-window-close\"></i>\n                                </span>\n                            </p>\n                            <div class=\"right_info\">\n                                <ul class=\"rating_star\">").concat(starCreate(arr[i].ratingIdx), "</ul>\n                                <span class=\"review_date date\">").concat(arr[i].time, "</span>\n                                <span class=\"review_id\">").concat(idHide(arr[i].privacy.id), "</span>\n                            </div>\n                        </li>\n                        ");
+        receive += list;
+      }
+      obj.liWrapper.innerHTML = receive;
+      handleDelete(obj);
+    }
+    txtChange(obj.liTotalLength, "".concat(obj.liData.length));
+  }
+  if (obj.type === "qna") {
+    if (arr.length === 0) {
+      obj.liWrapper.innerHTML = "\n                <div class=\"qna_not_ment\">\n                    \uD604\uC7AC \uC791\uC131\uB41C QNA\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.\n                </div>\n            ";
+    } else {
+      for (var _i = 0; _i < arr.length; _i++) {
+        var _list = "\n                        <li class=\"question_list\">\n                            <div class=\"question_box\">\n                                <div class=\"left_box\">\n                                    <span class=\"answer_state\">".concat(arr[_i].answerInfo.answerState ? "답변완료" : "미처리", "</span>\n                                    <p class=\"qna_ment\">\n                                        ").concat(arr[_i].questionTxt[0].length > brLength ? lineBrake(arr[_i].questionTxt[0]) : arr[_i].questionTxt[0], "\n                                        <span class=\"qna_list_delete delete\">\n                                            <i class=\"fas fa-window-close\"></i>\n                                        </span>\n                                        <span class=\"").concat(arr[_i].answerInfo.answerState ? "manager_ment_on block_on" : "manager_ment_on", "\">\n                                            <i class=\"fas fa-level-down-alt\"></i>\n                                        </span>\n                                    </p>\n                                </div>\n                                <div class=\"right_box\">\n                                    <span class=\"qna_date date\">").concat(arr[_i].time, "</span>\n                                    <span class=\"qna_id list_view_id\">").concat(idHide(arr[_i].privacy.id), "</span>\n                                    <span class=\"comment_click_on\">\n                                        <i class=\"fas fa-user-tag\"></i>\n                                    </span>\n                                </div>\n                            </div>\n                            <div class=\"answer_box\">\n                                <div class=\"ment_input\">\n                                    <h2>").concat(obj.managerName, "</h2>\n                                    <textarea class=\"answer_text_box\" cols=\"10\" rows=\"4\" maxlength=\"200\"></textarea>\n                                    <button class=\"answer_create blue_btn\">\n                                        \uB2F5\uBCC0\uD558\uAE30\n                                    </button>\n                                </div>\n                                <div class=\"").concat(arr[_i].answerInfo.answerMentClick ? "ment_area flex_on" : "ment_area", "\">\n                                    <span class=\"answer\">\uB2F5\uBCC0</span>\n                                    <div class=\"guide_ment_area\">\n                                        <p class=\"spot\">").concat(obj.managerName, "</p>\n                                        <p class=\"anmswer_ment\">\n                                            ").concat(arr[_i].answerInfo.answerTxt, "\n                                        </p>\n                                    </div>\n                                </div>\n                            </div>\n                        </li>\n                        ");
+        receive += _list;
+      }
+      obj.liWrapper.innerHTML = receive;
+      handleDelete(obj);
+      handleAnswer(obj);
+    }
+    txtChange(obj.liTotalLength, "".concat(obj.liData.length));
+  }
+}
+
+//text_list_reset;
+function textReset(valElements, resetTxt01, resetTxt02, focusEl) {
+  valElements.forEach(function (valEl) {
+    return valueChange(valEl, "");
+  });
+  txtChange(resetTxt01, "");
+  txtChange(resetTxt02, "0 \uC790");
+  focusEl.focus();
+}
+function lengthChk(myInput, noticeBox) {
+  var maxLength = parseInt(myInput.getAttribute('maxlength'), 10);
+  if (myInput.value.length > maxLength) {
+    myInput.value = myInput.value.substring(0, maxLength);
+  }
+  if (noticeBox.textContent.length > 0) {
+    txtChange(noticeBox, "");
+  }
+}
+//list_slice
+function arrSlice(index, obj) {
+  var first = index * obj.liMaxView;
+  var last = first + obj.liMaxView;
+  var slice = obj.liData.slice(first, last);
+  return slice;
+}
+//page_create
 function pageCreate(obj) {
   var list = "";
   for (var i = 0; i <= obj.pageIdx; i++) {
     list += "<li class=\"".concat(i === obj.pageIdx ? "page_on" : "", "\">").concat(i + 1, "</li>");
   }
   obj.pageWrapper.innerHTML = list;
-}
-//review_list_create
-function reviewMaker(obj, arr) {
-  var receive = "";
-  for (var i = 0; i < arr.length; i++) {
-    var list = "\n                <li class=\"review\">\n                    <p class=\"review_ment\">\n                        ".concat(arr[i].reviewText, "\n                        <span class = \"").concat(i === 0 && obj.pageIdx === 0 ? "delete none_on" : "delete", "\">\n                            <i class=\"fas fa-window-close\"></i>\n                        </span>\n                    </p>\n                    <div class=\"right_info\">\n                    <ul class=\"rating_star\">").concat(starCreate(arr[i].ratingIdx), "</ul>\n                        <span class=\"review_date date\">").concat(arr[i].time, "</span>\n                        <span class=\"review_id\">").concat(idHide(arr[i].privacy.id), "</span>\n                    </div>\n                </li>\n                ");
-    receive += list;
+  if (obj.liData.length === 0) {
+    addClass(obj.pageWrapper, 'none_on');
+  } else {
+    removeClass(obj.pageWrapper, 'none_on');
   }
-  obj.liWrapper.innerHTML = receive;
-  txtChange(obj.liLengthView, "".concat(obj.liData.length));
-  handleDelete(obj);
+  pageControl(obj);
+}
+//page_click_ev
+function pageControl(obj) {
+  var page = obj.pageWrapper.querySelectorAll('li');
+  page.forEach(function (li, i) {
+    li.addEventListener('click', function () {
+      for (var j = 0; j < page.length; j++) {
+        removeClass(page[j], 'page_on');
+      }
+      addClass(li, 'page_on');
+      listMaker(obj, arrSlice(i, obj));
+    });
+  });
 }
 function handleDelete(obj) {
   var deleteBtn = obj.liWrapper.querySelectorAll('.delete');
   deleteBtn.forEach(function (btn, idx) {
     btn.addEventListener('click', function () {
       obj.liData.splice(idx, 1);
-      //페이지 넘기기 위해 1개를 더 빼준다.
       obj.pageIdx = Math.floor((obj.liData.length - 1) / obj.liMaxView);
-      reviewMaker(obj, arrSplice(obj));
+      if (obj.pageIdx < 0) {
+        obj.pageIdx = 0;
+      }
+      listMaker(obj, arrSlice(obj.pageIdx, obj));
       pageCreate(obj);
     });
   });
+}
+function lineBrake(str) {
+  //라인 나누기, 
+  //1. 나누고자하는 갯수 구하기.
+  //2. str.length가 나누고자하는 갯수 넘으면, 나누기로 몫만큼 br주면 될듯
+  var result = "";
+  var repeat = Math.floor(str.length / brLength);
+  for (var i = 0; i < repeat; i++) {
+    result += str.substring(i * brLength, (i + 1) * brLength) + "<br />";
+  }
+  result += str.substring(repeat * brLength, repeat.length); //남은 찌꺼기부분 더해주기
+
+  return result;
 }
 
 //date_calc
@@ -1124,20 +1341,6 @@ function idHide(txt) {
   var cut = txt.substring(0, 2);
   var hide = '*'.repeat(txt.length - cut.length);
   return cut + hide;
-}
-//view_star_create(표기용)
-function starCreate(num) {
-  var list = "";
-  var receive = "";
-  for (var i = 0; i < starMaxCount; i++) {
-    if (i <= num) {
-      list = " <li><i class=\"fas fa-star\"></i></li>";
-    } else {
-      list = " <li><i class=\"far fa-star\"></i></li>";
-    }
-    receive += list;
-  }
-  return receive;
 }
 function valueChange(el) {
   var value = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
@@ -1183,7 +1386,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50419" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54758" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
