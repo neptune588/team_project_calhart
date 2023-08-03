@@ -181,13 +181,13 @@ input {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 1.6rem;
 }
-.serach_list_length_section .search_value {
+.serach_list_length_section .search_value_design {
   color: #4136BF;
   font-size: 2rem;
   font-weight: 700;
   margin-right: 10px;
 }
-.serach_list_length_section .list_length {
+.serach_list_length_section .list_length_design {
   font-size: 2rem;
   font-weight: 700;
 }

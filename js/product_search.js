@@ -1,239 +1,309 @@
-
 /************************ search_product_list ****************************/
-const searchProductWrapper = document.getElementById('product_list');
-const pageSection = document.getElementById('search_pagenation');
-const pageNumber = document.querySelector('.page_number');
+const searchPdWrapper = document.getElementById('product_list');
+const searchPageSection = document.getElementById('search_pagenation');
+const searchPageNumber = document.querySelector('.page_number');
 
-const pageItemView = 12;
+//페이지 컨트롤 요소
+const searchPrevPage = document.getElementById('search_prev_btn');
+const searchNextPage = document.getElementById('search_next_btn');
+const searchFisrtPage = document.getElementById('search_first_prev_btn');
+const searchLastPage = document.getElementById('search_last_next_btn');
 
-const searchValue = document.querySelector('.search_value');
-const productLengthNotice = document.querySelector('.list_length');
+//상품정보표기
+const pdName = document.getElementById('search_value');
+const pdLengthView = document.getElementById('list_length');
 
+//검색페이지내의 검색창
+const pdSearchInput = document.getElementById('product_page_search');
+//검색어 삭제
+const searchValueDelete = document.getElementById('search_delete_btn');
+//검색창 최대 글자 입력 갯수
+const searchInputMaxLength = pdSearchInput.getAttribute('maxlength');
 
-fetch('./product_search_data.json')
-  .then(res => res.json())
-  .then((data) => {
-    listRequest(getParameter('q'), data);
-  })
-  .catch(error => console.log(error));
-
-function getParameter(parameter) {
-  const urlObject = new URLSearchParams(location.search);
-
-  //urlsearchparams란?
-  //url쿼리문자열을 파싱하는 객체로
-  //해당 객체를 생성후 get으로 ?뒤에 설정한 쿼리문자열을 매개변수로 받아
-  //뒤에오는 문자열을 전달받을수있 다고 한다.
-
-  //여기서 q는 key고 = 뒤에 오는게 value이다. 
-
-  //ex ?query='바나나' 라고 가정하면 위의 선언한 객체에서
-  //.get('query')를하면 바나나라는 값을 가져오게 될수 있게되는것.
-
-  return urlObject.get(parameter);
-
+const searchObj = {
+  referenceArr: [],
+  liWrapper: searchPdWrapper,
+  maxView: 12,
+  pageNumber: null,
+  pageWrapper: searchPageNumber,
+  pageSection: searchPageSection,
+  paegLength: 0,
+  curPageIndex: 0,
 }
 
 
-function listfilter(value = '', array = []) {
-  const returnArray = array.filter((object) => {
+dataRequest(new URLSearchParams(location.search).get('q'));
+async function dataRequest(param) {
+  const request = await dataReceive();
 
-    if (value === '') {
-      return false;
-    }
-    
-    return object.productNameKor.includes(value) || object.productModelName.includes(value) || object.productStyle.includes(value);
-  })
 
-  console.log(returnArray);
-  return returnArray;
+  searchObj.referenceArr = [...listFilter(request, param)];
+
+  listCreate(searchObj, searchObj.referenceArr);
+  pageCreate(searchObj);
+
+  txtChange(pdName, param);
+  txtChange(pdLengthView, searchObj.referenceArr.length);
 }
 
-function lengthShow(value, array) {
-  searchValue.textContent = value;
-  productLengthNotice.textContent = array.length;
-}
-
-function listRequest(value, data) {
-  const filterArray = listfilter(value, data);
-
-  lengthShow(value, filterArray);
-  listnPageCreate(filterArray);
-}
-
-/************************ search_tab ****************************/
-const productPageSearchDelete = document.getElementById('search_delete_btn');
-const productPageSearchTab = document.getElementById('product_page_search');
-const maxValueLength = 50;
-
-productPageSearchDelete.addEventListener('click', () => {
-  productPageSearchTab.focus();
-  productPageSearchTab.value = '';
-});
-
-productPageSearchTab.addEventListener('keyup', function (e) {
-  let time;
-  if (this.value.length > maxValueLength) {
-    this.value = this.value.substring(0, maxValueLength);
+//검색창 관련
+pdSearchInput.focus();
+pdSearchInput.addEventListener('keyup', (e) => {
+  if (e.target.value.length > searchInputMaxLength) {
+    e.target.value = e.target.value.substring(0, searchInputMaxLength);
   }
-  if (e.key === 'Enter') {
-    
+  if (e.key === "Enter") {
+    let time;
     clearTimeout(time);
-    time = setTimeout(() => {
-      fetch('./search_data.json')
-      .then(res => res.json())
-      .then((data) => {
-        listRequest(this.value, data);
-      })
-      .catch(error => console.log(error));
-    }, 400);
-  }
 
+    time = setTimeout(() => dataRequest(e.target.value), 20);
+  }
+});
+searchValueDelete.addEventListener('click', () => {
+  pdSearchInput.value = "";
+  pdSearchInput.focus();
 });
 
+//page Move
+searchPrevPage.addEventListener('click', () => pagePrevClick(searchObj));
+searchNextPage.addEventListener('click', () => pageNextClick(searchObj));
+searchFisrtPage.addEventListener('click', () => pageFirstClick(searchObj));
+searchLastPage.addEventListener('click', () => pageLastClick(searchObj));
 
-function listnPageCreate(array) {
-  listCreate(array);
-  pageCreate(array);
+function dataReceive() {
+  return fetch('./product_search_data.json').then(res => res.json());
 }
 
-function pageCreate(array) {
-  if (array.length === 0) {
-    addClass(pageSection, `none_on`);
+function listFilter(arr, value) {
+  return arr.filter(obj => {
+    if (value === '' || value === undefined || value === null) {
+      return false;
+    } else {
+      return obj.productNameKor.replace(/(\s*)/g, "").includes(value) || obj.productModelName.replace(/(\s*)/g, "").includes(value) || obj.productStyle.replace(/(\s*)/g, "").includes(value);
+    }
+  })
+}
 
-  } else {
-    removeClass(pageSection, `none_on`);
-  }
+function listCreate(obj, arr) {
+  let list01 = ``;
+  let list02 = ``;
+  let list03 = ``;
 
   let receive = ``;
-  pageNumber.innerHTML = ``;
-  for (let i = 1; i <= calc(array); i++) {
-    const pageInner = `
-          <li>
-              ${i}
-          </li>
+
+  if (arr.length === 0) {
+    obj.liWrapper.innerHTML = `
+        <div class="search_not_ment">
+          <p>
+            <i class="far fa-times-circle"></i>
+            검색어와 일치하는 내용이 없습니다.
+          </p>
+          <p>다른 검색어를 입력하시거나, 검색어와 띄어쓰기를 확인 해보세요.</p>
+        </div>
       `
-    receive += pageInner;
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      if (i === obj.maxView) {
+        break;
+      }
+
+      list01 = `
+                  <a class = "img_link_01" href = './detail_product_buy.html'>
+                      <img src = ${arr[i].imgSrc[0]} alt = "product_img_${i}">
+                  </a>    
+                  <a class = "img_link_02" href = './detail_product_buy.html'>
+                      <img src = ${arr[i].imgSrc[1]} alt = "product_img_${i}_hover">
+                  </a>
+              `
+
+      list02 = `
+                  <a class = "product_name" href = "./detail_product_buy.html">
+                      ${arr[i].productNameKor}
+                  </a>
+                  <a class = "model_name" href = "./detail_product_buy.html">
+                      ${arr[i].productModelName}
+                  </a>
+                  <span class = "price_unit">₩</span>
+                  <span class = "price">${arr[i].price.toLocaleString()}</span>
+              `
+
+      if (arr[i].isNew) {
+        list02 = `
+                  <span class="new">NEW</span>
+                  ${list02}
+              `
+      }
+
+      if (arr[i].isBest) {
+        list02 = `
+                  <span class="best">BEST</span>
+                  ${list02}
+              `
+      }
+
+      list03 = `
+          <li>
+              ${list01}
+              ${list02}
+          </li>
+          `
+      receive += list03;
+    }
+    obj.liWrapper.innerHTML = receive;
   }
-  pageNumber.innerHTML = receive;
-  //1페이지 활성화 표시
-  if (pageNumber.children.length !== 0) {
-    addClass(pageNumber.children[0], 'page_on');
-  }
-  pageControl(array);
+
 }
 
-function pageControl(array) {
-  const pageNumberBtn = document.querySelectorAll('.page_number > li');
-  //페이지 번호에 따라 아이템 생성
-  for (let i = 0; i < pageNumberBtn.length; i++) {
-    pageNumberBtn[i].addEventListener('click', () => {
-      for (let j = 0; j < pageNumberBtn.length; j++) {
-        removeClass(pageNumberBtn[j], 'page_on');
+function pageCreate(obj) {
+  let list = ``;
+  let receive = ``;
+
+  obj.paegLength = pageCalc(obj.referenceArr, obj.maxView);
+  if (obj.referenceArr.length === 0) {
+    addClass(obj.pageSection, 'none_on');
+  } else {
+    for (let i = 0; i < obj.paegLength; i++) {
+      list = `<li>${i + 1}</li>`
+
+      if (i === obj.curPageIndex) {
+        list = `<li class="page_on">${i + 1}</li>`
       }
-      //페이지 활성화 효과
-      addClass(pageNumberBtn[i], 'page_on');
-      //복사할 배열을 인자로 받고 인덱스 추출 번호를 계산하여 
-      //복사한다. 그리고 페이지 클릭했을때 이후 해당 배열을 기반으로 리스트 생성
-      let returnSlice = arraySliceCreate(i, pageItemView, array);
-      listCreate(returnSlice);
+
+      receive += list;
+    }
+
+    obj.pageWrapper.innerHTML = receive;
+    removeClass(obj.pageSection, 'none_on');
+  }
+
+  pageControl(obj);
+}
+
+function pageControl(obj) {
+  const pageBtn = obj.pageWrapper.querySelectorAll('li');
+  //매번 객체에 바뀐 el 갱신
+  //prev,next btn은 매번 새로 덮어씌워지는게 아니므로, 오브젝트에 항상 el을 갱신시켜주고
+  //그 el에게 page_on클래스를 주자.
+
+  obj.pageNumber = pageBtn;
+
+  pageBtn.forEach((page, index) => {
+    page.addEventListener('click', () => {
+      for (let j = 0; j < pageBtn.length; j++) {
+        removeClass(pageBtn[j], 'page_on');
+      }
+      addClass(page, 'page_on');
+      obj.curPageIndex = index;
+
+      listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+      window.scrollTo({
+        top: 0
+      });
+    })
+  })
+}
+
+function pagePrevClick(obj) {
+  obj.curPageIndex = obj.curPageIndex - 1;
+
+  if (obj.curPageIndex < 0) {
+    obj.curPageIndex = 0;
+    alert('첫번쨰 페이지 입니다!');
+    //console.log(obj.curPageIndex);
+
+  } else {
+    for (let j = 0; j < obj.pageNumber.length; j++) {
+      removeClass(obj.pageNumber[j], 'page_on');
+    }
+
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+    window.scrollTo({
+      top: 0
     });
   }
 }
-//페이지 리스트 생성
-function listCreate(array) {
-  searchProductWrapper.innerHTML = ``;
-  let receive = ``;
 
-  if (array.length === 0) {
-    searchProductWrapper.innerHTML = `
-          <div class="search_not_ment">
-            <p>
-              <i class="far fa-times-circle"></i>
-              검색어와 일치하는 내용이 없습니다.
-            </p>
-            <p>다른 검색어를 입력하시거나, 검색어와 띄어쓰기를 확인 해보세요.</p>
-          </div>
-      `;
-  }
-  for (let i = 0; i < array.length; i++) {
-    if (i === pageItemView) {
-      break;
-    }
-    let list = `
-          <li>
-              <a class = "img_link_01" href = './detail_product_buy.html'>
-                  <img src = ${array[i].imgSrc[0]} alt = "product_img_${i}">
-              </a>    
-              <a class = "img_link_02" href = './detail_product_buy.html'>
-                  <img src = ${array[i].imgSrc[1]} alt = "product_img_${i}_hover">
-              </a>
-              <a class = "product_name" href = "./detail_product_buy.html">
-                  ${array[i].productNameKor}
-              </a>
-              <a class = "model_name" href = "./detail_product_buy.html">
-                  ${array[i].productModelName}
-              </a>
-              <span class = "price_unit">₩</span>
-              <span class = "price">${array[i].price.toLocaleString()}</span>
-          </li>
-      `
+function pageNextClick(obj) {
+  obj.curPageIndex = obj.curPageIndex + 1;
 
-    if (array[i].isBest === true && array[i].isNew === true) {
-      list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="best">BEST</span><span class="new">NEW</span><a class = "product_name" href = "./detail_product_buy.html">`);
-    } else if (array[i].isBest === true) {
-      list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="best">BEST</span><a class = "product_name" href = "./detail_product_buy.html">`);
-    } else if (array[i].isNew === true) {
-      list = list.replaceAll(`<a class = "product_name" href = "./detail_product_buy.html">`, `<span class="new">NEW</span><a class = "product_name" href = "./detail_product_buy.html">`);
+  if (obj.curPageIndex >= obj.paegLength) {
+    obj.curPageIndex = obj.paegLength - 1;
+    alert('마지막 페이지 입니다!');
+
+  } else {
+    for (let j = 0; j < obj.pageNumber.length; j++) {
+      removeClass(obj.pageNumber[j], 'page_on');
     }
 
-    receive += list;
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+    window.scrollTo({
+      top: 0
+    });
   }
-  searchProductWrapper.innerHTML += receive;
-}
-//배열 받아서 페이지 계산
-function calc(array) {
-  return Math.ceil(array.length / pageItemView);
-
-  //math.ceil은 올림 함수이다.
-
-  //총 아이템이 30개이고 
-
-  //한 페이지당 아이템이 12개씩 나온다고 가정을 해보면
-
-  // 1 12 /2 12 /3 6 이 되는데
-
-  //12개로 나눈 나머지 부분에도 페이지를 구현해주기 위해 올림함수를 쓰는것이다.
-
-  // 30 / 12는 2.5 -> 올림 -> 3 나머지 0.5부분도 페이지로 나타나져야 하니까 올림 함수를 이용해 카운트를 올리고 페이지에 표현
-
 }
 
-//배열 계산 후 복제
-function arraySliceCreate(firstValue, lastValue, array) {
-  let startIndex = (firstValue + 1) * lastValue - lastValue; //sub_page_product_list기준 0, 1, 2
-  let lastIndex = lastValue + startIndex;
+function pageFirstClick(obj) {
+  if (obj.curPageIndex === 0) {
+    alert('첫번째 페이지 입니다!');
+  } else {
+    obj.curPageIndex = 0;
 
-  let returnArray = array.slice(startIndex, lastIndex); //배열복제
-  return returnArray;
+    obj.pageNumber.forEach(li => removeClass(li, 'page_on'));
+    addClass(listObj.pageNumber[0], 'page_on');
 
-  //console.log(returnArray);
-  //console.log(startIndex);
-  //console.log(lastIndex);
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+    window.scrollTo({
+      top: 0
+    });
+  }
 }
 
-//클래스 추가
-function addClass(Element, ClassName) {
-  Element.classList.add(ClassName);
+function pageLastClick(obj) {
+  if (obj.curPageIndex === obj.pageNumber.length - 1) {
+    alert('마지막 페이지 입니다!');
+  } else {
+    obj.curPageIndex = obj.pageNumber.length - 1;
+
+    obj.pageNumber.forEach(li => removeClass(li, 'page_on'));
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+    window.scrollTo({
+      top: 0
+    });
+  }
 }
 
-function addClassMulti(Element, ClassArray) {
-  ClassArray.forEach((ClassName) => {
-    Element.classList.add(ClassName);
-  });
+function pageCalc(arr, viewLength) {
+  const pageNum = Math.ceil(arr.length / viewLength);
+  return pageNum;
+}
+//list_slice
+function arrSlice(index, obj) {
+  let first = index * obj.maxView;
+  let last = first + obj.maxView;
+
+  const slice = obj.referenceArr.slice(first, last);
+  return slice;
 }
 
-//클래스 제거
-function removeClass(Element, ClassName) {
-  Element.classList.remove(ClassName);
+function addClass(el, ClassName) {
+  el.classList.add(ClassName);
+}
+
+function removeClass(el, ClassName) {
+  el.classList.remove(ClassName);
+}
+
+function txtChange(el, txt = "") {
+  el.textContent = txt;
 }

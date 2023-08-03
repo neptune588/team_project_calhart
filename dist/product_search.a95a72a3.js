@@ -118,192 +118,268 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/product_search.js":[function(require,module,exports) {
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 /************************ search_product_list ****************************/
-var searchProductWrapper = document.getElementById('product_list');
-var pageSection = document.getElementById('search_pagenation');
-var pageNumber = document.querySelector('.page_number');
-var pageItemView = 12;
-var searchValue = document.querySelector('.search_value');
-var productLengthNotice = document.querySelector('.list_length');
-fetch('./product_search_data.json').then(function (res) {
-  return res.json();
-}).then(function (data) {
-  listRequest(getParameter('q'), data);
-}).catch(function (error) {
-  return console.log(error);
-});
-function getParameter(parameter) {
-  var urlObject = new URLSearchParams(location.search);
+var searchPdWrapper = document.getElementById('product_list');
+var searchPageSection = document.getElementById('search_pagenation');
+var searchPageNumber = document.querySelector('.page_number');
 
-  //urlsearchparams란?
-  //url쿼리문자열을 파싱하는 객체로
-  //해당 객체를 생성후 get으로 ?뒤에 설정한 쿼리문자열을 매개변수로 받아
-  //뒤에오는 문자열을 전달받을수있 다고 한다.
+//페이지 컨트롤 요소
+var searchPrevPage = document.getElementById('search_prev_btn');
+var searchNextPage = document.getElementById('search_next_btn');
+var searchFisrtPage = document.getElementById('search_first_prev_btn');
+var searchLastPage = document.getElementById('search_last_next_btn');
 
-  //여기서 q는 key고 = 뒤에 오는게 value이다. 
+//상품정보표기
+var pdName = document.getElementById('search_value');
+var pdLengthView = document.getElementById('list_length');
 
-  //ex ?query='바나나' 라고 가정하면 위의 선언한 객체에서
-  //.get('query')를하면 바나나라는 값을 가져오게 될수 있게되는것.
-
-  return urlObject.get(parameter);
+//검색페이지내의 검색창
+var pdSearchInput = document.getElementById('product_page_search');
+//검색어 삭제
+var searchValueDelete = document.getElementById('search_delete_btn');
+//검색창 최대 글자 입력 갯수
+var searchInputMaxLength = pdSearchInput.getAttribute('maxlength');
+var searchObj = {
+  referenceArr: [],
+  liWrapper: searchPdWrapper,
+  maxView: 12,
+  pageNumber: null,
+  pageWrapper: searchPageNumber,
+  pageSection: searchPageSection,
+  paegLength: 0,
+  curPageIndex: 0
+};
+dataRequest(new URLSearchParams(location.search).get('q'));
+function dataRequest(_x) {
+  return _dataRequest.apply(this, arguments);
+} //검색창 관련
+function _dataRequest() {
+  _dataRequest = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(param) {
+    var request;
+    return _regeneratorRuntime().wrap(function _callee$(_context) {
+      while (1) switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return dataReceive();
+        case 2:
+          request = _context.sent;
+          searchObj.referenceArr = _toConsumableArray(listFilter(request, param));
+          listCreate(searchObj, searchObj.referenceArr);
+          pageCreate(searchObj);
+          txtChange(pdName, param);
+          txtChange(pdLengthView, searchObj.referenceArr.length);
+        case 8:
+        case "end":
+          return _context.stop();
+      }
+    }, _callee);
+  }));
+  return _dataRequest.apply(this, arguments);
 }
-function listfilter() {
-  var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-  var array = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-  var returnArray = array.filter(function (object) {
-    if (value === '') {
-      return false;
-    }
-    return object.productNameKor.includes(value) || object.productModelName.includes(value) || object.productStyle.includes(value);
-  });
-  console.log(returnArray);
-  return returnArray;
-}
-function lengthShow(value, array) {
-  searchValue.textContent = value;
-  productLengthNotice.textContent = array.length;
-}
-function listRequest(value, data) {
-  var filterArray = listfilter(value, data);
-  lengthShow(value, filterArray);
-  listnPageCreate(filterArray);
-}
-
-/************************ search_tab ****************************/
-var productPageSearchDelete = document.getElementById('search_delete_btn');
-var productPageSearchTab = document.getElementById('product_page_search');
-var maxValueLength = 50;
-productPageSearchDelete.addEventListener('click', function () {
-  productPageSearchTab.focus();
-  productPageSearchTab.value = '';
-});
-productPageSearchTab.addEventListener('keyup', function (e) {
-  var _this = this;
-  var time;
-  if (this.value.length > maxValueLength) {
-    this.value = this.value.substring(0, maxValueLength);
+pdSearchInput.focus();
+pdSearchInput.addEventListener('keyup', function (e) {
+  if (e.target.value.length > searchInputMaxLength) {
+    e.target.value = e.target.value.substring(0, searchInputMaxLength);
   }
-  if (e.key === 'Enter') {
+  if (e.key === "Enter") {
+    var time;
     clearTimeout(time);
     time = setTimeout(function () {
-      fetch('./search_data.json').then(function (res) {
-        return res.json();
-      }).then(function (data) {
-        listRequest(_this.value, data);
-      }).catch(function (error) {
-        return console.log(error);
-      });
-    }, 400);
+      return dataRequest(e.target.value);
+    }, 20);
   }
 });
-function listnPageCreate(array) {
-  listCreate(array);
-  pageCreate(array);
-}
-function pageCreate(array) {
-  if (array.length === 0) {
-    addClass(pageSection, "none_on");
-  } else {
-    removeClass(pageSection, "none_on");
-  }
-  var receive = "";
-  pageNumber.innerHTML = "";
-  for (var i = 1; i <= calc(array); i++) {
-    var pageInner = "\n          <li>\n              ".concat(i, "\n          </li>\n      ");
-    receive += pageInner;
-  }
-  pageNumber.innerHTML = receive;
-  //1페이지 활성화 표시
-  if (pageNumber.children.length !== 0) {
-    addClass(pageNumber.children[0], 'page_on');
-  }
-  pageControl(array);
-}
-function pageControl(array) {
-  var pageNumberBtn = document.querySelectorAll('.page_number > li');
-  //페이지 번호에 따라 아이템 생성
-  var _loop = function _loop(i) {
-    pageNumberBtn[i].addEventListener('click', function () {
-      for (var j = 0; j < pageNumberBtn.length; j++) {
-        removeClass(pageNumberBtn[j], 'page_on');
-      }
-      //페이지 활성화 효과
-      addClass(pageNumberBtn[i], 'page_on');
-      //복사할 배열을 인자로 받고 인덱스 추출 번호를 계산하여 
-      //복사한다. 그리고 페이지 클릭했을때 이후 해당 배열을 기반으로 리스트 생성
-      var returnSlice = arraySliceCreate(i, pageItemView, array);
-      listCreate(returnSlice);
-    });
-  };
-  for (var i = 0; i < pageNumberBtn.length; i++) {
-    _loop(i);
-  }
-}
-//페이지 리스트 생성
-function listCreate(array) {
-  searchProductWrapper.innerHTML = "";
-  var receive = "";
-  if (array.length === 0) {
-    searchProductWrapper.innerHTML = "\n          <div class=\"search_not_ment\">\n            <p>\n              <i class=\"far fa-times-circle\"></i>\n              \uAC80\uC0C9\uC5B4\uC640 \uC77C\uCE58\uD558\uB294 \uB0B4\uC6A9\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.\n            </p>\n            <p>\uB2E4\uB978 \uAC80\uC0C9\uC5B4\uB97C \uC785\uB825\uD558\uC2DC\uAC70\uB098, \uAC80\uC0C9\uC5B4\uC640 \uB744\uC5B4\uC4F0\uAE30\uB97C \uD655\uC778 \uD574\uBCF4\uC138\uC694.</p>\n          </div>\n      ";
-  }
-  for (var i = 0; i < array.length; i++) {
-    if (i === pageItemView) {
-      break;
-    }
-    var list = "\n          <li>\n              <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                  <img src = ".concat(array[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n              </a>    \n              <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                  <img src = ").concat(array[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n              </a>\n              <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                  ").concat(array[i].productNameKor, "\n              </a>\n              <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                  ").concat(array[i].productModelName, "\n              </a>\n              <span class = \"price_unit\">\u20A9</span>\n              <span class = \"price\">").concat(array[i].price.toLocaleString(), "</span>\n          </li>\n      ");
-    if (array[i].isBest === true && array[i].isNew === true) {
-      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"best\">BEST</span><span class=\"new\">NEW</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
-    } else if (array[i].isBest === true) {
-      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"best\">BEST</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
-    } else if (array[i].isNew === true) {
-      list = list.replaceAll("<a class = \"product_name\" href = \"./detail_product_buy.html\">", "<span class=\"new\">NEW</span><a class = \"product_name\" href = \"./detail_product_buy.html\">");
-    }
-    receive += list;
-  }
-  searchProductWrapper.innerHTML += receive;
-}
-//배열 받아서 페이지 계산
-function calc(array) {
-  return Math.ceil(array.length / pageItemView);
+searchValueDelete.addEventListener('click', function () {
+  pdSearchInput.value = "";
+  pdSearchInput.focus();
+});
 
-  //math.ceil은 올림 함수이다.
-
-  //총 아이템이 30개이고 
-
-  //한 페이지당 아이템이 12개씩 나온다고 가정을 해보면
-
-  // 1 12 /2 12 /3 6 이 되는데
-
-  //12개로 나눈 나머지 부분에도 페이지를 구현해주기 위해 올림함수를 쓰는것이다.
-
-  // 30 / 12는 2.5 -> 올림 -> 3 나머지 0.5부분도 페이지로 나타나져야 하니까 올림 함수를 이용해 카운트를 올리고 페이지에 표현
-}
-
-//배열 계산 후 복제
-function arraySliceCreate(firstValue, lastValue, array) {
-  var startIndex = (firstValue + 1) * lastValue - lastValue; //sub_page_product_list기준 0, 1, 2
-  var lastIndex = lastValue + startIndex;
-  var returnArray = array.slice(startIndex, lastIndex); //배열복제
-  return returnArray;
-
-  //console.log(returnArray);
-  //console.log(startIndex);
-  //console.log(lastIndex);
-}
-
-//클래스 추가
-function addClass(Element, ClassName) {
-  Element.classList.add(ClassName);
-}
-function addClassMulti(Element, ClassArray) {
-  ClassArray.forEach(function (ClassName) {
-    Element.classList.add(ClassName);
+//page Move
+searchPrevPage.addEventListener('click', function () {
+  return pagePrevClick(searchObj);
+});
+searchNextPage.addEventListener('click', function () {
+  return pageNextClick(searchObj);
+});
+searchFisrtPage.addEventListener('click', function () {
+  return pageFirstClick(searchObj);
+});
+searchLastPage.addEventListener('click', function () {
+  return pageLastClick(searchObj);
+});
+function dataReceive() {
+  return fetch('./product_search_data.json').then(function (res) {
+    return res.json();
   });
 }
+function listFilter(arr, value) {
+  return arr.filter(function (obj) {
+    if (value === '' || value === undefined || value === null) {
+      return false;
+    } else {
+      return obj.productNameKor.replace(/(\s*)/g, "").includes(value) || obj.productModelName.replace(/(\s*)/g, "").includes(value) || obj.productStyle.replace(/(\s*)/g, "").includes(value);
+    }
+  });
+}
+function listCreate(obj, arr) {
+  var list01 = "";
+  var list02 = "";
+  var list03 = "";
+  var receive = "";
+  if (arr.length === 0) {
+    obj.liWrapper.innerHTML = "\n        <div class=\"search_not_ment\">\n          <p>\n            <i class=\"far fa-times-circle\"></i>\n            \uAC80\uC0C9\uC5B4\uC640 \uC77C\uCE58\uD558\uB294 \uB0B4\uC6A9\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.\n          </p>\n          <p>\uB2E4\uB978 \uAC80\uC0C9\uC5B4\uB97C \uC785\uB825\uD558\uC2DC\uAC70\uB098, \uAC80\uC0C9\uC5B4\uC640 \uB744\uC5B4\uC4F0\uAE30\uB97C \uD655\uC778 \uD574\uBCF4\uC138\uC694.</p>\n        </div>\n      ";
+  } else {
+    for (var i = 0; i < arr.length; i++) {
+      if (i === obj.maxView) {
+        break;
+      }
+      list01 = "\n                  <a class = \"img_link_01\" href = './detail_product_buy.html'>\n                      <img src = ".concat(arr[i].imgSrc[0], " alt = \"product_img_").concat(i, "\">\n                  </a>    \n                  <a class = \"img_link_02\" href = './detail_product_buy.html'>\n                      <img src = ").concat(arr[i].imgSrc[1], " alt = \"product_img_").concat(i, "_hover\">\n                  </a>\n              ");
+      list02 = "\n                  <a class = \"product_name\" href = \"./detail_product_buy.html\">\n                      ".concat(arr[i].productNameKor, "\n                  </a>\n                  <a class = \"model_name\" href = \"./detail_product_buy.html\">\n                      ").concat(arr[i].productModelName, "\n                  </a>\n                  <span class = \"price_unit\">\u20A9</span>\n                  <span class = \"price\">").concat(arr[i].price.toLocaleString(), "</span>\n              ");
+      if (arr[i].isNew) {
+        list02 = "\n                  <span class=\"new\">NEW</span>\n                  ".concat(list02, "\n              ");
+      }
+      if (arr[i].isBest) {
+        list02 = "\n                  <span class=\"best\">BEST</span>\n                  ".concat(list02, "\n              ");
+      }
+      list03 = "\n          <li>\n              ".concat(list01, "\n              ").concat(list02, "\n          </li>\n          ");
+      receive += list03;
+    }
+    obj.liWrapper.innerHTML = receive;
+  }
+}
+function pageCreate(obj) {
+  var list = "";
+  var receive = "";
+  obj.paegLength = pageCalc(obj.referenceArr, obj.maxView);
+  if (obj.referenceArr.length === 0) {
+    addClass(obj.pageSection, 'none_on');
+  } else {
+    for (var i = 0; i < obj.paegLength; i++) {
+      list = "<li>".concat(i + 1, "</li>");
+      if (i === obj.curPageIndex) {
+        list = "<li class=\"page_on\">".concat(i + 1, "</li>");
+      }
+      receive += list;
+    }
+    obj.pageWrapper.innerHTML = receive;
+    removeClass(obj.pageSection, 'none_on');
+  }
+  pageControl(obj);
+}
+function pageControl(obj) {
+  var pageBtn = obj.pageWrapper.querySelectorAll('li');
+  //매번 객체에 바뀐 el 갱신
+  //prev,next btn은 매번 새로 덮어씌워지는게 아니므로, 오브젝트에 항상 el을 갱신시켜주고
+  //그 el에게 page_on클래스를 주자.
 
-//클래스 제거
-function removeClass(Element, ClassName) {
-  Element.classList.remove(ClassName);
+  obj.pageNumber = pageBtn;
+  pageBtn.forEach(function (page, index) {
+    page.addEventListener('click', function () {
+      for (var j = 0; j < pageBtn.length; j++) {
+        removeClass(pageBtn[j], 'page_on');
+      }
+      addClass(page, 'page_on');
+      obj.curPageIndex = index;
+      listCreate(obj, arrSlice(obj.curPageIndex, obj));
+      window.scrollTo({
+        top: 0
+      });
+    });
+  });
+}
+function pagePrevClick(obj) {
+  obj.curPageIndex = obj.curPageIndex - 1;
+  if (obj.curPageIndex < 0) {
+    obj.curPageIndex = 0;
+    alert('첫번쨰 페이지 입니다!');
+    //console.log(obj.curPageIndex);
+  } else {
+    for (var j = 0; j < obj.pageNumber.length; j++) {
+      removeClass(obj.pageNumber[j], 'page_on');
+    }
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+    window.scrollTo({
+      top: 0
+    });
+  }
+}
+function pageNextClick(obj) {
+  obj.curPageIndex = obj.curPageIndex + 1;
+  if (obj.curPageIndex >= obj.paegLength) {
+    obj.curPageIndex = obj.paegLength - 1;
+    alert('마지막 페이지 입니다!');
+  } else {
+    for (var j = 0; j < obj.pageNumber.length; j++) {
+      removeClass(obj.pageNumber[j], 'page_on');
+    }
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+    window.scrollTo({
+      top: 0
+    });
+  }
+}
+function pageFirstClick(obj) {
+  if (obj.curPageIndex === 0) {
+    alert('첫번째 페이지 입니다!');
+  } else {
+    obj.curPageIndex = 0;
+    obj.pageNumber.forEach(function (li) {
+      return removeClass(li, 'page_on');
+    });
+    addClass(listObj.pageNumber[0], 'page_on');
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+    window.scrollTo({
+      top: 0
+    });
+  }
+}
+function pageLastClick(obj) {
+  if (obj.curPageIndex === obj.pageNumber.length - 1) {
+    alert('마지막 페이지 입니다!');
+  } else {
+    obj.curPageIndex = obj.pageNumber.length - 1;
+    obj.pageNumber.forEach(function (li) {
+      return removeClass(li, 'page_on');
+    });
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+    window.scrollTo({
+      top: 0
+    });
+  }
+}
+function pageCalc(arr, viewLength) {
+  var pageNum = Math.ceil(arr.length / viewLength);
+  return pageNum;
+}
+//list_slice
+function arrSlice(index, obj) {
+  var first = index * obj.maxView;
+  var last = first + obj.maxView;
+  var slice = obj.referenceArr.slice(first, last);
+  return slice;
+}
+function addClass(el, ClassName) {
+  el.classList.add(ClassName);
+}
+function removeClass(el, ClassName) {
+  el.classList.remove(ClassName);
+}
+function txtChange(el) {
+  var txt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+  el.textContent = txt;
 }
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -330,7 +406,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54758" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52535" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

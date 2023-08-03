@@ -237,7 +237,7 @@ searchDelete.addEventListener('click', () => {
 
 searchTab.addEventListener('keyup', function (e) {
     if (e.key === 'Enter') {
-        const searchValue = encodeURIComponent(e.target.value);
+        const searchValue = encodeURIComponent(e.target.value.replace(/(\s*)/g, ""));
         //encodeURIComponent란? 괄호안에 오는 값을 url값으로 인코딩할때 쓰는 메서드
 
         //인코딩을 하는 이유는 

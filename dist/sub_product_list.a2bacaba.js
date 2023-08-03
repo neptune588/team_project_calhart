@@ -981,44 +981,14 @@ handleSort(listObj);
 prevPage.addEventListener('click', function () {
   return pagePrevClick(listObj);
 });
-firstPage.addEventListener('click', function () {
-  if (listObj.curPageIndex === 0) {
-    alert('첫번째 페이지 입니다!');
-  } else {
-    var copy = _toConsumableArray(listObj.referenceArr).splice(0, listObj.maxView);
-    listObj.curPageIndex = 0;
-    listObj.pageNumber.forEach(function (li) {
-      return removeClass(li, 'page_on');
-    });
-    addClass(listObj.pageNumber[0], 'page_on');
-    listCreate(listObj, copy);
-    window.scrollTo({
-      top: 0,
-      smooth: "behaivor"
-    });
-  }
-});
 nextPage.addEventListener('click', function () {
   return pageNextClick(listObj);
 });
+firstPage.addEventListener('click', function () {
+  return pageFirstClick(listObj);
+});
 lastPage.addEventListener('click', function () {
-  if (listObj.curPageIndex === listObj.pageNumber.length - 1) {
-    alert('마지막 페이지 입니다!');
-  } else {
-    var first = (listObj.pageNumber.length - 1) * listObj.maxView;
-    var last = first + listObj.maxView;
-    var copy = _toConsumableArray(listObj.referenceArr).splice(first, last);
-    listObj.curPageIndex = listObj.pageNumber.length - 1;
-    listObj.pageNumber.forEach(function (li) {
-      return removeClass(li, 'page_on');
-    });
-    addClass(listObj.pageNumber[listObj.curPageIndex], 'page_on');
-    listCreate(listObj, copy);
-    window.scrollTo({
-      top: 0,
-      smooth: "behaivor"
-    });
-  }
+  return pageLastClick(listObj);
 });
 function handleSort(obj) {
   var sortArr;
@@ -1143,13 +1113,9 @@ function pageControl(obj) {
       }
       addClass(page, 'page_on');
       obj.curPageIndex = index;
-      var first = index * obj.maxView;
-      var last = first + obj.maxView;
-      var result = _toConsumableArray(obj.referenceArr).splice(first, last);
-      listCreate(obj, result);
+      listCreate(obj, arrSlice(obj.curPageIndex, obj));
       window.scrollTo({
-        top: 0,
-        smooth: "behaivor"
+        top: 0
       });
     });
   });
@@ -1165,23 +1131,14 @@ function pagePrevClick(obj) {
       removeClass(obj.pageNumber[j], 'page_on');
     }
     addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
-    var first = obj.curPageIndex * obj.maxView;
-    var last = first + obj.maxView;
-    var result = _toConsumableArray(obj.referenceArr).splice(first, last);
-    listCreate(obj, result);
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
     window.scrollTo({
-      top: 0,
-      smooth: "behaivor"
+      top: 0
     });
   }
 }
 function pageNextClick(obj) {
-  //next누르면 페이지[0] -> 페이지[1]되고 그거 기반으로 리스트가 뽑힘.
   obj.curPageIndex = obj.curPageIndex + 1;
-
-  //+1이된 curPageIndex가 page의 갯수와 같아졌다는 뜻은, 마지막 페이지라는 뜻이니까
-  //즉 마지막 페이지에서 next를 눌렀다는 뜻이니까
-  //curPageIndex를 다시 마지막 인덱스로 만들어줌.
   if (obj.curPageIndex >= obj.paegLength) {
     obj.curPageIndex = obj.paegLength - 1;
     alert('마지막 페이지 입니다!');
@@ -1190,13 +1147,39 @@ function pageNextClick(obj) {
       removeClass(obj.pageNumber[j], 'page_on');
     }
     addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
-    var first = obj.curPageIndex * obj.maxView;
-    var last = first + obj.maxView;
-    var result = _toConsumableArray(obj.referenceArr).splice(first, last);
-    listCreate(obj, result);
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
     window.scrollTo({
-      top: 0,
-      smooth: "behaivor"
+      top: 0
+    });
+  }
+}
+function pageFirstClick(obj) {
+  if (obj.curPageIndex === 0) {
+    alert('첫번째 페이지 입니다!');
+  } else {
+    obj.curPageIndex = 0;
+    obj.pageNumber.forEach(function (li) {
+      return removeClass(li, 'page_on');
+    });
+    addClass(listObj.pageNumber[0], 'page_on');
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+    window.scrollTo({
+      top: 0
+    });
+  }
+}
+function pageLastClick(obj) {
+  if (obj.curPageIndex === obj.pageNumber.length - 1) {
+    alert('마지막 페이지 입니다!');
+  } else {
+    obj.curPageIndex = obj.pageNumber.length - 1;
+    obj.pageNumber.forEach(function (li) {
+      return removeClass(li, 'page_on');
+    });
+    addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+    listCreate(obj, arrSlice(obj.curPageIndex, obj));
+    window.scrollTo({
+      top: 0
     });
   }
 }
@@ -1273,6 +1256,14 @@ function filterArr(obj, parentArr, immunArr) {
   handleSort(obj);
 }
 
+//list_slice
+function arrSlice(index, obj) {
+  var first = index * obj.maxView;
+  var last = first + obj.maxView;
+  var slice = obj.referenceArr.slice(first, last);
+  return slice;
+}
+
 /*************** chk_reset ******************/
 var resetBtn = document.querySelector('.reset');
 resetBtn.addEventListener('click', function () {
@@ -1316,7 +1307,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54758" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52535" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

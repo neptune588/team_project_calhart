@@ -129,46 +129,17 @@ const listObj = {
 handleSort(listObj);
 
 prevPage.addEventListener('click', () => pagePrevClick(listObj));
-firstPage.addEventListener('click', () => {
-    if(listObj.curPageIndex === 0) {
-        alert('첫번째 페이지 입니다!');
-    } else {
-        const copy = [...listObj.referenceArr].splice(0, listObj.maxView);
-        listObj.curPageIndex = 0;
-        
-        listObj.pageNumber.forEach(li => removeClass(li, 'page_on'));
-        addClass(listObj.pageNumber[0], 'page_on');
-    
-        listCreate(listObj, copy);
-        window.scrollTo({top: 0, smooth: "behaivor"});
-    }
-})
 nextPage.addEventListener('click', () => pageNextClick(listObj));
-lastPage.addEventListener('click', () => {
-    if(listObj.curPageIndex === listObj.pageNumber.length - 1) {
-        alert('마지막 페이지 입니다!');
-    } else {
-        let first = (listObj.pageNumber.length - 1) * listObj.maxView;
-        let last = first + listObj.maxView;
-        
-        const copy = [...listObj.referenceArr].splice(first, last);
-        listObj.curPageIndex = listObj.pageNumber.length - 1;
-
-        listObj.pageNumber.forEach(li => removeClass(li, 'page_on'));
-        addClass(listObj.pageNumber[listObj.curPageIndex], 'page_on');
-
-        listCreate(listObj, copy);
-        window.scrollTo({top: 0, smooth: "behaivor"});
-    }
-})
+firstPage.addEventListener('click', () => pageFirstClick(listObj));
+lastPage.addEventListener('click', () => pageLastClick(listObj));
 
 function handleSort(obj) {
     let sortArr;
 
-    if(!obj.sortState.default && !obj.sortState.price) {
+    if (!obj.sortState.default && !obj.sortState.price) {
         listCreate(obj, obj.referenceArr);
         pageCreate(obj);
-    } else if(obj.sortState.default) {
+    } else if (obj.sortState.default) {
         sortArr = [...obj.referenceArr].sort((cur, next) => {
             return cur.propertyNumber - next.propertyNumber;
         })
@@ -176,7 +147,7 @@ function handleSort(obj) {
         listCreate(obj, obj.referenceArr);
         pageCreate(obj);
 
-    } else if(obj.sortState.price) {
+    } else if (obj.sortState.price) {
         sortArr = [...obj.referenceArr].sort((cur, next) => {
             if (cur.price < next.price) {
                 return -1;
@@ -222,7 +193,7 @@ function handleSort(obj) {
 }
 
 function stateReset(obj, bool) {
-    for(let key in obj) {
+    for (let key in obj) {
         obj[key] = bool;
     }
 }
@@ -248,7 +219,7 @@ function listCreate(obj, arr) {
             if (i === obj.maxView) {
                 break;
             }
-    
+
             list01 = `
                     <a class = "img_link_01" href = './detail_product_buy.html'>
                         <img src = ${arr[i].imgSrc[0]} alt = "product_img_${i}">
@@ -257,7 +228,7 @@ function listCreate(obj, arr) {
                         <img src = ${arr[i].imgSrc[1]} alt = "product_img_${i}_hover">
                     </a>
                 `
-    
+
             list02 = `
                     <a class = "product_name" href = "./detail_product_buy.html">
                         ${arr[i].productNameKor}
@@ -268,21 +239,21 @@ function listCreate(obj, arr) {
                     <span class = "price_unit">₩</span>
                     <span class = "price">${arr[i].price.toLocaleString()}</span>
                 `
-    
+
             if (arr[i].isNew) {
                 list02 = `
                     <span class="new">NEW</span>
                     ${list02}
                 `
             }
-    
+
             if (arr[i].isBest) {
                 list02 = `
                     <span class="best">BEST</span>
                     ${list02}
                 `
             }
-    
+
             list03 = `
             <li>
                 ${list01}
@@ -307,14 +278,14 @@ function pageCreate(obj) {
     } else {
         for (let i = 0; i < obj.paegLength; i++) {
             list = `<li>${i + 1}</li>`
-    
+
             if (i === obj.curPageIndex) {
                 list = `<li class="page_on">${i + 1}</li>`
             }
-    
+
             receive += list;
         }
-    
+
         obj.pageWrapper.innerHTML = receive;
         removeClass(obj.pageSection, 'none_on');
     }
@@ -344,13 +315,11 @@ function pageControl(obj) {
             addClass(page, 'page_on');
             obj.curPageIndex = index;
 
-            let first = index * obj.maxView;
-            let last = first + obj.maxView;
+            listCreate(obj, arrSlice(obj.curPageIndex, obj));
 
-            const result = [...obj.referenceArr].splice(first, last);
-            listCreate(obj, result);
-
-            window.scrollTo({top: 0, smooth: "behaivor"});
+            window.scrollTo({
+                top: 0
+            });
         })
     })
 }
@@ -370,23 +339,17 @@ function pagePrevClick(obj) {
 
         addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
 
-        let first = obj.curPageIndex * obj.maxView;
-        let last = first + obj.maxView;
+        listCreate(obj, arrSlice(obj.curPageIndex, obj));
 
-        const result = [...obj.referenceArr].splice(first, last);
-        listCreate(obj, result);
-
-        window.scrollTo({top: 0, smooth: "behaivor"});
+        window.scrollTo({
+            top: 0
+        });
     }
 }
 
 function pageNextClick(obj) {
-    //next누르면 페이지[0] -> 페이지[1]되고 그거 기반으로 리스트가 뽑힘.
     obj.curPageIndex = obj.curPageIndex + 1;
 
-    //+1이된 curPageIndex가 page의 갯수와 같아졌다는 뜻은, 마지막 페이지라는 뜻이니까
-    //즉 마지막 페이지에서 next를 눌렀다는 뜻이니까
-    //curPageIndex를 다시 마지막 인덱스로 만들어줌.
     if (obj.curPageIndex >= obj.paegLength) {
         obj.curPageIndex = obj.paegLength - 1;
         alert('마지막 페이지 입니다!');
@@ -398,13 +361,45 @@ function pageNextClick(obj) {
 
         addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
 
-        let first = obj.curPageIndex * obj.maxView;
-        let last = first + obj.maxView;
+        listCreate(obj, arrSlice(obj.curPageIndex, obj));
 
-        const result = [...obj.referenceArr].splice(first, last);
-        listCreate(obj, result);
+        window.scrollTo({
+            top: 0
+        });
+    }
+}
 
-        window.scrollTo({top: 0, smooth: "behaivor"});
+function pageFirstClick(obj) {
+    if (obj.curPageIndex === 0) {
+        alert('첫번째 페이지 입니다!');
+    } else {
+        obj.curPageIndex = 0;
+
+        obj.pageNumber.forEach(li => removeClass(li, 'page_on'));
+        addClass(listObj.pageNumber[0], 'page_on');
+
+        listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+        window.scrollTo({
+            top: 0
+        });
+    }
+}
+
+function pageLastClick(obj) {
+    if (obj.curPageIndex === obj.pageNumber.length - 1) {
+        alert('마지막 페이지 입니다!');
+    } else {
+        obj.curPageIndex = obj.pageNumber.length - 1;
+
+        obj.pageNumber.forEach(li => removeClass(li, 'page_on'));
+        addClass(obj.pageNumber[obj.curPageIndex], 'page_on');
+
+        listCreate(obj, arrSlice(obj.curPageIndex, obj));
+
+        window.scrollTo({
+            top: 0
+        });
     }
 }
 
@@ -423,17 +418,19 @@ function pageCalc(arr, viewLength) {
 /*************** filter_check ******************/
 const filterChkSections = document.querySelectorAll('.check_section');
 const filterChk = document.querySelectorAll('.check_section input');
-const filtersArr = Array.from({length: filterChkSections.length}, () => []);
+const filtersArr = Array.from({
+    length: filterChkSections.length
+}, () => []);
 //fill()로 빈배열을 만들엇을때는 인덱스0번에 있는 배열을 수정해도 전부 다 바뀌게 되더라.
 //참조: https://velog.io/@teihong93/Array.from%EC%9D%84-%ED%86%B5%ED%95%9C-%EB%B0%B0%EC%97%B4%EC%9D%98-%EC%B4%88%EA%B8%B0%ED%99%94
 
 //console.log(filterChkSections, filterChk, filtersArr);
 
 filterChk.forEach(input => {
-    input.addEventListener('click',() => {
+    input.addEventListener('click', () => {
         let nowIndex = input.dataset.myFilterIndex;
 
-        if(input.checked) {
+        if (input.checked) {
             filtersArr[nowIndex].push(input.value);
         } else {
             let valueIdx = filtersArr[nowIndex].indexOf(input.value);
@@ -453,25 +450,34 @@ function filterArr(obj, parentArr, immunArr) {
     let result = [];
     let changeArr = immunArr;
 
-    for(let i = 0; i < parentArr.length; i++) {
-        if(parentArr[i].length === 0) {
+    for (let i = 0; i < parentArr.length; i++) {
+        if (parentArr[i].length === 0) {
             continue;
         }
         result = changeArr.filter(obj => {
-                //obj 1개를 검사 -> 해당 obj의 key값을 Object.keys를 통해 배열에 담고
-                //some 메서드를 사용해서 검사한다. some은 조건에맞으면 boolean으로 반환되기 떄문에
-                //true이면 filter에서 true에 속하는 obj를 배열에 담게되는것임.
-                //한 key속성에 대하여 1차원 배열의 value가 순회된다. 있으면 true 없으면 false;
-                //즉 value와 같으면 그 즉시 순회가 전부 멈추고 가장 상위의 obj가 배열에 속하게 됨.
-                //ex key -> a obj["a"] === value 없으면 그 다음 key 그다음 key ... 
-                return Object.keys(obj).some(key => {
-                    return parentArr[i].some(value => obj[key] === value);
-                });
+            //obj 1개를 검사 -> 해당 obj의 key값을 Object.keys를 통해 배열에 담고
+            //some 메서드를 사용해서 검사한다. some은 조건에맞으면 boolean으로 반환되기 떄문에
+            //true이면 filter에서 true에 속하는 obj를 배열에 담게되는것임.
+            //한 key속성에 대하여 1차원 배열의 value가 순회된다. 있으면 true 없으면 false;
+            //즉 value와 같으면 그 즉시 순회가 전부 멈추고 가장 상위의 obj가 배열에 속하게 됨.
+            //ex key -> a obj["a"] === value 없으면 그 다음 key 그다음 key ... 
+            return Object.keys(obj).some(key => {
+                return parentArr[i].some(value => obj[key] === value);
+            });
         })
         changeArr = result;
     }
     obj.referenceArr = result;
     handleSort(obj);
+}
+
+//list_slice
+function arrSlice(index, obj) {
+    let first = index * obj.maxView;
+    let last = first + obj.maxView;
+
+    const slice = obj.referenceArr.slice(first, last);
+    return slice;
 }
 
 /*************** chk_reset ******************/

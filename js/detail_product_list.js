@@ -5,8 +5,10 @@ import {
 //change_list
 const pdCodeNum = document.getElementById('code_number');
 const quantityNum = document.getElementById('quantity_number');
+const totalQuantity = document.querySelector('.total_quntaitly_view');
 const totalPrice = document.getElementById('total_price');
 const pdMoney = document.getElementById('product_money');
+const quantityInput = document.getElementById('product_quantity_select');
 
 /******************** view_thumnail ********************/
 const viewContainer = document.getElementById('view_thumnail');
@@ -34,6 +36,75 @@ viewSmallThum.forEach((imgBx, i) => {
         viewThum[1].children[0].src = detailItem[0].imgSrc02[i];
     })
 });
+pdMoney.dataset.pdPrice = detailItem[0].price;
+quantityNum.dataset.limitQuantity = detailItem[0].limitQuantity;
+
+/******************** init_settings// qunatity_select ********************/
+const quantityPlus = document.getElementById('quantity_plus');
+const quantityMinus = document.getElementById('quantity_minus');
+const priceNoticeMent = document.getElementById('select_notice_ment');
+
+quantityPlus.addEventListener('click', () => {
+    let nowValue = parseInt(quantityInput.value);
+
+    if(nowValue < quantityNum.dataset.limitQuantity) {
+        quantityInput.value = nowValue + 1;
+
+        txtChange(totalPrice, `${(pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString()} 원`);
+        txtChange(totalQuantity, quantityInput.value);
+    }  else {
+        addClass(priceNoticeMent, 'block_on');
+    }
+});
+
+quantityMinus.addEventListener('click', () => {
+    let nowValue = parseInt(quantityInput.value);
+
+    removeClass(priceNoticeMent, 'block_on');
+    
+    if(nowValue > 1) {
+        quantityInput.value = nowValue - 1;
+
+        txtChange(totalPrice, `${(pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString()} 원`);
+        txtChange(totalQuantity, quantityInput.value);
+    }
+});
+
+qunatityInputEv();
+function qunatityInputEv() {
+    let prevValue = "";
+
+    quantityInput.addEventListener('input', function () {
+        const regex = /^\d+$/;
+        let changeValue = parseInt(this.value);
+        //숫자가 아닐시 
+        if(!regex.test(this.value)) {
+            this.value = this.value.replaceAll(/\D/g, '');
+        }
+    
+        if(changeValue > quantityNum.dataset.limitQuantity) {
+            this.value = prevValue;
+        }
+
+        if(parseInt(this.value) < 1) {
+            this.value = 1;
+        }
+        
+        txtChange(totalPrice, `${(pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString()} 원`);
+        txtChange(totalQuantity, quantityInput.value);
+
+        prevValue = this.value;
+    });
+
+    quantityInput.addEventListener('blur', function () {
+        if(this.value === null || this.value === undefined || this.value === "") {
+            this.value = 1;
+        }
+
+        txtChange(totalPrice, `${(pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString()} 원`);
+        txtChange(totalQuantity, quantityInput.value);
+    });
+}
 
 /******************** color_select + handleEv ********************/
 const colorSelArea = document.getElementById('select_list');
@@ -71,31 +142,47 @@ function handleSelect(arr) {
 
             viewSmallThum.forEach((imgBx, j) => imgBx.children[0].src = arr[i].imgSrc01[j]);
 
-            thumChange(arr, i);
-            styleCodeChange(arr, i);
-            quantityChange(arr, i);
+            //change_fnc
+            thumChange(arr[i]);
+            styleCodeChange(arr[i]);
+            quantityChange(arr[i]);
+            priceDataChange(arr[i]);
+            limitDataChange(arr[i]);
+
+            //reset_fnc
+            quantityInput.value = 1;
+            txtChange(totalPrice, `${(pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString()} 원`);
+            txtChange(totalQuantity, quantityInput.value);
+            removeClass(priceNoticeMent, 'block_on');
         });
     })
 }
 
-function thumChange(arr, parentIdx) {
+function thumChange(obj) {
     //small_thum_select
     viewSmallThum.forEach((imgBx, i) => {
         imgBx.addEventListener('click', () => {
-            viewThum[0].children[0].src = arr[parentIdx].imgSrc01[i];
-            viewThum[1].children[0].src = arr[parentIdx].imgSrc02[i];
+            viewThum[0].children[0].src = obj.imgSrc01[i];
+            viewThum[1].children[0].src = obj.imgSrc02[i];
         })
     })
 }
 
-function styleCodeChange(arr, parentIdx) {
-    pdCodeNum.textContent = arr[parentIdx].productCode;
+function styleCodeChange(obj) {
+    txtChange(pdCodeNum, obj.productCode);
 }
 
-function quantityChange(arr, parentIdx) {
-    quantityNum.textContent = arr[parentIdx].limitQuantity;
+function quantityChange(obj) {
+    txtChange(quantityNum, obj.limitQuantity);
 }
 
+function priceDataChange(obj) {
+    pdMoney.dataset.pdPrice = obj.price;
+}
+
+function limitDataChange(obj) {
+    quantityNum.dataset.limitQuantity = obj.limitQuantity;
+}
 /******************** size_select ********************/
 const sizeList = document.querySelectorAll('.size_list > li');
 
@@ -743,7 +830,7 @@ function lineBrake(str) {
     for (let i = 0; i < repeat; i++) {
         result += str.substring(i * brLength, (i + 1) * brLength) + `<br />`;
     }
-        result += str.substring(repeat * brLength, repeat.length); //남은 찌꺼기부분 더해주기
+    result += str.substring(repeat * brLength, repeat.length); //남은 찌꺼기부분 더해주기
     
     return result;
 }

@@ -312,7 +312,7 @@ searchDelete.addEventListener('click', function () {
 });
 searchTab.addEventListener('keyup', function (e) {
   if (e.key === 'Enter') {
-    var searchValue = encodeURIComponent(e.target.value);
+    var searchValue = encodeURIComponent(e.target.value.replace(/(\s*)/g, ""));
     //encodeURIComponent란? 괄호안에 오는 값을 url값으로 인코딩할때 쓰는 메서드
 
     //인코딩을 하는 이유는 
@@ -447,7 +447,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54758" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52535" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

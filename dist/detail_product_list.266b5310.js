@@ -723,8 +723,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //change_list
 var pdCodeNum = document.getElementById('code_number');
 var quantityNum = document.getElementById('quantity_number');
+var totalQuantity = document.querySelector('.total_quntaitly_view');
 var totalPrice = document.getElementById('total_price');
 var pdMoney = document.getElementById('product_money');
+var quantityInput = document.getElementById('product_quantity_select');
 
 /******************** view_thumnail ********************/
 var viewContainer = document.getElementById('view_thumnail');
@@ -749,6 +751,60 @@ viewSmallThum.forEach(function (imgBx, i) {
     viewThum[1].children[0].src = detailItem[0].imgSrc02[i];
   });
 });
+pdMoney.dataset.pdPrice = detailItem[0].price;
+quantityNum.dataset.limitQuantity = detailItem[0].limitQuantity;
+
+/******************** init_settings// qunatity_select ********************/
+var quantityPlus = document.getElementById('quantity_plus');
+var quantityMinus = document.getElementById('quantity_minus');
+var priceNoticeMent = document.getElementById('select_notice_ment');
+quantityPlus.addEventListener('click', function () {
+  var nowValue = parseInt(quantityInput.value);
+  if (nowValue < quantityNum.dataset.limitQuantity) {
+    quantityInput.value = nowValue + 1;
+    txtChange(totalPrice, "".concat((pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString(), " \uC6D0"));
+    txtChange(totalQuantity, quantityInput.value);
+  } else {
+    addClass(priceNoticeMent, 'block_on');
+  }
+});
+quantityMinus.addEventListener('click', function () {
+  var nowValue = parseInt(quantityInput.value);
+  removeClass(priceNoticeMent, 'block_on');
+  if (nowValue > 1) {
+    quantityInput.value = nowValue - 1;
+    txtChange(totalPrice, "".concat((pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString(), " \uC6D0"));
+    txtChange(totalQuantity, quantityInput.value);
+  }
+});
+qunatityInputEv();
+function qunatityInputEv() {
+  var prevValue = "";
+  quantityInput.addEventListener('input', function () {
+    var regex = /^\d+$/;
+    var changeValue = parseInt(this.value);
+    //숫자가 아닐시 
+    if (!regex.test(this.value)) {
+      this.value = this.value.replaceAll(/\D/g, '');
+    }
+    if (changeValue > quantityNum.dataset.limitQuantity) {
+      this.value = prevValue;
+    }
+    if (parseInt(this.value) < 1) {
+      this.value = 1;
+    }
+    txtChange(totalPrice, "".concat((pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString(), " \uC6D0"));
+    txtChange(totalQuantity, quantityInput.value);
+    prevValue = this.value;
+  });
+  quantityInput.addEventListener('blur', function () {
+    if (this.value === null || this.value === undefined || this.value === "") {
+      this.value = 1;
+    }
+    txtChange(totalPrice, "".concat((pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString(), " \uC6D0"));
+    txtChange(totalQuantity, quantityInput.value);
+  });
+}
 
 /******************** color_select + handleEv ********************/
 var colorSelArea = document.getElementById('select_list');
@@ -773,28 +829,43 @@ function handleSelect(arr) {
       viewSmallThum.forEach(function (imgBx, j) {
         return imgBx.children[0].src = arr[i].imgSrc01[j];
       });
-      thumChange(arr, i);
-      styleCodeChange(arr, i);
-      quantityChange(arr, i);
+
+      //change_fnc
+      thumChange(arr[i]);
+      styleCodeChange(arr[i]);
+      quantityChange(arr[i]);
+      priceDataChange(arr[i]);
+      limitDataChange(arr[i]);
+
+      //reset_fnc
+      quantityInput.value = 1;
+      txtChange(totalPrice, "".concat((pdMoney.dataset.pdPrice * quantityInput.value).toLocaleString(), " \uC6D0"));
+      txtChange(totalQuantity, quantityInput.value);
+      removeClass(priceNoticeMent, 'block_on');
     });
   });
 }
-function thumChange(arr, parentIdx) {
+function thumChange(obj) {
   //small_thum_select
   viewSmallThum.forEach(function (imgBx, i) {
     imgBx.addEventListener('click', function () {
-      viewThum[0].children[0].src = arr[parentIdx].imgSrc01[i];
-      viewThum[1].children[0].src = arr[parentIdx].imgSrc02[i];
+      viewThum[0].children[0].src = obj.imgSrc01[i];
+      viewThum[1].children[0].src = obj.imgSrc02[i];
     });
   });
 }
-function styleCodeChange(arr, parentIdx) {
-  pdCodeNum.textContent = arr[parentIdx].productCode;
+function styleCodeChange(obj) {
+  txtChange(pdCodeNum, obj.productCode);
 }
-function quantityChange(arr, parentIdx) {
-  quantityNum.textContent = arr[parentIdx].limitQuantity;
+function quantityChange(obj) {
+  txtChange(quantityNum, obj.limitQuantity);
 }
-
+function priceDataChange(obj) {
+  pdMoney.dataset.pdPrice = obj.price;
+}
+function limitDataChange(obj) {
+  quantityNum.dataset.limitQuantity = obj.limitQuantity;
+}
 /******************** size_select ********************/
 var sizeList = document.querySelectorAll('.size_list > li');
 sizeBtnClick();
@@ -1386,7 +1457,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54758" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52535" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
