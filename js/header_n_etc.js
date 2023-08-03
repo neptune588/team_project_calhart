@@ -279,10 +279,10 @@ topBtn.addEventListener('click', () => {
 
 
 /*************** quick_menu ******************/
-const quickMenu = document.getElementById('quick_menu');
+//const quickMenu = document.getElementById('quick_menu');
 
 //let prevScroll = 0;
-let quickMenuLocate = quickMenu.offsetTop;
+//let quickMenuLocate = quickMenu.offsetTop;
 
 /* window.addEventListener('scroll', () => {
     console.log(window.scrollY);
@@ -308,7 +308,7 @@ let quickMenuLocate = quickMenu.offsetTop;
 //스크롤이벤트가 일어나면 클리어timeout으로 명령어 삭제하고 다시 셋타임아웃시작
 
 
-window.addEventListener('scroll', debounce(60));
+/* window.addEventListener('scroll', debounce(60));
 
 function debounce(delay) {
     let controlTime;
@@ -320,7 +320,7 @@ function debounce(delay) {
             quickMenu.style.top = `${window.scrollY + quickMenuLocate}px`;
         }, delay);
     }
-}
+} */
 
 
 /*************** common ******************/
