@@ -13,10 +13,8 @@
     ],
     "isNew": true,
     "isBest": true,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 2,
@@ -32,9 +30,7 @@
     ],
     "isNew": true,
     "isBest": true,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 3,
@@ -50,9 +46,7 @@
     ],
     "isNew": true,
     "isBest": true,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 4,
@@ -68,10 +62,8 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 5,
@@ -87,10 +79,8 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 6,
@@ -106,10 +96,8 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 7,
@@ -125,10 +113,8 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 8,
@@ -144,10 +130,8 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 9,
@@ -163,9 +147,7 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 10,
@@ -181,9 +163,7 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 11,
@@ -199,9 +179,7 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 12,
@@ -217,9 +195,7 @@
     ],
     "isNew": true,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 13,
@@ -235,9 +211,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 14,
@@ -253,9 +227,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 15,
@@ -271,9 +243,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 16,
@@ -289,9 +259,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 17,
@@ -307,9 +275,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 18,
@@ -325,9 +291,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 19,
@@ -343,10 +307,8 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 20,
@@ -362,9 +324,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 21,
@@ -380,10 +340,8 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 22,
@@ -399,10 +357,8 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": true,
     "isSalesRateValue": "30~50",
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 23,
@@ -418,9 +374,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 24,
@@ -436,9 +390,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 25,
@@ -454,9 +406,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 26,
@@ -472,9 +422,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 27,
@@ -490,9 +438,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 28,
@@ -508,9 +454,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 29,
@@ -526,9 +470,7 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   },
   {
     "propertyNumber": 30,
@@ -544,8 +486,6 @@
     ],
     "isNew": false,
     "isBest": false,
-    "isSales": false,
-    "isSoldOut": false,
-    "isGender": "male"
+    "isSoldOut": false
   }
 ]
