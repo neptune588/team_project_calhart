@@ -135,6 +135,7 @@ lastPage.addEventListener('click', () => pageLastClick(listObj));
 
 function handleSort(obj) {
     let sortArr;
+    obj.curPageIndex = 0;
 
     if (!obj.sortState.default && !obj.sortState.price) {
         listCreate(obj, obj.referenceArr);
@@ -184,9 +185,9 @@ function handleSort(obj) {
             })
         }
 
-        obj.curPageIndex = 0;
         obj.referenceArr = sortArr;
-
+        obj.curPageIndex = 0;
+        
         listCreate(obj, sortArr);
         pageCreate(obj);
     })

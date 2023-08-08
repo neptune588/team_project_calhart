@@ -3,7 +3,6 @@ import { userData } from './userdata.js'
 
 /********************************* 페이지1 ***********************************/
 
-//정규식 (수정필요할것같다.)
 const regexTestName = totalRegex.nameRegexArr[0].regex;
 const regexTest00 = totalRegex.totalRegexArr[0].regex;
 const regexTest01 = totalRegex.totalRegexArr[1].regex;

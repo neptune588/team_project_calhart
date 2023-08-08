@@ -39,6 +39,7 @@ async function dataRequest(param) {
 
   searchObj.referenceArr = [...listFilter(request, param)];
 
+  searchObj.curPageIndex = 0;
   listCreate(searchObj, searchObj.referenceArr);
   pageCreate(searchObj);
 

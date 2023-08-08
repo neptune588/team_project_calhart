@@ -254,8 +254,12 @@ input {
                 justify-content: center;
                 >div {
                     @include item_size(300px, 150px);
-                    @include background_cover;
                     margin-right: 15px;
+
+                    img {
+                        @include item_size(300px, 150px);
+                        object-fit: cover;
+                    }
                 }
             }
         }
