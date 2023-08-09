@@ -32,7 +32,7 @@ MAIN | SUB | DETAIL | SIGN IN & UP | PRODUCT SEARCH
 ### 사이트 주소
 https://neptune588.github.io/team_project_calhart/
 
-기획은 4명에서 하되, 프로젝트 제작은 각자 진행하였습니다. 기술적인 부분은 전부 JAVASCRIPT로 구성하였습니다.(VANINLA) <br/>
+기획은 4명에서 하되, 프로젝트 제작은 각자 진행하였습니다. 기술적인 부분은 전부 JAVASCRIPT로 구현 하였습니다.(VANINLA) <br/>
 
 벨로그 주소: https://velog.io/@ctr_nike
 
