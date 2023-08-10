@@ -31,9 +31,13 @@ MAIN | SUB | DETAIL | SIGN IN & UP | PRODUCT SEARCH
 
 ### 주요 기능
 MAIN: 박스 슬라이딩 <br />
+
 SUB: 중첩 FILTER, 페이지네이션, 상품 정렬 기능 <br />
+
 DETAIL: 상품 수량에 따른 가격 표기, 리뷰 및 QNA기능, 사이즈 계산 기능 <br />
+
 SIGN IN & UP: 로그인 및 회원가입 기능, ID&PW찾기 기능 <br />
+
 PRODUCT SEARCH: 제품 검색 및 표기 기능
 
 ### 사이트 주소
