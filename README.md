@@ -24,7 +24,7 @@ TEAM_PRJECT_CALHARTT
 NODE.JS, PARCEL-BUNDLER
 
 ### 개발기술
-HTML5, CSS3, JAVASCRIPT
+HTML5, CSS3(SCSS), JAVASCRIPT
 
 ### 사이트 구성
 MAIN | SUB | DETAIL | SIGN IN & UP | PRODUCT SEARCH
@@ -44,6 +44,8 @@ PRODUCT SEARCH: 제품 검색 및 표기 기능
 https://neptune588.github.io/team_project_calhart/
 
 기획은 4명에서 하되, 프로젝트 제작은 각자 진행하였습니다. 기술적인 부분은 전부 JAVASCRIPT로 구현 하였습니다.(VANINLA) <br/>
+
+해당 사이트를 만들면서 JAVASCRIPT에 대한 개념이 늘었고 기능 구현에 재미를 느끼게 되엇습니다. 
 
 벨로그 주소: https://velog.io/@ctr_nike
 
